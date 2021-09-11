@@ -1,4 +1,4 @@
-package com.loca;
+package io.dimitiger.loca;
 
 import com.facebook.react.ReactActivity;
 
