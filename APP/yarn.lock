@@ -1204,11 +1204,6 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-plugin/-/eslint-plugin-1.1.0.tgz#e42b1bef12d2415411519fd528e64b593b1363dc"
   integrity sha512-W/J0fNYVO01tioHjvYWQ9m6RgndVtbElzYozBq1ZPrHO/iCzlqoySHl4gO/fpCl9QEFjvJfjPgtPMTMlsoq5DQ==
 
-"@react-native-firebase/app-distribution@^12.7.5":
-  version "12.7.5"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app-distribution/-/app-distribution-12.7.5.tgz#43bd98dcfbe881ed1fdfebb2e5e8ff8113003ece"
-  integrity sha512-Bsb3NLeu3TpIT9k4olwrLi/x5j4DvzryO+7uuCrkA1XKnv/84RPXqsMuhzqri42P7FzmpBvOdOkJWxaQHQp0GA==
-
 "@react-native-firebase/app@^12.7.5":
   version "12.7.5"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-12.7.5.tgz#337fd517a6329dd9d734b36ca91bf0c54cc3a337"
@@ -1217,6 +1212,11 @@
     "@expo/config-plugins" "^3.1.0"
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
+
+"@react-native-firebase/dynamic-links@^12.7.5":
+  version "12.7.5"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/dynamic-links/-/dynamic-links-12.7.5.tgz#34afc293bd1dbce7c58b57415a0c8d69172c476c"
+  integrity sha512-fhiJdVLMCOLQi2g8EmJK9MTWQq0iEB97Ndu5HuTxeUhFTBAtStOB3qhnw1NVVX6TJnRxmzGXVmuiw76GIZySzA==
 
 "@react-native/assets@1.0.0":
   version "1.0.0"
