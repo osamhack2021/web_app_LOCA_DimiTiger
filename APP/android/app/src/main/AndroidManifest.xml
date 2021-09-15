@@ -3,6 +3,7 @@
     package="io.dimitiger.loca">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.NFC" />
 
     <application
         android:name="io.dimitiger.loca.MainApplication"
@@ -27,6 +28,19 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="locadimitiger.page.link"
+                    android:scheme="http" />
+                <data
+                    android:host="locadimitiger.page.link"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true"
+                tools:targetApi="m">
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
 
                 <data
                     android:host="locadimitiger.page.link"
