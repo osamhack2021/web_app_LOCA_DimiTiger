@@ -9,10 +9,25 @@ const userSchema = new mongoose.Schema(
 			unique: true,
 			trim: true,
 		},
+		name: {
+			type: String,
+			default: null,
+			trim: true,
+		},
+		phone: {
+			type: String,
+			default: null,
+			trim: true,
+		},
 		email: {
 			type: String,
 			default: null,
 			trim: true,
+		},
+		isAdmin: {
+			type: Boolean,
+			required: true,
+			default: false,
 		},
 		password: {
 			type: String,
