@@ -1,0 +1,31 @@
+{
+	"name": "loca-server",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"dependencies": {
+		"@hapi/glue": "^8.0.0",
+		"@hapi/hapi": "^20.1.5",
+		"@hapi/inert": "^6.0.4",
+		"@hapi/joi": "^17.1.1",
+		"@hapi/vision": "^6.1.0",
+		"argon2": "^0.28.2",
+		"dotenv": "^10.0.0",
+		"glob": "^7.1.7",
+		"handlebars": "^4.7.7",
+		"hapi-auth-jwt2": "^10.2.0",
+		"hapi-pino": "^8.3.0",
+		"hapi-swagger": "^14.2.4",
+		"joi": "^17.4.2",
+		"mongoose": "^6.0.5",
+		"node-graceful": "^3.1.0",
+		"pino": "^6.13.2",
+		"pino-pretty": "^7.0.0"
+	},
+	"devDependencies": {
+		"eslint": "^7.32.0"
+	}
+}
