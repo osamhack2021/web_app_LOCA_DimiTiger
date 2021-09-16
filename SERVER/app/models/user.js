@@ -14,6 +14,12 @@ const userSchema = new mongoose.Schema(
 			default: null,
 			trim: true,
 		},
+		// 군번
+		serial: {
+			type: String,
+			required: true,
+			trim: true,
+		},
 		phone: {
 			type: String,
 			default: null,
