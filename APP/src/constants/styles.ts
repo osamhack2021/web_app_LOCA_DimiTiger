@@ -1,5 +1,5 @@
-import {Platform, ViewStyle} from 'react-native';
-import {colorBlack} from './colors';
+import { Platform, ViewStyle } from 'react-native';
+import { colorBlack } from './colors';
 
 export const styleShadow: ViewStyle = {
   ...Platform.select({
@@ -8,7 +8,7 @@ export const styleShadow: ViewStyle = {
     },
     default: {
       shadowColor: colorBlack,
-      shadowOffset: {width: 0, height: 8},
+      shadowOffset: { width: 0, height: 8 },
       shadowOpacity: 0.25,
       shadowRadius: 10,
     },

@@ -1,7 +1,7 @@
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import {QueryClient, QueryClientProvider} from 'react-query';
-import {RecoilRoot} from 'recoil';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { RecoilRoot } from 'recoil';
 import Navigators from './screens/Navigators';
 
 const queryClient = new QueryClient();

@@ -1,4 +1,4 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import MainScreen from './MainScreen';
 
@@ -8,7 +8,7 @@ const RootStack = () => {
   return (
     <Stack.Navigator
       initialRouteName="MainScreen"
-      screenOptions={{headerShown: false}}>
+      screenOptions={{ headerShown: false }}>
       <Stack.Screen name="MainScreen" component={MainScreen} />
     </Stack.Navigator>
   );
