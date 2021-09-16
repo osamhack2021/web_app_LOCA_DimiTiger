@@ -1,14 +1,14 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {colorDivider, colorWhite} from '../constants/colors';
-import {styleShadow} from '../constants/styles';
+import { StyleSheet, Text, View } from 'react-native';
+import { colorDivider, colorWhite } from '../constants/colors';
+import { styleShadow } from '../constants/styles';
 
 type CardProps = {
   title: string;
   children: React.ReactChild;
 };
 
-const Card: React.FC<CardProps> = ({title, children}) => {
+const Card: React.FC<CardProps> = ({ title, children }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>{title}</Text>
