@@ -25,9 +25,7 @@ module.exports = {
 							errorMessage: 'Wrong token type given',
 						};
 					}
-					const admin = await User.findOne({ _id: result._id })
-						.populate('permissionGroup')
-						.populate({ path: 'permissionGroup', populate: { path: 'site' } });
+					const admin = await User.findOne({ _id: result._id });
 
 					return {
 						isValid: true,
