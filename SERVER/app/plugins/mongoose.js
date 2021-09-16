@@ -41,5 +41,27 @@ exports.plugin = {
 		models.forEach((model) => {
 			require(model);
 		});
+
+		postLoad(server);
 	},
 };
+
+async function postLoad(server) {
+	const User = require('../models/user');
+
+	// Create First Admin
+	const users = await User.find({
+		deleted: false,
+	}).exec();
+	if (users.length === 0) {
+		await new User({
+			id: 'admin',
+			name: '최고관리자',
+			phone: '01012345678',
+			email: 'admin@admin.com',
+			isAdmin: true,
+			password: await User.hashPassword('admin'),
+		}).save();
+		server.logger.info('MongoDB First User Created');
+	}
+}
