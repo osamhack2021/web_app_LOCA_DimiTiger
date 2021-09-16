@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: /Dockerfile
+      target: release
+    restart: always
+    environment:
+      PORT: '80'
+      LOG_DISABLED: 'true'
+      JWT_SECRET: '0development0'
+      MONGO_URI: 'mongodb://mongo:27017/loca'
+    ports: 
+      - 8080:80
+  mongo:
+    image: mongo
+    logging:
+      driver: 'none'
