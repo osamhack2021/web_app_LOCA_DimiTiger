@@ -1,5 +1,5 @@
 import { Platform, ViewStyle } from 'react-native';
-import { colorBlack } from './colors';
+import { colorBlack, colorDivider } from './colors';
 
 export const styleShadow: ViewStyle = {
   ...Platform.select({
@@ -8,9 +8,15 @@ export const styleShadow: ViewStyle = {
     },
     default: {
       shadowColor: colorBlack,
-      shadowOffset: { width: 0, height: 8 },
-      shadowOpacity: 0.25,
-      shadowRadius: 10,
+      shadowOffset: { width: 0, height: 10 },
+      shadowOpacity: 0.1,
+      shadowRadius: 8,
     },
   }),
+};
+
+export const styleDivider: ViewStyle = {
+  backgroundColor: colorDivider,
+  height: 1,
+  width: '100%',
 };
