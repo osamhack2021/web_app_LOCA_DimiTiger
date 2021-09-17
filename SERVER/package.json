@@ -4,7 +4,8 @@
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
-		"start": "node index.js"
+		"start": "node index.js",
+		"live": "nodemon"
 	},
 	"dependencies": {
 		"@hapi/glue": "^8.0.0",
@@ -27,6 +28,7 @@
 		"pino-pretty": "^7.0.0"
 	},
 	"devDependencies": {
-		"eslint": "^7.32.0"
+		"eslint": "^7.32.0",
+		"nodemon": "^2.0.12"
 	}
 }
