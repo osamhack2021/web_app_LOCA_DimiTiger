@@ -1,0 +1,68 @@
+import React, { Component } from 'react';
+import './Header.css';
+import logo from './25div.png';
+
+interface iprops {
+};
+interface istate {
+  date: Date;
+  timeID : any;
+  watch1: string;
+  watch2: string; 
+};
+class Header extends Component<iprops, istate> {  
+  constructor(props: iprops) {
+    super(props);
+    this.state = {date: new Date(), timeID: "", watch1: "", watch2: ""};
+  }
+
+  componentDidMount() {
+    this.setState({
+      timeID: setInterval(() => this.Change(),1000)
+    });
+  }
+  componentWillUnmount(){
+    clearInterval(this.state.timeID);
+  }
+  Change = () => {
+    this.setState({
+      date: new Date(),
+      watch1: this.getToday(),
+      watch2: this.state.date.getHours() + ':' + this.state.date.getMinutes(),
+    });
+  }
+
+  getToday = () => {
+    const week: Array<string> = ['일', '월', '화', '수', '목', '금', '토'];
+    const date: Date = this.state.date;
+    const year: string = String(date.getFullYear());
+    const month: string = ("0" + (1 + date.getMonth())).slice(-2);
+    const day: string = ("0" + date.getDate()).slice(-2);
+    const dayOfTheWeek: number = date.getDay();
+    return year + "-" + month + "-" + day + ' ' + week[dayOfTheWeek] + '요일';
+}
+
+  render() {
+    return (
+        <header>
+          <div id="belong">
+            <img id="belong_logo" src={logo} alt="logo" />
+            <p className="belong_name">70여단 <span>국사봉대대</span></p>
+          </div>
+          <div id="watch_widget">
+            <div className="vertical_line"></div>
+            <div className="watch">
+              <div className="date">
+                {this.state.watch1}
+              </div>
+              <div className="time">
+                {this.state.watch2}
+              </div>
+            </div>
+          </div>
+        </header>
+    );
+  }
+}
+
+export default Header;
