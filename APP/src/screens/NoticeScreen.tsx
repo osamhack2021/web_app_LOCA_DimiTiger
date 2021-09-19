@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import NoticeCard from '../components/NoticeCard';
 import Notice from '../models/Notice';
@@ -10,11 +10,21 @@ type NoticeListProps = {
 
 const NoticeList: React.FC<NoticeListProps> = ({ data }) => {
   return (
-    <FlatList
-      data={data}
-      renderItem={({ item }) => <NoticeCard notice={item} />}
-    />
+    <View>
+      <Text style={styles.titleText}>공지사항</Text>
+      <FlatList
+        data={data}
+        renderItem={({ item }) => <NoticeCard notice={item} />}
+      />
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  titleText: {
+    fontSize: 21,
+    fontWeight: 'bold',
+  },
+});
 
 export default NoticeList;

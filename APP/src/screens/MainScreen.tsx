@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -7,6 +8,7 @@ import NoticeCard from '../components/NoticeCard';
 import { colorEllipsis } from '../constants/colors';
 import { styleDivider } from '../constants/styles';
 import Notice from '../models/Notice';
+import { RootNavigationProp } from './Navigators';
 
 const dummyNotices: Notice[] = [
   {
@@ -20,6 +22,7 @@ const dummyNotices: Notice[] = [
 ];
 
 const MainScreen = () => {
+  const navigation = useNavigation<RootNavigationProp<'MainScreen'>>();
   return (
     <View style={styles.container}>
       <Header />
@@ -29,7 +32,7 @@ const MainScreen = () => {
           <View style={styleDivider} />
           <View />
         </Card>
-        <Card title="공지사항">
+        <Card onPress={() => navigation.navigate('NoticeScreen')}>
           <Text style={styles.titleText}>공지사항</Text>
           <View style={styleDivider} />
           <NoticeCard notice={dummyNotices[0]} />
