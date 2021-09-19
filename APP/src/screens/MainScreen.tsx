@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Button from '../components/Button';
 import Card from '../components/Card';
 import Header from '../components/Header';
 import NoticeCard from '../components/NoticeCard';
@@ -28,7 +29,10 @@ const MainScreen = () => {
       <Header />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <Card>
-          <Text style={styles.titleText}>나의 위치</Text>
+          <View style={styles.cardHeaderContainer}>
+            <Text style={styles.titleText}>나의 위치</Text>
+            <Button style={styles.locationButton}>위치 변경</Button>
+          </View>
           <View style={styleDivider} />
           <View />
         </Card>
@@ -54,10 +58,18 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
   },
+  cardHeaderContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   titleText: {
     fontSize: 21,
     fontWeight: 'bold',
     margin: 20,
+  },
+  locationButton: {
+    marginEnd: 20,
   },
   secondNotice: {
     marginTop: -5,
