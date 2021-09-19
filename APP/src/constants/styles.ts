@@ -9,7 +9,7 @@ export const styleShadow: ViewStyle = {
     default: {
       shadowColor: colorBlack,
       shadowOffset: { width: 0, height: 10 },
-      shadowOpacity: 0.1,
+      shadowOpacity: 0.15,
       shadowRadius: 8,
     },
   }),

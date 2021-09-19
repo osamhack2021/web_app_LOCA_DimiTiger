@@ -1,8 +1,8 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {colorWhite} from '../constants/colors';
-import {styleShadow} from '../constants/styles';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { colorWhite } from '../constants/colors';
+import { styleShadow } from '../constants/styles';
 
 const Header: React.FC = () => {
   return (
@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     ...styleShadow,
     backgroundColor: colorWhite,
     flexDirection: 'row',
-    marginBottom: 15,
     padding: 20,
   },
   logoImage: {
