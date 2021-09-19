@@ -1,40 +1,40 @@
 import React from 'react';
-import { StyleSheet, Text, View, ViewStyle } from 'react-native';
+import {
+  GestureResponderEvent,
+  Pressable,
+  StyleProp,
+  StyleSheet,
+  ViewStyle,
+} from 'react-native';
 import LinearGradient, {
   LinearGradientProps,
 } from 'react-native-linear-gradient';
 import { colorWhite } from '../constants/colors';
-import { styleDivider, styleShadow } from '../constants/styles';
+import { styleShadow } from '../constants/styles';
 
-type CardProps = {
-  title?: string;
-  style?: ViewStyle;
-  contentContainerStyle?: ViewStyle;
+export type CardProps = {
+  style?: StyleProp<ViewStyle>;
+  contentContainerStyle?: StyleProp<ViewStyle>;
   gradient?: LinearGradientProps;
-  children: React.ReactNode;
+  onPress?: (event: GestureResponderEvent) => void;
+  children?: React.ReactNode;
 };
 
 const Card: React.FC<CardProps> = ({
-  title,
   style,
   contentContainerStyle,
   gradient,
+  onPress,
   children,
 }) => {
   return (
-    <View style={styleShadow}>
+    <Pressable style={[styles.container, styleShadow, style]} onPress={onPress}>
       <LinearGradient
         {...(gradient || { colors: [colorWhite, colorWhite] })}
-        style={[styles.container, style]}>
-        {title && (
-          <>
-            <Text style={styles.titleText}>{title}</Text>
-            <View style={styleDivider} />
-          </>
-        )}
-        <View style={contentContainerStyle}>{children}</View>
+        style={[styles.contentContainer, contentContainerStyle]}>
+        {children}
       </LinearGradient>
-    </View>
+    </Pressable>
   );
 };
 
@@ -44,12 +44,12 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     margin: 20,
   },
+  contentContainer: {
+    borderRadius: 20,
+  },
   titleText: {
     fontWeight: 'bold',
     fontSize: 21,
-    margin: 20,
-  },
-  contentContainer: {
     margin: 20,
   },
 });

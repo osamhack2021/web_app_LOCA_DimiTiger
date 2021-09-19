@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Card from '../components/Card';
 import Header from '../components/Header';
@@ -24,15 +24,19 @@ const MainScreen = () => {
     <View style={styles.container}>
       <Header />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Card title="나의위치">
+        <Card>
+          <Text style={styles.titleText}>나의 위치</Text>
+          <View style={styleDivider} />
           <View />
         </Card>
         <Card title="공지사항">
+          <Text style={styles.titleText}>공지사항</Text>
+          <View style={styleDivider} />
           <NoticeCard notice={dummyNotices[0]} />
           <NoticeCard notice={dummyNotices[1]} style={styles.secondNotice} />
           <View style={styleDivider} />
           <View style={styles.moreNoticeContainer}>
-            <Icon name="dots-horizontal" size={25} color={colorEllipsis} />
+            <Icon name="dots-horizontal" size={30} color={colorEllipsis} />
           </View>
         </Card>
       </ScrollView>
@@ -46,6 +50,11 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flexGrow: 1,
+  },
+  titleText: {
+    fontSize: 21,
+    fontWeight: 'bold',
+    margin: 20,
   },
   secondNotice: {
     marginTop: -5,

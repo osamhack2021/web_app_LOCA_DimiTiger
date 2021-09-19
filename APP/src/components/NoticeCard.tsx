@@ -1,25 +1,35 @@
 import React from 'react';
-import { StyleSheet, Text, ViewStyle } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import {
   colorBlack,
   colorEmergencyEnd,
+  colorEmergencyShadow,
   colorEmergencyStart,
   colorNoticeBackground,
   colorWhite,
 } from '../constants/colors';
 import Notice from '../models/Notice';
-import Card from './Card';
+import Card, { CardProps } from './Card';
 
-type NoticeCardProps = {
+export type NoticeCardProps = CardProps & {
   notice: Notice;
-  style?: ViewStyle;
 };
 
-const NoticeCard: React.FC<NoticeCardProps> = ({ notice, style }) => {
+const NoticeCard: React.FC<NoticeCardProps> = ({
+  notice,
+  style,
+  contentContainerStyle,
+}) => {
   return (
     <Card
-      style={style}
-      contentContainerStyle={styles.contentContainer}
+      style={[
+        notice.emergency && [
+          styles.shadow,
+          { shadowColor: colorEmergencyShadow },
+        ],
+        style,
+      ]}
+      contentContainerStyle={[styles.contentContainer, contentContainerStyle]}
       gradient={{
         colors: notice.emergency
           ? [colorEmergencyStart, colorEmergencyEnd]
@@ -36,8 +46,11 @@ const NoticeCard: React.FC<NoticeCardProps> = ({ notice, style }) => {
 };
 
 const styles = StyleSheet.create({
+  shadow: {
+    shadowOpacity: 0.4,
+  },
   contentContainer: {
-    margin: 20,
+    padding: 20,
   },
   emergencyText: {
     fontWeight: 'bold',
