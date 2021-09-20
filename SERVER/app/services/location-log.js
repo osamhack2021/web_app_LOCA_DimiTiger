@@ -5,17 +5,11 @@ const { createError } = require('../utils/error');
 
 const Errors = (exports.Errors = {});
 
-exports.getCurrentLocationLogs = async () => {
-	return await LocationLog.find({ active: true });
-};
-
-exports.getLocationLogByUser = async ({ user }) => {
-	return await Location.find({ user });
-};
-exports.getLocationLogByLocation = async ({ location }) => {
-	return await Location.find({ location });
+exports.getLocationLogs = async (filters) => {
+	return await LocationLog.find(filters);
 };
 
 exports.createLocationLog = async ({ user, location }) => {
+	await LocationLog.updateMany({ user, location, active: false });
 	return await new LocationLog({ user, location }).save();
 };
