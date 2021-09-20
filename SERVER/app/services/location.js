@@ -1,4 +1,3 @@
-const User = require('../models/user');
 const Location = require('../models/location');
 const { createError } = require('../utils/error');
 
