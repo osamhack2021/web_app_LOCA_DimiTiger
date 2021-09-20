@@ -1,4 +1,4 @@
-const routes = [require('./users'), require('./auth'), require('./location')];
+const routes = [require('./users'), require('./auth'), require('./locations')];
 
 exports.plugin = {
 	name: 'routes',
