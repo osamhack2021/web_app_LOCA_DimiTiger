@@ -14,7 +14,8 @@ const locationLogSchema = new mongoose.Schema(
 		},
 		active: {
 			type: Boolean,
-			required: false,
+			required: true,
+			default: true,
 		},
 	},
 	{
