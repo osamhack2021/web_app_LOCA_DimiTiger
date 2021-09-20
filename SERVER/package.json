@@ -5,7 +5,8 @@
 	"license": "MIT",
 	"scripts": {
 		"start": "node index.js",
-		"live": "nodemon"
+		"live": "nodemon",
+		"test": "mocha"
 	},
 	"dependencies": {
 		"@hapi/glue": "^8.0.0",
@@ -29,6 +30,7 @@
 	},
 	"devDependencies": {
 		"eslint": "^7.32.0",
+		"mocha": "^9.1.1",
 		"nodemon": "^2.0.12"
 	}
 }
