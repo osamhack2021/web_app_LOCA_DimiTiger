@@ -2,16 +2,20 @@ const mongoose = require('mongoose');
 
 const locationLogSchema = new mongoose.Schema(
 	{
-		name: {
-			type: String,
+		user: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: require('./user'),
 			required: true,
-			trim: true,
 		},
-		users: {
-			type: 'User',
-			default: [],
+		location: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: require('./location'),
+			required: true,
 		},
-		ui: JSON,
+		active: {
+			type: Boolean,
+			required: false,
+		},
 	},
 	{
 		timestamps: true,
