@@ -9,11 +9,12 @@ interface istate {
   timeID : any;
   watch1: string;
   watch2: string; 
+  watch3: string;
 };
 class Header extends Component<iprops, istate> {  
   constructor(props: iprops) {
     super(props);
-    this.state = {date: new Date(), timeID: "", watch1: "", watch2: ""};
+    this.state = {date: new Date(), timeID: "", watch1: "", watch2: "", watch3: ""};
   }
 
   componentDidMount() {
@@ -28,7 +29,8 @@ class Header extends Component<iprops, istate> {
     this.setState({
       date: new Date(),
       watch1: this.getToday(),
-      watch2: this.state.date.getHours() + ':' + this.state.date.getMinutes(),
+      watch2: ("0" + this.state.date.getHours()).slice(-2) + ':' + ("0" + this.state.date.getMinutes()).slice(-2),
+      watch3: ("0" + this.state.date.getSeconds()).slice(-2),
     });
   }
 
@@ -44,23 +46,24 @@ class Header extends Component<iprops, istate> {
 
   render() {
     return (
-        <header>
-          <div id="belong">
-            <img id="belong_logo" src={logo} alt="logo" />
-            <p className="belong_name">70여단 <span>국사봉대대</span></p>
+      <header>
+        <div id="belong">
+          <img id="belong_logo" src={logo} alt="logo" />
+          <p className="belong_name">70여단 <span>국사봉대대</span></p>
+        </div>
+        <div id="watch_widget">
+        <div className="vertical_line"></div>
+        <div className="watch">
+          <div className="date">
+            {this.state.watch1}
           </div>
-          <div id="watch_widget">
-            <div className="vertical_line"></div>
-            <div className="watch">
-              <div className="date">
-                {this.state.watch1}
-              </div>
-              <div className="time">
-                {this.state.watch2}
-              </div>
-            </div>
+          <div className="time">
+            {this.state.watch2}
+            <div className="seconds">{this.state.watch3}</div>
           </div>
-        </header>
+        </div>
+      </div>
+    </header>
     );
   }
 }

@@ -1,10 +1,11 @@
 header {
   height: 100px;
   width: 100%;
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   background-color: white;
+  border-radius: 0 0 15px 15px;
 }
 #belong {
   display: flex;
@@ -45,4 +46,10 @@ header {
   font-size: 2.2rem;
   margin-left: -3px;
   font-weight: 700;
+}
+.seconds {
+  font-size: 1.5rem;
+  font-weight: 400;
+  display: inline-block;
+  margin-left: 3px;
 }

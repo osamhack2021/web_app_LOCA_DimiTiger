@@ -1,0 +1,27 @@
+#militaryDiscipline {
+    background: linear-gradient(#A8E063, #56AB2F);
+    box-shadow: 6px 6px 12px #58AC3050;
+    display: flex;
+    flex-direction: column;
+}
+#militaryDiscipline_head {
+    display: flex;
+    margin-left: 25px;
+    margin-top: 20px;
+
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+#militaryDiscipline_contents {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-left: 25px;
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+#militaryDiscipline_contents > span {
+    font-size: 3.8rem;
+    font-weight: 800;
+}
