@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Icon } from 'react-native-gradient-icon';
 import Button from '../components/Button';
 import Card from '../components/Card';
 import Header from '../components/Header';
@@ -34,7 +34,19 @@ const MainScreen = () => {
             <Button style={styles.locationButton}>위치 변경</Button>
           </View>
           <View style={styleDivider} />
-          <View />
+          <View style={styles.locationContainer}>
+            <Icon
+              name="home"
+              type="material-community"
+              size={100}
+              colors={[
+                { color: '#FEBA00', offset: '0', opacity: '1' },
+                { color: '#FD5900', offset: '1', opacity: '1' },
+              ]}
+            />
+            <Text>본부7생활관</Text>
+            <Text>최근위치변경: 1시간전</Text>
+          </View>
         </Card>
         <Card onPress={() => navigation.navigate('NoticeScreen')}>
           <Text style={styles.titleText}>공지사항</Text>
@@ -43,7 +55,12 @@ const MainScreen = () => {
           <NoticeCard notice={dummyNotices[1]} style={styles.secondNotice} />
           <View style={styleDivider} />
           <View style={styles.moreNoticeContainer}>
-            <Icon name="dots-horizontal" size={30} color={colorEllipsis} />
+            <Icon
+              name="dots-horizontal"
+              type="material-community"
+              size={30}
+              color={colorEllipsis}
+            />
           </View>
         </Card>
       </ScrollView>
@@ -70,6 +87,10 @@ const styles = StyleSheet.create({
   },
   locationButton: {
     marginEnd: 20,
+  },
+  locationContainer: {
+    alignItems: 'center',
+    padding: 20,
   },
   secondNotice: {
     marginTop: -5,
