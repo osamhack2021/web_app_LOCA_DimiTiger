@@ -3,8 +3,7 @@ version: '3.8'
 services:
   app:
     build:
-      context: ./
-      dockerfile: /Dockerfile
+      context: .
       target: release
     restart: always
     environment:
@@ -14,8 +13,6 @@ services:
       MONGO_URI: 'mongodb://mongo:27017/loca'
       VIRTUAL_HOST: loca.kimjisub.me
       LETSENCRYPT_HOST: loca.kimjisub.me
-    ports: 
-      - 80:80
   mongo:
     image: mongo
     logging:
