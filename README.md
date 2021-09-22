@@ -2,12 +2,11 @@
 해당 내용은 모두 예시이며 설명이 부족하거나 추가하고싶은 부분이 있으면 개발자님이 추가해서 작성하셔도 무관합니다. (동영상, 이미지, 텍스트 적용 전부 자유)
 
 
-# Project name or Logo
-![Logo](https://logosbynick.com/wp-content/uploads/2018/03/final-logo-example.png)
+# LOCA - 유동병력관리체계
+![Logo](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbZN8dI%2FbtrfG2IOPcR%2FM8186zekZwhg7Er2mz709k%2Fimg.png)
 
-프로젝트명 또는 프로젝트 로고 이미지 **(택1)**
 
-## 프로잭트 소개
+## 프로젝트 소개
 - 설명 기입
 
 
