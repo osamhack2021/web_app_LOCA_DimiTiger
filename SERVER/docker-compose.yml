@@ -6,13 +6,14 @@ services:
       context: .
       target: release
     restart: always
+    network_mode: bridge
     environment:
       PORT: '80'
       LOG_DISABLED: 'false'
       JWT_SECRET: '0development0'
       MONGO_URI: 'mongodb://mongo:27017/loca'
-      VIRTUAL_HOST: loca.kimjisub.me
-      LETSENCRYPT_HOST: loca.kimjisub.me
+      VIRTUAL_HOST: api.loca.kimjisub.me
+      LETSENCRYPT_HOST: api.loca.kimjisub.me
   mongo:
     image: mongo
     logging:
