@@ -26,7 +26,7 @@ jobs:
           echo "BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
       - name: Extract Etc
         env:
-          DIR_NAME: ${{ env.REPOSITORY_NAME }}@${{ env.BRANCH }}/SERVER
+          DIR_NAME: ${{ env.REPOSITORY_NAME }}@${{ env.BRANCH }}
         run: |
           echo "DIR_NAME=$DIR_NAME" >> $GITHUB_ENV
       - name: Remove Previous Repository
@@ -37,7 +37,9 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd ${{ env.DIR_NAME }}
+            cd SERVER
             docker-compose stop
+            cd ..
             cd ..
             rm -rf ${{ env.DIR_NAME }}
       - name: Upload Repository
@@ -57,4 +59,5 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd ${{ env.DIR_NAME }}
+            cd SERVER
             docker-compose up --build -d
