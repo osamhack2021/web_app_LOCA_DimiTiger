@@ -9,11 +9,13 @@ services:
     restart: always
     environment:
       PORT: '80'
-      LOG_DISABLED: 'true'
+      LOG_DISABLED: 'false'
       JWT_SECRET: '0development0'
       MONGO_URI: 'mongodb://mongo:27017/loca'
+      VIRTUAL_HOST: loca.kimjisub.me
+      LETSENCRYPT_HOST: loca.kimjisub.me
     ports: 
-      - 8080:80
+      - 80:80
   mongo:
     image: mongo
     logging:
