@@ -1,15 +1,16 @@
-import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { Icon } from 'react-native-gradient-icon';
-import Button from '../components/Button';
-import Card from '../components/Card';
-import Header from '../components/Header';
-import NoticeCard from '../components/NoticeCard';
-import { colorEllipsis } from '../constants/colors';
-import { styleDivider } from '../constants/styles';
-import Notice from '../models/Notice';
-import { RootNavigationProp } from './Navigators';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/core';
+
+import Button from '@/components/Button';
+import Card from '@/components/Card';
+import Header from '@/components/Header';
+import NoticeCard from '@/components/NoticeCard';
+import { colorEllipsis } from '@/constants/colors';
+import { styleDivider } from '@/constants/styles';
+import { RootNavigationProp } from '@/screens/Navigators';
+import Notice from '@/types/Notice';
 
 const dummyNotices: Notice[] = [
   {
@@ -35,15 +36,7 @@ const MainScreen = () => {
           </View>
           <View style={styleDivider} />
           <View style={styles.locationContainer}>
-            <Icon
-              name="home"
-              type="material-community"
-              size={100}
-              colors={[
-                { color: '#FEBA00', offset: '0', opacity: '1' },
-                { color: '#FD5900', offset: '1', opacity: '1' },
-              ]}
-            />
+            <Icon name="home" size={100} />
             <Text>본부7생활관</Text>
             <Text>최근위치변경: 1시간전</Text>
           </View>
@@ -55,12 +48,7 @@ const MainScreen = () => {
           <NoticeCard notice={dummyNotices[1]} style={styles.secondNotice} />
           <View style={styleDivider} />
           <View style={styles.moreNoticeContainer}>
-            <Icon
-              name="dots-horizontal"
-              type="material-community"
-              size={30}
-              color={colorEllipsis}
-            />
+            <Icon name="dots-horizontal" size={30} color={colorEllipsis} />
           </View>
         </Card>
       </ScrollView>

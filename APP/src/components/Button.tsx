@@ -7,8 +7,9 @@ import {
   Text,
   ViewStyle,
 } from 'react-native';
-import { colorButton, colorWhite } from '../constants/colors';
-import { styleShadow } from '../constants/styles';
+
+import { colorButton, colorWhite } from '@/constants/colors';
+import { styleShadow } from '@/constants/styles';
 
 export type ButtonProps = {
   style?: StyleProp<ViewStyle>;
