@@ -2,7 +2,8 @@ name: Deploy to Server!
 
 on:
   push:
-    tags: '*'
+    branches:
+      - server
 
 jobs:
   deploy:
