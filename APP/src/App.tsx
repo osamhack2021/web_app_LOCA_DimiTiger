@@ -1,8 +1,9 @@
-import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { NavigationContainer } from '@react-navigation/native';
 import { RecoilRoot } from 'recoil';
-import Navigators from './screens/Navigators';
+
+import Navigators from '@/screens/Navigators';
 
 const queryClient = new QueryClient();
 

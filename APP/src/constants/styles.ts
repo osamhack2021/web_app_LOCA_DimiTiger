@@ -1,4 +1,5 @@
 import { Platform, ViewStyle } from 'react-native';
+
 import { colorBlack, colorDivider } from './colors';
 
 export const styleShadow: ViewStyle = {

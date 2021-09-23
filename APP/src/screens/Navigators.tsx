@@ -1,10 +1,12 @@
+import React from 'react';
 import { RouteProp } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
-import React from 'react';
-import { useAuth } from '../api/auth';
-import MainScreen from './MainScreen';
-import NoticeScreen from './NoticeScreen';
+
+import { useAuth } from '@/api/auth';
+import AuthScreen from '@/screens/AuthScreen';
+import MainScreen from '@/screens/MainScreen';
+import NoticeScreen from '@/screens/NoticeScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -20,7 +22,7 @@ const RootStack = () => {
           <Stack.Screen name="NoticeScreen" component={NoticeScreen} />
         </>
       ) : (
-        <Stack.Screen name="AuthScreen" component={MainScreen} />
+        <Stack.Screen name="AuthScreen" component={AuthScreen} />
       )}
     </Stack.Navigator>
   );

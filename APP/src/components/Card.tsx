@@ -9,8 +9,9 @@ import {
 import LinearGradient, {
   LinearGradientProps,
 } from 'react-native-linear-gradient';
-import { colorWhite } from '../constants/colors';
-import { styleShadow } from '../constants/styles';
+
+import { colorWhite } from '@/constants/colors';
+import { styleShadow } from '@/constants/styles';
 
 export type CardProps = {
   style?: StyleProp<ViewStyle>;
@@ -48,8 +49,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   titleText: {
-    fontWeight: 'bold',
     fontSize: 21,
+    fontWeight: 'bold',
     margin: 20,
   },
 });

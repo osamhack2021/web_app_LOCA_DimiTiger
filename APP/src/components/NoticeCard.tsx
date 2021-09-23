@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
+
 import {
   colorBlack,
   colorEmergencyEnd,
@@ -8,8 +9,10 @@ import {
   colorNoticeBackground,
   colorWhite,
 } from '../constants/colors';
-import Notice from '../models/Notice';
+
 import Card, { CardProps } from './Card';
+
+import Notice from '@/types/Notice';
 
 export type NoticeCardProps = CardProps & {
   notice: Notice;

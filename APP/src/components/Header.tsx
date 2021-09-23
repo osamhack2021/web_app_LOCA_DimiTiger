@@ -1,8 +1,9 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { colorWhite } from '../constants/colors';
-import { styleShadow } from '../constants/styles';
+
+import { colorWhite } from '@/constants/colors';
+import { styleShadow } from '@/constants/styles';
 
 const Header: React.FC = () => {
   return (
@@ -24,16 +25,16 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   logoImage: {
-    width: 50,
     height: 50,
+    width: 50,
   },
   textContainer: {
     justifyContent: 'center',
     marginStart: 10,
   },
   nameText: {
-    fontWeight: 'bold',
     fontSize: 21,
+    fontWeight: 'bold',
   },
 });
 
