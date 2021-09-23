@@ -6,7 +6,6 @@ services:
       context: .
       target: release
     restart: always
-    network_mode: bridge
     environment:
       PORT: '80'
       LOG_DISABLED: 'false'
@@ -14,7 +13,14 @@ services:
       MONGO_URI: 'mongodb://mongo:27017/loca'
       VIRTUAL_HOST: api.loca.kimjisub.me
       LETSENCRYPT_HOST: api.loca.kimjisub.me
+    depends_on:
+      - mongo
+    networks:
+      - default
+      - bridge
   mongo:
     image: mongo
-    logging:
-      driver: 'none'
+
+networks:
+  bridge:
+    driver: bridge
