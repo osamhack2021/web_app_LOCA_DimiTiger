@@ -10,7 +10,6 @@ module.exports = {
           '@images': './assets/images',
         },
       },
-      'react-native-reanimated/plugin',
     ],
   ],
 };
