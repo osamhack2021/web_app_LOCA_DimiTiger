@@ -19,13 +19,18 @@
 
 ## 기술 스택 (Technique Used) 
 ### Server(back-end)
- -  nodejs, php, java 등 서버 언어 버전 
- - express, laravel, sptring boot 등 사용한 프레임워크 
- - DB 등 사용한 다른 프로그램 
+ - `nodejs v14`
+ - REST API 구성에 최적화된 서버 엔진 `hapi`
+ - API 문서 생성을 위한 `swagger`
+ - 일관성있는 코드를 위한 `eslint`
+ - 코드 테스트를 위한 `mocha`
+ - 데이터 저장을 위한 `mongodb`, `mongoose`
+ - 일관된 배포 환경을 위한 `docker`, `docker-compose`
+ - 자동화된 서버 배포를 위한 `github actions`
  
 ### Front-end
- -  react.js, vue.js 등 사용한 front-end 프레임워크 
- -  UI framework
+ - react.js, vue.js 등 사용한 front-end 프레임워크 
+ - UI framework
  - 기타 사용한 라이브러리
 
 ## 설치 안내 (Installation Process)
@@ -46,8 +51,7 @@ $ yarn start or npm run start
  샘플 에디터 [https://stackedit.io/app#](https://stackedit.io/app#)
  
 ## 팀 정보 (Team Information)
-- hong gil dong (hong999@gmail.com), Github Id: gildong999
-- kim su ji (suji999@gmail.com), Github Id: suji999
+- kim ji sub (0226daniel@gmail.com), Github Id: kimjisub
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
  * [MIT](https://github.com/osam2020-WEB/Sample-ProjectName-TeamName/blob/master/license.md)
