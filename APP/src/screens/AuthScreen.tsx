@@ -1,12 +1,16 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
-  Animated,
   Keyboard,
   KeyboardEvent,
   StyleSheet,
   Text,
   TextInput,
 } from 'react-native';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Logo from '@images/loca_logo.svg';
@@ -19,45 +23,40 @@ import {
   colorTextInputLabel,
 } from '@/constants/colors';
 
-const ANIMATION_DURATION = 300;
-
 const AuthScreen = () => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [idFocused, setIdFocused] = useState(false);
   const [pwFocused, setPwFocused] = useState(false);
-  const logoViewScale = useRef(new Animated.Value(1)).current;
-  const keyboardHeight = useRef(new Animated.Value(0)).current;
+  const scale = useSharedValue(1);
+  const translate = useSharedValue(0);
+  const animatedLogo = useAnimatedStyle(() => {
+    return {
+      transform: [
+        { scale: withTiming(scale.value) },
+        { translateY: withTiming(translate.value) },
+      ],
+    };
+  });
+  const animatedForm = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateY: withTiming(translate.value) }],
+    };
+  });
   const { loading, error, signIn } = useAuth();
 
   const showKeyboard = useCallback(
     (e: KeyboardEvent) => {
-      Animated.timing(logoViewScale, {
-        toValue: 0.6,
-        duration: ANIMATION_DURATION,
-        useNativeDriver: true,
-      }).start();
-      Animated.timing(keyboardHeight, {
-        toValue: -e.endCoordinates.height / 2,
-        duration: ANIMATION_DURATION,
-        useNativeDriver: true,
-      }).start();
+      scale.value = 0.6;
+      translate.value = -e.endCoordinates.height / 2;
     },
-    [keyboardHeight, logoViewScale],
+    [scale, translate],
   );
 
   const hideKeyboard = useCallback(() => {
-    Animated.timing(logoViewScale, {
-      toValue: 1,
-      duration: ANIMATION_DURATION,
-      useNativeDriver: true,
-    }).start();
-    Animated.timing(keyboardHeight, {
-      toValue: 0,
-      duration: ANIMATION_DURATION,
-      useNativeDriver: true,
-    }).start();
-  }, [keyboardHeight, logoViewScale]);
+    scale.value = 1;
+    translate.value = 0;
+  }, [scale, translate]);
 
   useEffect(() => {
     const showEvent = Keyboard.addListener('keyboardWillShow', showKeyboard);
@@ -71,23 +70,10 @@ const AuthScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Animated.View
-        style={[
-          styles.centerContainer,
-          {
-            transform: [
-              { scale: logoViewScale },
-              { translateY: keyboardHeight },
-            ],
-          },
-        ]}>
+      <Animated.View style={[styles.centerContainer, animatedLogo]}>
         <Logo style={styles.logo} />
       </Animated.View>
-      <Animated.View
-        style={[
-          styles.container,
-          { transform: [{ translateY: keyboardHeight }] },
-        ]}>
+      <Animated.View style={[styles.container, animatedForm]}>
         <Text style={styles.label}>군번</Text>
         <TextInput
           value={id}
