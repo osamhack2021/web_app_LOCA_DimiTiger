@@ -11,12 +11,12 @@ import NoticeScreen from '@/screens/NoticeScreen';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
-  const { authorized } = useAuth({});
+  const { authenticated } = useAuth();
   return (
     <Stack.Navigator
       initialRouteName="MainScreen"
       screenOptions={{ headerShown: false }}>
-      {authorized ? (
+      {authenticated ? (
         <>
           <Stack.Screen name="MainScreen" component={MainScreen} />
           <Stack.Screen name="NoticeScreen" component={NoticeScreen} />
