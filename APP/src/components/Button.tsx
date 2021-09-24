@@ -1,11 +1,9 @@
 import React from 'react';
 import {
-  Animated,
-  GestureResponderEvent,
-  Pressable,
   StyleProp,
   StyleSheet,
   Text,
+  TouchableOpacity,
   ViewStyle,
 } from 'react-native';
 
@@ -14,17 +12,15 @@ import { styleShadow } from '@/constants/styles';
 
 export type ButtonProps = {
   style?: StyleProp<ViewStyle>;
-  onPress?: (event: GestureResponderEvent) => void;
+  onPress?: () => void;
   children: string;
 };
 
 const Button = ({ style, onPress, children }: ButtonProps) => {
   return (
-    <Animated.View>
-      <Pressable style={[styles.container, style]} onPress={onPress}>
-        <Text style={styles.text}>{children}</Text>
-      </Pressable>
-    </Animated.View>
+    <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
+      <Text style={styles.text}>{children}</Text>
+    </TouchableOpacity>
   );
 };
 
