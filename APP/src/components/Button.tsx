@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Animated,
   GestureResponderEvent,
   Pressable,
   StyleProp,
@@ -17,11 +18,13 @@ export type ButtonProps = {
   children: string;
 };
 
-const Button: React.FC<ButtonProps> = ({ style, onPress, children }) => {
+const Button = ({ style, onPress, children }: ButtonProps) => {
   return (
-    <Pressable style={[styles.container, style]} onPress={onPress}>
-      <Text style={styles.text}>{children}</Text>
-    </Pressable>
+    <Animated.View>
+      <Pressable style={[styles.container, style]} onPress={onPress}>
+        <Text style={styles.text}>{children}</Text>
+      </Pressable>
+    </Animated.View>
   );
 };
 
@@ -34,6 +37,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
   },
   text: {
+    alignSelf: 'center',
     color: colorWhite,
     fontWeight: 'bold',
     marginHorizontal: 15,

@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useRecoilState } from 'recoil';
 
 import client from '../client';
+
+import { authState } from '@/atoms';
 
 type AuthResponse = {
   access_token: string;
@@ -23,42 +26,44 @@ async function authWithRefreshToken(
   return data;
 }
 
-type AuthParams = {
-  id?: string;
-  password?: string;
-};
-
-export function useAuth({ id, password }: AuthParams) {
-  const [refreshToken, setRefreshToken] = useState<string>();
+export function useAuth() {
   const [loading, setLoading] = useState(true);
-  const [authorized, setAuthorized] = useState(false);
+  const [error, setError] = useState<string>();
+  const [auth, setAuth] = useRecoilState(authState);
+  const { refreshToken, authenticated } = auth;
 
-  async function applyToken({ access_token, refresh_token }: AuthResponse) {
-    client.defaults.headers.Authorization = `Bearer ${access_token}`;
-    await AsyncStorage.setItem('refresh_token', refresh_token);
-    setAuthorized(true);
-    setRefreshToken(refresh_token);
-  }
+  const applyToken = useCallback(
+    async ({ access_token, refresh_token }: AuthResponse) => {
+      client.defaults.headers.Authorization = `Bearer ${access_token}`;
+      await AsyncStorage.setItem('refresh_token', refresh_token);
+      setAuth({
+        authenticated: true,
+        refreshToken: refresh_token,
+      });
+    },
+    [setAuth],
+  );
 
-  useEffect(() => {
-    async function auth() {
-      if (!id || !password) {
-        return;
+  const signIn = useCallback(
+    (id: string, password: string) => {
+      async function authenticate() {
+        try {
+          setLoading(true);
+          const response = await authWithIdPassword(id, password);
+          applyToken(response);
+        } catch (err) {
+          setError((err as Error).message);
+        } finally {
+          setLoading(false);
+        }
       }
-      try {
-        setLoading(true);
-        const response = await authWithIdPassword(id, password);
-        applyToken(response);
-      } catch (err) {
-      } finally {
-        setLoading(false);
-      }
-    }
-    auth();
-  }, [id, password]);
+      authenticate();
+    },
+    [applyToken],
+  );
 
   const refresh = useCallback(() => {
-    async function auth() {
+    async function authenticate() {
       if (!refreshToken) {
         return;
       }
@@ -71,24 +76,27 @@ export function useAuth({ id, password }: AuthParams) {
         setLoading(false);
       }
     }
-    auth();
-  }, [refreshToken]);
+    authenticate();
+  }, [applyToken, refreshToken]);
 
   useEffect(() => {
     async function getRefreshToken() {
       const token = await AsyncStorage.getItem('refresh_token');
       if (token) {
-        setRefreshToken(token);
+        setAuth(prev => ({
+          ...prev,
+          refreshToken: token,
+        }));
       }
     }
     getRefreshToken();
-  }, []);
+  }, [setAuth]);
 
   useEffect(() => {
-    if (!authorized) {
+    if (!authenticated) {
       refresh();
     }
-  }, [refresh, authorized]);
+  }, [refresh, authenticated]);
 
-  return { authorized, loading, refresh };
+  return { authenticated, loading, error, refresh, signIn };
 }
