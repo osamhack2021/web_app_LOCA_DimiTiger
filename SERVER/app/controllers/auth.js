@@ -4,36 +4,38 @@ const ms = require('ms');
 const config = require('../config/config');
 const AuthService = require('../services/auth.js');
 const TokenTypes = require('../utils/token-types');
-const Admin = require('../models/user');
+const User = require('../models/user');
 
 exports.token = {
-	description: '아이디와 비밀번호로 로그인을 합니다.',
+	description: '군번과 비밀번호로 로그인을 합니다.',
 	tags: ['api', 'public-api', 'auth'],
 	auth: false,
 	validate: {
 		payload: Joi.object({
-			id: Joi.string().required().description('ID'),
-			password: Joi.string().required().description('비밀번호'),
+			serial: Joi.string().required().description('ID').default('00-000000'),
+			password: Joi.string()
+				.required()
+				.description('비밀번호')
+				.default('admin'),
 		}).label('auth_token'),
 	},
 	handler: async (request, h) => {
-		const message = '계정이름과 비밀번호가 일치하지 않습니다';
-
-		const admin = await Admin.findOne({
-			id: request.payload.id,
-			deleted: false,
+		const user = await User.findOne({
+			serial: request.payload.serial,
 		})
 			.select('+password')
 			.exec();
 
-		if (!admin) throw Boom.unauthorized(message);
+		if (!user) throw Boom.unauthorized('등록되지 않은 군번입니다.');
+		if (!(await user.verifyPassword(request.payload.password)))
+			throw Boom.unauthorized('비밀번호가 일치하지 않습니다.');
 
 		const accessToken = await AuthService.generateToken(
-			admin,
+			user,
 			TokenTypes.ACCESS
 		);
 		const refreshToken = await AuthService.generateToken(
-			admin,
+			user,
 			TokenTypes.REFRESH
 		);
 
