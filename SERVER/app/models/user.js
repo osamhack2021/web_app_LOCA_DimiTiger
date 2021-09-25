@@ -3,19 +3,15 @@ const argon2 = require('argon2');
 
 const userSchema = new mongoose.Schema(
 	{
-		id: {
-			type: String,
-			trim: true,
-		},
-		name: {
-			type: String,
-			required: true,
-			trim: true,
-		},
 		// 군번
 		serial: {
 			type: String,
 			unique: true,
+			required: true,
+			trim: true,
+		},
+		name: {
+			type: String,
 			required: true,
 			trim: true,
 		},

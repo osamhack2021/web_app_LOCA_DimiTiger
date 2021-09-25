@@ -25,6 +25,9 @@ exports.createUsers = {
 		}),
 	},
 	handler: async (req, h) => {
+		/* todo
+		 * 권한 체크
+		 * 관리자인 경우만 가능 */
 		try {
 			return await UserService.createUsers(req.payload);
 		} catch (err) {
@@ -43,24 +46,19 @@ exports.updateUsers = {
 			userId: Joi.string().description('사용자 _id'),
 		}),
 		payload: Joi.object({
-			identity: Joi.object({
-				_id: Joi.string().required(),
-			}),
-			register: Joi.object({
-				id: Joi.string(),
-				phone: Joi.string(),
-				email: Joi.string(),
-				password: Joi.string(),
-				name: Joi.string(),
-			}),
+			name: Joi.string(),
+			phone: Joi.string(),
+			email: Joi.string(),
+			password: Joi.string(),
 		}),
 	},
 	handler: async (req, h) => {
+		/* todo
+		 * 권한 체크
+		 * 관리자인 경우 무조건 가능
+		 * 관리자가 아닌 경우 본인의 정보만 수정 가능 */
 		try {
-			return await UserService.updateUsers(
-				req.payload.identity._id,
-				req.payload.register
-			);
+			return await UserService.updateUsers(req.query.userId, req.payload);
 		} catch (err) {
 			throw Boom.internal(err);
 		}
@@ -80,7 +78,6 @@ exports.registerUsers = {
 				password: Joi.string().required(),
 			}),
 			register: Joi.object({
-				id: Joi.string().required(),
 				phone: Joi.string().required(),
 				email: Joi.string().required(),
 				password: Joi.string().required(),

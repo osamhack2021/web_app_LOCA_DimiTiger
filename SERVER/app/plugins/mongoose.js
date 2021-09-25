@@ -57,7 +57,7 @@ async function postLoad(server) {
 		await new User({
 			id: 'admin',
 			name: '최고관리자',
-			serial: '12-345678',
+			serial: '00-000000',
 			phone: '01012345678',
 			email: 'admin@admin.com',
 			isAdmin: true,

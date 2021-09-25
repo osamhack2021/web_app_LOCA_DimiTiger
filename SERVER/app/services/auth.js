@@ -12,7 +12,7 @@ const Errors = (exports.Errors = {
 exports.generateToken = async (doc, tokenType, _expiresIn) => {
 	const expiresIn = _expiresIn || config.auth.expiresIn[tokenType];
 	return await JwtAuth.generateToken(
-		{ _id: doc._id, tokenType },
+		{ _id: doc._id, serial: doc.serial, tokenType },
 		expiresIn,
 		tokenType !== TokenTypes.AUTH
 	);
