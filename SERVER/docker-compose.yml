@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
   app:
@@ -17,10 +17,15 @@ services:
       - mongo
     networks:
       - default
-      - bridge
+      - proxy
+
   mongo:
     image: mongo
+    networks:
+      - default
 
 networks:
-  bridge:
-    driver: bridge
+  default:
+  proxy:
+    external: true
+    name: proxy
