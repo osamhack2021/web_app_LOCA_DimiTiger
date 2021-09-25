@@ -10,6 +10,21 @@ exports.plugin = {
 				path: '/',
 				config: Controllers.user.getUsers,
 			},
+			{
+				method: 'POST',
+				path: '/',
+				config: Controllers.user.createUsers,
+			},
+			{
+				method: 'POST',
+				path: '/register',
+				config: Controllers.user.registerUsers,
+			},
+			{
+				method: 'PATCH',
+				path: '/{userId}',
+				config: Controllers.user.updateUsers,
+			},
 		]);
 	},
 };

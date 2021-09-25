@@ -1,0 +1,64 @@
+name: Deploy to Server!
+
+on:
+  push:
+    branches:
+      - server
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Checkout Repo.
+        uses: actions/checkout@master
+
+      # REPOSITORY      : username/repository-name
+      # REPOSITORY_NAME : repository-name
+      # BRANCH          : master
+      # DIR_NAME        : repository-name@master
+
+      - name: Extract Repository and Branch name
+        run: |
+          REPOSITORY=${{ github.repository }}
+          REPOSITORY_NAME=$(echo $REPOSITORY | cut -d'/' -f2)
+          echo "REPOSITORY=$REPOSITORY" >> $GITHUB_ENV
+          echo "REPOSITORY_NAME=$REPOSITORY_NAME" >> $GITHUB_ENV
+          echo "BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
+      - name: Extract Etc
+        env:
+          DIR_NAME: ${{ env.REPOSITORY_NAME }}@${{ env.BRANCH }}
+        run: |
+          echo "DIR_NAME=$DIR_NAME" >> $GITHUB_ENV
+      - name: Remove Previous Repository
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            cd ${{ env.DIR_NAME }}
+            cd SERVER
+            docker-compose stop
+            cd ..
+            cd ..
+            rm -rf ${{ env.DIR_NAME }}
+      - name: Upload Repository
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          source: ./**
+          target: ${{ env.DIR_NAME }}
+
+      - name: Launch as Docker
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            cd ${{ env.DIR_NAME }}
+            cd SERVER
+            docker-compose up --build -d

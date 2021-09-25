@@ -5,13 +5,18 @@ const userSchema = new mongoose.Schema(
 	{
 		id: {
 			type: String,
-			required: true,
-			unique: true,
 			trim: true,
 		},
 		name: {
 			type: String,
-			default: null,
+			required: true,
+			trim: true,
+		},
+		// 군번
+		serial: {
+			type: String,
+			unique: true,
+			required: true,
 			trim: true,
 		},
 		phone: {
@@ -52,6 +57,7 @@ userSchema.statics.hashPassword = function hashPassword(password) {
 	return argon2.hash(password);
 };
 userSchema.methods.verifyPassword = function verifyPassword(password) {
+	console.log(this.password, password);
 	return argon2.verify(this.password, password);
 };
 

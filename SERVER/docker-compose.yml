@@ -1,20 +1,31 @@
-version: '3.8'
+version: '3.9'
 
 services:
   app:
     build:
-      context: ./
-      dockerfile: /Dockerfile
+      context: .
       target: release
     restart: always
     environment:
       PORT: '80'
-      LOG_DISABLED: 'true'
+      LOG_DISABLED: 'false'
       JWT_SECRET: '0development0'
       MONGO_URI: 'mongodb://mongo:27017/loca'
-    ports: 
-      - 8080:80
+      VIRTUAL_HOST: api.loca.kimjisub.me
+      LETSENCRYPT_HOST: api.loca.kimjisub.me
+    depends_on:
+      - mongo
+    networks:
+      - default
+      - proxy
+
   mongo:
     image: mongo
-    logging:
-      driver: 'none'
+    networks:
+      - default
+
+networks:
+  default:
+  proxy:
+    external: true
+    name: proxy
