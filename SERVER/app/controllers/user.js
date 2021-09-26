@@ -1,6 +1,7 @@
 const Boom = require('@hapi/boom');
 const Joi = require('joi');
 const UserService = require('../services/user');
+const rankTypes = require('../utils/rank-types');
 
 exports.getUsers = {
 	tags: ['api', 'user'],
@@ -52,6 +53,9 @@ exports.createUsers = {
 			serial: Joi.string().required(),
 			name: Joi.string().required(),
 			password: Joi.string().required(),
+			rank: Joi.string()
+				.required()
+				.valid(...rankTypes),
 		}),
 	},
 	handler: async (req, h) => {
@@ -80,6 +84,7 @@ exports.updateUsers = {
 			phone: Joi.string(),
 			email: Joi.string(),
 			password: Joi.string(),
+			rank: Joi.string().valid(...rankTypes),
 		}),
 	},
 	handler: async (req, h) => {
