@@ -29,6 +29,26 @@ module.exports = {
 				// Template rendering support for hapi.js.
 				plugin: '@hapi/vision',
 			},
+
+			{
+				name: 'static',
+				register: async (server, options) => {
+					server.route({
+						method: 'GET',
+						path: '/static/{param*}',
+						handler: {
+							directory: {
+								path: './app/static',
+								redirectToSlash: true,
+							},
+						},
+						config: {
+							auth: false,
+						},
+					});
+				},
+			},
+
 			{
 				plugin: 'hapi-socket.io',
 				options: {
