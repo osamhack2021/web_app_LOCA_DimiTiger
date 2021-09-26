@@ -55,13 +55,12 @@ async function postLoad(server) {
 	}).exec();
 	if (users.length === 0) {
 		await new User({
-			id: 'admin',
-			name: '최고관리자',
 			serial: '00-000000',
+			password: await User.hashPassword('admin'),
+			name: '최고관리자',
 			phone: '01012345678',
 			email: 'admin@admin.com',
 			isAdmin: true,
-			password: await User.hashPassword('admin'),
 		}).save();
 		server.logger.info('MongoDB First User Created');
 	}
