@@ -10,6 +10,7 @@ import LocationScreen from '@/screens/LocationScreen';
 import MainScreen from '@/screens/MainScreen';
 import NoticeScreen from '@/screens/NoticeScreen';
 import SplashScreen from '@/screens/SplashScreen';
+import UserScreen from '@/screens/UserScreen';
 import { getTokens } from '@/utils/AuthUtil';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -46,6 +47,11 @@ const RootStack = () => {
           <Stack.Screen name="MainScreen" component={MainScreen} />
           <Stack.Screen name="NoticeScreen" component={NoticeScreen} />
           <Stack.Screen name="LocationScreen" component={LocationScreen} />
+          <Stack.Screen
+            name="UserScreen"
+            component={UserScreen}
+            options={{ presentation: 'transparentModal' }}
+          />
         </>
       ) : (
         <Stack.Screen name="AuthScreen" component={AuthScreen} />
@@ -60,6 +66,7 @@ export type RootStackParamList = {
   MainScreen: undefined;
   NoticeScreen: undefined;
   LocationScreen: undefined;
+  UserScreen: undefined;
 };
 
 export type RootNavigationProp<T extends keyof RootStackParamList> =
