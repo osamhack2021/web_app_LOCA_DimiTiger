@@ -32,7 +32,7 @@ const AuthScreen = () => {
   const [idFocused, setIdFocused] = useState(false);
   const [pwFocused, setPwFocused] = useState(false);
   const [error, setError] = useState<string>();
-  const setAuthenticated = useSetRecoilState(authState);
+  const setAuth = useSetRecoilState(authState);
   const scale = useSharedValue(1);
   const translate = useSharedValue(0);
   const animatedLogo = useAnimatedStyle(() => {
@@ -65,7 +65,10 @@ const AuthScreen = () => {
   const authenticate = useCallback(async () => {
     try {
       await signIn(id, password);
-      setAuthenticated(true);
+      setAuth({
+        authenticated: true,
+        loading: false,
+      });
     } catch (err) {
       let message = '';
       if (axios.isAxiosError(err)) {
@@ -79,7 +82,7 @@ const AuthScreen = () => {
       }
       setError(message);
     }
-  }, [id, password, setAuthenticated]);
+  }, [id, password, setAuth]);
 
   useEffect(() => {
     const showEvent = Keyboard.addListener('keyboardWillShow', showKeyboard);
