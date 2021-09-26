@@ -21,6 +21,11 @@ exports.plugin = {
 				config: Controllers.user.registerUsers,
 			},
 			{
+				method: 'GET',
+				path: '/{userId}',
+				config: Controllers.user.getUser,
+			},
+			{
 				method: 'PATCH',
 				path: '/{userId}',
 				config: Controllers.user.updateUsers,

@@ -15,6 +15,23 @@ exports.getUsers = {
 	},
 };
 
+exports.getUser = {
+	tags: ['api', 'user'],
+	description: '사용자를 가져옵니다.',
+	validate: {
+		query: Joi.object({
+			userId: Joi.string().description('사용자 _id'),
+		}),
+	},
+	handler: async (req, h) => {
+		try {
+			return await UserService.getUser(req.query.userId);
+		} catch (err) {
+			throw Boom.internal(err);
+		}
+	},
+};
+
 exports.createUsers = {
 	tags: ['api', 'user'],
 	validate: {
