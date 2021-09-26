@@ -30,7 +30,7 @@ export async function refresh(refresh_token: string) {
 
 export async function signOut() {
   delete client.defaults.headers.Authorization;
-  await AsyncStorage.clear();
+  await AsyncStorage.multiRemove(['access_token', 'refresh_token', 'expire']);
 }
 
 export async function getTokens(): Promise<boolean> {
