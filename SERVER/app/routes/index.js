@@ -4,6 +4,7 @@ const routes = [
 	require('./locations'),
 	require('./location-logs'),
 	require('./settings'),
+	require('./notices'),
 ];
 
 exports.plugin = {
