@@ -22,7 +22,7 @@ exports.plugin = {
 			},
 			{
 				method: 'DELETE',
-				path: '/',
+				path: '/{noticeId}',
 				config: Controllers.notice.deleteNotice,
 			},
 		]);
