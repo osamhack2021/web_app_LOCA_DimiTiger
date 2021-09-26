@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { RouteProp } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
-import { authState } from '@/atoms';
+import { authState, splashState } from '@/atoms';
 import AuthScreen from '@/screens/AuthScreen';
 import LocationScreen from '@/screens/LocationScreen';
 import MainScreen from '@/screens/MainScreen';
@@ -15,30 +15,33 @@ import { getTokens } from '@/utils/AuthUtil';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
-  const [loading, setLoading] = useState(true);
-  const [authenticated, setAuthenticated] = useRecoilState(authState);
+  const splashDone = useRecoilValue(splashState);
+  const [auth, setAuth] = useRecoilState(authState);
   useEffect(() => {
     async function authenticate() {
       try {
         const result = await getTokens();
-        setAuthenticated(result);
+        setAuth({
+          authenticated: result,
+          loading: false,
+        });
       } catch (err) {
-      } finally {
-        setLoading(false);
+        setAuth({
+          authenticated: false,
+          loading: false,
+        });
       }
     }
     authenticate();
-  }, [setAuthenticated]);
-
-  if (loading) {
-    return <SplashScreen />;
-  }
+  }, [setAuth]);
 
   return (
     <Stack.Navigator
       initialRouteName="MainScreen"
-      screenOptions={{ headerShown: false }}>
-      {authenticated ? (
+      screenOptions={{ headerShown: false, animation: 'fade' }}>
+      {!splashDone ? (
+        <Stack.Screen name="SplashScreen" component={SplashScreen} />
+      ) : auth.authenticated ? (
         <>
           <Stack.Screen name="MainScreen" component={MainScreen} />
           <Stack.Screen name="NoticeScreen" component={NoticeScreen} />
@@ -52,6 +55,7 @@ const RootStack = () => {
 };
 
 export type RootStackParamList = {
+  SplashScreen: undefined;
   AuthScreen: undefined;
   MainScreen: undefined;
   NoticeScreen: undefined;
