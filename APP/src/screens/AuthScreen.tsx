@@ -12,9 +12,12 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import axios from 'axios';
+import { useSetRecoilState } from 'recoil';
 
 import Logo from '@images/loca_logo.svg';
 
+import { authState } from '@/atoms';
 import Button from '@/components/Button';
 import {
   colorButton,
@@ -29,6 +32,7 @@ const AuthScreen = () => {
   const [idFocused, setIdFocused] = useState(false);
   const [pwFocused, setPwFocused] = useState(false);
   const [error, setError] = useState<string>();
+  const setAuthenticated = useSetRecoilState(authState);
   const scale = useSharedValue(1);
   const translate = useSharedValue(0);
   const animatedLogo = useAnimatedStyle(() => {
@@ -61,10 +65,21 @@ const AuthScreen = () => {
   const authenticate = useCallback(async () => {
     try {
       await signIn(id, password);
+      setAuthenticated(true);
     } catch (err) {
-      setError((err as Error).message);
+      let message = '';
+      if (axios.isAxiosError(err)) {
+        switch (err.response?.status) {
+          case 401:
+            message = '군번 또는 비밀번호를 확인하세요.';
+            break;
+          default:
+            message = '오류가 발생했습니다.';
+        }
+      }
+      setError(message);
     }
-  }, [id, password]);
+  }, [id, password, setAuthenticated]);
 
   useEffect(() => {
     const showEvent = Keyboard.addListener('keyboardWillShow', showKeyboard);
@@ -113,6 +128,7 @@ const AuthScreen = () => {
           onChangeText={setPassword}
           onFocus={() => setPwFocused(true)}
           onBlur={() => setPwFocused(false)}
+          onSubmitEditing={() => authenticate()}
           returnKeyType="done"
           style={[
             styles.textInput,

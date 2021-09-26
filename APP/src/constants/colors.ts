@@ -9,3 +9,4 @@ export const colorNoticeBackground = '#F0F0F0';
 export const colorButton = '#0085ff';
 export const colorTextInputLabel = '#AAA';
 export const colorTextInput = '#EEF1F4';
+export const colorSplashBg = '#F3F6F6';
