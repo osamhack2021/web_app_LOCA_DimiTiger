@@ -3,6 +3,7 @@ const routes = [
 	require('./auth'),
 	require('./locations'),
 	require('./location-logs'),
+	require('./settings'),
 ];
 
 exports.plugin = {
