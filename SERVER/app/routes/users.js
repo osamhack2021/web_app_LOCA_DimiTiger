@@ -22,6 +22,11 @@ exports.plugin = {
 			},
 			{
 				method: 'GET',
+				path: '/me',
+				config: Controllers.user.me,
+			},
+			{
+				method: 'GET',
 				path: '/{userId}',
 				config: Controllers.user.getUser,
 			},

@@ -32,6 +32,19 @@ exports.getUser = {
 	},
 };
 
+exports.me = {
+	tags: ['api', 'user'],
+	description: '로그인된 사용자 정보를 가져옵니다.',
+	validate: {},
+	handler: async (req, h) => {
+		try {
+			return req.auth.credentials;
+		} catch (err) {
+			throw Boom.internal(err);
+		}
+	},
+};
+
 exports.createUsers = {
 	tags: ['api', 'user'],
 	validate: {
