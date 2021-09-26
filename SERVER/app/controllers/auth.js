@@ -63,7 +63,7 @@ exports.refresh = {
 				request.payload.refresh_token,
 				TokenTypes.REFRESH
 			);
-			const admin = await Admin.findOne({
+			const admin = await User.findOne({
 				_id: decoded._id,
 				deleted: false,
 			}).exec();
@@ -85,9 +85,6 @@ exports.refresh = {
 		} catch (err) {
 			if (err instanceof AuthService.Errors.TokenExpiredError) {
 				throw Boom.unauthorized(err);
-			}
-			if (err instanceof AuthService.Errors.RedisError) {
-				throw Boom.internal(err);
 			}
 			throw Boom.unauthorized(err);
 		}
