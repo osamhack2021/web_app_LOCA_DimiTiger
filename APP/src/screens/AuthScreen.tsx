@@ -15,19 +15,20 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Logo from '@images/loca_logo.svg';
 
-import { useAuth } from '@/api/auth';
 import Button from '@/components/Button';
 import {
   colorButton,
   colorTextInput,
   colorTextInputLabel,
 } from '@/constants/colors';
+import { signIn } from '@/utils/AuthUtil';
 
 const AuthScreen = () => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [idFocused, setIdFocused] = useState(false);
   const [pwFocused, setPwFocused] = useState(false);
+  const [error, setError] = useState<string>();
   const scale = useSharedValue(1);
   const translate = useSharedValue(0);
   const animatedLogo = useAnimatedStyle(() => {
@@ -43,7 +44,6 @@ const AuthScreen = () => {
       transform: [{ translateY: withTiming(translate.value) }],
     };
   });
-  const { loading, error, signIn } = useAuth();
 
   const showKeyboard = useCallback(
     (e: KeyboardEvent) => {
@@ -57,6 +57,14 @@ const AuthScreen = () => {
     scale.value = 1;
     translate.value = 0;
   }, [scale, translate]);
+
+  const authenticate = useCallback(async () => {
+    try {
+      await signIn(id, password);
+    } catch (err) {
+      setError((err as Error).message);
+    }
+  }, [id, password]);
 
   useEffect(() => {
     const showEvent = Keyboard.addListener('keyboardWillShow', showKeyboard);
@@ -77,10 +85,22 @@ const AuthScreen = () => {
         <Text style={styles.label}>군번</Text>
         <TextInput
           value={id}
-          onChangeText={setId}
+          onChangeText={text => {
+            if (text.length === 2) {
+              if (id.length === 1) {
+                setId(text + '-');
+              } else {
+                setId(text.slice(0, 1));
+              }
+            } else {
+              setId(text);
+            }
+          }}
           onFocus={() => setIdFocused(true)}
           onBlur={() => setIdFocused(false)}
           autoCapitalize="none"
+          keyboardType="number-pad"
+          returnKeyType="next"
           style={[
             styles.textInput,
             idFocused ? styles.textInputFocus : styles.textInputBlur,
@@ -93,13 +113,14 @@ const AuthScreen = () => {
           onChangeText={setPassword}
           onFocus={() => setPwFocused(true)}
           onBlur={() => setPwFocused(false)}
+          returnKeyType="done"
           style={[
             styles.textInput,
             pwFocused ? styles.textInputFocus : styles.textInputBlur,
           ]}
         />
         <Text style={styles.errorLabel}>{error}</Text>
-        <Button onPress={() => signIn(id, password)} style={styles.loginButton}>
+        <Button onPress={() => authenticate()} style={styles.loginButton}>
           로그인
         </Button>
       </Animated.View>
