@@ -18,10 +18,11 @@ exports.getUser = async (_id) => {
 	return await query.exec();
 };
 
-exports.createUsers = async ({ serial, name, password }) => {
+exports.createUsers = async ({ serial, name, password, rank }) => {
 	return await new User({
 		serial,
 		name,
+		rank,
 		password: await User.hashPassword(password),
 	}).save();
 };
