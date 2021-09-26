@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import LocationChart from '../LocationChart/LocationChart';
 import './Location.css';
+
 
 class Location extends Component {
   render() {
@@ -8,6 +10,7 @@ class Location extends Component {
             <div className="headline">
               <h1>유동병력 현황판</h1>
             </div>
+            <LocationChart></LocationChart>
         </div>
       );
     }

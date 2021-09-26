@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './Temperature.css';
-import temperature from './temperature.svg';
+import temperatureIco from './temperature.svg';
 
 class Temperature extends Component {
   render() {
     return (
         <div id="temperature" className="dash_component">
           <div id="temperature_head">
-            <img src={temperature}/>
+            <img src={temperatureIco} alt="temperatureIco"/>
             <div id="temperature_num">31</div>
           </div>
           <div id="temperature_contents">

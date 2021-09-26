@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from '../Header/Header';
-import Dashboard from '../Dashboard/Dashboard';
+import Auth from '../../services/Auth/Auth';
+import Routes from './Routes';
 
-class App extends Component {  
+class App extends Component {
+  componentDidMount() {
+    Auth.login({
+      "serial": "00-000000",
+      "password": "admin"
+    });
+  }
   render() {
     return (
       <div id="app">
-        <Header></Header>
-        <Dashboard>
-
-        </Dashboard>
+        <Routes></Routes>
       </div>
     );
   }

@@ -7,7 +7,7 @@ class Weather extends Component {
     return (
         <div id="weather" className="dash_component">
             <div id="weather_head">
-              <img src={weatherIco}/>
+              <img src={weatherIco} alt="weatherIco"/>
               <div id="weather_num">31°</div>
             </div>
             <div id="weather_contents">
