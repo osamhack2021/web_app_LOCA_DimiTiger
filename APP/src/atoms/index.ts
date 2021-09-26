@@ -1,10 +1,6 @@
 import { atom } from 'recoil';
 
-import AuthState from '@/types/AuthState';
-
-export const authState = atom<AuthState>({
-  key: 'auth',
-  default: {
-    authenticated: false,
-  },
+export const authState = atom<boolean>({
+  key: 'authenticated',
+  default: false,
 });
