@@ -6,16 +6,11 @@ module.exports = {
       {
         root: ['./'],
         alias: {
-          '@api': './src/api',
-          '@atoms': './src/atoms',
-          '@components': './src/components',
-          '@constants': './src/constants',
-          '@hooks': './src/hooks',
+          '@': './src',
           '@images': './assets/images',
-          '@models': './src/models',
-          '@utils': './src/utils',
         },
       },
     ],
+    'react-native-reanimated/plugin',
   ],
 };
