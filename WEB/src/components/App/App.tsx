@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import Home from '../../routes/Home';
+import Login from '../Login/Login';
+import PrivateRoutes from './PrivateRoutes';
+import PublicRoutes from './PublicRoutes';
 import './App.css';
-import Auth from '../../services/Auth/Auth';
-import Routes from './Routes';
 
 class App extends Component {
-  componentDidMount() {
-    Auth.login({
-      "serial": "00-000000",
-      "password": "admin"
-    });
-  }
   render() {
     return (
       <div id="app">
-        <Routes></Routes>
+        <Router>
+          <Switch>
+            <PublicRoutes path='/' restricted={true} component={Login} exact />
+            <PrivateRoutes path='/home' component={Home} exact />
+          </Switch>
+      </Router>
       </div>
     );
   }

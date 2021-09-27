@@ -1,7 +1,40 @@
-import React, { Component } from 'react';
+import React, { Component, KeyboardEvent, RefObject } from 'react';
+import { Redirect } from 'react-router';
+import Auth from '../../services/Auth/Auth';
 import './Login.css';
 
-class Login extends Component {
+interface iprops {
+  props: iprops;
+}
+
+
+class Login extends Component<iprops> {
+  refID: RefObject<HTMLInputElement>;
+  refPW: RefObject<HTMLInputElement>;
+
+  constructor(props: iprops) {
+    super(props);
+    this.refID = React.createRef();
+    this.refPW = React.createRef();
+  }
+
+  signIn = () => {
+    Auth.login({
+      "serial": this.refID.current?.value,
+      "password": this.refPW.current?.value
+    }).then( (res: any) => {
+      if(res.status === 200) {
+        <Redirect to="/"></Redirect>
+      }
+    });
+  }
+
+  pressEnter = (event: KeyboardEvent) => {
+    if(event.charCode === 13 || event.code === "Enter") {
+      this.signIn();
+    }
+  }
+
   render() {
     return (
       <div id="login">
@@ -50,10 +83,10 @@ class Login extends Component {
         <div id="loginContainer">
           <div id="login_form">
             <div className="caption">관리자 아이디</div>
-            <input type="text" />
+            <input type="text" id="manager_id" ref={this.refID} />
             <div className="caption">비밀번호</div>
-            <input type="text" />
-            <button>로그인</button>
+            <input type="password" id="manager_pw" ref={this.refPW} onKeyPress={this.pressEnter} />
+            <button onClick={ this.signIn }>로그인</button>
           </div>
         </div>
       </div>
