@@ -1,0 +1,79 @@
+#dashboard {
+    padding: 3vw;
+    height: calc(100vh - 100px - 6vw);
+    width: 94vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.headline {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    border-bottom: solid 1px #e6e6e6;
+}
+.headline > h1 {
+    display: inline-block;
+    margin: 0 0 0 25px;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.dash_component {
+    background-color: white;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+#notice {
+    width: 25%;
+    height: 100%;
+    margin-right: 30px;
+}
+#container1 {
+    width: calc(75% - 3vw);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#container2 {
+    width: 100%;
+    height: 70%;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+#location {
+    flex: 1 1 auto;
+    height: 100%;
+    margin-right: 30px;
+}
+#personnelStatus {
+    flex: 0 0 25%;
+    height: 100%;
+}
+#container3 {
+    width: 100%;
+    height: 30%;
+    display: flex;
+}
+#weather {
+    width: 18%;
+    height: 100%;
+    margin-right: 30px;
+}
+#temperature {
+    width: 18%;
+    height: 100%;
+    margin-right: 30px;
+}
+#militaryDiscipline {
+    width: 18%;
+    height: 100%;
+    margin-right: 30px;
+}
+#worker {
+    width: calc(46% - 90px);
+    height: 100%;
+}

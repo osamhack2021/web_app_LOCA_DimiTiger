@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  nginx:
+    build: .
+    restart: always
+    environment:
+      - VIRTUAL_HOST=loca.kimjisub.me
+      - LETSENCRYPT_HOST=loca.kimjisub.me
+    restart: always
+    networks:
+      - proxy
+      
+networks:
+  proxy:
+    external: true
+    name: proxy
