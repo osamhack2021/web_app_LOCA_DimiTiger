@@ -1,0 +1,11 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "io.dimitiger.loca",
+    "package_name": "io.dimitiger.loca",
+    "sha256_cert_fingerprints": [
+      "0c:cb:4a:84:e1:4b:26:37:29:60:13:fb:fc:11:bb:a3:3e:2a:63:0f:4d:fb:49:df:17:7a:9e:c3:53:ed:29:fb",
+      "fa:c6:17:45:dc:09:03:78:6f:b9:ed:e6:2a:96:2b:39:9f:73:48:f0:bb:6f:89:9b:83:32:66:75:91:03:3b:9c"
+    ]
+  }
+}]
