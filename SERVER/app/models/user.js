@@ -1,21 +1,18 @@
 const mongoose = require('mongoose');
 const argon2 = require('argon2');
+const rankTypes = require('../utils/rank-types');
 
 const userSchema = new mongoose.Schema(
 	{
-		id: {
-			type: String,
-			trim: true,
-		},
-		name: {
-			type: String,
-			required: true,
-			trim: true,
-		},
 		// 군번
 		serial: {
 			type: String,
 			unique: true,
+			required: true,
+			trim: true,
+		},
+		name: {
+			type: String,
 			required: true,
 			trim: true,
 		},
@@ -28,6 +25,11 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			default: null,
 			trim: true,
+		},
+		rank: {
+			type: String,
+			enum: rankTypes,
+			required: true,
 		},
 		isAdmin: {
 			type: Boolean,

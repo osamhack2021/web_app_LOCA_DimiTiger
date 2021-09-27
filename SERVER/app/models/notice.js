@@ -11,6 +11,16 @@ const noticeSchema = new mongoose.Schema(
 			type: Boolean,
 			default: false,
 		},
+		creator: {
+			type: mongoose.Types.ObjectId,
+			required: true,
+			ref: 'User',
+		},
+		deleted: {
+			type: Boolean,
+			default: false,
+			select: false,
+		},
 	},
 	{
 		timestamps: true,

@@ -1,6 +1,7 @@
 const Boom = require('@hapi/boom');
 const Joi = require('joi');
 const UserService = require('../services/user');
+const rankTypes = require('../utils/rank-types');
 
 exports.getUsers = {
 	tags: ['api', 'user'],
@@ -15,6 +16,36 @@ exports.getUsers = {
 	},
 };
 
+exports.getUser = {
+	tags: ['api', 'user'],
+	description: '사용자를 가져옵니다.',
+	validate: {
+		query: Joi.object({
+			userId: Joi.string().description('사용자 _id'),
+		}),
+	},
+	handler: async (req, h) => {
+		try {
+			return await UserService.getUser(req.query.userId);
+		} catch (err) {
+			throw Boom.internal(err);
+		}
+	},
+};
+
+exports.me = {
+	tags: ['api', 'user'],
+	description: '로그인된 사용자 정보를 가져옵니다.',
+	validate: {},
+	handler: async (req, h) => {
+		try {
+			return req.auth.credentials;
+		} catch (err) {
+			throw Boom.internal(err);
+		}
+	},
+};
+
 exports.createUsers = {
 	tags: ['api', 'user'],
 	validate: {
@@ -22,9 +53,15 @@ exports.createUsers = {
 			serial: Joi.string().required(),
 			name: Joi.string().required(),
 			password: Joi.string().required(),
+			rank: Joi.string()
+				.required()
+				.valid(...rankTypes),
 		}),
 	},
 	handler: async (req, h) => {
+		/* todo
+		 * 권한 체크
+		 * 관리자인 경우만 가능 */
 		try {
 			return await UserService.createUsers(req.payload);
 		} catch (err) {
@@ -43,24 +80,20 @@ exports.updateUsers = {
 			userId: Joi.string().description('사용자 _id'),
 		}),
 		payload: Joi.object({
-			identity: Joi.object({
-				_id: Joi.string().required(),
-			}),
-			register: Joi.object({
-				id: Joi.string(),
-				phone: Joi.string(),
-				email: Joi.string(),
-				password: Joi.string(),
-				name: Joi.string(),
-			}),
+			name: Joi.string(),
+			phone: Joi.string(),
+			email: Joi.string(),
+			password: Joi.string(),
+			rank: Joi.string().valid(...rankTypes),
 		}),
 	},
 	handler: async (req, h) => {
+		/* todo
+		 * 권한 체크
+		 * 관리자인 경우 무조건 가능
+		 * 관리자가 아닌 경우 본인의 정보만 수정 가능 */
 		try {
-			return await UserService.updateUsers(
-				req.payload.identity._id,
-				req.payload.register
-			);
+			return await UserService.updateUsers(req.query.userId, req.payload);
 		} catch (err) {
 			throw Boom.internal(err);
 		}
@@ -80,7 +113,6 @@ exports.registerUsers = {
 				password: Joi.string().required(),
 			}),
 			register: Joi.object({
-				id: Joi.string().required(),
 				phone: Joi.string().required(),
 				email: Joi.string().required(),
 				password: Joi.string().required(),
