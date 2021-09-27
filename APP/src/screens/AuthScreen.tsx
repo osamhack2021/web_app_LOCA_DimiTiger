@@ -114,13 +114,14 @@ const AuthScreen = () => {
           />
           <Text style={styles.label}>비밀번호</Text>
           <TextInput
-            secureTextEntry={true}
             value={password}
             onChangeText={setPassword}
             onFocus={() => setPwFocused(true)}
             onBlur={() => setPwFocused(false)}
             onSubmitEditing={() => authenticate()}
+            autoCapitalize="none"
             returnKeyType="done"
+            secureTextEntry={true}
             style={[
               styles.textInput,
               pwFocused ? styles.textInputFocus : styles.textInputBlur,
