@@ -1,6 +1,6 @@
 import React, { Component, KeyboardEvent, RefObject } from 'react';
 import { Redirect } from 'react-router';
-import Auth from '../../services/Auth/Auth';
+import Auth from '../../services/Auth';
 import './Login.css';
 
 interface iprops {
