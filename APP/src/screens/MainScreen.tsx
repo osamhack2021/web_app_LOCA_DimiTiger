@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SvgUri } from 'react-native-svg';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
 
@@ -36,8 +37,12 @@ const MainScreen = () => {
           </View>
           <View style={styleDivider} />
           <View style={styles.locationContainer}>
-            <Icon name="home" size={100} />
-            <Text>본부7생활관</Text>
+            <SvgUri
+              width="100"
+              height="100"
+              uri="https://api.loca.kimjisub.me/static/icons/ic_livingspace.svg"
+            />
+            <Text style={styles.locationText}>본부7생활관</Text>
             <Text>최근위치변경: 1시간전</Text>
           </View>
         </Card>
@@ -79,6 +84,11 @@ const styles = StyleSheet.create({
   locationContainer: {
     alignItems: 'center',
     padding: 20,
+  },
+  locationText: {
+    fontSize: 21,
+    fontWeight: 'bold',
+    margin: 5,
   },
   secondNotice: {
     marginTop: -5,
