@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["MYHFCPKMCY.io.dimitiger.loca"],
+        "components": [
+          {
+            "/": "/link/*",
+            "comment": "link"
+          }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+      "apps": ["MYHFCPKMCY.io.dimitiger.loca"]
+   }
+}
