@@ -1,5 +1,5 @@
-import { frameAxios } from '../../utils/Axios';
-import { setCookies } from '../../utils/Cookies';
+import { frameAxios } from '../utils/Axios';
+import { setCookies } from '../utils/Cookies';
 
 const LOGIN = '/auth/token';
 
