@@ -1,5 +1,7 @@
-#login {
+#loginComponent {
   display: flex;
+  width: 100vw;
+  height: 100vh;
 }
 #logo {
   width: 50%;
