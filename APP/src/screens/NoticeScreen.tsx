@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
-import NoticeCard from '@/components/NoticeCard';
+import NoticeItem from '@/components/NoticeItem';
 import Notice from '@/types/Notice';
 
 type NoticeListProps = {
@@ -15,7 +15,7 @@ const NoticeList = ({ data }: NoticeListProps) => {
       <Text style={styles.titleText}>공지사항</Text>
       <FlatList
         data={data}
-        renderItem={({ item }) => <NoticeCard notice={item} />}
+        renderItem={({ item }) => <NoticeItem notice={item} />}
       />
     </View>
   );
