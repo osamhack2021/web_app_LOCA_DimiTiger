@@ -1,17 +1,18 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import {
   Keyboard,
-  KeyboardEvent,
+  KeyboardAvoidingView,
+  Pressable,
   StyleSheet,
   Text,
   TextInput,
+  View,
 } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import axios from 'axios';
 import { useSetRecoilState } from 'recoil';
 
@@ -34,33 +35,19 @@ const AuthScreen = () => {
   const [error, setError] = useState<string>();
   const setAuth = useSetRecoilState(authState);
   const scale = useSharedValue(1);
-  const translate = useSharedValue(0);
   const animatedLogo = useAnimatedStyle(() => {
     return {
-      transform: [
-        { scale: withTiming(scale.value) },
-        { translateY: withTiming(translate.value) },
-      ],
-    };
-  });
-  const animatedForm = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateY: withTiming(translate.value) }],
+      transform: [{ scale: withTiming(scale.value) }],
     };
   });
 
-  const showKeyboard = useCallback(
-    (e: KeyboardEvent) => {
-      scale.value = 0.6;
-      translate.value = -e.endCoordinates.height / 2;
-    },
-    [scale, translate],
-  );
+  const showKeyboard = useCallback(() => {
+    scale.value = 0.6;
+  }, [scale]);
 
   const hideKeyboard = useCallback(() => {
     scale.value = 1;
-    translate.value = 0;
-  }, [scale, translate]);
+  }, [scale]);
 
   const authenticate = useCallback(async () => {
     try {
@@ -95,55 +82,57 @@ const AuthScreen = () => {
   }, [hideKeyboard, showKeyboard]);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Animated.View style={[styles.centerContainer, animatedLogo]}>
-        <Logo style={styles.logo} />
-      </Animated.View>
-      <Animated.View style={[styles.container, animatedForm]}>
-        <Text style={styles.label}>군번</Text>
-        <TextInput
-          value={id}
-          onChangeText={text => {
-            if (text.length === 2) {
-              if (id.length === 1) {
-                setId(text + '-');
+    <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <Pressable style={styles.container} onPress={Keyboard.dismiss}>
+        <Animated.View style={[styles.centerContainer, animatedLogo]}>
+          <Logo style={styles.logo} />
+        </Animated.View>
+        <View style={[styles.container]}>
+          <Text style={styles.label}>군번</Text>
+          <TextInput
+            value={id}
+            onChangeText={text => {
+              if (text.length === 2) {
+                if (id.length === 1) {
+                  setId(text + '-');
+                } else {
+                  setId(text.slice(0, 1));
+                }
               } else {
-                setId(text.slice(0, 1));
+                setId(text);
               }
-            } else {
-              setId(text);
-            }
-          }}
-          onFocus={() => setIdFocused(true)}
-          onBlur={() => setIdFocused(false)}
-          autoCapitalize="none"
-          keyboardType="number-pad"
-          returnKeyType="next"
-          style={[
-            styles.textInput,
-            idFocused ? styles.textInputFocus : styles.textInputBlur,
-          ]}
-        />
-        <Text style={styles.label}>비밀번호</Text>
-        <TextInput
-          secureTextEntry={true}
-          value={password}
-          onChangeText={setPassword}
-          onFocus={() => setPwFocused(true)}
-          onBlur={() => setPwFocused(false)}
-          onSubmitEditing={() => authenticate()}
-          returnKeyType="done"
-          style={[
-            styles.textInput,
-            pwFocused ? styles.textInputFocus : styles.textInputBlur,
-          ]}
-        />
-        <Text style={styles.errorLabel}>{error}</Text>
-        <Button onPress={() => authenticate()} style={styles.loginButton}>
-          로그인
-        </Button>
-      </Animated.View>
-    </SafeAreaView>
+            }}
+            onFocus={() => setIdFocused(true)}
+            onBlur={() => setIdFocused(false)}
+            autoCapitalize="none"
+            keyboardType="number-pad"
+            returnKeyType="next"
+            style={[
+              styles.textInput,
+              idFocused ? styles.textInputFocus : styles.textInputBlur,
+            ]}
+          />
+          <Text style={styles.label}>비밀번호</Text>
+          <TextInput
+            secureTextEntry={true}
+            value={password}
+            onChangeText={setPassword}
+            onFocus={() => setPwFocused(true)}
+            onBlur={() => setPwFocused(false)}
+            onSubmitEditing={() => authenticate()}
+            returnKeyType="done"
+            style={[
+              styles.textInput,
+              pwFocused ? styles.textInputFocus : styles.textInputBlur,
+            ]}
+          />
+          <Text style={styles.errorLabel}>{error}</Text>
+          <Button onPress={() => authenticate()} style={styles.loginButton}>
+            로그인
+          </Button>
+        </View>
+      </Pressable>
+    </KeyboardAvoidingView>
   );
 };
 
