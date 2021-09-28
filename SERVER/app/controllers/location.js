@@ -18,13 +18,13 @@ exports.getLocation = {
 	tags: ['api', 'location'],
 	description: '위치를 가져옵니다.',
 	validate: {
-		query: Joi.object({
+		params: Joi.object({
 			locationId: Joi.string().description('위치 _id'),
 		}),
 	},
 	handler: async (req, h) => {
 		try {
-			return await LocationService.getLocation(req.query.locationId);
+			return await LocationService.getLocation(req.params.locationId);
 		} catch (err) {
 			throw Boom.internal(err);
 		}
@@ -53,7 +53,7 @@ exports.updateLocation = {
 	tags: ['api', 'location'],
 	description: '위치 정보를 수정합니다..',
 	validate: {
-		query: Joi.object({
+		params: Joi.object({
 			locationId: Joi.string().description('위치 _id'),
 		}),
 		payload: Joi.object({
@@ -64,7 +64,7 @@ exports.updateLocation = {
 	handler: async (req, h) => {
 		try {
 			return await LocationService.updateLocation(
-				req.query.locationId,
+				req.params.locationId,
 				req.payload
 			);
 		} catch (err) {

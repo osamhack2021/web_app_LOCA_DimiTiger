@@ -18,13 +18,13 @@ exports.getNotice = {
 	tags: ['api', 'notice'],
 	description: '공지를 가져옵니다.',
 	validate: {
-		query: Joi.object({
+		params: Joi.object({
 			noticeId: Joi.string().description('공지 _id'),
 		}),
 	},
 	handler: async (req, h) => {
 		try {
-			return await NoticeService.getNotice(req.query.noticeId);
+			return await NoticeService.getNotice(req.params.noticeId);
 		} catch (err) {
 			throw Boom.internal(err);
 		}
@@ -57,13 +57,13 @@ exports.deleteNotice = {
 	tags: ['api', 'notice'],
 	description: '공지를 삭제합니다.',
 	validate: {
-		query: Joi.object({
+		params: Joi.object({
 			noticeId: Joi.string().description('공지 _id'),
 		}),
 	},
 	handler: async (req, h) => {
 		try {
-			return await NoticeService.removeNotice(req.query.noticeId);
+			return await NoticeService.removeNotice(req.params.noticeId);
 		} catch (err) {
 			throw Boom.internal(err);
 		}
