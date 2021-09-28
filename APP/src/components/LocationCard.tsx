@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import Animated, { FadeIn, FadeInUp } from 'react-native-reanimated';
+import Animated, {
+  FadeIn,
+  FadeInUp,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import { formatDistanceToNow } from 'date-fns';
 import { ko } from 'date-fns/locale';
@@ -20,6 +26,10 @@ const LocationCard = () => {
   const { locations } = useLocations();
   const { locationLog } = useActiveLocationLog();
   const logMutation = useLogLocation();
+  const cardHeight = useSharedValue(192);
+  const flexibleHeight = useAnimatedStyle(() => ({
+    height: cardHeight.value,
+  }));
   return (
     <Card>
       <View style={styles.cardHeaderContainer}>
@@ -31,47 +41,59 @@ const LocationCard = () => {
         </Button>
       </View>
       <View style={styleDivider} />
-      {changeMode ? (
-        <View>
-          <View />
-          <View style={styles.locationChipContainer}>
-            {locations &&
-              locations.map((location, index) => (
-                <Animated.View
-                  entering={FadeInUp.delay(index * 50)}
-                  key={location._id}>
-                  <TouchableOpacity
-                    style={styles.locationChip}
-                    onPress={async () => {
-                      await logMutation.mutateAsync(location._id);
-                      setChangeMode(false);
-                    }}>
-                    <Text style={styles.locationChipText}>{location.name}</Text>
-                  </TouchableOpacity>
-                </Animated.View>
-              ))}
-          </View>
-        </View>
-      ) : locationLog ? (
-        <Animated.View style={styles.locationContainer} entering={FadeIn}>
-          <LocationIcon
-            width="100"
-            height="100"
-            icon={locationLog.location.ui.icon}
-          />
-          <Text style={styles.locationText}>{locationLog.location.name}</Text>
-          <Text>{`최근위치변경: ${formatDistanceToNow(
-            new Date(locationLog.createdAt),
-            { addSuffix: true, locale: ko },
-          )}`}</Text>
-        </Animated.View>
-      ) : (
-        <SkeletonPlaceholder>
-          <View style={styles.locationContainer}>
+      <Animated.View style={[flexibleHeight]}>
+        {changeMode ? (
+          <View
+            onLayout={({ nativeEvent }) => {
+              cardHeight.value = withTiming(nativeEvent.layout.height);
+            }}>
             <View />
+            <View style={styles.locationChipContainer}>
+              {locations &&
+                locations.map((location, index) => (
+                  <Animated.View
+                    entering={FadeInUp.delay(index * 50)}
+                    key={location._id}>
+                    <TouchableOpacity
+                      style={styles.locationChip}
+                      onPress={async () => {
+                        await logMutation.mutateAsync(location._id);
+                        setChangeMode(false);
+                      }}>
+                      <Text style={styles.locationChipText}>
+                        {location.name}
+                      </Text>
+                    </TouchableOpacity>
+                  </Animated.View>
+                ))}
+            </View>
           </View>
-        </SkeletonPlaceholder>
-      )}
+        ) : locationLog ? (
+          <Animated.View
+            style={styles.locationContainer}
+            entering={FadeIn}
+            onLayout={({ nativeEvent }) => {
+              cardHeight.value = withTiming(nativeEvent.layout.height);
+            }}>
+            <LocationIcon
+              width="100"
+              height="100"
+              icon={locationLog.location.ui.icon}
+            />
+            <Text style={styles.locationText}>{locationLog.location.name}</Text>
+            <Text>{`최근위치변경: ${formatDistanceToNow(
+              new Date(locationLog.createdAt),
+              { addSuffix: true, locale: ko },
+            )}`}</Text>
+          </Animated.View>
+        ) : (
+          <SkeletonPlaceholder>
+            <View style={styles.locationContainer}>
+              <View />
+            </View>
+          </SkeletonPlaceholder>
+        )}
+      </Animated.View>
     </Card>
   );
 };
