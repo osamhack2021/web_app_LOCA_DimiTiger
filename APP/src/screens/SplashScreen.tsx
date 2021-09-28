@@ -16,6 +16,7 @@ import { RootNavigationProp } from './Navigators';
 
 import { authState } from '@/atoms';
 import { colorSplashBg } from '@/constants/colors';
+import { getLocationFromUrl } from '@/utils/UrlUtil';
 
 const SplashScreen = () => {
   const { loading } = useRecoilValue(authState);
@@ -31,9 +32,7 @@ const SplashScreen = () => {
     async function hide() {
       await RNBootSplash.hide();
       const url = await Linking.getInitialURL();
-      const prefix = 'https://api.loca.kimjisub.me/link/location-log/';
-      const isValid = url?.startsWith(prefix);
-      const location = isValid && url?.replace(prefix, '');
+      const location = getLocationFromUrl(url);
       scale.value = withTiming(17, undefined, () =>
         runOnJS(navigation.replace)(
           location ? 'LocationScreen' : 'MainScreen',

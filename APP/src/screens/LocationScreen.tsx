@@ -14,7 +14,7 @@ const LocationScreen = () => {
   const { location } = useLocation(params.location);
   return (
     <View>
-      {location && (
+      {!!location && (
         <LinearGradient colors={[colorWhite, colorWhite]}>
           <LocationIcon width="100" height="100" icon={location.ui.icon} />
           <Text style={styles.locationText}>{location.name}</Text>
