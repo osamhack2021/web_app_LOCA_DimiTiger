@@ -3,8 +3,6 @@ const Boom = require('@hapi/boom');
 const pkg = require('../../package.json');
 const logger = require('../utils/logger');
 
-const appleAppSiteAssociation = require('../static/apple-app-site-association')
-
 module.exports = {
 	server: {
 		host: '0.0.0.0',
@@ -52,7 +50,7 @@ module.exports = {
 						method: 'GET',
 						path: '/apple-app-site-association',
 						handler(request, h) {
-							return h.response(appleAppSiteAssociation);
+							return h.file('./app/static/apple-app-site-association.json');
 						},
 						config: {
 							auth: false,
@@ -62,7 +60,7 @@ module.exports = {
 						method: 'GET',
 						path: '/.well-known/apple-app-site-association',
 						handler(request, h) {
-							return h.response(appleAppSiteAssociation);
+							return h.file('./app/static/apple-app-site-association.json');
 						},
 						config: {
 							auth: false,
