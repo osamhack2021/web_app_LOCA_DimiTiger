@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import Animated, { FadeIn, FadeInUp } from 'react-native-reanimated';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
-import { SvgUri } from 'react-native-svg';
 import { formatDistanceToNow } from 'date-fns';
 import { ko } from 'date-fns/locale';
+
+import LocationIcon from './LocationIcon';
 
 import { useLocations } from '@/api/location';
 import { useActiveLocationLog, useLogLocation } from '@/api/location-logs';
@@ -34,31 +36,35 @@ const LocationCard = () => {
           <View />
           <View style={styles.locationChipContainer}>
             {locations &&
-              locations.map(location => (
-                <TouchableOpacity
-                  style={styles.locationChip}
-                  onPress={() => {
-                    logMutation.mutate(location._id);
-                    setChangeMode(false);
-                  }}>
-                  <Text style={styles.locationChipText}>{location.name}</Text>
-                </TouchableOpacity>
+              locations.map((location, index) => (
+                <Animated.View
+                  entering={FadeInUp.delay(index * 50)}
+                  key={location._id}>
+                  <TouchableOpacity
+                    style={styles.locationChip}
+                    onPress={async () => {
+                      await logMutation.mutateAsync(location._id);
+                      setChangeMode(false);
+                    }}>
+                    <Text style={styles.locationChipText}>{location.name}</Text>
+                  </TouchableOpacity>
+                </Animated.View>
               ))}
           </View>
         </View>
       ) : locationLog ? (
-        <View style={styles.locationContainer}>
-          <SvgUri
+        <Animated.View style={styles.locationContainer} entering={FadeIn}>
+          <LocationIcon
             width="100"
             height="100"
-            uri={`https://api.loca.kimjisub.me/static/icons/ic_${locationLog.location.ui.icon}.svg`}
+            icon={locationLog.location.ui.icon}
           />
           <Text style={styles.locationText}>{locationLog.location.name}</Text>
           <Text>{`최근위치변경: ${formatDistanceToNow(
             new Date(locationLog.createdAt),
             { addSuffix: true, locale: ko },
           )}`}</Text>
-        </View>
+        </Animated.View>
       ) : (
         <SkeletonPlaceholder>
           <View style={styles.locationContainer}>
