@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { RouteProp } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 
-import { authState, splashState } from '@/atoms';
+import { authState } from '@/atoms';
 import AuthScreen from '@/screens/AuthScreen';
 import LocationScreen from '@/screens/LocationScreen';
 import MainScreen from '@/screens/MainScreen';
@@ -16,7 +16,6 @@ import { getTokens } from '@/utils/AuthUtil';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
-  const splashDone = useRecoilValue(splashState);
   const [auth, setAuth] = useRecoilState(authState);
   useEffect(() => {
     async function authenticate() {
@@ -38,15 +37,14 @@ const RootStack = () => {
 
   return (
     <Stack.Navigator
-      initialRouteName="MainScreen"
+      initialRouteName="SplashScreen"
       screenOptions={{ headerShown: false, animation: 'fade' }}>
-      {!splashDone ? (
-        <Stack.Screen name="SplashScreen" component={SplashScreen} />
-      ) : auth.authenticated ? (
+      <Stack.Screen name="SplashScreen" component={SplashScreen} />
+      {auth.authenticated ? (
         <>
           <Stack.Screen name="MainScreen" component={MainScreen} />
-          <Stack.Screen name="NoticeScreen" component={NoticeScreen} />
           <Stack.Screen name="LocationScreen" component={LocationScreen} />
+          <Stack.Screen name="NoticeScreen" component={NoticeScreen} />
           <Stack.Screen
             name="UserScreen"
             component={UserScreen}
@@ -54,7 +52,9 @@ const RootStack = () => {
           />
         </>
       ) : (
-        <Stack.Screen name="AuthScreen" component={AuthScreen} />
+        <>
+          <Stack.Screen name="AuthScreen" component={AuthScreen} />
+        </>
       )}
     </Stack.Navigator>
   );
@@ -65,7 +65,9 @@ export type RootStackParamList = {
   AuthScreen: undefined;
   MainScreen: undefined;
   NoticeScreen: undefined;
-  LocationScreen: undefined;
+  LocationScreen: {
+    location: string;
+  };
   UserScreen: undefined;
 };
 

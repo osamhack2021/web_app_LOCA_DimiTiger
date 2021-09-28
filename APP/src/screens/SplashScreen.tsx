@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Linking, StyleSheet, View } from 'react-native';
 import RNBootSplash from 'react-native-bootsplash';
 import Animated, {
   runOnJS,
@@ -7,16 +7,19 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useNavigation } from '@react-navigation/core';
+import { useRecoilValue } from 'recoil';
 
 import Logo from '@images/loca_logo.svg';
 
-import { authState, splashState } from '@/atoms';
+import { RootNavigationProp } from './Navigators';
+
+import { authState } from '@/atoms';
 import { colorSplashBg } from '@/constants/colors';
 
 const SplashScreen = () => {
   const { loading } = useRecoilValue(authState);
-  const setSplashDone = useSetRecoilState(splashState);
+  const navigation = useNavigation<RootNavigationProp<'SplashScreen'>>();
   const scale = useSharedValue(1);
   const animatedLogo = useAnimatedStyle(() => {
     return {
@@ -27,14 +30,21 @@ const SplashScreen = () => {
   useEffect(() => {
     async function hide() {
       await RNBootSplash.hide();
+      const url = await Linking.getInitialURL();
+      const prefix = 'https://api.loca.kimjisub.me/link/location-log/';
+      const isValid = url?.startsWith(prefix);
+      const location = isValid && url?.replace(prefix, '');
       scale.value = withTiming(17, undefined, () =>
-        runOnJS(setSplashDone)(true),
+        runOnJS(navigation.replace)(
+          location ? 'LocationScreen' : 'MainScreen',
+          location ? { location } : undefined,
+        ),
       );
     }
     if (!loading) {
       hide();
     }
-  }, [loading, scale, setSplashDone]);
+  }, [loading, navigation, scale]);
   return (
     <View style={styles.container}>
       <Animated.View style={animatedLogo}>
