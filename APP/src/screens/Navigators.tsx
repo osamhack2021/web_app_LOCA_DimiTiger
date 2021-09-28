@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { RouteProp } from '@react-navigation/native';
+import { Linking } from 'react-native';
+import { RouteProp, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 import { useRecoilState } from 'recoil';
@@ -12,11 +13,13 @@ import NoticeScreen from '@/screens/NoticeScreen';
 import SplashScreen from '@/screens/SplashScreen';
 import UserScreen from '@/screens/UserScreen';
 import { getTokens } from '@/utils/AuthUtil';
+import { getLocationFromUrl } from '@/utils/UrlUtil';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
   const [auth, setAuth] = useRecoilState(authState);
+  const navigation = useNavigation<RootNavigationProp<'MainScreen'>>();
   useEffect(() => {
     async function authenticate() {
       try {
@@ -34,6 +37,20 @@ const RootStack = () => {
     }
     authenticate();
   }, [setAuth]);
+
+  useEffect(() => {
+    const subscription = Linking.addEventListener('url', ({ url }) => {
+      const location = getLocationFromUrl(url);
+      if (auth.authenticated && location) {
+        navigation.navigate('LocationScreen', { location });
+      }
+    });
+
+    return () => {
+      // @ts-ignore
+      subscription.remove();
+    };
+  }, [auth.authenticated, navigation]);
 
   return (
     <Stack.Navigator
