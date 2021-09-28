@@ -20,13 +20,13 @@ exports.getUser = {
 	tags: ['api', 'user'],
 	description: '사용자를 가져옵니다.',
 	validate: {
-		query: Joi.object({
+		params: Joi.object({
 			userId: Joi.string().description('사용자 _id'),
 		}),
 	},
 	handler: async (req, h) => {
 		try {
-			return await UserService.getUser(req.query.userId);
+			return await UserService.getUser(req.params.userId);
 		} catch (err) {
 			throw Boom.internal(err);
 		}
@@ -76,7 +76,7 @@ exports.updateUsers = {
 	},
 	tags: ['api', 'user'],
 	validate: {
-		query: Joi.object({
+		params: Joi.object({
 			userId: Joi.string().description('사용자 _id'),
 		}),
 		payload: Joi.object({
@@ -93,7 +93,7 @@ exports.updateUsers = {
 		 * 관리자인 경우 무조건 가능
 		 * 관리자가 아닌 경우 본인의 정보만 수정 가능 */
 		try {
-			return await UserService.updateUsers(req.query.userId, req.payload);
+			return await UserService.updateUsers(req.params.userId, req.payload);
 		} catch (err) {
 			throw Boom.internal(err);
 		}
