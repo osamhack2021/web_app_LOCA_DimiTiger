@@ -1,62 +1,64 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import Animated, { FadeInLeft, FadeOutLeft } from 'react-native-reanimated';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/core';
 
-import {
-  colorBlack,
-  colorEmergencyEnd,
-  colorEmergencyShadow,
-  colorEmergencyStart,
-  colorNoticeBackground,
-  colorWhite,
-} from '../constants/colors';
+import Card from './Card';
+import NoticeItem from './NoticeItem';
 
-import Card, { CardProps } from './Card';
+import { useNotices } from '@/api/notices';
+import { colorEllipsis } from '@/constants/colors';
+import { styleDivider } from '@/constants/styles';
+import { RootNavigationProp } from '@/screens/Navigators';
 
-import Notice from '@/types/Notice';
-
-export type NoticeCardProps = CardProps & {
-  notice: Notice;
-};
-
-const NoticeCard: React.FC<NoticeCardProps> = ({
-  notice,
-  style,
-  contentContainerStyle,
-}) => {
+const NoticeCard = () => {
+  const navigation = useNavigation<RootNavigationProp<'MainScreen'>>();
+  const { notices } = useNotices();
   return (
-    <Card
-      style={[
-        notice.emergency && [
-          styles.shadow,
-          { shadowColor: colorEmergencyShadow },
-        ],
-        style,
-      ]}
-      contentContainerStyle={[styles.contentContainer, contentContainerStyle]}
-      gradient={{
-        colors: notice.emergency
-          ? [colorEmergencyStart, colorEmergencyEnd]
-          : [colorNoticeBackground, colorNoticeBackground],
-        start: { x: 0, y: 0 },
-        end: { x: 1, y: 0 },
-      }}>
-      <Text style={{ color: notice.emergency ? colorWhite : colorBlack }}>
-        {notice.emergency && <Text style={styles.emergencyText}>[긴급] </Text>}
-        {notice.body}
-      </Text>
+    <Card style={styles.container}>
+      <Text style={styles.titleText}>공지사항</Text>
+      <View style={styleDivider} />
+      {notices?.slice(0, 2).map((notice, index) => (
+        <Animated.View
+          entering={FadeInLeft}
+          exiting={FadeOutLeft}
+          key={`notice-thumb-${notice._id}`}>
+          <NoticeItem
+            notice={notice}
+            style={{ marginTop: index > 0 ? 0 : 20 }}
+          />
+        </Animated.View>
+      ))}
+      <View style={styleDivider} />
+      <TouchableOpacity
+        style={styles.moreNoticeContainer}
+        onPress={() => navigation.navigate('NoticeScreen')}>
+        <Icon name="dots-horizontal" size={30} color={colorEllipsis} />
+      </TouchableOpacity>
     </Card>
   );
 };
 
 const styles = StyleSheet.create({
-  shadow: {
-    shadowOpacity: 0.4,
+  container: {
+    marginTop: 0,
   },
-  contentContainer: {
-    padding: 20,
+  cardHeaderContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
-  emergencyText: {
+  titleText: {
+    fontSize: 21,
     fontWeight: 'bold',
+    margin: 20,
+  },
+  moreNoticeContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
   },
 });
 

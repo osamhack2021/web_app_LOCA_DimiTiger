@@ -1,0 +1,65 @@
+import React from 'react';
+import { StyleSheet, Text } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+
+import {
+  colorBlack,
+  colorEmergencyEnd,
+  colorEmergencyShadow,
+  colorEmergencyStart,
+  colorNoticeBackground,
+  colorWhite,
+} from '../constants/colors';
+
+import Card, { CardProps } from './Card';
+
+import Notice from '@/types/Notice';
+
+export type NoticeItemProps = CardProps & {
+  notice: Notice;
+};
+
+const NoticeItem: React.FC<NoticeItemProps> = ({ notice, style }) => {
+  return (
+    <Card
+      style={[
+        notice.emergency && [
+          styles.shadow,
+          { shadowColor: colorEmergencyShadow },
+        ],
+        style,
+      ]}>
+      <LinearGradient
+        colors={
+          notice.emergency
+            ? [colorEmergencyStart, colorEmergencyEnd]
+            : [colorNoticeBackground, colorNoticeBackground]
+        }
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.container}>
+        <Text style={{ color: notice.emergency ? colorWhite : colorBlack }}>
+          {notice.emergency && (
+            <Text style={styles.emergencyText}>[긴급] </Text>
+          )}
+          {notice.content}
+        </Text>
+      </LinearGradient>
+    </Card>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    borderRadius: 20,
+    padding: 20,
+  },
+  shadow: {
+    shadowOpacity: 0.4,
+  },
+  emergencyText: {
+    fontWeight: 'bold',
+  },
+});
+
+export default NoticeItem;

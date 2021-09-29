@@ -18,11 +18,9 @@ const SplashScreen = () => {
   const { loading } = useRecoilValue(authState);
   const setSplashDone = useSetRecoilState(splashState);
   const scale = useSharedValue(1);
-  const animatedLogo = useAnimatedStyle(() => {
-    return {
-      transform: [{ scale: scale.value }, { translateY: 40 }],
-    };
-  });
+  const animatedLogo = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }, { translateY: 40 }],
+  }));
 
   useEffect(() => {
     async function hide() {

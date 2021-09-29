@@ -35,11 +35,9 @@ const AuthScreen = () => {
   const [error, setError] = useState<string>();
   const setAuth = useSetRecoilState(authState);
   const scale = useSharedValue(1);
-  const animatedLogo = useAnimatedStyle(() => {
-    return {
-      transform: [{ scale: withTiming(scale.value) }],
-    };
-  });
+  const animatedLogo = useAnimatedStyle(() => ({
+    transform: [{ scale: withTiming(scale.value) }],
+  }));
 
   const showKeyboard = useCallback(() => {
     scale.value = 0.6;

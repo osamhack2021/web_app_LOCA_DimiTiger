@@ -1,5 +1,6 @@
 interface Notice {
-  body: string;
+  _id: string;
+  content: string;
   emergency: boolean;
 }
 
