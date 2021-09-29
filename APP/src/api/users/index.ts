@@ -13,9 +13,13 @@ async function getMe(): Promise<User> {
 
 export function useUser() {
   const { authenticated } = useRecoilValue(authState);
-  const { data, isLoading } = useQuery(['user', authenticated], () => getMe(), {
-    enabled: authenticated,
-  });
+  const { data, isLoading } = useQuery(
+    ['users', 'me', authenticated],
+    () => getMe(),
+    {
+      enabled: authenticated,
+    },
+  );
 
   return { user: data, isLoading };
 }
