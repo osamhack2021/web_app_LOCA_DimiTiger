@@ -67,7 +67,8 @@
 .send_button {
     min-width: 40px;
     min-height: 40px;
-    background-color: #bbbbbb;
-    border-radius: 20px;
     margin-left: 10px;
+}
+.send_button > img {
+    width: 40px;
 }

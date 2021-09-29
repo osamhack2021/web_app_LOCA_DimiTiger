@@ -1,7 +1,48 @@
 import React, { Component } from 'react';
+import Notices from '../../services/Notices';
 import './Notice.css';
+import sendIco from './send.svg';
 
-class Notice extends Component {
+interface noticesProps {
+}
+interface noticesState {
+  noticeList: Array<object>;
+}
+
+interface NoticeElementProps {
+  data: any;
+  key: number;
+}
+
+class NoticeElement extends Component<NoticeElementProps> {
+  render() {
+    return (
+      this.props.data.emergency ? 
+      <div className="message urgency">
+        <span>[긴급] </span>{this.props.data.content}
+      </div> : 
+      <div className="message">
+        {this.props.data.content}
+      </div>
+    )
+  }
+}
+
+class Notice extends Component<noticesProps, noticesState> {
+  constructor(props: noticesProps) {
+    super(props);
+    this.state = {
+      noticeList: []
+    }
+  }
+  
+  componentDidMount() {
+    Notices.getNotices().then((res) => {
+      this.setState({
+        noticeList: res.data,
+      })
+    });
+  }
   render() {
     return (
         <div id="notice" className="dash_component">
@@ -10,33 +51,11 @@ class Notice extends Component {
             </div>
             <div className="messenger">
               <div className="message_box">
-                <div className="message urgency">
-                  <span>[긴급] </span>통신병 1명 지금 즉시 지휘통제실로 와주시기 바랍니다.
-                </div>
-                <div className="message">
-                  금일 TV 연등은 23시까지 진행합니다.
-                </div>
-                <div className="message">
-                  국사봉 올림픽은 15시에 진행합니다.
-                </div>
-                <div className="message">
-                  면회 시간은 09시부터 18시입니다.
-                </div>
-                <div className="message">
-                  면회 시간은 09시부터 18시입니다.
-                </div>
-                <div className="message">
-                  면회 시간은 09시부터 18시입니다.
-                </div>
-                <div className="message">
-                  면회 시간은 09시부터 18시입니다.
-                </div>
-                <div className="message">
-                  면회 시간은 09시부터 18시입니다.
-                </div>
-                <div className="message">
-                  면회 시간은 09시부터 18시입니다.
-                </div>
+              { this.state.noticeList.length > 0 &&
+                  this.state.noticeList.map((data, i) => {
+                    return (<NoticeElement data={data} key={i} />)
+                  })
+              }
               </div>
               <div className="send_box">
                 <div className="input_box">
@@ -44,7 +63,7 @@ class Notice extends Component {
                   <input type="text" />
                 </div>
                 <div className="send_button">
-                  <img src="" alt="" />
+                  <img src={sendIco} alt="" />
                 </div>
               </div>
             </div>

@@ -1,5 +1,5 @@
-import { frameAxios } from '../../utils/Axios';
-import { setCookies } from '../../utils/Cookies';
+import { frameAxios } from '../utils/Axios';
+import { setCookies } from '../utils/Cookies';
 
 const LOGIN = '/auth/token';
 
@@ -29,7 +29,7 @@ class Auth {
         return this.access_token;
     }
 
-    set = (access_token: string, refresh_token: string) => {
+    set = async(access_token: string, refresh_token: string) => {
         // access_token 저장 처리
         if(access_token) {
             setCookies('access_token', access_token, {
