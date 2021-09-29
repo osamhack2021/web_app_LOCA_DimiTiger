@@ -13,7 +13,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   favicon: 'img/favicon.ico',
   organizationName: 'dimitiger', // Usually your GitHub org/user name.
   projectName: 'loca', // Usually your repo name.
-
+  i18n: {
+    defaultLocale: 'kr',
+    locales: ['kr'],
+  },
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -46,7 +49,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             position: 'left',
             label: 'Tutorial',
           },
-          {to: '/blog', label: 'Demo', position: 'left'},
+          {
+            href: 'https://loca.kimjisub.me',
+            label: 'Demo',
+            position: 'left'
+          },
           {
             href: 'https://github.com/osamhack2021/web_app_LOCA_DimiTiger',
             label: 'GitHub',
@@ -87,12 +94,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'Demo',
+                href: 'https://loca.kimjisub.me',
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/osamhack2021/web_app_LOCA_DimiTiger',
               },
             ],
           },
