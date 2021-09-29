@@ -24,7 +24,7 @@ export function useLocations() {
 }
 
 export function useLocation(location: string) {
-  const { data, isLoading } = useQuery(['location', location], () =>
+  const { data, isLoading } = useQuery(['locations', location], () =>
     getLocation(location),
   );
 

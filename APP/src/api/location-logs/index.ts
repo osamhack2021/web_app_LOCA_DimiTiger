@@ -26,7 +26,7 @@ export async function logLocation(
 export function useActiveLocationLog() {
   const { user } = useUser();
   const { data, isLoading } = useQuery(
-    ['active-location', user],
+    ['location-logs', 'active', user],
     () => getLocationLogs(user!._id, true),
     { enabled: !!user },
   );
