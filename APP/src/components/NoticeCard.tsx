@@ -1,44 +1,50 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import Animated, { FadeInLeft, FadeOutLeft } from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
 
 import Card from './Card';
 import NoticeItem from './NoticeItem';
 
+import { useNotices } from '@/api/notices';
 import { colorEllipsis } from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
 import { RootNavigationProp } from '@/screens/Navigators';
-import Notice from '@/types/Notice';
-
-const dummyNotices: Notice[] = [
-  {
-    emergency: true,
-    body: '체계병 1명 지금 즉시 지휘통제실로 와주시기 바랍니다.',
-  },
-  {
-    emergency: false,
-    body: '금일 TV연등은 02:00까지 진행합니다.',
-  },
-];
 
 const NoticeCard = () => {
   const navigation = useNavigation<RootNavigationProp<'MainScreen'>>();
+  const { notices } = useNotices();
   return (
-    <Card onPress={() => navigation.navigate('NoticeScreen')}>
+    <Card style={styles.container}>
       <Text style={styles.titleText}>공지사항</Text>
       <View style={styleDivider} />
-      <NoticeItem notice={dummyNotices[0]} />
-      <NoticeItem notice={dummyNotices[1]} style={styles.secondNotice} />
+      {notices?.slice(0, 2).map((notice, index) => (
+        <Animated.View
+          entering={FadeInLeft}
+          exiting={FadeOutLeft}
+          key={`notice-thumb-${notice._id}`}>
+          <NoticeItem
+            notice={notice}
+            style={{ marginTop: index > 0 ? 0 : 20 }}
+          />
+        </Animated.View>
+      ))}
       <View style={styleDivider} />
-      <View style={styles.moreNoticeContainer}>
+      <TouchableOpacity
+        style={styles.moreNoticeContainer}
+        onPress={() => navigation.navigate('NoticeScreen')}>
         <Icon name="dots-horizontal" size={30} color={colorEllipsis} />
-      </View>
+      </TouchableOpacity>
     </Card>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    marginTop: 0,
+  },
   cardHeaderContainer: {
     alignItems: 'center',
     flexDirection: 'row',
@@ -48,9 +54,6 @@ const styles = StyleSheet.create({
     fontSize: 21,
     fontWeight: 'bold',
     margin: 20,
-  },
-  secondNotice: {
-    marginTop: -5,
   },
   moreNoticeContainer: {
     alignItems: 'center',

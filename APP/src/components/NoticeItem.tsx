@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import {
   colorBlack,
@@ -14,15 +15,11 @@ import Card, { CardProps } from './Card';
 
 import Notice from '@/types/Notice';
 
-export type NoticeCardProps = CardProps & {
+export type NoticeItemProps = CardProps & {
   notice: Notice;
 };
 
-const NoticeCard: React.FC<NoticeCardProps> = ({
-  notice,
-  style,
-  contentContainerStyle,
-}) => {
+const NoticeItem: React.FC<NoticeItemProps> = ({ notice, style }) => {
   return (
     <Card
       style={[
@@ -31,33 +28,38 @@ const NoticeCard: React.FC<NoticeCardProps> = ({
           { shadowColor: colorEmergencyShadow },
         ],
         style,
-      ]}
-      contentContainerStyle={[styles.contentContainer, contentContainerStyle]}
-      gradient={{
-        colors: notice.emergency
-          ? [colorEmergencyStart, colorEmergencyEnd]
-          : [colorNoticeBackground, colorNoticeBackground],
-        start: { x: 0, y: 0 },
-        end: { x: 1, y: 0 },
-      }}>
-      <Text style={{ color: notice.emergency ? colorWhite : colorBlack }}>
-        {notice.emergency && <Text style={styles.emergencyText}>[긴급] </Text>}
-        {notice.body}
-      </Text>
+      ]}>
+      <LinearGradient
+        colors={
+          notice.emergency
+            ? [colorEmergencyStart, colorEmergencyEnd]
+            : [colorNoticeBackground, colorNoticeBackground]
+        }
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.container}>
+        <Text style={{ color: notice.emergency ? colorWhite : colorBlack }}>
+          {notice.emergency && (
+            <Text style={styles.emergencyText}>[긴급] </Text>
+          )}
+          {notice.content}
+        </Text>
+      </LinearGradient>
     </Card>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    borderRadius: 20,
+    padding: 20,
+  },
   shadow: {
     shadowOpacity: 0.4,
-  },
-  contentContainer: {
-    padding: 20,
   },
   emergencyText: {
     fontWeight: 'bold',
   },
 });
 
-export default NoticeCard;
+export default NoticeItem;
