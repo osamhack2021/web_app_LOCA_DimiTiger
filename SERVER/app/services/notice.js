@@ -6,7 +6,7 @@ const Errors = (exports.Errors = {
 });
 
 exports.getNotices = async () => {
-	return await Notice.find({ deleted: false }).exec();
+	return await Notice.find({ deleted: false }).sort({ createdAt: -1 }).exec();
 };
 
 exports.getNotice = async (_id) => {
