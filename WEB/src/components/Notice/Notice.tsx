@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Notices from '../../services/Notices';
 import './Notice.css';
+import sendIco from './send.svg';
 
 interface noticesProps {
 }
@@ -34,6 +35,7 @@ class Notice extends Component<noticesProps, noticesState> {
       noticeList: []
     }
   }
+  
   componentDidMount() {
     Notices.getNotices().then((res) => {
       this.setState({
@@ -49,10 +51,10 @@ class Notice extends Component<noticesProps, noticesState> {
             </div>
             <div className="messenger">
               <div className="message_box">
-              {
-                this.state.noticeList.map((data, i) => {
-                  return (<NoticeElement data={data} key={i} />)
-                })
+              { this.state.noticeList.length > 0 &&
+                  this.state.noticeList.map((data, i) => {
+                    return (<NoticeElement data={data} key={i} />)
+                  })
               }
               </div>
               <div className="send_box">
@@ -61,7 +63,7 @@ class Notice extends Component<noticesProps, noticesState> {
                   <input type="text" />
                 </div>
                 <div className="send_button">
-                  <img src="" alt="" />
+                  <img src={sendIco} alt="" />
                 </div>
               </div>
             </div>
