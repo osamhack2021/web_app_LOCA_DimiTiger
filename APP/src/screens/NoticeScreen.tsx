@@ -1,31 +1,37 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
+import { useNotices } from '@/api/notices';
 import NoticeItem from '@/components/NoticeItem';
-import Notice from '@/types/Notice';
 
-type NoticeListProps = {
-  data: Notice[];
-};
-
-const NoticeList = ({ data }: NoticeListProps) => {
+const NoticeScreen = () => {
+  const { notices } = useNotices();
   return (
-    <View>
-      <Text style={styles.titleText}>공지사항</Text>
+    <View style={styles.container}>
+      <SafeAreaView>
+        <Text style={styles.titleText}>공지사항</Text>
+      </SafeAreaView>
       <FlatList
-        data={data}
-        renderItem={({ item }) => <NoticeItem notice={item} />}
+        data={notices}
+        renderItem={({ item, index }) => (
+          <NoticeItem notice={item} style={{ marginTop: index > 0 ? 0 : 20 }} />
+        )}
+        style={styles.container}
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   titleText: {
-    fontSize: 21,
+    fontSize: 30,
     fontWeight: 'bold',
+    margin: 20,
   },
 });
 
-export default NoticeList;
+export default NoticeScreen;
