@@ -14,8 +14,8 @@ import { ko } from 'date-fns/locale';
 
 import LocationIcon from './LocationIcon';
 
-import { useLocations } from '@/api/location';
 import { useActiveLocationLog, useLogLocation } from '@/api/location-logs';
+import { useLocations } from '@/api/locations';
 import Button from '@/components/Button';
 import Card from '@/components/Card';
 import { colorChipBorder } from '@/constants/colors';

@@ -8,8 +8,8 @@ import { useNavigation, useRoute } from '@react-navigation/core';
 
 import { RootNavigationProp, RootRouteProp } from './Navigators';
 
-import { useLocation } from '@/api/location';
 import { useLogLocation } from '@/api/location-logs';
+import { useLocation } from '@/api/locations';
 import Button from '@/components/Button';
 import LocationIcon from '@/components/LocationIcon';
 import * as colors from '@/constants/colors';
