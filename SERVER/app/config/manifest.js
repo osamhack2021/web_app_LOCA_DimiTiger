@@ -46,6 +46,36 @@ module.exports = {
 							auth: false,
 						},
 					});
+					server.route({
+						method: 'GET',
+						path: '/apple-app-site-association',
+						handler(request, h) {
+							return h.file('./app/static/apple-app-site-association.json');
+						},
+						config: {
+							auth: false,
+						},
+					});
+					server.route({
+						method: 'GET',
+						path: '/.well-known/apple-app-site-association',
+						handler(request, h) {
+							return h.file('./app/static/apple-app-site-association.json');
+						},
+						config: {
+							auth: false,
+						},
+					});
+					server.route({
+						method: 'GET',
+						path: '/.well-known/assetlinks.json',
+						handler(request, h) {
+							return h.file('./app/static/assetlinks.json');
+						},
+						config: {
+							auth: false,
+						},
+					});
 				},
 			},
 
