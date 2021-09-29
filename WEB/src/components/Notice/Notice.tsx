@@ -1,74 +1,48 @@
-import React, { Component } from 'react';
-import Notices from '../../services/Notices';
-import './Notice.css';
-import sendIco from './send.svg';
-
-interface noticesProps {
-}
-interface noticesState {
-  noticeList: Array<object>;
-}
+import { useNotices } from "../../api/notices";
+import Notice from "../../types/Notice";
+import "./Notice.css";
+import sendIco from "./send.svg";
 
 interface NoticeElementProps {
-  data: any;
-  key: number;
+  notice: Notice;
 }
 
-class NoticeElement extends Component<NoticeElementProps> {
-  render() {
-    return (
-      this.props.data.emergency ? 
-      <div className="message urgency">
-        <span>[긴급] </span>{this.props.data.content}
-      </div> : 
-      <div className="message">
-        {this.props.data.content}
+const NoticeElement = ({ notice }: NoticeElementProps) => {
+  return notice.emergency ? (
+    <div className="message urgency">
+      <span>[긴급] </span>
+      {notice.content}
+    </div>
+  ) : (
+    <div className="message">{notice.content}</div>
+  );
+};
+
+const NoticeCard = () => {
+  const { notices } = useNotices();
+  return (
+    <div id="notice" className="dash_component">
+      <div className="headline">
+        <h1>공지사항</h1>
       </div>
-    )
-  }
-}
-
-class Notice extends Component<noticesProps, noticesState> {
-  constructor(props: noticesProps) {
-    super(props);
-    this.state = {
-      noticeList: []
-    }
-  }
-  
-  componentDidMount() {
-    Notices.getNotices().then((res) => {
-      this.setState({
-        noticeList: res.data,
-      })
-    });
-  }
-  render() {
-    return (
-        <div id="notice" className="dash_component">
-            <div className="headline">
-              <h1>공지사항</h1>
-            </div>
-            <div className="messenger">
-              <div className="message_box">
-              { this.state.noticeList.length > 0 &&
-                  this.state.noticeList.map((data, i) => {
-                    return (<NoticeElement data={data} key={i} />)
-                  })
-              }
-              </div>
-              <div className="send_box">
-                <div className="input_box">
-                  <div className="send_mode">일반</div>
-                  <input type="text" />
-                </div>
-                <div className="send_button">
-                  <img src={sendIco} alt="" />
-                </div>
-              </div>
-            </div>
+      <div className="messenger">
+        <div className="message_box">
+          {notices &&
+            notices.map((data, i) => {
+              return <NoticeElement notice={data} key={i} />;
+            })}
         </div>
-      );
-    }
-  }
-export default Notice;
+        <div className="send_box">
+          <div className="input_box">
+            <div className="send_mode">일반</div>
+            <input type="text" />
+          </div>
+          <div className="send_button">
+            <img src={sendIco} alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default NoticeCard;
