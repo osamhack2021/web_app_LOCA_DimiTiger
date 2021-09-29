@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Linking, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import RNBootSplash from 'react-native-bootsplash';
 import Animated, {
   runOnJS,
@@ -7,20 +7,16 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { useNavigation } from '@react-navigation/core';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import Logo from '@images/loca_logo.svg';
 
-import { RootNavigationProp } from './Navigators';
-
-import { authState } from '@/atoms';
+import { authState, splashState } from '@/atoms';
 import { colorSplashBg } from '@/constants/colors';
-import { getLocationFromUrl } from '@/utils/UrlUtil';
 
 const SplashScreen = () => {
   const { loading } = useRecoilValue(authState);
-  const navigation = useNavigation<RootNavigationProp<'SplashScreen'>>();
+  const setSplashDone = useSetRecoilState(splashState);
   const scale = useSharedValue(1);
   const animatedLogo = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }, { translateY: 40 }],
@@ -29,19 +25,14 @@ const SplashScreen = () => {
   useEffect(() => {
     async function hide() {
       await RNBootSplash.hide();
-      const url = await Linking.getInitialURL();
-      const location = getLocationFromUrl(url);
       scale.value = withTiming(17, undefined, () =>
-        runOnJS(navigation.replace)(
-          location ? 'LocationScreen' : 'MainScreen',
-          location ? { location } : undefined,
-        ),
+        runOnJS(setSplashDone)(true),
       );
     }
     if (!loading) {
       hide();
     }
-  }, [loading, navigation, scale]);
+  }, [loading, scale, setSplashDone]);
   return (
     <View style={styles.container}>
       <Animated.View style={animatedLogo}>

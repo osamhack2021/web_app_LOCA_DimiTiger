@@ -1,6 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation, useRoute } from '@react-navigation/core';
 
 import { RootNavigationProp, RootRouteProp } from './Navigators';
@@ -25,8 +28,17 @@ const LocationScreen = () => {
             colors[`color${location.ui.color}End`],
           ]}
           style={styles.container}>
-          <View style={styles.container} />
-
+          <SafeAreaView style={styles.container}>
+            <TouchableOpacity
+              style={styles.closeIcon}
+              onPress={() => navigation.goBack()}>
+              <Icon
+                name="close"
+                size={30}
+                color={colors[`color${location.ui.color}Text`]}
+              />
+            </TouchableOpacity>
+          </SafeAreaView>
           <View style={styles.centerContainer}>
             <LocationIcon
               width="200"
@@ -47,7 +59,7 @@ const LocationScreen = () => {
             <Button
               onPress={async () => {
                 await logMutation.mutateAsync(location._id);
-                navigation.navigate('MainScreen');
+                navigation.goBack();
               }}>
               위치 변경
             </Button>
@@ -73,6 +85,10 @@ const styles = StyleSheet.create({
   maskContainer: {
     height: 41,
     width: '100%',
+  },
+  closeIcon: {
+    alignSelf: 'flex-end',
+    margin: 20,
   },
   locationIcon: {
     alignSelf: 'center',
