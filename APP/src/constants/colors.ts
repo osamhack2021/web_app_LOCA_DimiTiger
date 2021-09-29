@@ -11,3 +11,5 @@ export const colorTextInputLabel = '#AAA';
 export const colorTextInput = '#EEF1F4';
 export const colorSplashBg = '#F3F6F6';
 export const colorChipBorder = '#E8E8E8';
+export const colorYellowStart = '#FFFFD5';
+export const colorYellowEnd = '#FFE59A';
