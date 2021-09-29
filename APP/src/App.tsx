@@ -28,7 +28,6 @@ focusManager.setEventListener(handleFocus => {
   );
 
   return () => {
-    // @ts-ignore
     subscription.remove();
   };
 });

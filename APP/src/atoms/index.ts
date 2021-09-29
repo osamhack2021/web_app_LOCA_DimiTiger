@@ -9,3 +9,8 @@ export const authState = atom<AuthState>({
     loading: true,
   },
 });
+
+export const splashState = atom<boolean>({
+  key: 'splashDone',
+  default: false,
+});
