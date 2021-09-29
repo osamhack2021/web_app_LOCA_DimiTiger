@@ -11,8 +11,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'dimitiger', // Usually your GitHub org/user name.
-  projectName: 'loca', // Usually your repo name.
+  organizationName: 'osamhack2021', // Usually your GitHub org/user name.
+  projectName: 'web_app_LOCA_DimiTiger', // Usually your repo name.
   i18n: {
     defaultLocale: 'kr',
     locales: ['kr'],
