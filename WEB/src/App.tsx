@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import Home from "../../routes/Home";
-import Login from "../Login/Login";
-import PrivateRoutes from "./PrivateRoutes";
-import PublicRoutes from "./PublicRoutes";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import PrivateRoutes from "./routes/PrivateRoutes";
+import PublicRoutes from "./routes/PublicRoutes";
 import "./App.css";
 import { CookiesProvider, useCookies } from "react-cookie";
-import client from "../../api/client";
+import client from "./api/client";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 const App = () => {
