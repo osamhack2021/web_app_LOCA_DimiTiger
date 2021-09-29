@@ -1,23 +1,29 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { useRoute } from '@react-navigation/core';
+import { useNavigation, useRoute } from '@react-navigation/core';
 
-import { RootRouteProp } from './Navigators';
+import { RootNavigationProp, RootRouteProp } from './Navigators';
 
 import { useLocation } from '@/api/location';
+import { useLogLocation } from '@/api/location-logs';
 import Button from '@/components/Button';
 import LocationIcon from '@/components/LocationIcon';
-import { colorYellowEnd, colorYellowStart } from '@/constants/colors';
+import * as colors from '@/constants/colors';
 
 const LocationScreen = () => {
   const { params } = useRoute<RootRouteProp<'LocationScreen'>>();
+  const navigation = useNavigation<RootNavigationProp<'LocationScreen'>>();
   const { location } = useLocation(params.location);
+  const logMutation = useLogLocation();
   return (
     <View style={styles.container}>
       {location && (
         <LinearGradient
-          colors={[colorYellowStart, colorYellowEnd]}
+          colors={[
+            colors[`color${location.ui.color}Start`],
+            colors[`color${location.ui.color}End`],
+          ]}
           style={styles.container}>
           <View style={styles.container} />
 
@@ -28,11 +34,23 @@ const LocationScreen = () => {
               icon={location.ui.icon}
               style={styles.locationIcon}
             />
-            <Text style={styles.locationText}>{location.name}</Text>
+            <Text
+              style={[
+                styles.locationText,
+                { color: colors[`color${location.ui.color}Text`] },
+              ]}>
+              {location.name}
+            </Text>
             <Text style={styles.promptText}>위치를 변경하시겠습니까?</Text>
           </View>
           <View style={styles.buttonContainer}>
-            <Button onPress={() => {}}>위치 변경</Button>
+            <Button
+              onPress={async () => {
+                await logMutation.mutateAsync(location._id);
+                navigation.navigate('MainScreen');
+              }}>
+              위치 변경
+            </Button>
           </View>
         </LinearGradient>
       )}
