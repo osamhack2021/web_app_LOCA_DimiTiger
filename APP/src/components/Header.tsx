@@ -9,7 +9,7 @@ import { colorWhite } from '@/constants/colors';
 import { styleShadow } from '@/constants/styles';
 import { RootNavigationProp } from '@/Navigators';
 
-const Header: React.FC = () => {
+const Header = () => {
   const navigation = useNavigation<RootNavigationProp<'MainScreen'>>();
   const { user, isLoading } = useUser();
   return (

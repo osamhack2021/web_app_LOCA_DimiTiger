@@ -17,7 +17,7 @@ export type NoticeItemProps = CardProps & {
   notice: Notice;
 };
 
-const NoticeItem: React.FC<NoticeItemProps> = ({ notice, style }) => {
+const NoticeItem = ({ notice, style }: NoticeItemProps) => {
   return (
     <Card
       style={[
