@@ -1,16 +1,33 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
+
+import { RootNavigationProp } from './Navigators';
 
 import { useNotices } from '@/api/notices';
 import NoticeItem from '@/components/NoticeItem';
+import { colorBlack } from '@/constants/colors';
 
 const NoticeScreen = () => {
+  const navigation = useNavigation<RootNavigationProp<'NoticeScreen'>>();
   const { notices } = useNotices();
   return (
     <View style={styles.container}>
-      <SafeAreaView>
+      <SafeAreaView style={styles.headerContainer}>
         <Text style={styles.titleText}>공지사항</Text>
+        <TouchableOpacity
+          style={styles.closeIcon}
+          onPress={() => navigation.goBack()}>
+          <Icon name="close" size={30} color={colorBlack} />
+        </TouchableOpacity>
       </SafeAreaView>
       <FlatList
         data={notices}
@@ -27,9 +44,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  headerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   titleText: {
     fontSize: 30,
     fontWeight: 'bold',
+    margin: 20,
+  },
+  closeIcon: {
     margin: 20,
   },
 });
