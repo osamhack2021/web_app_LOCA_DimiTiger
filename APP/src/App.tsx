@@ -6,7 +6,7 @@ import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil';
 import { authState, splashState } from '@/atoms';
 import Navigators, { RootStackParamList } from '@/Navigators';
 import SplashScreen from '@/screens/SplashScreen';
-import { getTokens } from '@/utils/AuthUtil';
+import { restoreTokens } from '@/utils/AuthUtil';
 import queryClient from '@/utils/queryClient';
 
 const linking: LinkingOptions<RootStackParamList> = {
@@ -25,18 +25,11 @@ const App = () => {
 
   useEffect(() => {
     async function init() {
-      try {
-        const result = await getTokens();
-        setAuth({
-          authenticated: result,
-          loading: false,
-        });
-      } catch (err) {
-        setAuth({
-          authenticated: false,
-          loading: false,
-        });
-      }
+      const result = await restoreTokens();
+      setAuth({
+        authenticated: result,
+        loading: false,
+      });
     }
     init();
   }, [setAuth]);
