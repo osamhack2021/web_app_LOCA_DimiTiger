@@ -12,6 +12,9 @@ target 'LOCA' do
     :hermes_enabled => true
   )
 
+  permissions_path = '../node_modules/react-native-permissions/ios'
+  pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways"
+
   target 'LOCATests' do
     inherit! :complete
     # Pods for testing

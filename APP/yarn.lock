@@ -6598,6 +6598,10 @@ react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+"react-native-beacons-manager@git://github.com/wjaykim/react-native-beacons-manager.git#c2ddeed1ec92b1c81e476d10b1b467130542aefe":
+  version "1.1.0"
+  resolved "git://github.com/wjaykim/react-native-beacons-manager.git#c2ddeed1ec92b1c81e476d10b1b467130542aefe"
+
 react-native-bootsplash@^3.2.6:
   version "3.2.6"
   resolved "https://registry.yarnpkg.com/react-native-bootsplash/-/react-native-bootsplash-3.2.6.tgz#610e476b1156ab29817aa394d5bb64871c1f1f42"
@@ -6631,6 +6635,11 @@ react-native-linear-gradient@^2.5.6:
   version "2.5.6"
   resolved "https://registry.npmjs.org/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz"
   integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
+
+react-native-permissions@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-3.0.5.tgz#94542a343abdac801fa0a4593ea2c751cb45c41f"
+  integrity sha512-hcvLtHhTyOTXC+CCv79d4Qtdnj6PGuY5Ms0fhW8V6Et1T/mPvzO6++Du4jwEv/oHZ62qMWKUDq0/Tsh63QHuyQ==
 
 react-native-reanimated@2.3.0-beta.1:
   version "2.3.0-beta.1"
@@ -6736,10 +6745,10 @@ react-native@0.65.1:
     whatwg-fetch "^3.0.0"
     ws "^6.1.4"
 
-react-query@^3.24.2:
-  version "3.24.2"
-  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.24.2.tgz#8692573601304eb81cefb20f1b549749390ac6cb"
-  integrity sha512-rsM9PP/c/pDlaMB9Z7KQPzYgbWwDiVZuz0hiYACzBp4+LLNPynIZAqxfSswen033Rl0CSBpm6yQ6IDD2OL6l+A==
+react-query@^3.24.5:
+  version "3.24.5"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.24.5.tgz#d3128a86fa5830a9b70a550085c18df3d18bc470"
+  integrity sha512-1kWRBWOi9Nv2qbpu9OgycyWVd1K6lIdxF9FJy8lmhB224OsrT4kr6sKhF6u1gnE4KsbdtMdZU97e+64tKZtZmA==
   dependencies:
     "@babel/runtime" "^7.5.5"
     broadcast-channel "^3.4.1"
