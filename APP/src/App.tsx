@@ -1,9 +1,5 @@
 import React, { useEffect } from 'react';
-import { AppState, AppStateStatus } from 'react-native';
-import { focusManager, QueryClient, QueryClientProvider } from 'react-query';
-import { createAsyncStoragePersistor } from 'react-query/createAsyncStoragePersistor-experimental';
-import { persistQueryClient } from 'react-query/persistQueryClient-experimental';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { QueryClientProvider } from 'react-query';
 import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
 import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil';
 
@@ -11,29 +7,7 @@ import { authState, splashState } from '@/atoms';
 import Navigators, { RootStackParamList } from '@/Navigators';
 import SplashScreen from '@/screens/SplashScreen';
 import { getTokens } from '@/utils/AuthUtil';
-
-const queryClient = new QueryClient();
-
-const asyncStoragePersistor = createAsyncStoragePersistor({
-  storage: AsyncStorage,
-});
-
-persistQueryClient({
-  queryClient,
-  persistor: asyncStoragePersistor,
-  maxAge: Infinity,
-});
-
-focusManager.setEventListener(handleFocus => {
-  const subscription = AppState.addEventListener(
-    'change',
-    (state: AppStateStatus) => handleFocus(state === 'active'),
-  );
-
-  return () => {
-    subscription.remove();
-  };
-});
+import queryClient from '@/utils/queryClient';
 
 const linking: LinkingOptions<RootStackParamList> = {
   prefixes: ['https://api.loca.kimjisub.me/link'],
