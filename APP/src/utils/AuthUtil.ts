@@ -43,7 +43,7 @@ export async function getTokens(): Promise<boolean> {
     if (expires_in < 7 * 24 * 60 * 60) {
       await refresh(refresh_token);
     } else {
-      await applyToken({ access_token, refresh_token, expires_in });
+      client.defaults.headers.Authorization = `Bearer ${access_token}`;
     }
     return true;
   } else {

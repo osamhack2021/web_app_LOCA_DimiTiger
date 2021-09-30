@@ -7,8 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
 import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { authState, splashState } from './atoms';
-
+import { authState, splashState } from '@/atoms';
 import Navigators, { RootStackParamList } from '@/Navigators';
 import SplashScreen from '@/screens/SplashScreen';
 import { getTokens } from '@/utils/AuthUtil';
