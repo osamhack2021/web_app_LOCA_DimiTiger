@@ -1,7 +1,7 @@
 import { AppState, AppStateStatus } from 'react-native';
 import { focusManager, QueryClient } from 'react-query';
-import { createAsyncStoragePersistor } from 'react-query/types/createAsyncStoragePersistor-experimental';
-import { persistQueryClient } from 'react-query/types/persistQueryClient-experimental';
+import { createAsyncStoragePersistor } from 'react-query/createAsyncStoragePersistor-experimental';
+import { persistQueryClient } from 'react-query/persistQueryClient-experimental';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const queryClient = new QueryClient();
