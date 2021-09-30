@@ -9,7 +9,7 @@ export type CardProps = {
   children?: React.ReactNode;
 };
 
-const Card: React.FC<CardProps> = ({ style, children }) => {
+const Card = ({ style, children }: CardProps) => {
   return <View style={[styles.container, styleShadow, style]}>{children}</View>;
 };
 

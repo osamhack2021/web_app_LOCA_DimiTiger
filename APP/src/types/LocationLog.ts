@@ -1,4 +1,4 @@
-import Location from './Location';
+import Location from '@/types/Location';
 
 interface LocationLog {
   active: boolean;

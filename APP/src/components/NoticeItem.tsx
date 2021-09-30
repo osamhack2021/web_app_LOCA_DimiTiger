@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
+import Card, { CardProps } from '@/components/Card';
 import {
   colorBlack,
   colorEmergencyEnd,
@@ -9,17 +10,14 @@ import {
   colorEmergencyStart,
   colorNoticeBackground,
   colorWhite,
-} from '../constants/colors';
-
-import Card, { CardProps } from './Card';
-
+} from '@/constants/colors';
 import Notice from '@/types/Notice';
 
 export type NoticeItemProps = CardProps & {
   notice: Notice;
 };
 
-const NoticeItem: React.FC<NoticeItemProps> = ({ notice, style }) => {
+const NoticeItem = ({ notice, style }: NoticeItemProps) => {
   return (
     <Card
       style={[

@@ -1,17 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Animated, { FadeInLeft, FadeOutLeft } from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
 
-import Card from './Card';
-import NoticeItem from './NoticeItem';
-
 import { useNotices } from '@/api/notices';
+import Card from '@/components/Card';
+import NoticeItem from '@/components/NoticeItem';
 import { colorEllipsis } from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
-import { RootNavigationProp } from '@/screens/Navigators';
+import { RootNavigationProp } from '@/Navigators';
 
 const NoticeCard = () => {
   const navigation = useNavigation<RootNavigationProp<'MainScreen'>>();
