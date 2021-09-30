@@ -5,13 +5,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation, useRoute } from '@react-navigation/core';
 
-import { RootNavigationProp, RootRouteProp } from './Navigators';
-
 import { useLogLocation } from '@/api/location-logs';
 import { useLocation } from '@/api/locations';
 import Button from '@/components/Button';
 import LocationIcon from '@/components/LocationIcon';
 import * as colors from '@/constants/colors';
+import { RootNavigationProp, RootRouteProp } from '@/Navigators';
 
 const LocationScreen = () => {
   const { params } = useRoute<RootRouteProp<'LocationScreen'>>();

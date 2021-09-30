@@ -10,11 +10,10 @@ import { FlatList } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 
-import { RootNavigationProp } from './Navigators';
-
 import { useNotices } from '@/api/notices';
 import NoticeItem from '@/components/NoticeItem';
 import { colorBlack } from '@/constants/colors';
+import { RootNavigationProp } from '@/Navigators';
 
 const NoticeScreen = () => {
   const navigation = useNavigation<RootNavigationProp<'NoticeScreen'>>();
