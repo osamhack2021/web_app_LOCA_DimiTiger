@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/core';
 import { useUser } from '@/api/users';
 import { colorWhite } from '@/constants/colors';
 import { styleShadow } from '@/constants/styles';
-import { RootNavigationProp } from '@/screens/Navigators';
+import { RootNavigationProp } from '@/Navigators';
 
 const Header: React.FC = () => {
   const navigation = useNavigation<RootNavigationProp<'MainScreen'>>();

@@ -4,11 +4,10 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
 import { useSetRecoilState } from 'recoil';
 
-import { RootNavigationProp } from './Navigators';
-
 import { authState } from '@/atoms';
 import Button from '@/components/Button';
 import { colorBlack, colorSplashBg } from '@/constants/colors';
+import { RootNavigationProp } from '@/Navigators';
 import { signOut } from '@/utils/AuthUtil';
 
 const UserScreen = () => {
