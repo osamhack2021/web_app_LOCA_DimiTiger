@@ -1,18 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { DeviceEventEmitter, Platform } from 'react-native';
 import Beacons, { BeaconRegion } from 'react-native-beacons-manager';
+import { useRecoilState } from 'recoil';
 
 import { useBeacons } from '@/api/beacons';
+import { currentBeaconState } from '@/atoms';
 import usePermissions from '@/hooks/usePermissions';
-import Beacon from '@/types/Beacon';
 
 const useCurrentBeacon = () => {
   const { beacons } = useBeacons();
   const { fullyGranted } = usePermissions();
-  const [currentBeacon, setCurrentBeacon] = useState<Beacon | null>(null);
+  const [currentBeaconValue, setCurrentBeaconState] =
+    useRecoilState(currentBeaconState);
+  const { currentBeacon, initialized } = currentBeaconValue;
 
   useEffect(() => {
-    if (!beacons || !fullyGranted) {
+    if (initialized || !beacons || !fullyGranted) {
       return;
     }
     if (Platform.OS === 'android') {
@@ -34,10 +37,16 @@ const useCurrentBeacon = () => {
             value.region.major === data.major &&
             value.region.minor === data.minor,
         );
-        setCurrentBeacon(beacon || null);
+        setCurrentBeaconState({
+          initialized: true,
+          currentBeacon: beacon || null,
+        });
       }),
       DeviceEventEmitter.addListener('regionDidExit', () => {
-        setCurrentBeacon(null);
+        setCurrentBeaconState({
+          initialized: true,
+          currentBeacon: null,
+        });
       }),
     ];
     return () => {
@@ -51,7 +60,7 @@ const useCurrentBeacon = () => {
       }
       subscriptions.forEach(subscription => subscription.remove());
     };
-  }, [beacons, fullyGranted]);
+  }, [beacons, fullyGranted, initialized, setCurrentBeaconState]);
 
   return currentBeacon;
 };
