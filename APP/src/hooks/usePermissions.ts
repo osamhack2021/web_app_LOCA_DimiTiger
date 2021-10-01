@@ -1,64 +1,63 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Platform } from 'react-native';
 import {
-  check,
   checkMultiple,
   PERMISSIONS,
+  PermissionStatus,
   request,
   RESULTS,
 } from 'react-native-permissions';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
-import { splashState } from '@/atoms';
+import { permissionState, splashState } from '@/atoms';
+
+const permissions = Platform.select({
+  android: [
+    PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+    PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
+  ],
+  ios: [PERMISSIONS.IOS.LOCATION_ALWAYS],
+  default: [],
+});
+
+export type PermissionStatuses = Record<
+  typeof permissions[number],
+  PermissionStatus
+>;
 
 const usePermissions = () => {
   const splashDone = useRecoilValue(splashState);
-  const [permissionGranted, setPermissionGranted] = useState(false);
+  const [permissionValue, setPermissionState] = useRecoilState(permissionState);
+  const { checked } = permissionValue;
 
   useEffect(() => {
-    if (!splashDone) {
+    if (!splashDone || checked) {
       return;
     }
-    if (Platform.OS === 'android') {
-      const permissions = [
-        PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
-        PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
-      ];
-      checkMultiple(permissions)
-        .then(statuses => {
-          return Promise.all(
-            permissions.map(permission => {
-              if (statuses[permission] === RESULTS.DENIED) {
-                return request(permission);
-              } else {
-                return Promise.resolve(statuses[permission]);
-              }
-            }),
-          );
-        })
-        .then(statuses => {
-          let granted = false;
-          statuses.forEach(status => {
-            granted = status === RESULTS.GRANTED;
-          });
-          setPermissionGranted(granted);
-        });
-    } else if (Platform.OS === 'ios') {
-      check(PERMISSIONS.IOS.LOCATION_ALWAYS)
-        .then(status => {
-          if (status === RESULTS.DENIED) {
-            return request(PERMISSIONS.IOS.LOCATION_ALWAYS);
+    async function checkAndRequest() {
+      const output: Partial<PermissionStatuses> = {};
+      let granted = true;
+      const checkedStatuses = await checkMultiple(permissions);
+      await Promise.all(
+        permissions.map(async permission => {
+          if (checkedStatuses[permission] === RESULTS.DENIED) {
+            output[permission] = await request(permission);
           } else {
-            return Promise.resolve(status);
+            output[permission] = checkedStatuses[permission];
           }
-        })
-        .then(status => {
-          setPermissionGranted(status === RESULTS.GRANTED);
-        });
+          granted = granted && output[permission] === RESULTS.GRANTED;
+        }),
+      );
+      setPermissionState({
+        checked: true,
+        statuses: output as PermissionStatuses,
+        fullyGranted: granted,
+      });
     }
-  }, [splashDone]);
+    checkAndRequest();
+  }, [checked, setPermissionState, splashDone]);
 
-  return { permissionGranted };
+  return permissionValue;
 };
 
 export default usePermissions;
