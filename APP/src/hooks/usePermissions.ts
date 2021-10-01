@@ -29,7 +29,7 @@ const usePermissions = () => {
           return Promise.all(
             permissions.map(permission => {
               if (statuses[permission] === RESULTS.DENIED) {
-                return request(PERMISSIONS.IOS.LOCATION_ALWAYS);
+                return request(permission);
               } else {
                 return Promise.resolve(statuses[permission]);
               }
