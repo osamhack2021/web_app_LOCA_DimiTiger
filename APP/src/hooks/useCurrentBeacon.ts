@@ -8,11 +8,11 @@ import Beacon from '@/types/Beacon';
 
 const useCurrentBeacon = () => {
   const { beacons } = useBeacons();
-  const { permissionGranted } = usePermissions();
+  const { fullyGranted } = usePermissions();
   const [currentBeacon, setCurrentBeacon] = useState<Beacon | null>(null);
 
   useEffect(() => {
-    if (!beacons || !permissionGranted) {
+    if (!beacons || !fullyGranted) {
       return;
     }
     if (Platform.OS === 'android') {
@@ -51,7 +51,7 @@ const useCurrentBeacon = () => {
       }
       subscriptions.forEach(subscription => subscription.remove());
     };
-  }, [beacons, permissionGranted]);
+  }, [beacons, fullyGranted]);
 
   return currentBeacon;
 };
