@@ -7,10 +7,10 @@ const beaconRegionSchema = new mongoose.Schema(
 			required: true,
 		},
 		major: {
-			type: mongoose.Schema.Types.String,
+			type: mongoose.Schema.Types.Number,
 		},
 		minor: {
-			type: mongoose.Schema.Types.String,
+			type: mongoose.Schema.Types.Number,
 		},
 	},
 )
