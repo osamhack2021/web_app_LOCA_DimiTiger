@@ -1,6 +1,7 @@
 const routes = [
 	require('./users'),
 	require('./auth'),
+	require('./beacons'),
 	require('./locations'),
 	require('./location-logs'),
 	require('./settings'),
