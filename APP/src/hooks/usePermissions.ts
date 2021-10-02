@@ -4,7 +4,7 @@ import {
   checkMultiple,
   PERMISSIONS,
   PermissionStatus,
-  request,
+  requestMultiple,
   RESULTS,
 } from 'react-native-permissions';
 import { useRecoilState } from 'recoil';
@@ -12,10 +12,7 @@ import { useRecoilState } from 'recoil';
 import { permissionState } from '@/atoms';
 
 const permissions = Platform.select({
-  android: [
-    PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
-    PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
-  ],
+  android: [PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION],
   ios: [PERMISSIONS.IOS.LOCATION_ALWAYS],
   default: [],
 });
@@ -37,16 +34,20 @@ const usePermissions = () => {
       const output: Partial<PermissionStatuses> = {};
       let granted = true;
       const checkedStatuses = await checkMultiple(permissions);
-      await Promise.all(
-        permissions.map(async permission => {
-          if (checkedStatuses[permission] === RESULTS.DENIED) {
-            output[permission] = await request(permission);
-          } else {
-            output[permission] = checkedStatuses[permission];
-          }
+      const requestPermissions = permissions.flatMap(permission => {
+        if (checkedStatuses[permission] === RESULTS.DENIED) {
+          return permission;
+        } else {
+          output[permission] = checkedStatuses[permission];
           granted = granted && output[permission] === RESULTS.GRANTED;
-        }),
-      );
+          return [];
+        }
+      });
+      const requestedStatuses = await requestMultiple(requestPermissions);
+      requestPermissions.forEach(permission => {
+        output[permission] = requestedStatuses[permission];
+        granted = granted && output[permission] === RESULTS.GRANTED;
+      });
       setPermissionState({
         checked: true,
         statuses: output as PermissionStatuses,
