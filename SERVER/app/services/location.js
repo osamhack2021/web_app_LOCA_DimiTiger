@@ -20,7 +20,7 @@ exports.createLocation = async ({ name, ui }) => {
 exports.updateLocation = async (_id, fields) => {
 	const location = await Location.findById(_id).exec();
 
-	if (!location) throw new Errors.UserNotFoundError();
+	if (!location) throw new Errors.LocationNotFoundError();
 
 	for (const key in fields) {
 		location[key] = fields[key];
