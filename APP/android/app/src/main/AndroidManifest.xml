@@ -62,6 +62,5 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.mackentoch.beaconsandroid.BeaconTaskService" />
     </application>
 </manifest>

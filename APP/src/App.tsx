@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { QueryClientProvider } from 'react-query';
 import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
-import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil';
+import { RecoilRoot, useRecoilValue } from 'recoil';
 
-import { authState, splashState } from '@/atoms';
+import AuthProvider from './utils/AuthProvider';
+
+import { splashState } from '@/atoms';
 import Navigators, { RootStackParamList } from '@/Navigators';
 import SplashScreen from '@/screens/SplashScreen';
-import { restoreTokens } from '@/utils/AuthUtil';
+import BeaconProvider from '@/utils/BeaconProvider';
 import queryClient from '@/utils/queryClient';
 
 const linking: LinkingOptions<RootStackParamList> = {
@@ -20,19 +22,7 @@ const linking: LinkingOptions<RootStackParamList> = {
 };
 
 const App = () => {
-  const setAuth = useSetRecoilState(authState);
   const splashDone = useRecoilValue(splashState);
-
-  useEffect(() => {
-    async function init() {
-      const result = await restoreTokens();
-      setAuth({
-        authenticated: result,
-        loading: false,
-      });
-    }
-    init();
-  }, [setAuth]);
 
   return (
     <NavigationContainer linking={linking}>
@@ -44,7 +34,11 @@ const App = () => {
 export default () => (
   <RecoilRoot>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <AuthProvider>
+        <BeaconProvider>
+          <App />
+        </BeaconProvider>
+      </AuthProvider>
     </QueryClientProvider>
   </RecoilRoot>
 );

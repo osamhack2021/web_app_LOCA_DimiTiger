@@ -14,13 +14,13 @@ import UserScreen from '@/screens/UserScreen';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
-  const auth = useRecoilValue(authState);
+  const { authenticated } = useRecoilValue(authState);
 
   return (
     <Stack.Navigator
       initialRouteName="MainScreen"
       screenOptions={{ headerShown: false, animation: 'fade' }}>
-      {auth.authenticated ? (
+      {authenticated ? (
         <>
           <Stack.Screen name="MainScreen" component={MainScreen} />
           <Stack.Screen name="LocationScreen" component={LocationScreen} />
