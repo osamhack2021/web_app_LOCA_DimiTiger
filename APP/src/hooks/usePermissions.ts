@@ -7,9 +7,9 @@ import {
   request,
   RESULTS,
 } from 'react-native-permissions';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 
-import { permissionState, splashState } from '@/atoms';
+import { permissionState } from '@/atoms';
 
 const permissions = Platform.select({
   android: [
@@ -26,12 +26,11 @@ export type PermissionStatuses = Record<
 >;
 
 const usePermissions = () => {
-  const splashDone = useRecoilValue(splashState);
   const [permissionValue, setPermissionState] = useRecoilState(permissionState);
   const { checked } = permissionValue;
 
   useEffect(() => {
-    if (!splashDone || checked) {
+    if (checked) {
       return;
     }
     async function checkAndRequest() {
@@ -55,7 +54,7 @@ const usePermissions = () => {
       });
     }
     checkAndRequest();
-  }, [checked, setPermissionState, splashDone]);
+  }, [checked, setPermissionState]);
 
   return permissionValue;
 };

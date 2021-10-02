@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { DeviceEventEmitter, Platform } from 'react-native';
-import Beacons, { BeaconRegion } from 'react-native-beacons-manager';
+import Beacons from 'react-native-beacons-manager';
 import { useRecoilState } from 'recoil';
 
 import { useBeacons } from '@/api/beacons';
@@ -27,28 +27,25 @@ const useCurrentBeacon = () => {
       }),
     );
     if (Platform.OS === 'ios') {
+      Beacons.allowsBackgroundLocationUpdates(true);
       Beacons.startUpdatingLocation();
     }
-    const subscriptions = [
-      DeviceEventEmitter.addListener('regionDidEnter', (data: BeaconRegion) => {
-        const beacon = beacons.find(
-          value =>
-            value.region.uuid === data.uuid &&
-            value.region.major === data.major &&
-            value.region.minor === data.minor,
-        );
-        setCurrentBeaconState({
-          initialized: true,
-          currentBeacon: beacon || null,
+    const subscription = DeviceEventEmitter.addListener(
+      'didDetermineState',
+      ({ identifier, state }) => {
+        const beacon =
+          beacons.find(value => value.region.identifier === identifier) || null;
+        setCurrentBeaconState(prev => {
+          const exit =
+            state !== 'inside' &&
+            prev.currentBeacon?.region.identifier === identifier;
+          return {
+            initialized: true,
+            currentBeacon: exit ? beacon : null,
+          };
         });
-      }),
-      DeviceEventEmitter.addListener('regionDidExit', () => {
-        setCurrentBeaconState({
-          initialized: true,
-          currentBeacon: null,
-        });
-      }),
-    ];
+      },
+    );
     return () => {
       Promise.all(
         beacons.map(beacon => {
@@ -58,7 +55,7 @@ const useCurrentBeacon = () => {
       if (Platform.OS === 'ios') {
         Beacons.stopUpdatingLocation();
       }
-      subscriptions.forEach(subscription => subscription.remove());
+      subscription.remove();
     };
   }, [beacons, fullyGranted, initialized, setCurrentBeaconState]);
 
