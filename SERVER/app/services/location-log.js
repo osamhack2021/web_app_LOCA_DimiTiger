@@ -10,6 +10,6 @@ exports.getLocationLogs = async (filters) => {
 };
 
 exports.createLocationLog = async ({ user, location }) => {
-	await LocationLog.updateMany({ user, location, active: false });
+	await LocationLog.updateMany({ user, active: true }, { active: false });
 	return await new LocationLog({ user, location }).save();
 };
