@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
+  Platform,
   Pressable,
   StyleSheet,
   Text,
@@ -33,6 +34,7 @@ const AuthScreen = () => {
   const [idFocused, setIdFocused] = useState(false);
   const [pwFocused, setPwFocused] = useState(false);
   const [error, setError] = useState<string>();
+  const pwRef = useRef<TextInput | null>(null);
   const setAuth = useSetRecoilState(authState);
   const scale = useSharedValue(1);
   const animatedLogo = useAnimatedStyle(() => ({
@@ -70,8 +72,18 @@ const AuthScreen = () => {
   }, [id, password, setAuth]);
 
   useEffect(() => {
-    const showEvent = Keyboard.addListener('keyboardWillShow', showKeyboard);
-    const hideEvent = Keyboard.addListener('keyboardWillHide', hideKeyboard);
+    const event: 'Will' | 'Did' = Platform.select({
+      ios: 'Will',
+      default: 'Did',
+    });
+    const showEvent = Keyboard.addListener(
+      `keyboard${event}Show`,
+      showKeyboard,
+    );
+    const hideEvent = Keyboard.addListener(
+      `keyboard${event}Hide`,
+      hideKeyboard,
+    );
 
     return () => {
       showEvent.remove();
@@ -102,6 +114,7 @@ const AuthScreen = () => {
             }}
             onFocus={() => setIdFocused(true)}
             onBlur={() => setIdFocused(false)}
+            onSubmitEditing={() => pwRef.current?.focus()}
             autoCapitalize="none"
             keyboardType="number-pad"
             returnKeyType="next"
@@ -112,6 +125,7 @@ const AuthScreen = () => {
           />
           <Text style={styles.label}>비밀번호</Text>
           <TextInput
+            ref={pwRef}
             value={password}
             onChangeText={setPassword}
             onFocus={() => setPwFocused(true)}
