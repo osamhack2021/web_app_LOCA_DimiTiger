@@ -65,8 +65,8 @@ exports.udpateBeacon = {
 			location: Joi.string().required(),
 			region: Joi.object({
 				uuid: Joi.string().required(),
-				major: Joi.string(),
-				minor: Joi.string()
+				major: Joi.number().integer().min(0).max(65535),
+				minor: Joi.number().integer().min(0).max(65535)
 			}),
 		}),
 	},
