@@ -1,7 +1,8 @@
 package io.dimitiger.loca;
 
-import android.app.Application;
 import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
@@ -10,12 +11,13 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JSIModulePackage;
 import com.facebook.soloader.SoLoader;
+import com.mackentoch.beaconsandroid.BeaconApplication;
 import com.swmansion.reanimated.ReanimatedJSIModulePackage;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-public class MainApplication extends Application implements ReactApplication {
+public class MainApplication extends BeaconApplication implements ReactApplication {
 
     private final ReactNativeHost mReactNativeHost =
             new ReactNativeHost(this) {
@@ -85,5 +87,21 @@ public class MainApplication extends Application implements ReactApplication {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public void didEnterRegion(Bundle bundle) {
+        super.didEnterRegion(bundle);
+    }
+
+    @Override
+    public void didExitRegion(Bundle bundle) {
+        super.didExitRegion(bundle);
+    }
+
+    @Override
+    public void didDetermineStateForRegion(Bundle bundle) {
+        super.didDetermineStateForRegion(bundle);
+        Log.d("sibal", "sibal");
     }
 }
