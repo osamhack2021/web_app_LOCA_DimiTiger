@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 
 import AuthState from '@/types/AuthState';
-import CurrentBeaconState from '@/types/CurrentBeaconState';
+import Beacon from '@/types/Beacon';
 import PermissionState from '@/types/PermissionState';
 
 export const authState = atom<AuthState>({
@@ -12,11 +12,6 @@ export const authState = atom<AuthState>({
   },
 });
 
-export const splashState = atom<boolean>({
-  key: 'splashDone',
-  default: false,
-});
-
 export const permissionState = atom<PermissionState>({
   key: 'permissionState',
   default: {
@@ -25,10 +20,12 @@ export const permissionState = atom<PermissionState>({
   },
 });
 
-export const currentBeaconState = atom<CurrentBeaconState>({
-  key: 'currentBeaconState',
-  default: {
-    initialized: false,
-    currentBeacon: null,
-  },
+export const splashState = atom<boolean>({
+  key: 'splashDone',
+  default: false,
+});
+
+export const beaconState = atom<Beacon[]>({
+  key: 'visibleBeacons',
+  default: [],
 });
