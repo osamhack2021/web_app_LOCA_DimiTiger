@@ -1,8 +1,6 @@
 package io.dimitiger.loca;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.util.Log;
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
@@ -87,21 +85,5 @@ public class MainApplication extends BeaconApplication implements ReactApplicati
                 e.printStackTrace();
             }
         }
-    }
-
-    @Override
-    public void didEnterRegion(Bundle bundle) {
-        super.didEnterRegion(bundle);
-    }
-
-    @Override
-    public void didExitRegion(Bundle bundle) {
-        super.didExitRegion(bundle);
-    }
-
-    @Override
-    public void didDetermineStateForRegion(Bundle bundle) {
-        super.didDetermineStateForRegion(bundle);
-        Log.d("sibal", "sibal");
     }
 }
