@@ -9,10 +9,11 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import { useLinkTo } from '@react-navigation/native';
 import { formatDistanceToNow } from 'date-fns';
 import { ko } from 'date-fns/locale';
 
-import { useActiveLocationLog, useLogLocation } from '@/api/location-logs';
+import { useActiveLocationLog } from '@/api/location-logs';
 import { useLocations } from '@/api/locations';
 import Button from '@/components/Button';
 import Card from '@/components/Card';
@@ -21,10 +22,10 @@ import { colorChipBorder } from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
 
 const LocationCard = () => {
+  const linkTo = useLinkTo();
   const [changeMode, setChangeMode] = useState(false);
   const { locations } = useLocations();
   const { locationLog } = useActiveLocationLog();
-  const logMutation = useLogLocation();
   const cardHeight = useSharedValue(192);
   const flexibleHeight = useAnimatedStyle(() => ({
     height: cardHeight.value,
@@ -55,8 +56,8 @@ const LocationCard = () => {
                     key={location._id}>
                     <TouchableOpacity
                       style={styles.locationChip}
-                      onPress={async () => {
-                        await logMutation.mutateAsync(location._id);
+                      onPress={() => {
+                        linkTo(`/location-log/${location._id}`);
                         setChangeMode(false);
                       }}>
                       <Text style={styles.locationChipText}>
