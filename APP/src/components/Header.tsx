@@ -1,6 +1,12 @@
 import React from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {
+  Image,
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import { useNavigation } from '@react-navigation/core';
 
@@ -13,7 +19,7 @@ const Header = () => {
   const navigation = useNavigation<RootNavigationProp<'MainScreen'>>();
   const { user, isLoading } = useUser();
   return (
-    <SafeAreaView style={styles.container} edges={['top']}>
+    <SafeAreaView style={styles.container}>
       <Pressable
         style={styles.innerContainer}
         onPress={() => navigation.push('UserScreen')}>

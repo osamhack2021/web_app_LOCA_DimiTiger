@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { useRecoilValue } from 'recoil';
 
 import client from '../client';
@@ -9,6 +9,10 @@ import User from '@/types/User';
 async function getMe(): Promise<User> {
   const { data } = await client.get('/users/me');
   return data;
+}
+
+async function patchUser(userId: string, user: User): Promise<void> {
+  await client.patch(`/users/${userId}`, user);
 }
 
 export function useUser() {
@@ -22,4 +26,9 @@ export function useUser() {
   );
 
   return { user: data, isLoading };
+}
+
+export function useEditUser() {
+  const { user: me } = useUser();
+  return useMutation((user: User) => patchUser(me!._id, user));
 }

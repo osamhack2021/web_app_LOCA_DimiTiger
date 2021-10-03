@@ -1,18 +1,16 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useNavigation } from '@react-navigation/core';
+import { StyleSheet, View } from 'react-native';
 import { useSetRecoilState } from 'recoil';
 
 import { authState } from '@/atoms';
 import Button from '@/components/Button';
-import { colorBlack, colorSplashBg } from '@/constants/colors';
-import { RootNavigationProp } from '@/Navigators';
+import Header from '@/components/Header';
+import UserCard from '@/components/UserCard';
+import { colorSplashBg } from '@/constants/colors';
 import { signOut } from '@/utils/AuthUtil';
 
 const UserScreen = () => {
   const setAuth = useSetRecoilState(authState);
-  const navigation = useNavigation<RootNavigationProp<'UserScreen'>>();
   async function logOut() {
     await signOut();
     setAuth({
@@ -22,13 +20,8 @@ const UserScreen = () => {
   }
   return (
     <View style={styles.container}>
-      <SafeAreaView>
-        <TouchableOpacity
-          style={styles.closeIcon}
-          onPress={() => navigation.goBack()}>
-          <Icon name="close" size={30} color={colorBlack} />
-        </TouchableOpacity>
-      </SafeAreaView>
+      <Header />
+      <UserCard />
       <View style={styles.contentContainer}>
         <Button onPress={() => logOut()}>로그아웃</Button>
       </View>
@@ -40,10 +33,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colorSplashBg,
     flex: 1,
-  },
-  closeIcon: {
-    alignSelf: 'flex-end',
-    margin: 20,
   },
   contentContainer: {
     alignItems: 'center',
