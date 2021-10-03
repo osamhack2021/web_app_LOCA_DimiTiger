@@ -37,6 +37,8 @@
 	</dict>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>시설 출입 시 비콘을 백그라운드에서 자동으로 인식합니다.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>시설 출입 시 비콘을 백그라운드에서 자동으로 인식합니다.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
