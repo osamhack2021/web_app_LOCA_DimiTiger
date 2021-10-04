@@ -6,10 +6,10 @@ const { createError } = require('../utils/error');
 const Errors = (exports.Errors = {});
 
 exports.getLocationLogs = async (filters) => {
-	return await LocationLog.find(filters).populate('location');
+	return await LocationLog.find(filters).populate('location').populate('user');
 };
 
 exports.createLocationLog = async ({ user, location }) => {
-	await LocationLog.updateMany({ user, location, active: false });
+	await LocationLog.updateMany({ user, active: true }, { active: false });
 	return await new LocationLog({ user, location }).save();
 };

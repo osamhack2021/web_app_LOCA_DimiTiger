@@ -37,7 +37,7 @@ exports.createLocation = {
 	validate: {
 		payload: Joi.object({
 			name: Joi.string().required(),
-			ui: Joi.any(),
+			ui: Joi.object(),
 		}),
 	},
 	handler: async (req, h) => {
@@ -58,7 +58,7 @@ exports.updateLocation = {
 		}),
 		payload: Joi.object({
 			name: Joi.string().required(),
-			ui: Joi.any(),
+			ui: Joi.object(),
 		}),
 	},
 	handler: async (req, h) => {
