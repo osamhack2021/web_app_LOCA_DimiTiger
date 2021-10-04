@@ -12,6 +12,8 @@ import com.facebook.soloader.SoLoader;
 import com.mackentoch.beaconsandroid.BeaconApplication;
 import com.swmansion.reanimated.ReanimatedJSIModulePackage;
 
+import org.altbeacon.beacon.BeaconManager;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -54,6 +56,8 @@ public class MainApplication extends BeaconApplication implements ReactApplicati
         super.onCreate();
         SoLoader.init(this, /* native exopackage */ false);
         initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+        BeaconManager.setBeaconSimulator(new TimedBeaconSimulator());
+        ((TimedBeaconSimulator) BeaconManager.getBeaconSimulator()).createTimedSimulatedBeacons();
     }
 
     /**
