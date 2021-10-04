@@ -1,4 +1,5 @@
 const Beacon = require('../models/beacon');
+const Location = require('../models/location');
 const { createError } = require('../utils/error');
 
 const Errors = (exports.Errors = {
@@ -6,7 +7,7 @@ const Errors = (exports.Errors = {
 });
 
 exports.getBeacons = async () => {
-	return await Beacon.find();
+	return await Beacon.find().populate('location');
 };
 
 exports.getBeacon = async (filters) => {

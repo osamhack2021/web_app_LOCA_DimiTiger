@@ -31,7 +31,7 @@ const beaconSchema = new mongoose.Schema(
 		timestamps: true,
 		toJSON: {
 			transform(doc, ret) {
-				ret.region.identifier = ret._id;
+				ret.region.identifier = ret.region._id;
 				return ret;
 			},
 			versionKey: false,
