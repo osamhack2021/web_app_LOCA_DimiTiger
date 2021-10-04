@@ -1,39 +1,15 @@
-import React, { useEffect } from 'react';
-import { AppState, AppStateStatus } from 'react-native';
-import { focusManager, QueryClient, QueryClientProvider } from 'react-query';
-import { createAsyncStoragePersistor } from 'react-query/createAsyncStoragePersistor-experimental';
-import { persistQueryClient } from 'react-query/persistQueryClient-experimental';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React from 'react';
+import { QueryClientProvider } from 'react-query';
 import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
-import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil';
+import { RecoilRoot, useRecoilValue } from 'recoil';
 
-import { authState, splashState } from '@/atoms';
+import AuthProvider from './utils/AuthProvider';
+
+import { splashState } from '@/atoms';
 import Navigators, { RootStackParamList } from '@/Navigators';
 import SplashScreen from '@/screens/SplashScreen';
-import { getTokens } from '@/utils/AuthUtil';
-
-const queryClient = new QueryClient();
-
-const asyncStoragePersistor = createAsyncStoragePersistor({
-  storage: AsyncStorage,
-});
-
-persistQueryClient({
-  queryClient,
-  persistor: asyncStoragePersistor,
-  maxAge: Infinity,
-});
-
-focusManager.setEventListener(handleFocus => {
-  const subscription = AppState.addEventListener(
-    'change',
-    (state: AppStateStatus) => handleFocus(state === 'active'),
-  );
-
-  return () => {
-    subscription.remove();
-  };
-});
+import BeaconProvider from '@/utils/BeaconProvider';
+import queryClient from '@/utils/queryClient';
 
 const linking: LinkingOptions<RootStackParamList> = {
   prefixes: ['https://api.loca.kimjisub.me/link'],
@@ -46,26 +22,7 @@ const linking: LinkingOptions<RootStackParamList> = {
 };
 
 const App = () => {
-  const setAuth = useSetRecoilState(authState);
   const splashDone = useRecoilValue(splashState);
-
-  useEffect(() => {
-    async function init() {
-      try {
-        const result = await getTokens();
-        setAuth({
-          authenticated: result,
-          loading: false,
-        });
-      } catch (err) {
-        setAuth({
-          authenticated: false,
-          loading: false,
-        });
-      }
-    }
-    init();
-  }, [setAuth]);
 
   return (
     <NavigationContainer linking={linking}>
@@ -77,7 +34,11 @@ const App = () => {
 export default () => (
   <RecoilRoot>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <AuthProvider>
+        <BeaconProvider>
+          <App />
+        </BeaconProvider>
+      </AuthProvider>
     </QueryClientProvider>
   </RecoilRoot>
 );

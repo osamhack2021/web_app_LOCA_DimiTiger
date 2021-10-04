@@ -5,7 +5,7 @@ import { authWithIdPassword, authWithRefreshToken } from '@/api/auth';
 import client from '@/api/client';
 import AuthResponse from '@/types/AuthResponse';
 
-async function applyToken({
+async function storeTokens({
   access_token,
   refresh_token,
   expires_in,
@@ -18,35 +18,39 @@ async function applyToken({
   ]);
 }
 
-export async function signIn(id: string, password: string) {
-  const response = await authWithIdPassword(id, password);
-  await applyToken(response);
+export async function refreshTokens(refresh_token: string) {
+  const response = await authWithRefreshToken(refresh_token);
+  await storeTokens(response);
 }
 
-export async function refresh(refresh_token: string) {
-  const response = await authWithRefreshToken(refresh_token);
-  await applyToken(response);
+export async function restoreTokens(): Promise<boolean> {
+  try {
+    const [access_token, refresh_token, expire] = (
+      await AsyncStorage.multiGet(['access_token', 'refresh_token', 'expire'])
+    ).map(pair => pair[1]);
+    if (access_token && refresh_token && expire) {
+      const expires_in = differenceInSeconds(new Date(expire), new Date());
+      //7 Days
+      if (expires_in < 7 * 24 * 60 * 60) {
+        await refreshTokens(refresh_token);
+      } else {
+        client.defaults.headers.Authorization = `Bearer ${access_token}`;
+      }
+      return true;
+    } else {
+      return false;
+    }
+  } catch {
+    return false;
+  }
+}
+
+export async function signIn(id: string, password: string) {
+  const response = await authWithIdPassword(id, password);
+  await storeTokens(response);
 }
 
 export async function signOut() {
   delete client.defaults.headers.Authorization;
   await AsyncStorage.multiRemove(['access_token', 'refresh_token', 'expire']);
-}
-
-export async function getTokens(): Promise<boolean> {
-  const [access_token, refresh_token, expire] = (
-    await AsyncStorage.multiGet(['access_token', 'refresh_token', 'expire'])
-  ).map(pair => pair[1]);
-  if (access_token && refresh_token && expire) {
-    const expires_in = differenceInSeconds(new Date(expire), new Date());
-    //7 Days
-    if (expires_in < 7 * 24 * 60 * 60) {
-      await refresh(refresh_token);
-    } else {
-      client.defaults.headers.Authorization = `Bearer ${access_token}`;
-    }
-    return true;
-  } else {
-    return false;
-  }
 }

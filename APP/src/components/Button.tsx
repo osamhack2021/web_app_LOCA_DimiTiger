@@ -3,6 +3,7 @@ import {
   StyleProp,
   StyleSheet,
   Text,
+  TextStyle,
   TouchableOpacity,
   ViewStyle,
 } from 'react-native';
@@ -12,14 +13,15 @@ import { styleShadow } from '@/constants/styles';
 
 export type ButtonProps = {
   style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
   onPress?: () => void;
   children: string;
 };
 
-const Button = ({ style, onPress, children }: ButtonProps) => {
+const Button = ({ style, textStyle, onPress, children }: ButtonProps) => {
   return (
     <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-      <Text style={styles.text}>{children}</Text>
+      <Text style={[styles.text, textStyle]}>{children}</Text>
     </TouchableOpacity>
   );
 };
