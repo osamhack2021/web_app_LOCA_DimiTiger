@@ -11,8 +11,8 @@ class Worker extends Component {
                 <div className="worker_head">지휘통제실 근무자</div>
                 <div className="worker_name">상병 김우재</div>
                 <div className="worker_time">현재</div>
-                <div className="worker_name">일병 박재성</div>
-                <div className="worker_name greyscale">일병 박재성</div>
+                <div className="worker_name">상병 박재성</div>
+                <div className="worker_name greyscale">상병 박재성</div>
                 <div className="worker_time">다음</div>
                 <div className="worker_name greyscale">상병 김우재</div>
             </div>
