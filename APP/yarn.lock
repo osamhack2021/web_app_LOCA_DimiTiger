@@ -6603,9 +6603,9 @@ react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-"react-native-beacons-manager@git://github.com/wjaykim/react-native-beacons-manager.git#324ba4fba23504e9c09943bed84a172ecdf55efd":
+"react-native-beacons-manager@git://github.com/wjaykim/react-native-beacons-manager.git#ec1e2e2f994caa579ac80fb72f9e01603da3c6e8":
   version "1.1.0"
-  resolved "git://github.com/wjaykim/react-native-beacons-manager.git#324ba4fba23504e9c09943bed84a172ecdf55efd"
+  resolved "git://github.com/wjaykim/react-native-beacons-manager.git#ec1e2e2f994caa579ac80fb72f9e01603da3c6e8"
 
 react-native-bootsplash@^3.2.6:
   version "3.2.6"
