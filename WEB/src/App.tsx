@@ -8,6 +8,7 @@ import "./App.css";
 import { CookiesProvider, useCookies } from "react-cookie";
 import client from "./api/client";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { RecoilRoot } from 'recoil';
 
 const App = () => {
   const [cookies] = useCookies(["access_token"]);
@@ -43,7 +44,9 @@ const queryClient = new QueryClient();
 const Root = () => (
   <CookiesProvider>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
     </QueryClientProvider>
   </CookiesProvider>
 );
