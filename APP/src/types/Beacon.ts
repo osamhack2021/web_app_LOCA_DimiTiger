@@ -4,7 +4,9 @@ import Location from '@/types/Location';
 
 interface Beacon {
   location: Location;
-  region: BeaconRegion;
+  region: BeaconRegion & {
+    distance?: number;
+  };
 }
 
 export default Beacon;

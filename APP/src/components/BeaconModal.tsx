@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import {
   FlatList,
   StyleSheet,
@@ -14,6 +14,7 @@ import Pin from '@images/pin.svg';
 import Button from './Button';
 import LocationIcon from './LocationIcon';
 
+import { useLogLocation } from '@/api/location-logs';
 import { beaconState } from '@/atoms';
 import * as colors from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
@@ -23,21 +24,24 @@ const { colorCancelButton, colorModalBackground, colorWhite, colorBlack } =
   colors;
 
 type BeaconModalProps = {
-  visible?: boolean;
+  visible: boolean;
+  setVisible: (visible: boolean) => void;
 };
 
-const BeaconModal = ({ visible }: BeaconModalProps) => {
+const BeaconModal = ({ visible, setVisible }: BeaconModalProps) => {
   const activeBeacons = useRecoilValue(beaconState);
+  const beacons = useMemo(() => activeBeacons, [activeBeacons]);
   const [selection, setSelection] = useState(0);
+  const logLocation = useLogLocation();
   return (
     <>
-      {!visible && (
+      {visible && (
         <View style={styles.background}>
           <View style={styles.container}>
             <Pin />
             <Text style={styles.titleText}>위치가 탐지되었습니다.</Text>
             <FlatList
-              data={activeBeacons}
+              data={beacons}
               renderItem={({
                 item: beacon,
                 index,
@@ -62,7 +66,7 @@ const BeaconModal = ({ visible }: BeaconModalProps) => {
                       styles.distanceText,
                       { color: colors[`color${beacon.location.ui.color}Text`] },
                     ]}>
-                    20m
+                    {`${Math.round(beacon.region?.distance || Infinity)}m`}
                   </Text>
                   <Icon
                     name="checkbox-marked-circle"
@@ -79,11 +83,20 @@ const BeaconModal = ({ visible }: BeaconModalProps) => {
             />
             <View style={styles.buttonContainer}>
               <Button
+                onPress={() => setVisible(false)}
                 style={styles.cancelButton}
                 textStyle={styles.cancelButtonText}>
                 취소
               </Button>
-              <Button>변경</Button>
+              <Button
+                onPress={async () => {
+                  await logLocation.mutateAsync(
+                    activeBeacons[selection].location._id,
+                  );
+                  setVisible(false);
+                }}>
+                변경
+              </Button>
             </View>
           </View>
         </View>
