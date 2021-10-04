@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   FlatList,
   StyleSheet,
@@ -30,9 +30,41 @@ type BeaconModalProps = {
 
 const BeaconModal = ({ visible, setVisible }: BeaconModalProps) => {
   const activeBeacons = useRecoilValue(beaconState);
-  const beacons = useMemo(() => activeBeacons, [activeBeacons]);
   const [selection, setSelection] = useState(0);
   const logLocation = useLogLocation();
+
+  const LocationItem = useCallback(
+    ({ item: beacon, index }: { item: Beacon; index: number }) => (
+      <TouchableOpacity
+        onPress={() => setSelection(index)}
+        style={styles.locationItem}>
+        <LocationIcon
+          icon={beacon.location.ui.icon}
+          width="30"
+          height="30"
+          style={styles.locationIcon}
+        />
+        <Text style={styles.locationText}>{beacon.location.name}</Text>
+        <Text
+          style={[
+            styles.distanceText,
+            { color: colors[`color${beacon.location.ui.color}Text`] },
+          ]}>
+          {`${Math.round(beacon.region?.distance || Infinity)}m`}
+        </Text>
+        <Icon
+          name="checkbox-marked-circle"
+          color={
+            selection === index
+              ? colors[`color${beacon.location.ui.color}Text`]
+              : colorWhite
+          }
+        />
+      </TouchableOpacity>
+    ),
+    [selection],
+  );
+
   return (
     <>
       {visible && (
@@ -41,43 +73,8 @@ const BeaconModal = ({ visible, setVisible }: BeaconModalProps) => {
             <Pin />
             <Text style={styles.titleText}>위치가 탐지되었습니다.</Text>
             <FlatList
-              data={beacons}
-              renderItem={({
-                item: beacon,
-                index,
-              }: {
-                item: Beacon;
-                index: number;
-              }) => (
-                <TouchableOpacity
-                  onPress={() => setSelection(index)}
-                  style={styles.locationItem}>
-                  <LocationIcon
-                    icon={beacon.location.ui.icon}
-                    width="30"
-                    height="30"
-                    style={styles.locationIcon}
-                  />
-                  <Text style={styles.locationText}>
-                    {beacon.location.name}
-                  </Text>
-                  <Text
-                    style={[
-                      styles.distanceText,
-                      { color: colors[`color${beacon.location.ui.color}Text`] },
-                    ]}>
-                    {`${Math.round(beacon.region?.distance || Infinity)}m`}
-                  </Text>
-                  <Icon
-                    name="checkbox-marked-circle"
-                    color={
-                      selection === index
-                        ? colors[`color${beacon.location.ui.color}Text`]
-                        : colorWhite
-                    }
-                  />
-                </TouchableOpacity>
-              )}
+              data={activeBeacons}
+              renderItem={LocationItem}
               ItemSeparatorComponent={() => <View style={styleDivider} />}
               style={styles.locationList}
             />
