@@ -1,7 +1,7 @@
 [{
   "relation": ["delegate_permission/common.handle_all_urls"],
   "target": {
-    "namespace": "io.dimitiger.loca",
+    "namespace": "android_app",
     "package_name": "io.dimitiger.loca",
     "sha256_cert_fingerprints": [
       "0c:cb:4a:84:e1:4b:26:37:29:60:13:fb:fc:11:bb:a3:3e:2a:63:0f:4d:fb:49:df:17:7a:9e:c3:53:ed:29:fb",
