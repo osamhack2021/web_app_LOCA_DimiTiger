@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { DeviceEventEmitter, Platform } from 'react-native';
 import Beacons from 'react-native-beacons-manager';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRecoilState } from 'recoil';
 
 import { useBeacons } from '@/api/beacons';
@@ -100,6 +101,10 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
     }
     setModalVisible(true);
   }, [visibleBeacons.length]);
+
+  useEffect(() => {
+    AsyncStorage.setItem('beacons', JSON.stringify(beacons));
+  }, [beacons]);
 
   return (
     <>
