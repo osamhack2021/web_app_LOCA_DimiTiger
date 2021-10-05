@@ -19,8 +19,7 @@ export async function logLocation(
   user: string,
   location: string,
 ): Promise<void> {
-  const { data } = await client.post('/location-logs', { user, location });
-  return data;
+  await client.post('/location-logs', { user, location });
 }
 
 export function useActiveLocationLog() {
