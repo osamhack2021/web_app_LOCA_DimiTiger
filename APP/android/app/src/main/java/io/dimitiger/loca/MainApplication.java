@@ -1,5 +1,6 @@
 package io.dimitiger.loca;
 
+import android.app.Application;
 import android.content.Context;
 
 import com.facebook.react.PackageList;
@@ -9,7 +10,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JSIModulePackage;
 import com.facebook.soloader.SoLoader;
-import com.mackentoch.beaconsandroid.BeaconApplication;
+import com.mackentoch.beaconsandroid.RNBeacon;
 import com.swmansion.reanimated.ReanimatedJSIModulePackage;
 
 import org.altbeacon.beacon.BeaconManager;
@@ -17,7 +18,7 @@ import org.altbeacon.beacon.BeaconManager;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-public class MainApplication extends BeaconApplication implements ReactApplication {
+public class MainApplication extends Application implements ReactApplication {
 
     private final ReactNativeHost mReactNativeHost =
             new ReactNativeHost(this) {
@@ -56,6 +57,7 @@ public class MainApplication extends BeaconApplication implements ReactApplicati
         super.onCreate();
         SoLoader.init(this, /* native exopackage */ false);
         initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+        RNBeacon.init(this);
         BeaconManager.setBeaconSimulator(new TimedBeaconSimulator());
         ((TimedBeaconSimulator) BeaconManager.getBeaconSimulator()).createTimedSimulatedBeacons();
     }
