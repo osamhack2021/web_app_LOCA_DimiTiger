@@ -20,7 +20,7 @@
     "date-fns": "^2.24.0",
     "react": "17.0.2",
     "react-native": "0.65.1",
-    "react-native-beacons-manager": "git://github.com/wjaykim/react-native-beacons-manager.git#ec1e2e2f994caa579ac80fb72f9e01603da3c6e8",
+    "react-native-beacons-manager": "git://github.com/wjaykim/react-native-beacons-manager.git#d7cf9e8f32f4d9208f48757fbe4bfa4f7c0b6a57",
     "react-native-bootsplash": "^3.2.6",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-linear-gradient": "^2.5.6",
