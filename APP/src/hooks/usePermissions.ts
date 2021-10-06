@@ -34,7 +34,7 @@ const usePermissions = () => {
     }
     async function checkAndRequest() {
       let notification = await checkNotifications();
-      if (!notification) {
+      if (notification.status === 'denied') {
         notification = await requestNotifications(['alert', 'sound']);
       }
 
