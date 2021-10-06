@@ -21,20 +21,15 @@ import Logo from '@images/loca_logo.svg';
 
 import { authState } from '@/atoms';
 import Button from '@/components/Button';
-import {
-  colorButton,
-  colorTextInput,
-  colorTextInputLabel,
-} from '@/constants/colors';
+import LocaTextInput from '@/components/LocaTextInput';
+import { colorTextInputLabel } from '@/constants/colors';
 import { signIn } from '@/utils/AuthUtil';
 
-const AuthScreen = () => {
+const SignInScreen = () => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
-  const [idFocused, setIdFocused] = useState(false);
-  const [pwFocused, setPwFocused] = useState(false);
   const [error, setError] = useState<string>();
-  const pwRef = useRef<TextInput | null>(null);
+  const pwRef = useRef<TextInput>(null);
   const setAuth = useSetRecoilState(authState);
   const scale = useSharedValue(1);
   const animatedLogo = useAnimatedStyle(() => ({
@@ -99,7 +94,7 @@ const AuthScreen = () => {
         </Animated.View>
         <View style={[styles.container]}>
           <Text style={styles.label}>군번</Text>
-          <TextInput
+          <LocaTextInput
             value={id}
             onChangeText={text => {
               if (text.length === 2) {
@@ -112,32 +107,20 @@ const AuthScreen = () => {
                 setId(text);
               }
             }}
-            onFocus={() => setIdFocused(true)}
-            onBlur={() => setIdFocused(false)}
-            onSubmitEditing={() => pwRef.current?.focus()}
+            nextInputRef={pwRef}
             autoCapitalize="none"
             keyboardType="number-pad"
             returnKeyType="next"
-            style={[
-              styles.textInput,
-              idFocused ? styles.textInputFocus : styles.textInputBlur,
-            ]}
           />
           <Text style={styles.label}>비밀번호</Text>
-          <TextInput
+          <LocaTextInput
             ref={pwRef}
             value={password}
             onChangeText={setPassword}
-            onFocus={() => setPwFocused(true)}
-            onBlur={() => setPwFocused(false)}
             onSubmitEditing={() => authenticate()}
             autoCapitalize="none"
             returnKeyType="done"
             secureTextEntry={true}
-            style={[
-              styles.textInput,
-              pwFocused ? styles.textInputFocus : styles.textInputBlur,
-            ]}
           />
           <Text style={styles.errorLabel}>{error}</Text>
           <Button onPress={() => authenticate()} style={styles.loginButton}>
@@ -167,21 +150,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
   },
-  textInput: {
-    backgroundColor: colorTextInput,
-    borderRadius: 5,
-    borderWidth: 2,
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginHorizontal: 20,
-    padding: 10,
-  },
-  textInputFocus: {
-    borderColor: colorButton,
-  },
-  textInputBlur: {
-    borderColor: colorTextInput,
-  },
   errorLabel: {
     color: 'red',
     paddingHorizontal: 20,
@@ -194,4 +162,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AuthScreen;
+export default SignInScreen;
