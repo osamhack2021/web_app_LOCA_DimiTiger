@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import Animated from 'react-native-reanimated';
 
 import { colorWhite } from '@/constants/colors';
 import { styleShadow } from '@/constants/styles';
@@ -9,9 +10,15 @@ export type CardProps = {
   children?: React.ReactNode;
 };
 
-const Card = ({ style, children }: CardProps) => {
-  return <View style={[styles.container, styleShadow, style]}>{children}</View>;
-};
+class Card extends React.Component<CardProps> {
+  render() {
+    return (
+      <View style={[styles.container, styleShadow, this.props.style]}>
+        {this.props.children}
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -23,4 +30,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Card;
+export default Animated.createAnimatedComponent(Card);
