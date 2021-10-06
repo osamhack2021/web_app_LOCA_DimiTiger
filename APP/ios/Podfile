@@ -14,6 +14,7 @@ target 'LOCA' do
 
   permissions_path = '../node_modules/react-native-permissions/ios'
   pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways"
+  pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications"
 
   target 'LOCATests' do
     inherit! :complete
