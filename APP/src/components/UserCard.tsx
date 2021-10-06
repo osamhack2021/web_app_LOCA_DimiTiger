@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -19,9 +19,21 @@ const UserCard = () => {
   const [editMode, setEditMode] = useState(false);
   const [editedUser, setEditedUser] = useState<Partial<User>>({});
 
+  const toggleMode = useCallback(async () => {
+    if (editMode) {
+      await editUser.mutateAsync(editedUser);
+    }
+
+    setEditMode(!editMode);
+  }, [editMode, editUser, editedUser]);
+
   useEffect(() => {
     if (!editMode && user) {
-      setEditedUser(user);
+      setEditedUser({
+        phone: user.phone,
+        email: user.email,
+        rank: user.rank,
+      });
     }
   }, [user, editMode]);
 
@@ -34,9 +46,7 @@ const UserCard = () => {
           <Icon name="chevron-left" size={30} color={colorBlack} />
         </TouchableOpacity>
         <Text style={styles.titleText}>사용자 정보</Text>
-        <Button
-          style={styles.editButton}
-          onPress={() => setEditMode(!editMode)}>
+        <Button style={styles.editButton} onPress={toggleMode}>
           {editMode ? '완료' : '수정'}
         </Button>
       </View>
@@ -83,7 +93,7 @@ const UserCard = () => {
         <View style={styleDivider} />
         <View style={styles.userItem}>
           <Text>비밀번호</Text>
-          <Button>변경</Button>
+          <Button onPress={() => {}}>변경</Button>
         </View>
       </View>
     </Card>
