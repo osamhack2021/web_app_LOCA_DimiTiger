@@ -2,9 +2,11 @@ import { useEffect } from 'react';
 import { Platform } from 'react-native';
 import {
   checkMultiple,
+  checkNotifications,
   PERMISSIONS,
   PermissionStatus,
   requestMultiple,
+  requestNotifications,
   RESULTS,
 } from 'react-native-permissions';
 import { useRecoilState } from 'recoil';
@@ -31,6 +33,11 @@ const usePermissions = () => {
       return;
     }
     async function checkAndRequest() {
+      let notification = await checkNotifications();
+      if (!notification) {
+        notification = await requestNotifications(['alert', 'sound']);
+      }
+
       const output: Partial<PermissionStatuses> = {};
       let granted = true;
       const checkedStatuses = await checkMultiple(permissions);
