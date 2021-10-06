@@ -25,3 +25,5 @@ export const colorRedStart = '#FFF6F7';
 export const colorRedEnd = '#FFC8D1';
 export const colorRedText = '#D44A7E';
 export const colorModalBackground = 'rgba(0, 0, 0, 0.5)';
+export const colorLocaStart = '#56CCF2';
+export const colorLocaEnd = '#2F80ED';
