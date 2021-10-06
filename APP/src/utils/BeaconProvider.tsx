@@ -103,6 +103,9 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
   }, [visibleBeacons.length]);
 
   useEffect(() => {
+    if (!beacons) {
+      return;
+    }
     AsyncStorage.setItem('beacons', JSON.stringify(beacons));
   }, [beacons]);
 
