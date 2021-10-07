@@ -5,8 +5,9 @@ import React, {
   useState,
 } from 'react';
 import { Controller, ControllerProps, FieldValues } from 'react-hook-form';
-import { Text, TextInput, TextInputProps } from 'react-native';
+import { TextInput, TextInputProps } from 'react-native';
 
+import Text from '@/components/Text';
 import {
   styleTextInput,
   styleTextInputBlur,

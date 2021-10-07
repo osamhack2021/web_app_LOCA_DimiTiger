@@ -1,17 +1,12 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 
 import { useNotices } from '@/api/notices';
 import NoticeItem from '@/components/NoticeItem';
+import Text from '@/components/Text';
 import { colorBlack } from '@/constants/colors';
 import { RootNavigationProp } from '@/Navigators';
 

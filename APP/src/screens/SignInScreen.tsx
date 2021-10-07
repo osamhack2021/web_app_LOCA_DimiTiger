@@ -6,7 +6,6 @@ import {
   Platform,
   Pressable,
   StyleSheet,
-  Text,
   TextInput,
   View,
 } from 'react-native';
@@ -23,6 +22,7 @@ import Logo from '@assets/images/loca_logo.svg';
 import { authState } from '@/atoms';
 import Button from '@/components/Button';
 import ControlledTextInput from '@/components/ControlledTextInput';
+import Text from '@/components/Text';
 import { colorTextInputLabel } from '@/constants/colors';
 import { signIn } from '@/utils/AuthUtil';
 

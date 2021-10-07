@@ -4,7 +4,6 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   StyleSheet,
-  Text,
   TextInput,
   TouchableOpacity,
   View,
@@ -15,6 +14,7 @@ import { useNavigation } from '@react-navigation/core';
 
 import Button from '@/components/Button';
 import ControlledTextInput from '@/components/ControlledTextInput';
+import Text from '@/components/Text';
 import { colorBlack, colorTextInputLabel } from '@/constants/colors';
 import { RootNavigationProp } from '@/Navigators';
 import RegisterData from '@/types/RegisterData';

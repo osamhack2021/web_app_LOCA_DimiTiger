@@ -4,15 +4,17 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 import { useRecoilValue } from 'recoil';
 
-import SignInScreen from './screens/SignInScreen';
-import SignUpScreen from './screens/SignUpScreen';
+import RegisterDoneScreen from './screens/RegisterDoneScreen';
 
 import { authState } from '@/atoms';
 import LocationScreen from '@/screens/LocationScreen';
 import MainScreen from '@/screens/MainScreen';
 import NoticeScreen from '@/screens/NoticeScreen';
+import SignInScreen from '@/screens/SignInScreen';
+import SignUpScreen from '@/screens/SignUpScreen';
 import UserScreen from '@/screens/UserScreen';
 import WelcomeScreen from '@/screens/WelcomeScreen';
+import User from '@/types/User';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -35,6 +37,7 @@ const RootStack = () => {
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
           <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen name="RegisterDone" component={RegisterDoneScreen} />
         </>
       )}
     </Stack.Navigator>
@@ -45,6 +48,9 @@ export type RootStackParamList = {
   Welcome: undefined;
   SignIn: undefined;
   SignUp: undefined;
+  RegisterDone: {
+    user: User;
+  };
   MainScreen: undefined;
   NoticeScreen: undefined;
   LocationScreen: {
