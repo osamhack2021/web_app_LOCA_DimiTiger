@@ -8,13 +8,14 @@ import {
 
 const Text = (props: PropsWithChildren<TextProps>) => {
   const { style, ...rest } = props;
-  const { fontWeight } = StyleSheet.flatten(style);
+  const { fontWeight } = StyleSheet.flatten(style) || {};
   return (
     <RNText
       style={[
         fontWeight === 'bold'
           ? styleNanumBarunGothicBold
           : styleNanumBarunGothic,
+        { fontSize: 14 },
         style,
       ]}
       {...rest}
