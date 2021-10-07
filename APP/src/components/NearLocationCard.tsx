@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Animated, {
   FadeInDown,
   FadeInLeft,
@@ -17,6 +17,7 @@ import { beaconState } from '@/atoms';
 import Button from '@/components/Button';
 import Card from '@/components/Card';
 import LocationIcon from '@/components/LocationIcon';
+import Text from '@/components/Text';
 import * as colors from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
 

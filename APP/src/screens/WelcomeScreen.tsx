@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, {
@@ -14,6 +14,7 @@ import { useNavigation } from '@react-navigation/core';
 
 import Logo from '@assets/images/loca_logo_white.svg';
 
+import Text from '@/components/Text';
 import { colorLocaEnd, colorLocaStart, colorWhite } from '@/constants/colors';
 import { RootNavigationProp } from '@/Navigators';
 

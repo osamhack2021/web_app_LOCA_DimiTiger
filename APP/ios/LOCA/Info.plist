@@ -57,6 +57,8 @@
 		<string>Octicons.ttf</string>
 		<string>Zocial.ttf</string>
 		<string>Fontisto.ttf</string>
+		<string>NanumBarunGothicOTF.otf</string>
+		<string>NanumBarunGothicOTFBold.otf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

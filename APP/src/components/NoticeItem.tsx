@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import Card, { CardProps } from '@/components/Card';
+import Text from '@/components/Text';
 import {
   colorBlack,
   colorEmergencyEnd,

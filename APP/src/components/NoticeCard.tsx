@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Animated, { FadeInLeft, FadeOutLeft } from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/core';
 import { useNotices } from '@/api/notices';
 import Card from '@/components/Card';
 import NoticeItem from '@/components/NoticeItem';
+import Text from '@/components/Text';
 import { colorEllipsis } from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
 import { RootNavigationProp } from '@/Navigators';
