@@ -9,13 +9,12 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useRecoilValue } from 'recoil';
 
-import Pin from '@images/pin.svg';
-
-import Button from './Button';
-import LocationIcon from './LocationIcon';
+import Pin from '@assets/images/pin.svg';
 
 import { useLogLocation } from '@/api/location-logs';
 import { beaconState } from '@/atoms';
+import Button from '@/components/Button';
+import LocationIcon from '@/components/LocationIcon';
 import * as colors from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
 import Beacon from '@/types/Beacon';

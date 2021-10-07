@@ -37,7 +37,7 @@ const Header = () => {
           <>
             <Image
               style={styles.logoImage}
-              source={require('@images/kctc.png')}
+              source={require('@assets/images/kctc.png')}
             />
             <View style={styles.textContainer}>
               <Text>육군과학화전투훈련단 근무지원대대</Text>

@@ -9,7 +9,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import Logo from '@images/loca_logo.svg';
+import Logo from '@assets/images/loca_logo.svg';
 
 import { authState, splashState } from '@/atoms';
 import { colorSplashBg } from '@/constants/colors';
