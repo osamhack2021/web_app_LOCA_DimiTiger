@@ -12,7 +12,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/core';
 
-import Logo from '@images/loca_logo_white.svg';
+import Logo from '@assets/images/loca_logo_white.svg';
 
 import { colorLocaEnd, colorLocaStart, colorWhite } from '@/constants/colors';
 import { RootNavigationProp } from '@/Navigators';
