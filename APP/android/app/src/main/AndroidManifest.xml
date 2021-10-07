@@ -41,24 +41,17 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="api.loca.kimjisub.me"
-                    android:scheme="http" />
-                <data
-                    android:host="api.loca.kimjisub.me"
-                    android:scheme="https" />
+                    android:scheme="https"
+                    android:host="api.loca.kimjisub.me" />
             </intent-filter>
-            <intent-filter android:autoVerify="true"
-                tools:targetApi="m">
+            <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
 
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="api.loca.kimjisub.me"
-                    android:scheme="http" />
-                <data
-                    android:host="api.loca.kimjisub.me"
-                    android:scheme="https" />
+                    android:scheme="https"
+                    android:host="api.loca.kimjisub.me" />
             </intent-filter>
         </activity>
 

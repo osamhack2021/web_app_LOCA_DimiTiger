@@ -4,15 +4,21 @@ import { useRecoilValue } from 'recoil';
 import client from '../client';
 
 import { authState } from '@/atoms';
+import RegisterData from '@/types/RegisterData';
 import User from '@/types/User';
+import queryClient from '@/utils/queryClient';
 
 async function getMe(): Promise<User> {
   const { data } = await client.get('/users/me');
   return data;
 }
 
-async function patchUser(userId: string, user: User): Promise<void> {
+async function patchUser(userId: string, user: Partial<User>): Promise<void> {
   await client.patch(`/users/${userId}`, user);
+}
+
+export async function registerUser(data: RegisterData): Promise<void> {
+  await client.post('/users/register', data);
 }
 
 export function useUser() {
@@ -30,5 +36,9 @@ export function useUser() {
 
 export function useEditUser() {
   const { user: me } = useUser();
-  return useMutation((user: User) => patchUser(me!._id, user));
+  return useMutation((user: Partial<User>) => patchUser(me!._id, user), {
+    onSuccess: () => {
+      queryClient.invalidateQueries(['users', 'me']);
+    },
+  });
 }

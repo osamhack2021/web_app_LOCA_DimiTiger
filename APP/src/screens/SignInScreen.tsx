@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -21,20 +22,15 @@ import Logo from '@images/loca_logo.svg';
 
 import { authState } from '@/atoms';
 import Button from '@/components/Button';
-import {
-  colorButton,
-  colorTextInput,
-  colorTextInputLabel,
-} from '@/constants/colors';
+import ControlledTextInput from '@/components/ControlledTextInput';
+import { colorTextInputLabel } from '@/constants/colors';
 import { signIn } from '@/utils/AuthUtil';
 
-const AuthScreen = () => {
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
-  const [idFocused, setIdFocused] = useState(false);
-  const [pwFocused, setPwFocused] = useState(false);
+const SignInScreen = () => {
+  const { control, handleSubmit } =
+    useForm<{ serial: string; password: string }>();
   const [error, setError] = useState<string>();
-  const pwRef = useRef<TextInput | null>(null);
+  const pwRef = useRef<TextInput>(null);
   const setAuth = useSetRecoilState(authState);
   const scale = useSharedValue(1);
   const animatedLogo = useAnimatedStyle(() => ({
@@ -49,27 +45,30 @@ const AuthScreen = () => {
     scale.value = 1;
   }, [scale]);
 
-  const authenticate = useCallback(async () => {
-    try {
-      await signIn(id, password);
-      setAuth({
-        authenticated: true,
-        loading: false,
-      });
-    } catch (err) {
-      let message = '';
-      if (axios.isAxiosError(err)) {
-        switch (err.response?.status) {
-          case 401:
-            message = '군번 또는 비밀번호를 확인하세요.';
-            break;
-          default:
-            message = '오류가 발생했습니다.';
+  const authenticate = useCallback(
+    async ({ serial, password }) => {
+      try {
+        await signIn(serial, password);
+        setAuth({
+          authenticated: true,
+          loading: false,
+        });
+      } catch (err) {
+        let message = '';
+        if (axios.isAxiosError(err)) {
+          switch (err.response?.status) {
+            case 401:
+              message = '군번 또는 비밀번호를 확인하세요.';
+              break;
+            default:
+              message = '오류가 발생했습니다.';
+          }
         }
+        setError(message);
       }
-      setError(message);
-    }
-  }, [id, password, setAuth]);
+    },
+    [setAuth],
+  );
 
   useEffect(() => {
     const event: 'Will' | 'Did' = Platform.select({
@@ -99,48 +98,43 @@ const AuthScreen = () => {
         </Animated.View>
         <View style={[styles.container]}>
           <Text style={styles.label}>군번</Text>
-          <TextInput
-            value={id}
-            onChangeText={text => {
-              if (text.length === 2) {
-                if (id.length === 1) {
-                  setId(text + '-');
-                } else {
-                  setId(text.slice(0, 1));
-                }
-              } else {
-                setId(text);
-              }
-            }}
-            onFocus={() => setIdFocused(true)}
-            onBlur={() => setIdFocused(false)}
-            onSubmitEditing={() => pwRef.current?.focus()}
+          <ControlledTextInput
+            control={control}
+            name="serial"
+            nextInputRef={pwRef}
             autoCapitalize="none"
-            keyboardType="number-pad"
             returnKeyType="next"
-            style={[
-              styles.textInput,
-              idFocused ? styles.textInputFocus : styles.textInputBlur,
-            ]}
+            rules={{
+              required: {
+                value: true,
+                message: '군번을 입력하세요.',
+              },
+              pattern: {
+                value: /\d{2}-\d{6,8}/,
+                message: '군번 형식이 올바르지 않습니다.',
+              },
+            }}
           />
           <Text style={styles.label}>비밀번호</Text>
-          <TextInput
+          <ControlledTextInput
+            control={control}
+            name="password"
             ref={pwRef}
-            value={password}
-            onChangeText={setPassword}
-            onFocus={() => setPwFocused(true)}
-            onBlur={() => setPwFocused(false)}
-            onSubmitEditing={() => authenticate()}
+            onSubmitEditing={handleSubmit(authenticate)}
             autoCapitalize="none"
             returnKeyType="done"
             secureTextEntry={true}
-            style={[
-              styles.textInput,
-              pwFocused ? styles.textInputFocus : styles.textInputBlur,
-            ]}
+            rules={{
+              required: {
+                value: true,
+                message: '비밀번호를 입력하세요.',
+              },
+            }}
           />
           <Text style={styles.errorLabel}>{error}</Text>
-          <Button onPress={() => authenticate()} style={styles.loginButton}>
+          <Button
+            onPress={handleSubmit(authenticate)}
+            style={styles.loginButton}>
             로그인
           </Button>
         </View>
@@ -167,21 +161,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
   },
-  textInput: {
-    backgroundColor: colorTextInput,
-    borderRadius: 5,
-    borderWidth: 2,
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginHorizontal: 20,
-    padding: 10,
-  },
-  textInputFocus: {
-    borderColor: colorButton,
-  },
-  textInputBlur: {
-    borderColor: colorTextInput,
-  },
   errorLabel: {
     color: 'red',
     paddingHorizontal: 20,
@@ -194,4 +173,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AuthScreen;
+export default SignInScreen;

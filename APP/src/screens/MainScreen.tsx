@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 
 import Header from '@/components/Header';
 import LocationCard from '@/components/LocationCard';
+import NearLocationCard from '@/components/NearLocationCard';
 import NoticeCard from '@/components/NoticeCard';
 
 const MainScreen = () => {
@@ -11,6 +12,7 @@ const MainScreen = () => {
       <Header />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <LocationCard />
+        <NearLocationCard />
         <NoticeCard />
       </ScrollView>
     </View>

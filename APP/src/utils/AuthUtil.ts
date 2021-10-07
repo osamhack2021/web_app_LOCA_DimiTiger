@@ -10,7 +10,7 @@ async function storeTokens({
   refresh_token,
   expires_in,
 }: AuthResponse) {
-  client.defaults.headers.Authorization = `Bearer ${access_token}`;
+  client.defaults.headers!.Authorization = `Bearer ${access_token}`;
   await AsyncStorage.multiSet([
     ['access_token', access_token],
     ['refresh_token', refresh_token],
@@ -34,7 +34,7 @@ export async function restoreTokens(): Promise<boolean> {
       if (expires_in < 7 * 24 * 60 * 60) {
         await refreshTokens(refresh_token);
       } else {
-        client.defaults.headers.Authorization = `Bearer ${access_token}`;
+        client.defaults.headers!.Authorization = `Bearer ${access_token}`;
       }
       return true;
     } else {
@@ -51,6 +51,6 @@ export async function signIn(id: string, password: string) {
 }
 
 export async function signOut() {
-  delete client.defaults.headers.Authorization;
+  delete client.defaults.headers!.Authorization;
   await AsyncStorage.multiRemove(['access_token', 'refresh_token', 'expire']);
 }

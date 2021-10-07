@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { DeviceEventEmitter, Platform } from 'react-native';
 import Beacons from 'react-native-beacons-manager';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRecoilState } from 'recoil';
 
 import { useBeacons } from '@/api/beacons';
 import { beaconState } from '@/atoms';
-import BeaconModal from '@/components/BeaconModal';
 import usePermissions from '@/hooks/usePermissions';
 
 type BeaconProviderProps = {
@@ -16,7 +16,6 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
   const { beacons } = useBeacons();
   const { fullyGranted } = usePermissions();
   const [visibleBeacons, setVisibleBeacons] = useRecoilState(beaconState);
-  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     if (!beacons || !fullyGranted) {
@@ -98,15 +97,17 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
     if (visibleBeacons.length === 0) {
       return;
     }
-    setModalVisible(true);
+    //setModalVisible(true);
   }, [visibleBeacons.length]);
 
-  return (
-    <>
-      {children}
-      <BeaconModal visible={modalVisible} setVisible={setModalVisible} />
-    </>
-  );
+  useEffect(() => {
+    if (!beacons) {
+      return;
+    }
+    AsyncStorage.setItem('beacons', JSON.stringify(beacons));
+  }, [beacons]);
+
+  return <>{children}</>;
 };
 
 export default BeaconProvider;

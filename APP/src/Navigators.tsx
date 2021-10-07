@@ -4,12 +4,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 import { useRecoilValue } from 'recoil';
 
+import SignInScreen from './screens/SignInScreen';
+import SignUpScreen from './screens/SignUpScreen';
+
 import { authState } from '@/atoms';
-import AuthScreen from '@/screens/AuthScreen';
 import LocationScreen from '@/screens/LocationScreen';
 import MainScreen from '@/screens/MainScreen';
 import NoticeScreen from '@/screens/NoticeScreen';
 import UserScreen from '@/screens/UserScreen';
+import WelcomeScreen from '@/screens/WelcomeScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -18,22 +21,20 @@ const RootStack = () => {
 
   return (
     <Stack.Navigator
-      initialRouteName="MainScreen"
+      initialRouteName={authenticated ? 'MainScreen' : 'Welcome'}
       screenOptions={{ headerShown: false, animation: 'fade' }}>
       {authenticated ? (
         <>
           <Stack.Screen name="MainScreen" component={MainScreen} />
           <Stack.Screen name="LocationScreen" component={LocationScreen} />
           <Stack.Screen name="NoticeScreen" component={NoticeScreen} />
-          <Stack.Screen
-            name="UserScreen"
-            component={UserScreen}
-            options={{ presentation: 'transparentModal' }}
-          />
+          <Stack.Screen name="UserScreen" component={UserScreen} />
         </>
       ) : (
         <>
-          <Stack.Screen name="AuthScreen" component={AuthScreen} />
+          <Stack.Screen name="Welcome" component={WelcomeScreen} />
+          <Stack.Screen name="SignIn" component={SignInScreen} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
         </>
       )}
     </Stack.Navigator>
@@ -41,7 +42,9 @@ const RootStack = () => {
 };
 
 export type RootStackParamList = {
-  AuthScreen: undefined;
+  Welcome: undefined;
+  SignIn: undefined;
+  SignUp: undefined;
   MainScreen: undefined;
   NoticeScreen: undefined;
   LocationScreen: {
