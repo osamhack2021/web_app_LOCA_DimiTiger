@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -21,13 +22,13 @@ import Logo from '@images/loca_logo.svg';
 
 import { authState } from '@/atoms';
 import Button from '@/components/Button';
-import LocaTextInput from '@/components/LocaTextInput';
+import ControlledTextInput from '@/components/ControlledTextInput';
 import { colorTextInputLabel } from '@/constants/colors';
 import { signIn } from '@/utils/AuthUtil';
 
 const SignInScreen = () => {
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
+  const { control, handleSubmit } =
+    useForm<{ serial: string; password: string }>();
   const [error, setError] = useState<string>();
   const pwRef = useRef<TextInput>(null);
   const setAuth = useSetRecoilState(authState);
@@ -44,27 +45,30 @@ const SignInScreen = () => {
     scale.value = 1;
   }, [scale]);
 
-  const authenticate = useCallback(async () => {
-    try {
-      await signIn(id, password);
-      setAuth({
-        authenticated: true,
-        loading: false,
-      });
-    } catch (err) {
-      let message = '';
-      if (axios.isAxiosError(err)) {
-        switch (err.response?.status) {
-          case 401:
-            message = '군번 또는 비밀번호를 확인하세요.';
-            break;
-          default:
-            message = '오류가 발생했습니다.';
+  const authenticate = useCallback(
+    async ({ serial, password }) => {
+      try {
+        await signIn(serial, password);
+        setAuth({
+          authenticated: true,
+          loading: false,
+        });
+      } catch (err) {
+        let message = '';
+        if (axios.isAxiosError(err)) {
+          switch (err.response?.status) {
+            case 401:
+              message = '군번 또는 비밀번호를 확인하세요.';
+              break;
+            default:
+              message = '오류가 발생했습니다.';
+          }
         }
+        setError(message);
       }
-      setError(message);
-    }
-  }, [id, password, setAuth]);
+    },
+    [setAuth],
+  );
 
   useEffect(() => {
     const event: 'Will' | 'Did' = Platform.select({
@@ -94,36 +98,43 @@ const SignInScreen = () => {
         </Animated.View>
         <View style={[styles.container]}>
           <Text style={styles.label}>군번</Text>
-          <LocaTextInput
-            value={id}
-            onChangeText={text => {
-              if (text.length === 2) {
-                if (id.length === 1) {
-                  setId(text + '-');
-                } else {
-                  setId(text.slice(0, 1));
-                }
-              } else {
-                setId(text);
-              }
-            }}
+          <ControlledTextInput
+            control={control}
+            name="serial"
             nextInputRef={pwRef}
             autoCapitalize="none"
-            keyboardType="number-pad"
             returnKeyType="next"
+            rules={{
+              required: {
+                value: true,
+                message: '군번을 입력하세요.',
+              },
+              pattern: {
+                value: /\d{2}-\d{6,8}/,
+                message: '군번 형식이 올바르지 않습니다.',
+              },
+            }}
           />
           <Text style={styles.label}>비밀번호</Text>
-          <LocaTextInput
+          <ControlledTextInput
+            control={control}
+            name="password"
             ref={pwRef}
-            value={password}
-            onChangeText={setPassword}
-            onSubmitEditing={() => authenticate()}
+            onSubmitEditing={handleSubmit(authenticate)}
             autoCapitalize="none"
             returnKeyType="done"
             secureTextEntry={true}
+            rules={{
+              required: {
+                value: true,
+                message: '비밀번호를 입력하세요.',
+              },
+            }}
           />
           <Text style={styles.errorLabel}>{error}</Text>
-          <Button onPress={() => authenticate()} style={styles.loginButton}>
+          <Button
+            onPress={handleSubmit(authenticate)}
+            style={styles.loginButton}>
             로그인
           </Button>
         </View>

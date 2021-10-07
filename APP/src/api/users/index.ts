@@ -4,6 +4,7 @@ import { useRecoilValue } from 'recoil';
 import client from '../client';
 
 import { authState } from '@/atoms';
+import RegisterData from '@/types/RegisterData';
 import User from '@/types/User';
 import queryClient from '@/utils/queryClient';
 
@@ -14,6 +15,10 @@ async function getMe(): Promise<User> {
 
 async function patchUser(userId: string, user: Partial<User>): Promise<void> {
   await client.patch(`/users/${userId}`, user);
+}
+
+export async function registerUser(data: RegisterData): Promise<void> {
+  await client.post('/users/register', data);
 }
 
 export function useUser() {
