@@ -3,6 +3,7 @@ const { createError } = require('../utils/error');
 
 const Errors = (exports.Errors = {
 	UserNotFoundError: createError('UserNotFoundError'),
+	UserAlreadyExistError: createError('UserAlreadyExistError'),
 	PasswordNotMatchError: createError('PasswordNotMatchError'),
 });
 
@@ -19,6 +20,10 @@ exports.getUser = async (_id) => {
 };
 
 exports.createUsers = async ({ serial, name, password, rank }) => {
+	const existUser = await User.findOne({ serial, deleted: false });
+
+	if (existUser) throw new Errors.UserAlreadyExistError();
+
 	return await new User({
 		serial,
 		name,
