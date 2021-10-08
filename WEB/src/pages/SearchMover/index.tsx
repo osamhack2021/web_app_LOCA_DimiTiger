@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import Header from "../../components/Header/Header";
 import SearchMover from "../../components/SearchMover/SearchMover";
 import Sidebar from "../../components/Sidebar/Sidebar";

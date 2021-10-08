@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import './MilitaryDiscipline.css';
 
 class MilitaryDiscipline extends Component {

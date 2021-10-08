@@ -1,7 +1,29 @@
-import React from 'react';
-import './SearchEngine.css';
+import { Table } from "antd";
+
+import "./SearchEngine.css";
+
+import { useLocationLogs } from "../../api/location-logs";
+
+const columns = [
+  {
+    title: "시간",
+    dataIndex: "createdAt",
+    key: "timestamp",
+  },
+  {
+    title: "인원",
+    dataIndex: "user",
+    key: "user",
+  },
+  {
+    title: "장소",
+    dataIndex: "location",
+    key: "location",
+  },
+];
 
 const SearchEngine = () => {
+  const { locationLogs } = useLocationLogs();
   return (
     <div id="search_engine">
       <div className="engine_headline">
@@ -9,12 +31,14 @@ const SearchEngine = () => {
         <div>유동병력 검색</div>
       </div>
       <div className="engine_container">
-        <div className="search_bar">
-          <img src="./icons/search.svg" alt="" />
-          <input type="search" />
-        </div>
+        <Table
+          dataSource={locationLogs}
+          columns={columns}
+          style={{ flex: 1 }}
+        />
+        ;
       </div>
     </div>
   );
-}
+};
 export default SearchEngine;

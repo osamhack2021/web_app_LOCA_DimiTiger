@@ -1,6 +1,5 @@
-import client from "../client";
-
 import AuthResponse from "../../types/AuthResponse";
+import client from "../client";
 
 export async function authWithIdPassword(
   serial: string,
