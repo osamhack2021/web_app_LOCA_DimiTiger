@@ -47,7 +47,7 @@ exports.createSetting = {
 	tags: ['api', 'setting'],
 	description: '설정을 새로 만듭니다.',
 	validate: {
-		payload: Joi.any(),
+		payload: Joi.object(),
 	},
 	handler: async (req, h) => {
 		try {
