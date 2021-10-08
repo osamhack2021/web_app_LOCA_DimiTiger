@@ -1,74 +1,70 @@
-import React, { Component } from 'react';
-import Notices from '../../services/Notices';
-import './Notice.css';
-import sendIco from './send.svg';
-
-interface noticesProps {
-}
-interface noticesState {
-  noticeList: Array<object>;
-}
+import { useForm } from "react-hook-form";
+import { useMutation, useQueryClient } from "react-query";
+import { addNotices, useNotices } from "../../api/notices";
+import Notice from "../../types/Notice";
+import "./Notice.css";
 
 interface NoticeElementProps {
-  data: any;
-  key: number;
+  notice: Notice;
 }
 
-class NoticeElement extends Component<NoticeElementProps> {
-  render() {
-    return (
-      this.props.data.emergency ? 
-      <div className="message urgency">
-        <span>[긴급] </span>{this.props.data.content}
-      </div> : 
-      <div className="message">
-        {this.props.data.content}
+const NoticeElement = ({ notice }: NoticeElementProps) => {
+  return notice.emergency ? (
+    <div className="message urgency">
+      <span>[긴급] </span>
+      {notice.content}
+    </div>
+  ) : (
+    <div className="message">{notice.content}</div>
+  );
+};
+
+const NoticeCard = () => {
+  const { notices } = useNotices();
+  const { register, handleSubmit } = useForm();
+
+  type NoticeData = {
+    content: string;
+    emergency: boolean;
+  }
+
+  const queryClient = useQueryClient();
+
+  const mutationNotice = useMutation(["addNotices"], {
+    onMutate: (body: object) => addNotices(body),
+    onSuccess: () => { queryClient.invalidateQueries('notices'); }
+  })
+
+  const addNotice = async ({ content, emergency }: NoticeData) => {
+    mutationNotice.mutate({ content, emergency });
+  }
+
+  return (
+    <div id="notice" className="dash_component">
+      <div className="headline">
+        <h1>공지사항</h1>
       </div>
-    )
-  }
-}
-
-class Notice extends Component<noticesProps, noticesState> {
-  constructor(props: noticesProps) {
-    super(props);
-    this.state = {
-      noticeList: []
-    }
-  }
-  
-  componentDidMount() {
-    Notices.getNotices().then((res) => {
-      this.setState({
-        noticeList: res.data,
-      })
-    });
-  }
-  render() {
-    return (
-        <div id="notice" className="dash_component">
-            <div className="headline">
-              <h1>공지사항</h1>
-            </div>
-            <div className="messenger">
-              <div className="message_box">
-              { this.state.noticeList.length > 0 &&
-                  this.state.noticeList.map((data, i) => {
-                    return (<NoticeElement data={data} key={i} />)
-                  })
-              }
-              </div>
-              <div className="send_box">
-                <div className="input_box">
-                  <div className="send_mode">일반</div>
-                  <input type="text" />
-                </div>
-                <div className="send_button">
-                  <img src={sendIco} alt="" />
-                </div>
-              </div>
-            </div>
+      <div className="messenger">
+        <div className="message_box">
+          {notices &&
+            notices.map((data, i) => {
+              return <NoticeElement notice={data} key={i} />;
+            })}
         </div>
-      );
-    }
-  }
-export default Notice;
+        <form className="send_box" onSubmit={handleSubmit(addNotice)}>
+          <div className="input_box">
+            <select className="send_mode" {...register("emergency")}>
+              <option value="false">일반</option>
+              <option value="true">긴급</option>
+            </select>
+            <input type="text" {...register("content")} />
+          </div>
+          <button type="submit" className="send_button">
+            <img src="./icons/send.svg" alt="" />
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+export default NoticeCard;

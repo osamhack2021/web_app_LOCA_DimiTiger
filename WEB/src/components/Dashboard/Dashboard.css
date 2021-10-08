@@ -1,7 +1,7 @@
 #dashboard {
     padding: 3vw;
     height: calc(100vh - 100px - 6vw);
-    width: 94vw;
+    width: 90vw;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
