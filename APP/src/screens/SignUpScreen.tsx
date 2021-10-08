@@ -12,12 +12,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
 
+import { registerUser } from '@/api/users';
 import Button from '@/components/Button';
 import ControlledTextInput from '@/components/ControlledTextInput';
 import Text from '@/components/Text';
 import { colorBlack } from '@/constants/colors';
 import { RootNavigationProp } from '@/Navigators';
 import RegisterData from '@/types/RegisterData';
+import { signIn } from '@/utils/AuthUtil';
 
 const SignUpScreen = () => {
   const navigation = useNavigation<RootNavigationProp<'SignUp'>>();
@@ -36,8 +38,15 @@ const SignUpScreen = () => {
   async function onSubmit(data: RegisterData & { pwCheck?: string }) {
     delete data.pwCheck;
     try {
-      //await registerUser(data);
-    } catch {}
+      const user = await registerUser(data);
+      await signIn(data.identity.serial, data.register.password);
+
+      navigation.navigate('RegisterDone', {
+        user,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
