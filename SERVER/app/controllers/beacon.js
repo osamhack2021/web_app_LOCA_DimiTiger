@@ -41,7 +41,7 @@ exports.createBeacon = {
 			region: Joi.object({
 				uuid: Joi.string().required(),
 				major: Joi.number().integer().min(0).max(65535),
-				minor: Joi.number().integer().min(0).max(65535)
+				minor: Joi.number().integer().min(0).max(65535),
 			}),
 		}),
 	},
@@ -66,16 +66,30 @@ exports.udpateBeacon = {
 			region: Joi.object({
 				uuid: Joi.string().required(),
 				major: Joi.number().integer().min(0).max(65535),
-				minor: Joi.number().integer().min(0).max(65535)
+				minor: Joi.number().integer().min(0).max(65535),
 			}),
 		}),
 	},
 	handler: async (req, h) => {
 		try {
-			return await BeaconService.updateBeacon(
-				req.params.beaconId,
-				req.payload
-			);
+			return await BeaconService.updateBeacon(req.params.beaconId, req.payload);
+		} catch (err) {
+			throw Boom.internal(err);
+		}
+	},
+};
+
+exports.deleteBeacon = {
+	tags: ['api', 'beacon'],
+	description: '비콘을 삭제합니다.',
+	validate: {
+		params: Joi.object({
+			beaconId: Joi.string().description('비콘 _id'),
+		}),
+	},
+	handler: async (req, h) => {
+		try {
+			return await BeaconService.deleteBeacon(req.params.beaconId);
 		} catch (err) {
 			throw Boom.internal(err);
 		}

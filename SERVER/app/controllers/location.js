@@ -72,3 +72,20 @@ exports.updateLocation = {
 		}
 	},
 };
+
+exports.deleteLocation = {
+	tags: ['api', 'location'],
+	description: '위치를 삭제합니다.',
+	validate: {
+		params: Joi.object({
+			locationId: Joi.string().description('위치 _id'),
+		}),
+	},
+	handler: async (req, h) => {
+		try {
+			return await LocationService.deleteLocation(req.params.locationId);
+		} catch (err) {
+			throw Boom.internal(err);
+		}
+	},
+};
