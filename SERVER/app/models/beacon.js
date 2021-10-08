@@ -1,19 +1,17 @@
 const mongoose = require('mongoose');
 
-const beaconRegionSchema = new mongoose.Schema(
-	{
-		uuid: {
-			type: mongoose.Schema.Types.String,
-			required: true,
-		},
-		major: {
-			type: mongoose.Schema.Types.Number,
-		},
-		minor: {
-			type: mongoose.Schema.Types.Number,
-		},
+const beaconRegionSchema = new mongoose.Schema({
+	uuid: {
+		type: mongoose.Schema.Types.String,
+		required: true,
 	},
-)
+	major: {
+		type: mongoose.Schema.Types.Number,
+	},
+	minor: {
+		type: mongoose.Schema.Types.Number,
+	},
+});
 
 const beaconSchema = new mongoose.Schema(
 	{
@@ -25,6 +23,11 @@ const beaconSchema = new mongoose.Schema(
 		region: {
 			type: beaconRegionSchema,
 			required: true,
+		},
+		deleted: {
+			type: Boolean,
+			default: false,
+			select: false,
 		},
 	},
 	{

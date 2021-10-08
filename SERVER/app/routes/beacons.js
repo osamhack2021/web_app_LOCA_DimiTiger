@@ -25,6 +25,11 @@ exports.plugin = {
 				path: '/{beaconId}',
 				config: Controllers.beacon.udpateBeacon,
 			},
+			{
+				method: 'DELETE',
+				path: '/{beaconId}',
+				config: Controllers.beacon.deleteBeacon,
+			},
 		]);
 	},
 };

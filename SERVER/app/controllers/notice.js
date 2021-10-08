@@ -63,7 +63,7 @@ exports.deleteNotice = {
 	},
 	handler: async (req, h) => {
 		try {
-			return await NoticeService.removeNotice(req.params.noticeId);
+			return await NoticeService.deleteNotice(req.params.noticeId);
 		} catch (err) {
 			throw Boom.internal(err);
 		}

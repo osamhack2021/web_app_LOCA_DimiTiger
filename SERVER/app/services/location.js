@@ -6,7 +6,7 @@ const Errors = (exports.Errors = {
 });
 
 exports.getLocations = async () => {
-	return await Location.find();
+	return await Location.find({ deleted: false }).sort({ createdAt: -1 });
 };
 
 exports.getLocation = async (_id) => {
@@ -29,4 +29,8 @@ exports.updateLocation = async (_id, fields) => {
 	await location.save();
 
 	return location;
+};
+
+exports.deleteLocation = async (_id) => {
+	return await exports.updateLocation(_id, { deleted: true });
 };

@@ -33,7 +33,12 @@ exports.plugin = {
 			{
 				method: 'PATCH',
 				path: '/{userId}',
-				config: Controllers.user.updateUsers,
+				config: Controllers.user.updateUser,
+			},
+			{
+				method: 'DELETE',
+				path: '/{userId}',
+				config: Controllers.user.deleteUser,
 			},
 		]);
 	},

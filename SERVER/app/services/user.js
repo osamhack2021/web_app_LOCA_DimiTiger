@@ -7,7 +7,7 @@ const Errors = (exports.Errors = {
 });
 
 exports.getUsers = async () => {
-	const query = User.find();
+	const query = User.find({ deleted: false }).sort({ createdAt: -1 });
 
 	return await query.exec();
 };
@@ -27,7 +27,7 @@ exports.createUsers = async ({ serial, name, password, rank }) => {
 	}).save();
 };
 
-exports.updateUsers = async (_id, fields) => {
+exports.updateUser = async (_id, fields) => {
 	const user = await User.findOne({
 		_id,
 	}).exec();
@@ -97,4 +97,8 @@ exports.serialLogin = async ({ serial, password }) => {
 		throw new Errors.PasswordNotMatchError();
 
 	return user;
+};
+
+exports.deleteUser = async (_id) => {
+	return await exports.updateUser(_id, { deleted: true });
 };

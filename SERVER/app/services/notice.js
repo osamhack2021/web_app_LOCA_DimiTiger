@@ -19,10 +19,6 @@ exports.createNotice = async ({ content, emergency, creator }) => {
 	return await new Notice({ content, emergency, creator }).save();
 };
 
-exports.removeNotice = async (_id) => {
-	return await exports.updateNotice(_id, { deleted: true });
-};
-
 exports.updateNotice = async (_id, fields) => {
 	const notice = await Notice.findById(_id).exec();
 
@@ -35,4 +31,8 @@ exports.updateNotice = async (_id, fields) => {
 	await notice.save();
 
 	return notice;
+};
+
+exports.deleteNotice = async (_id) => {
+	return await exports.updateNotice(_id, { deleted: true });
 };

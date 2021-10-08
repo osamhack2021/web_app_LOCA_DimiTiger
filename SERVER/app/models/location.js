@@ -8,6 +8,11 @@ const locationSchema = new mongoose.Schema(
 			trim: true,
 		},
 		ui: JSON,
+		deleted: {
+			type: Boolean,
+			default: false,
+			select: false,
+		},
 	},
 	{
 		timestamps: true,

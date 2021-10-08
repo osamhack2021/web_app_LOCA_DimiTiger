@@ -7,7 +7,9 @@ const Errors = (exports.Errors = {
 });
 
 exports.getBeacons = async () => {
-	return await Beacon.find().populate('location');
+	return await Beacon.find({ deleted: false })
+		.sort({ createdAt: -1 })
+		.populate('location');
 };
 
 exports.getBeacon = async (filters) => {
@@ -30,4 +32,8 @@ exports.updateBeacon = async (_id, fields) => {
 	await beacon.save();
 
 	return beacon;
+};
+
+exports.deleteBeacon = async (_id) => {
+	return await exports.updateBeacon(_id, { deleted: true });
 };
