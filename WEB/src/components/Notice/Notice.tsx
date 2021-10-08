@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
+
+import "./Notice.css";
+
 import { addNotices, useNotices } from "../../api/notices";
 import Notice from "../../types/Notice";
-import "./Notice.css";
 
 interface NoticeElementProps {
   notice: Notice;

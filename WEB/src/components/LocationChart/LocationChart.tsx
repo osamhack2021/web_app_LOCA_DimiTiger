@@ -1,8 +1,10 @@
+import React, { useState } from 'react';
+import { ResponsiveCirclePacking } from '@nivo/circle-packing';
+
 import './LocationChart.css';
-import { CircleComponent, CirclePacking, CirclePackingSvgProps, CircleProps, ResponsiveCirclePacking } from '@nivo/circle-packing';
+
 import { useLocationLogs, useLocationLogsByPlace } from '../../api/location-logs';
 import { useLocations } from '../../api/locations';
-import React, { useState } from 'react';
 import LocationGraphDataset from '../../types/LocationGraphDataset';
 
 const CustomCirclePackingComponent = (props: any) => {

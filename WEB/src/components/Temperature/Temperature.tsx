@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import './Temperature.css';
 
 class Temperature extends Component {

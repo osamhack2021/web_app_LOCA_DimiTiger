@@ -1,9 +1,11 @@
-import { addSeconds } from "date-fns";
 import { useCookies } from "react-cookie";
 import { useForm } from "react-hook-form";
+import { addSeconds } from "date-fns";
+
+import "./Login.css";
+
 import { authWithIdPassword } from "../../api/auth";
 import client from "../../api/client";
-import "./Login.css";
 
 type LoginData = {
   serial: string;
