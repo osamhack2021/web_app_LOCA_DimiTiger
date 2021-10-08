@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import SearchMover from "./pages/SearchMover";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import PublicRoutes from "./routes/PublicRoutes";
 import "./App.css";
@@ -33,6 +34,7 @@ const App = () => {
             exact
           />
           <PrivateRoutes path="/" component={Home} exact />
+          <PrivateRoutes path="/search" component={SearchMover} exact />
         </Switch>
       </Router>
     </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Dashboard from "../../components/Dashboard/Dashboard";
 import Header from "../../components/Header/Header";
+import SearchMover from "../../components/SearchMover/SearchMover";
 import Sidebar from "../../components/Sidebar/Sidebar";
 
 class Home extends Component {
@@ -12,7 +12,7 @@ class Home extends Component {
         }}
       >
         <Header></Header>
-        <Dashboard></Dashboard>
+        <SearchMover></SearchMover>
         <Sidebar></Sidebar>
       </div>
     );

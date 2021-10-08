@@ -15,7 +15,6 @@ const CustomCirclePackingComponent = (props: any) => {
 
   const onCircleClick = () => {
     setisClicked({isClicked: !isClicked.isClicked});
-    console.log(locationLogsByPlace);
   }
 
   return <>
@@ -30,7 +29,7 @@ const CustomCirclePackingComponent = (props: any) => {
     onClick={onCircleClick}
     ></circle>
     {
-      isClicked.isClicked ? 
+      isClicked.isClicked ?
       <>
         {
           locationLogsByPlace?.map((data, i) => {
@@ -38,8 +37,8 @@ const CustomCirclePackingComponent = (props: any) => {
               return <text
                 x={node.x}
                 y={node.y - ((i - (locationLogsByPlace.length/2)+0.5) * (distance / locationLogsByPlace.length) * (locationLogsByPlace.length + 1))}
-                text-anchor="middle"
-                dominant-baseline="central"
+                textAnchor="middle"
+                dominantBaseline="central"
                 style={
                   {
                     fontFamily: 'sans-serif',
@@ -55,8 +54,8 @@ const CustomCirclePackingComponent = (props: any) => {
               return <text
                 x={node.x}
                 y={node.y - ((i - (locationLogsByPlace.length/2)+0.5) * (distance / locationLogsByPlace.length) * (locationLogsByPlace.length + 1))}
-                text-anchor="middle"
-                dominant-baseline="central"
+                textAnchor="middle"
+                dominantBaseline="central"
                 style={
                   {
                     fontFamily: 'sans-serif',
@@ -113,7 +112,7 @@ const CustomCirclePackingComponent = (props: any) => {
 
 const LocationChart = () => {  
   const locationMap:Array<LocationGraphDataset> = [];
-  const { locations } = useLocations();
+  const { locations, isLoading } = useLocations();
   locations?.map((data) => {
     locationMap.push(({
       name : data.name, 
@@ -121,7 +120,7 @@ const LocationChart = () => {
       locationId: data._id,
     }));
   });
-  
+
   const { locationLogs } = useLocationLogs();
   locationLogs?.map((data) => {
     locationMap.filter(({name}) => name === data.location.name).forEach(o => o.value += 1);
@@ -146,8 +145,8 @@ const LocationChart = () => {
           <svg>
             <defs>
               <linearGradient id="gradientId1" {...gradProps} >
-                <stop offset="25%" stopColor="#EEEEEE" />
-                <stop offset="75%" stopColor="#A4A4A4" />
+                <stop offset="25%" stopColor="#EEF2F3" />
+                <stop offset="75%" stopColor="#94A5B2" />
               </linearGradient>
               <linearGradient id="gradientId2" {...gradProps} >
                 <stop offset="25%" stopColor="#FFCCD5" />
@@ -165,24 +164,27 @@ const LocationChart = () => {
             
           </svg>
         </div>
-        <ResponsiveCirclePacking
-            data={data}
-            margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-            id="name"
-            colors={['url(#gradientId1)', 'url(#gradientId2)', 'url(#gradientId3)', 'url(#gradientId4)']}
-            colorBy="id"
-            childColor={{ from: 'color', modifiers: [ [ 'brighter', 0.4 ] ] }}
-            padding={1}
-            leavesOnly={true}
-            enableLabels={false}
-            borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.3 ] ] }}
-            animate={false}
-            circleComponent={CustomCirclePackingComponent}
-            theme={{
-            "fontSize": 52,
-            }}
-        />
+        {
+          isLoading ? 'loading...' : 
+            <ResponsiveCirclePacking
+              data={data}
+              margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+              id="name"
+              colors={['url(#gradientId1)', 'url(#gradientId2)', 'url(#gradientId3)', 'url(#gradientId4)']}
+              colorBy="id"
+              childColor={{ from: 'color', modifiers: [ [ 'brighter', 0.4 ] ] }}
+              padding={1}
+              leavesOnly={true}
+              enableLabels={false}
+              borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.3 ] ] }}
+              animate={false}
+              circleComponent={CustomCirclePackingComponent}
+              theme={{
+              "fontSize": 52,
+              }}
+            />
+        }
       </div>
-    );
-  }
+  );
+}
 export default LocationChart;
