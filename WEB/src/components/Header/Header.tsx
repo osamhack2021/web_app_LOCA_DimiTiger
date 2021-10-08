@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Header.css';
-import logo from './25div.png';
 
 interface iprops {
 };
@@ -48,7 +47,7 @@ class Header extends Component<iprops, istate> {
     return (
       <header>
         <div id="belong">
-          <img id="belong_logo" src={logo} alt="logo" />
+          <img id="belong_logo" src='./icons/25div.png' alt="logo" />
           <p className="belong_name">70여단 <span>국사봉대대</span></p>
         </div>
         <div id="watch_widget">

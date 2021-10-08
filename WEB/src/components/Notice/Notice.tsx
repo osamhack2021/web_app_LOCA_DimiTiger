@@ -3,7 +3,6 @@ import { useMutation, useQueryClient } from "react-query";
 import { addNotices, useNotices } from "../../api/notices";
 import Notice from "../../types/Notice";
 import "./Notice.css";
-import sendIco from "./send.svg";
 
 interface NoticeElementProps {
   notice: Notice;
@@ -61,7 +60,7 @@ const NoticeCard = () => {
             <input type="text" {...register("content")} />
           </div>
           <button type="submit" className="send_button">
-            <img src={sendIco} alt="" />
+            <img src="./icons/send.svg" alt="" />
           </button>
         </form>
       </div>
