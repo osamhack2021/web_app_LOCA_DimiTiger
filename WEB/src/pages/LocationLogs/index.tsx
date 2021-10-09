@@ -1,23 +1,23 @@
-import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import styled from "@emotion/styled";
-import { Button, DatePicker, Form, Input, Select, Table } from "antd";
-import { format } from "date-fns";
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import styled from '@emotion/styled';
+import { Button, DatePicker, Form, Input, Select, Table } from 'antd';
+import { format } from 'date-fns';
 import {
   DateParam,
   NumberParam,
   StringParam,
   useQueryParams,
-} from "use-query-params";
+} from 'use-query-params';
 
-import "./LocationLogs.css";
+import './LocationLogs.css';
 
-import { useLocationLogs } from "../../api/location-logs";
-import { useLocations } from "../../api/locations";
-import Header from "../../components/Header/Header";
-import Sidebar from "../../components/Sidebar/Sidebar";
-import Location from "../../types/Location";
-import User from "../../types/User";
+import { useLocationLogs } from '../../api/location-logs';
+import { useLocations } from '../../api/locations';
+import Header from '../../components/Header/Header';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import Location from '../../types/Location';
+import User from '../../types/User';
 
 const { RangePicker } = DatePicker;
 const { Search } = Input;
@@ -25,25 +25,25 @@ const { Option } = Select;
 
 const columns = [
   {
-    title: "시간",
-    dataIndex: "createdAt",
-    key: "timestamp",
-    width: "20%",
+    title: '시간',
+    dataIndex: 'createdAt',
+    key: 'timestamp',
+    width: '20%',
     render: (createdAt: string) =>
-      format(new Date(createdAt), "yyyy-MM-dd HH:mm"),
+      format(new Date(createdAt), 'yyyy-MM-dd HH:mm'),
   },
   {
-    title: "인원",
-    dataIndex: "user",
-    key: "user",
+    title: '인원',
+    dataIndex: 'user',
+    key: 'user',
     render: (user: User) => (
       <Link to={`/user/${user._id}`}>{`${user.rank} ${user.name}`}</Link>
     ),
   },
   {
-    title: "장소",
-    dataIndex: "location",
-    key: "location",
+    title: '장소',
+    dataIndex: 'location',
+    key: 'location',
     render: (location: Location) => (
       <Link to={`/location/${location._id}`}>{`${location.name}`}</Link>
     ),
@@ -70,20 +70,18 @@ const LocationLogs = () => {
   return (
     <div
       style={{
-        backgroundColor: "#f2f3f5",
+        backgroundColor: '#f2f3f5',
         flex: 1,
-        overflow: "hidden",
-      }}
-    >
+        overflow: 'hidden',
+      }}>
       <Header />
       <div
         style={{
-          width: "90vw",
-          height: "100%",
-          padding: "3vw",
-          display: "flex",
-        }}
-      >
+          width: '90vw',
+          height: '100%',
+          padding: '3vw',
+          display: 'flex',
+        }}>
         <div id="search_engine">
           <div className="engine_headline">
             <img
@@ -108,15 +106,14 @@ const LocationLogs = () => {
                       location,
                       page: 1,
                     },
-                    "replaceIn"
+                    'replaceIn',
                   )
                 }
-                layout="inline"
-              >
+                layout="inline">
                 <Form.Item name="range">
                   <RangePicker
-                    placeholder={["시작 시간", "종료 시간"]}
-                    showTime={{ format: "HH:mm" }}
+                    placeholder={['시작 시간', '종료 시간']}
+                    showTime={{ format: 'HH:mm' }}
                     format="yyyy-MM-DD HH:mm"
                   />
                 </Form.Item>
@@ -127,10 +124,9 @@ const LocationLogs = () => {
                   <Select
                     placeholder="위치"
                     loading={locationLoading}
-                    style={{ width: 200 }}
-                  >
+                    style={{ width: 200 }}>
                     <Option value="">전체위치</Option>
-                    {locations?.map((l) => (
+                    {locations?.map(l => (
                       <Option value={l._id}>{l.name}</Option>
                     ))}
                   </Select>
@@ -149,9 +145,9 @@ const LocationLogs = () => {
                 total: pagination?.totalDocs,
                 pageSize: pagination?.limit,
                 current: pagination?.page,
-                showTotal: (total) => `총 ${total}개`,
+                showTotal: total => `총 ${total}개`,
                 onChange: (page, limit) =>
-                  setQuery({ page, limit }, "replaceIn"),
+                  setQuery({ page, limit }, 'replaceIn'),
               }}
               style={{ flex: 1 }}
             />
