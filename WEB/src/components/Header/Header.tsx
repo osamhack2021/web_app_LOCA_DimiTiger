@@ -58,7 +58,7 @@ class Header extends Component<iprops, istate> {
       <header>
         <div id="belong">
           <Link to="/">
-            <img id="belong_logo" src="./icons/25div.png" alt="logo" />
+            <img id="belong_logo" src="/icons/25div.png" alt="logo" />
             <p className="belong_name">
               70여단 <span>국사봉대대</span>
             </p>
