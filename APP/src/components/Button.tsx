@@ -2,12 +2,12 @@ import React from 'react';
 import {
   StyleProp,
   StyleSheet,
-  Text,
   TextStyle,
   TouchableOpacity,
   ViewStyle,
 } from 'react-native';
 
+import Text from '@/components/Text';
 import { colorButton, colorWhite } from '@/constants/colors';
 import { styleShadow } from '@/constants/styles';
 

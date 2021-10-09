@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from 'react-query';
+import { AxiosResponse } from 'axios';
 import { useRecoilValue } from 'recoil';
 
 import client from '../client';
@@ -17,8 +18,12 @@ async function patchUser(userId: string, user: Partial<User>): Promise<void> {
   await client.patch(`/users/${userId}`, user);
 }
 
-export async function registerUser(data: RegisterData): Promise<void> {
-  await client.post('/users/register', data);
+export async function registerUser(registerData: RegisterData): Promise<User> {
+  const { data } = await client.post<RegisterData, AxiosResponse<User>>(
+    '/users/register',
+    registerData,
+  );
+  return data;
 }
 
 export function useUser() {

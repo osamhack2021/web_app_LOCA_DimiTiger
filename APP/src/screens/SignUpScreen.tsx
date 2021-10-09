@@ -4,7 +4,6 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   StyleSheet,
-  Text,
   TextInput,
   TouchableOpacity,
   View,
@@ -13,11 +12,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
 
+import { registerUser } from '@/api/users';
 import Button from '@/components/Button';
 import ControlledTextInput from '@/components/ControlledTextInput';
-import { colorBlack, colorTextInputLabel } from '@/constants/colors';
+import Text from '@/components/Text';
+import { colorBlack } from '@/constants/colors';
 import { RootNavigationProp } from '@/Navigators';
 import RegisterData from '@/types/RegisterData';
+import { signIn } from '@/utils/AuthUtil';
 
 const SignUpScreen = () => {
   const navigation = useNavigation<RootNavigationProp<'SignUp'>>();
@@ -35,10 +37,16 @@ const SignUpScreen = () => {
 
   async function onSubmit(data: RegisterData & { pwCheck?: string }) {
     delete data.pwCheck;
-    console.log(data);
     try {
-      //await registerUser(data);
-    } catch {}
+      const user = await registerUser(data);
+      await signIn(data.identity.serial, data.register.password);
+
+      navigation.navigate('RegisterDone', {
+        user,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -53,10 +61,10 @@ const SignUpScreen = () => {
               <Icon name="close" size={30} color={colorBlack} />
             </TouchableOpacity>
           </View>
-          <Text style={styles.label}>군번</Text>
           <ControlledTextInput
             control={control}
             name="identity.serial"
+            label="군번"
             nextInputRef={nameRef}
             rules={{
               required: {
@@ -69,10 +77,10 @@ const SignUpScreen = () => {
               },
             }}
           />
-          <Text style={styles.label}>이름</Text>
           <ControlledTextInput
             control={control}
             name="identity.name"
+            label="이름"
             ref={nameRef}
             nextInputRef={codeRef}
             autoCompleteType="name"
@@ -84,10 +92,10 @@ const SignUpScreen = () => {
               },
             }}
           />
-          <Text style={styles.label}>가입코드</Text>
           <ControlledTextInput
             control={control}
             name="identity.password"
+            label="가입코드"
             ref={codeRef}
             nextInputRef={phoneRef}
             rules={{
@@ -97,10 +105,10 @@ const SignUpScreen = () => {
               },
             }}
           />
-          <Text style={styles.label}>전화번호</Text>
           <ControlledTextInput
             control={control}
             name="register.phone"
+            label="전화번호"
             ref={phoneRef}
             nextInputRef={emailRef}
             keyboardType="phone-pad"
@@ -117,10 +125,10 @@ const SignUpScreen = () => {
               },
             }}
           />
-          <Text style={styles.label}>이메일</Text>
           <ControlledTextInput
             control={control}
             name="register.email"
+            label="이메일"
             ref={emailRef}
             nextInputRef={passwordRef}
             keyboardType="email-address"
@@ -133,10 +141,10 @@ const SignUpScreen = () => {
               },
             }}
           />
-          <Text style={styles.label}>비밀번호</Text>
           <ControlledTextInput
             control={control}
             name="register.password"
+            label="비밀번호"
             ref={passwordRef}
             nextInputRef={reEnterRef}
             secureTextEntry={true}
@@ -147,10 +155,10 @@ const SignUpScreen = () => {
               },
             }}
           />
-          <Text style={styles.label}>비밀번호 확인</Text>
           <ControlledTextInput
             control={control}
             name="pwCheck"
+            label="비밀번호 확인"
             ref={reEnterRef}
             secureTextEntry={true}
             onSubmitEditing={handleSubmit(onSubmit)}
@@ -178,12 +186,6 @@ const SignUpScreen = () => {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  label: {
-    color: colorTextInputLabel,
-    fontWeight: 'bold',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-  },
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',

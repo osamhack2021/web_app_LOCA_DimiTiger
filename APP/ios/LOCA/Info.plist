@@ -35,10 +35,12 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>시설 출입 시 비콘을 백그라운드에서 자동으로 인식합니다.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>시설 출입 시 비콘을 백그라운드에서 자동으로 인식합니다.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>시설 출입 시 비콘을 백그라운드에서 자동으로 인식합니다.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>앱 사용 중 시설 출입 시 비콘을 자동으로 인식합니다.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
@@ -57,6 +59,8 @@
 		<string>Octicons.ttf</string>
 		<string>Zocial.ttf</string>
 		<string>Fontisto.ttf</string>
+		<string>NanumBarunGothicOTF.otf</string>
+		<string>NanumBarunGothicOTFBold.otf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

@@ -15,7 +15,7 @@ module.exports = {
           ['^\\u0000'],
           // Internal packages.
           [
-            '^(@api|@atoms|@components|@constants|@hooks|@images|@models|@utils)(/.*|$)',
+            '^(@api|@atoms|@components|@constants|@hooks|@assets|@models|@utils)(/.*|$)',
           ],
           // Parent imports. Put `..` last.
           ['^\\.\\.(?!/?$)', '^\\.\\./?$'],

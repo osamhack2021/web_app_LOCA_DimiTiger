@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Animated, {
   FadeIn,
   FadeInUp,
@@ -17,6 +17,7 @@ import { useLocations } from '@/api/locations';
 import Button from '@/components/Button';
 import Card from '@/components/Card';
 import LocationIcon from '@/components/LocationIcon';
+import Text from '@/components/Text';
 import { colorChipBorder } from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
 
