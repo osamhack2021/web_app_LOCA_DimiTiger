@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import { DatePicker, Input, Select, Space, Table } from "antd";
+import styled from "@emotion/styled";
+import { Button, DatePicker, Form, Input, Select, Table } from "antd";
 import { format } from "date-fns";
+import {
+  DateParam,
+  NumberParam,
+  StringParam,
+  useQueryParams,
+} from "use-query-params";
 
 import "./LocationLogs.css";
 
@@ -45,75 +52,121 @@ const columns = [
 
 const LocationLogs = () => {
   const history = useHistory();
-  const [range, setRange] = useState<string[]>();
-  const [userName, setUserName] = useState<string>();
-  const [location, setLocation] = useState<string>();
-  const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
+  const [query, setQuery] = useQueryParams({
+    rangeStart: DateParam,
+    rangeEnd: DateParam,
+    page: NumberParam,
+    limit: NumberParam,
+    location: StringParam,
+  });
+  const [form] = Form.useForm();
   const { data: locations, isLoading: locationLoading } = useLocations();
-  const { data: locationLogs } = useLocationLogs({
-    rangeStart: range && new Date(range[0]),
-    rangeEnd: range && new Date(range[1]),
-    offset: (page - 1) * pageSize,
-    limit: pageSize,
-    location: location === "" ? undefined : location,
+  const { data: locationLogs, pagination } = useLocationLogs({
+    rangeStart: query.rangeStart || undefined,
+    rangeEnd: query.rangeEnd || undefined,
+    location: query.location || undefined,
   });
 
   return (
     <div
       style={{
         backgroundColor: "#f2f3f5",
+        flex: 1,
+        overflow: "hidden",
       }}
     >
-      <Header></Header>
-      <div id="search_engine">
-        <div className="engine_headline">
-          <img
-            src="./icons/backspace_arrow.svg"
-            alt=""
-            onClick={() => history.goBack()}
-          />
-          <div>유동병력 검색</div>
-          <div style={{ flex: 1 }} />
-          <Space>
-            <RangePicker
-              placeholder={["시작 시간", "종료 시간"]}
-              showTime={{ format: "HH:mm" }}
-              format="yyyy-MM-DD HH:mm"
-              onChange={(_, r) => setRange(r)}
+      <Header />
+      <div
+        style={{
+          width: "90vw",
+          height: "100%",
+          padding: "3vw",
+          display: "flex",
+        }}
+      >
+        <div id="search_engine">
+          <div className="engine_headline">
+            <img
+              src="./icons/backspace_arrow.svg"
+              alt=""
+              onClick={() => history.goBack()}
             />
-            <Search
-              placeholder="사용자 이름"
-              onChange={(e) => setUserName(e.target.value)}
+            <div>유동병력 검색</div>
+            <div style={{ flex: 1 }} />
+            <ToolkitWrap>
+              <Form
+                form={form}
+                onFinish={({
+                  range: [rangeStart, rangeEnd],
+                  userName,
+                  location,
+                }) =>
+                  setQuery(
+                    {
+                      rangeStart: rangeStart?.toDate(),
+                      rangeEnd: rangeEnd?.toDate(),
+                      location,
+                      page: 1,
+                    },
+                    "replaceIn"
+                  )
+                }
+                layout="inline"
+              >
+                <Form.Item name="range">
+                  <RangePicker
+                    placeholder={["시작 시간", "종료 시간"]}
+                    showTime={{ format: "HH:mm" }}
+                    format="yyyy-MM-DD HH:mm"
+                  />
+                </Form.Item>
+                <Form.Item name="userName">
+                  <Search placeholder="사용자 이름" />
+                </Form.Item>
+                <Form.Item name="location">
+                  <Select
+                    placeholder="위치"
+                    loading={locationLoading}
+                    style={{ width: 200 }}
+                  >
+                    <Option value="">전체위치</Option>
+                    {locations?.map((l) => (
+                      <Option value={l._id}>{l.name}</Option>
+                    ))}
+                  </Select>
+                </Form.Item>
+                <Button type="primary" htmlType="submit">
+                  검색
+                </Button>
+              </Form>
+            </ToolkitWrap>
+          </div>
+          <div className="engine_container">
+            <Table
+              dataSource={locationLogs}
+              columns={columns}
+              pagination={{
+                total: pagination?.totalDocs,
+                pageSize: pagination?.limit,
+                current: pagination?.page,
+                showTotal: (total) => `총 ${total}개`,
+                onChange: (page, limit) =>
+                  setQuery({ page, limit }, "replaceIn"),
+              }}
+              style={{ flex: 1 }}
             />
-            <Select
-              placeholder="위치"
-              onChange={(value: string) => setLocation(value)}
-              loading={locationLoading}
-              style={{ width: 200 }}
-            >
-              <Option value="">전체위치</Option>
-              {locations?.map((l) => (
-                <Option value={l._id}>{l.name}</Option>
-              ))}
-            </Select>
-          </Space>
-        </div>
-        <div className="engine_container">
-          <Table
-            dataSource={locationLogs}
-            columns={columns}
-            onChange={(pagination) => {
-              setPage(pagination.current || 1);
-              setPageSize(pagination.pageSize || 10);
-            }}
-            style={{ flex: 1 }}
-          />
+          </div>
         </div>
       </div>
       <Sidebar></Sidebar>
     </div>
   );
 };
+
+const ToolkitWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`;
 
 export default LocationLogs;

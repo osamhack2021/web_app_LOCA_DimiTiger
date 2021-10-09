@@ -3,7 +3,7 @@ interface LocationLogQuery {
   user?: string;
   rangeStart?: Date;
   rangeEnd?: Date;
-  offset?: number;
+  page?: number;
   limit?: number;
   active?: boolean;
 }
