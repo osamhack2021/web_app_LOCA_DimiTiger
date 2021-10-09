@@ -11,7 +11,7 @@ exports.getLocationLogs = async ({ rangeStart, rangeEnd, ...filters }) => {
 			$gte: rangeStart, 
 			$lt: rangeEnd
 		}
-	}).find(filters).populate('location').populate('user');
+	}).find(filters).sort({ createdAt: -1 }).populate('location').populate('user');
 };
 
 exports.createLocationLog = async ({ user, location }) => {
