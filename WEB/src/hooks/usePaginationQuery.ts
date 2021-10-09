@@ -8,7 +8,7 @@ import {
 
 import PaginationData from "../types/PaginationData";
 
-export default function usePaginationQuery<
+function usePaginationQuery<
   TQueryFnData extends PaginationData = PaginationData,
   TError = unknown,
   TData extends PaginationData = TQueryFnData,
@@ -32,3 +32,5 @@ export default function usePaginationQuery<
   }
   return { ...rest };
 }
+
+export default usePaginationQuery;
