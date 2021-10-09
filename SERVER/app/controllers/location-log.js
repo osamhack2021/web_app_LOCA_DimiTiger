@@ -10,8 +10,10 @@ exports.getLocationLogs = {
 			active: Joi.boolean().description('최신 데이터만 가져옵니다'),
 			user: Joi.string().description('해당 사용자의 데이터를 가져옵니다.'),
 			location: Joi.string().description('해당 장소의 데이터를 가져옵니다.'),
-			rangeStart: Joi.date().description('기록 시간 범위 시작').default(new Date(0)),
-			rangeEnd: Joi.date().description('기록 시간 범위 종료').default(new Date()),
+			rangeStart: Joi.date().description('기록 시간 범위 시작'),
+			rangeEnd: Joi.date().description('기록 시간 범위 종료'),
+			offset: Joi.number().description('오프셋'),
+			limit: Joi.number().description('가져올 개수'),
 		}),
 	},
 	handler: async (req, h) => {
