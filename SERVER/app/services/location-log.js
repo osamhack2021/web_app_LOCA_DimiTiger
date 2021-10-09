@@ -14,7 +14,7 @@ exports.getLocationLogs = async ({
 }) => {
 	return await LocationLog.paginate(
 		{
-			active,
+			active: active || false,
 			createdAt: {
 				$gte: rangeStart || new Date(0),
 				$lte: rangeEnd || new Date(),
