@@ -3,22 +3,32 @@ import { Table } from "antd";
 import "./SearchEngine.css";
 
 import { useLocationLogs } from "../../api/location-logs";
+import User from "../../types/User";
+import { Link } from "react-router-dom";
+import Location from "../../types/Location";
 
 const columns = [
   {
     title: "시간",
     dataIndex: "createdAt",
     key: "timestamp",
+    width: "20%",
   },
   {
     title: "인원",
-    dataIndex: "user.name",
+    dataIndex: "user",
     key: "user",
+    render: (user: User) => (
+      <Link to={`/user/${user._id}`}>{`${user.rank} ${user.name}`}</Link>
+    ),
   },
   {
     title: "장소",
-    dataIndex: "location.name",
+    dataIndex: "location",
     key: "location",
+    render: (location: Location) => (
+      <Link to={`/location/${location._id}`}>{`${location.name}`}</Link>
+    ),
   },
 ];
 
@@ -36,7 +46,6 @@ const SearchEngine = () => {
           columns={columns}
           style={{ flex: 1 }}
         />
-        ;
       </div>
     </div>
   );
