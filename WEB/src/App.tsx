@@ -9,8 +9,8 @@ import "./App.css";
 import client from "./api/client";
 import { useMe } from "./api/users";
 import Home from "./pages/Home";
+import LocationLogs from "./pages/LocationLogs";
 import Login from "./pages/Login";
-import SearchMover from "./pages/SearchMover";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import PublicRoutes from "./routes/PublicRoutes";
 import { authState } from "./atoms";
@@ -54,7 +54,7 @@ const App = () => {
             exact
           />
           <PrivateRoutes path="/" component={Home} exact />
-          <PrivateRoutes path="/search" component={SearchMover} exact />
+          <PrivateRoutes path="/search" component={LocationLogs} exact />
         </Switch>
       </Router>
     </div>
