@@ -9,14 +9,17 @@
   height: 80px;
   width: 100%;
 
-  border-bottom: 1px solid #E4E4E4;
+  border-bottom: 1px solid #e4e4e4;
 
   display: flex;
   align-items: center;
+
+  padding-left: 30px;
+  padding-right: 30px;
 }
 .engine_headline > img {
   width: 30px;
-  margin-left: 30px;
+  cursor: pointer;
 }
 .engine_headline > div {
   font-weight: 700;
@@ -27,16 +30,17 @@
 }
 .engine_container {
   width: 100%;
-  height: calc(100% - 80px);
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px;
 }
 .search_bar {
   height: 80px;
   width: 500px;
   border-radius: 40px;
-  background-color: #EEF1F4;
+  background-color: #eef1f4;
   display: flex;
   align-items: center;
 }

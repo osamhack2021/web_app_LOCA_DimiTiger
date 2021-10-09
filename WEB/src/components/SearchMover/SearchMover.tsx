@@ -1,5 +1,7 @@
 import React from 'react';
+
 import './SearchMover.css';
+
 import SearchEngine from '../SearchEngine/SearchEngine'
 
 const SearchMover = () => {

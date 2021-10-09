@@ -1,27 +1,47 @@
 import React, { useEffect } from "react";
+import { CookiesProvider, useCookies } from "react-cookie";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { RecoilRoot, useSetRecoilState } from "recoil";
+
+import "./App.css";
+
+import client from "./api/client";
+import { useMe } from "./api/users";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SearchMover from "./pages/SearchMover";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import PublicRoutes from "./routes/PublicRoutes";
-import "./App.css";
-import { CookiesProvider, useCookies } from "react-cookie";
-import client from "./api/client";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { RecoilRoot } from 'recoil';
+import { authState } from "./atoms";
 
 const App = () => {
   const [cookies] = useCookies(["access_token"]);
+  const setAuthState = useSetRecoilState(authState);
+  const { data: me } = useMe();
 
   useEffect(() => {
     const { access_token } = cookies;
     if (access_token) {
       client.defaults.headers.Authorization = `Bearer ${access_token}`;
+      queryClient.invalidateQueries(["users", "me"]);
     } else {
-      delete client.defaults.headers.Authorization;
+      setAuthState({
+        authenticated: false,
+        loading: false,
+      });
     }
   }, [cookies]);
+
+  useEffect(() => {
+    if (me) {
+      setAuthState({
+        authenticated: true,
+        loading: false,
+        user: me,
+      });
+    }
+  }, [me]);
 
   return (
     <div id="app">
@@ -41,7 +61,7 @@ const App = () => {
   );
 };
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 const Root = () => (
   <CookiesProvider>

@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
 
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
 }
 #loginContainer {
   width: 50%;
@@ -27,7 +27,7 @@
   justify-content: center;
 }
 .caption {
-  color: #AAAAAA;
+  color: #aaaaaa;
   font-weight: 700;
   font-size: 14px;
   margin-bottom: 6px;
@@ -35,7 +35,7 @@
 #login_form > input {
   height: 30px;
   width: 15vw;
-  background-color: #EEF1F4;
+  background-color: #eef1f4;
   border-radius: 14px;
   border: 0px;
   margin-bottom: 16px;
@@ -55,6 +55,8 @@
   border: none;
   border-radius: 15px;
 
-  background-color: #0085FF;
-  box-shadow: 4px 8px 16px #0085FF;
+  background-color: #0085ff;
+  box-shadow: 4px 8px 16px #0085ff;
+
+  cursor: pointer;
 }

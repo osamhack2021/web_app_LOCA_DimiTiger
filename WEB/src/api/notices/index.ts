@@ -1,8 +1,7 @@
 import { useQuery } from "react-query";
 
-import client from "../client";
-
 import Notice from "../../types/Notice";
+import client from "../client";
 
 export async function getNotices(): Promise<Notice[]> {
   const { data } = await client.get("/notices");

@@ -1,34 +1,27 @@
 import { useQuery } from "react-query";
 
+import LocationLog from "../../types/LocationLog";
+import LocationLogQuery from "../../types/LocationLogQuery";
 import client from "../client";
 
-import LocationLog from "../../types/LocationLog";
-import LocationLogByPlace from "../../types/LocationLogByPlace";
-
-export async function getLocationLogs(): Promise<LocationLog[]> {
-  const { data } = await client.get("/location-logs?active=true");
+export async function getLocationLogs(
+  query?: LocationLogQuery
+): Promise<LocationLog[]> {
+  const { data } = await client.get("/location-logs", {
+    params: query,
+  });
   return data;
 }
 
-export async function getLocationLogsByPlace(locationId: string): Promise<LocationLogByPlace[]> {
-  const { data } = await client.get("/location-logs?active=true&location="+locationId);
+export async function getLocationLog(id: string): Promise<LocationLog> {
+  const { data } = await client.get(`/location-logs/${id}`);
   return data;
 }
 
-export function useLocationLogs() {
-  const { data, isLoading } = useQuery(["locationLogs"], () => getLocationLogs());
-
-  return {
-    locationLogs: data,
-    isLoading,
-  };
+export function useLocationLogs(query?: LocationLogQuery) {
+  return useQuery(["locationLogs", query], () => getLocationLogs(query));
 }
 
-export function useLocationLogsByPlace(locationId: string) {
-  const { data, isLoading } = useQuery(["locationLogsByPlace", locationId], () => getLocationLogsByPlace(locationId));
-  
-  return {
-    locationLogsByPlace: data,
-    isLoading,
-  };
+export function useLocationLog(id: string) {
+  return useQuery(["locationLog", id], () => getLocationLog(id));
 }

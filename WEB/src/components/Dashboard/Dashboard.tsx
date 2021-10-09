@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+
 import './Dashboard.css';
-import Notice from '../Notice/Notice';
+
 import Location from '../Location/Location';
-import PersonnelStatus from '../PersonnelStatus/PersonnelStatus';
-import Weather from '../Weather/Weather';
-import Temperature from '../Temperature/Temperature';
 import MilitaryDiscipline from '../MilitaryDiscipline/MilitaryDiscipline';
+import Notice from '../Notice/Notice';
+import PersonnelStatus from '../PersonnelStatus/PersonnelStatus';
+import Temperature from '../Temperature/Temperature';
+import Weather from '../Weather/Weather';
 import Worker from '../Worker/Worker';
 
 class Dashboard extends Component {

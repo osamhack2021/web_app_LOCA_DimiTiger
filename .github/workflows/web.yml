@@ -8,7 +8,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    env:
+      DISABLE_ESLINT_PLUGIN: true
     steps:
       - name: 1. Checkout Repo.
         uses: actions/checkout@master
