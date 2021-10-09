@@ -5,8 +5,19 @@ const Errors = (exports.Errors = {
 	NoticeNotFoundError: createError('NoticeNotFoundError'),
 });
 
-exports.getNotices = async () => {
-	return await Notice.find({ deleted: false }).sort({ createdAt: -1 }).exec();
+exports.getNotices = async ({ page, limit }) => {
+	return await Notice.paginate(
+		{
+			deleted: false,
+		},
+		{
+			page: page || 1,
+			limit: limit || 10,
+			sort: {
+				createdAt: -1,
+			},
+		}
+	);
 };
 
 exports.getNotice = async (_id) => {

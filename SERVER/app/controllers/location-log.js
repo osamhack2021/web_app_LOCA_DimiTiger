@@ -1,6 +1,7 @@
 const Boom = require('@hapi/boom');
 const Joi = require('joi');
 const LocationLogService = require('../services/location-log');
+const { removeUndefined } = require('../utils/object-editor');
 
 exports.getLocationLogs = {
 	tags: ['api', 'location'],
@@ -12,18 +13,15 @@ exports.getLocationLogs = {
 			location: Joi.string().description('해당 장소의 데이터를 가져옵니다.'),
 			rangeStart: Joi.date().description('기록 시간 범위 시작'),
 			rangeEnd: Joi.date().description('기록 시간 범위 종료'),
-			offset: Joi.number().description('오프셋'),
+			page: Joi.number().description('페이지'),
 			limit: Joi.number().description('가져올 개수'),
 		}),
 	},
 	handler: async (req, h) => {
 		try {
-			const filters = { ...req.query };
-			Object.keys(filters).forEach(
-				(key) => filters[key] === undefined && delete filters[key]
+			return await LocationLogService.getLocationLogs(
+				removeUndefined(req.query)
 			);
-
-			return await LocationLogService.getLocationLogs(filters);
 		} catch (err) {
 			throw Boom.internal(err);
 		}

@@ -5,8 +5,17 @@ const Errors = (exports.Errors = {
 	SettingNotFoundError: createError('SettingNotFoundError'),
 });
 
-exports.getSettings = async () => {
-	return await Setting.find().exec();
+exports.getSettings = async ({ page, limit }) => {
+	return await Setting.paginate(
+		{},
+		{
+			page: page || 1,
+			limit: limit || 10,
+			sort: {
+				createdAt: -1,
+			},
+		}
+	);
 };
 
 exports.getSetting = async (_id) => {

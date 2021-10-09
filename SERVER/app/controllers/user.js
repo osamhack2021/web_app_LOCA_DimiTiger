@@ -2,14 +2,20 @@ const Boom = require('@hapi/boom');
 const Joi = require('joi');
 const UserService = require('../services/user');
 const rankTypes = require('../utils/rank-types');
+const { removeUndefined } = require('../utils/object-editor');
 
 exports.getUsers = {
 	tags: ['api', 'user'],
 	description: '사용자 목록을 가져옵니다.',
-	validate: {},
+	validate: {
+		query: Joi.object({
+			page: Joi.number().description('페이지'),
+			limit: Joi.number().description('가져올 개수'),
+		}),
+	},
 	handler: async (req, h) => {
 		try {
-			return await UserService.getUsers();
+			return await UserService.getUsers(removeUndefined(req.query));
 		} catch (err) {
 			throw Boom.internal(err);
 		}

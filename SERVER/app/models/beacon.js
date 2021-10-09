@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const beaconRegionSchema = new mongoose.Schema({
 	uuid: {
@@ -41,5 +42,7 @@ const beaconSchema = new mongoose.Schema(
 		},
 	}
 );
+
+beaconSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('Beacon', beaconSchema);
