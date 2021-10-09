@@ -1,21 +1,19 @@
 import React from "react";
-import { useCookies } from "react-cookie";
 import { Redirect, Route } from "react-router";
+import { useRecoilValue } from "recoil";
+
+import { authState } from "../atoms";
 
 const PrivateRoutes: React.FC<{ component: any; path: any; exact: any }> = ({
   component: Component,
   ...rest
 }) => {
-  const [cookies] = useCookies(["access_token"]);
+  const { authenticated } = useRecoilValue(authState);
   return (
     <Route
       {...rest}
       render={(props) =>
-        cookies.access_token ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to="/login" />
-        )
+        authenticated ? <Component {...props} /> : <Redirect to="/login" />
       }
     />
   );

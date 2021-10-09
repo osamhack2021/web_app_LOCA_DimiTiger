@@ -1,11 +1,13 @@
 import { useCookies } from "react-cookie";
 import { useForm } from "react-hook-form";
 import { addSeconds } from "date-fns";
+import { useSetRecoilState } from "recoil";
 
 import "./Login.css";
 
 import { authWithIdPassword } from "../../api/auth";
-import client from "../../api/client";
+import { queryClient } from "../../App";
+import { authState } from "../../atoms";
 
 type LoginData = {
   serial: string;
@@ -14,18 +16,22 @@ type LoginData = {
 
 const Login = () => {
   const [, setCookie] = useCookies(["access_token", "refresh_token"]);
+  const setAuthState = useSetRecoilState(authState);
   const { register, handleSubmit } = useForm();
 
   const signIn = async ({ serial, password }: LoginData) => {
     const { access_token, refresh_token, expires_in } =
       await authWithIdPassword(serial, password);
-    client.defaults.headers.Authorization = `Bearer ${access_token}`;
     setCookie("access_token", access_token, {
       expires: addSeconds(new Date(), expires_in),
     });
     setCookie("refresh_token", refresh_token, {
       expires: addSeconds(new Date(), expires_in),
     });
+    setAuthState({
+      authenticated: true,
+    });
+    queryClient.invalidateQueries(["users", "me"]);
   };
 
   return (
