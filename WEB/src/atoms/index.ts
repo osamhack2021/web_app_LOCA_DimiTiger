@@ -1,9 +1,9 @@
-import { atom } from "recoil";
+import { atom } from 'recoil';
 
-import AuthState from "../types/AuthState";
+import AuthState from '../types/AuthState';
 
 export const authState = atom<AuthState>({
-  key: "authState",
+  key: 'authState',
   default: {
     authenticated: false,
     loading: true,

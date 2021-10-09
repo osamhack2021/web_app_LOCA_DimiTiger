@@ -1,10 +1,10 @@
-import { useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "react-query";
+import { useForm } from 'react-hook-form';
+import { useMutation, useQueryClient } from 'react-query';
 
-import "./Notice.css";
+import './Notice.css';
 
-import { addNotice, useNotices } from "../../../../api/notices";
-import Notice from "../../../../types/Notice";
+import { addNotice, useNotices } from '../../../../api/notices';
+import Notice from '../../../../types/Notice';
 
 interface NoticeElementProps {
   notice: Notice;
@@ -27,10 +27,10 @@ const NoticeCard = () => {
 
   const queryClient = useQueryClient();
 
-  const mutationNotice = useMutation(["addNotices"], {
+  const mutationNotice = useMutation(['addNotices'], {
     onMutate: (body: object) => addNotice(body),
     onSuccess: () => {
-      queryClient.invalidateQueries("notices");
+      queryClient.invalidateQueries('notices');
     },
   });
 
@@ -52,11 +52,11 @@ const NoticeCard = () => {
         </div>
         <form className="send_box" onSubmit={handleSubmit(onSubmit)}>
           <div className="input_box">
-            <select className="send_mode" {...register("emergency")}>
+            <select className="send_mode" {...register('emergency')}>
               <option value="false">일반</option>
               <option value="true">긴급</option>
             </select>
-            <input type="text" {...register("content")} />
+            <input type="text" {...register('content')} />
           </div>
           <button type="submit" className="send_button">
             <img src="./icons/send.svg" alt="" />

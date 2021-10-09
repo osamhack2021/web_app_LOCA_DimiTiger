@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import "./Dashboard.css";
+import './Dashboard.css';
 
-import LocationChart from "../LocationChart/LocationChart";
-import MilitaryDiscipline from "../MilitaryDiscipline/MilitaryDiscipline";
-import Notice from "../Notice/Notice";
-import PersonnelStatus from "../PersonnelStatus/PersonnelStatus";
-import Temperature from "../Temperature/Temperature";
-import Weather from "../Weather/Weather";
-import Worker from "../Worker/Worker";
+import LocationChart from '../LocationChart/LocationChart';
+import MilitaryDiscipline from '../MilitaryDiscipline/MilitaryDiscipline';
+import Notice from '../Notice/Notice';
+import PersonnelStatus from '../PersonnelStatus/PersonnelStatus';
+import Temperature from '../Temperature/Temperature';
+import Weather from '../Weather/Weather';
+import Worker from '../Worker/Worker';
 
 class Dashboard extends Component {
   render() {

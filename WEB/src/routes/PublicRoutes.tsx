@@ -1,8 +1,8 @@
-import React from "react";
-import { Redirect, Route } from "react-router";
-import { useRecoilValue } from "recoil";
+import React from 'react';
+import { Redirect, Route } from 'react-router';
+import { useRecoilValue } from 'recoil';
 
-import { authState } from "../atoms";
+import { authState } from '../atoms';
 
 const PublicRoutes: React.FC<{
   component: any;
@@ -14,7 +14,7 @@ const PublicRoutes: React.FC<{
   return (
     <Route
       {...rest}
-      render={(props) =>
+      render={props =>
         authenticated && restricted ? (
           <Redirect to="/" />
         ) : (

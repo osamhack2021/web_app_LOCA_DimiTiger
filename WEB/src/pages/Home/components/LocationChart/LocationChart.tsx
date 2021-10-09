@@ -1,11 +1,11 @@
-import React, { useMemo, useState } from "react";
-import { CircleProps, ResponsiveCirclePacking } from "@nivo/circle-packing";
+import React, { useMemo, useState } from 'react';
+import { CircleProps, ResponsiveCirclePacking } from '@nivo/circle-packing';
 
-import "./LocationChart.css";
+import './LocationChart.css';
 
-import { useLocationLogs } from "../../../../api/location-logs";
-import { useLocations } from "../../../../api/locations";
-import Location from "../../../../types/Location";
+import { useLocationLogs } from '../../../../api/location-logs';
+import { useLocations } from '../../../../api/locations';
+import Location from '../../../../types/Location';
 
 interface LocationDatum extends Location {
   id: string;
@@ -18,7 +18,7 @@ const CustomCirclePackingComponent = (props: CircleProps<LocationDatum>) => {
   const { node } = props;
   const lineWidth = node.radius * 0.2;
   const distance = node.radius * 0.3;
-  const fontSize = node.radius * 0.2 + "px";
+  const fontSize = node.radius * 0.2 + 'px';
   const [isClicked, setisClicked] = useState({ isClicked: false });
   const { data: locationLogs } = useLocationLogs({
     location: node.data._id,
@@ -36,8 +36,7 @@ const CustomCirclePackingComponent = (props: CircleProps<LocationDatum>) => {
         r={node.radius}
         fill={node.color}
         opacity={1}
-        onClick={onCircleClick}
-      ></circle>
+        onClick={onCircleClick}></circle>
       {isClicked.isClicked ? (
         <>
           {locationLogs?.map((data, i) => {
@@ -54,13 +53,12 @@ const CustomCirclePackingComponent = (props: CircleProps<LocationDatum>) => {
                   textAnchor="middle"
                   dominantBaseline="central"
                   style={{
-                    fontFamily: "sans-serif",
-                    fontSize: node.radius * 0.175 + "px",
-                    fontWeight: "bold",
-                    fill: "rgb(255, 255, 255)",
-                    pointerEvents: "none",
-                  }}
-                >
+                    fontFamily: 'sans-serif',
+                    fontSize: node.radius * 0.175 + 'px',
+                    fontWeight: 'bold',
+                    fill: 'rgb(255, 255, 255)',
+                    pointerEvents: 'none',
+                  }}>
                   {data.user.rank} {data.user.name}
                 </text>
               );
@@ -77,13 +75,12 @@ const CustomCirclePackingComponent = (props: CircleProps<LocationDatum>) => {
                   textAnchor="middle"
                   dominantBaseline="central"
                   style={{
-                    fontFamily: "sans-serif",
-                    fontSize: node.radius * 0.175 + "px",
-                    fontWeight: "bold",
-                    fill: "rgb(255, 255, 255)",
-                    pointerEvents: "none",
-                  }}
-                >
+                    fontFamily: 'sans-serif',
+                    fontSize: node.radius * 0.175 + 'px',
+                    fontWeight: 'bold',
+                    fill: 'rgb(255, 255, 255)',
+                    pointerEvents: 'none',
+                  }}>
                   ...
                 </text>
               );
@@ -100,12 +97,11 @@ const CustomCirclePackingComponent = (props: CircleProps<LocationDatum>) => {
             text-anchor="middle"
             dominant-baseline="central"
             style={{
-              fontFamily: "sans-serif",
-              fontSize: node.radius * 0.7 + "px",
-              fill: "rgb(255, 255, 255)",
-              pointerEvents: "none",
-            }}
-          >
+              fontFamily: 'sans-serif',
+              fontSize: node.radius * 0.7 + 'px',
+              fill: 'rgb(255, 255, 255)',
+              pointerEvents: 'none',
+            }}>
             {node.value}
           </text>
           <line
@@ -122,13 +118,12 @@ const CustomCirclePackingComponent = (props: CircleProps<LocationDatum>) => {
             text-anchor="middle"
             dominant-baseline="central"
             style={{
-              fontFamily: "sans-serif",
+              fontFamily: 'sans-serif',
               fontSize: fontSize,
               fontWeight: 800,
-              fill: "rgb(255, 255, 255)",
-              pointerEvents: "none",
-            }}
-          >
+              fill: 'rgb(255, 255, 255)',
+              pointerEvents: 'none',
+            }}>
             {node.id}
           </text>
         </>
@@ -145,9 +140,9 @@ const LocationChart = () => {
     if (!locations || !locationLogs) {
       return [];
     }
-    return locations.map((location) => {
+    return locations.map(location => {
       const logs = locationLogs.filter(
-        (locationLog) => locationLog.location._id === location._id
+        locationLog => locationLog.location._id === location._id,
       );
       return {
         ...location,
@@ -158,11 +153,11 @@ const LocationChart = () => {
   }, [locations, locationLogs]);
 
   const gradProps = {
-    gradientUnits: "userSpaceOnUse",
-    x1: "0",
-    y1: "0",
-    x2: "0",
-    y2: "480",
+    gradientUnits: 'userSpaceOnUse',
+    x1: '0',
+    y1: '0',
+    x2: '0',
+    y2: '480',
   };
 
   return (
@@ -194,28 +189,28 @@ const LocationChart = () => {
           </svg>
         </div>
         {isLoading ? (
-          "loading..."
+          'loading...'
         ) : (
           <ResponsiveCirclePacking
             //@ts-ignore
             data={{
-              name: "root",
+              name: 'root',
               children: data,
             }}
             margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
             id="name"
             colors={[
-              "url(#gradientId1)",
-              "url(#gradientId2)",
-              "url(#gradientId3)",
-              "url(#gradientId4)",
+              'url(#gradientId1)',
+              'url(#gradientId2)',
+              'url(#gradientId3)',
+              'url(#gradientId4)',
             ]}
             colorBy="id"
-            childColor={{ from: "color", modifiers: [["brighter", 0.4]] }}
+            childColor={{ from: 'color', modifiers: [['brighter', 0.4]] }}
             padding={1}
             leavesOnly={true}
             enableLabels={false}
-            borderColor={{ from: "color", modifiers: [["darker", 0.3]] }}
+            borderColor={{ from: 'color', modifiers: [['darker', 0.3]] }}
             animate={false}
             circleComponent={CustomCirclePackingComponent}
             theme={{

@@ -1,8 +1,8 @@
-import React from "react";
-import { Redirect, Route } from "react-router";
-import { useRecoilValue } from "recoil";
+import React from 'react';
+import { Redirect, Route } from 'react-router';
+import { useRecoilValue } from 'recoil';
 
-import { authState } from "../atoms";
+import { authState } from '../atoms';
 
 const PrivateRoutes: React.FC<{ component: any; path: any; exact: any }> = ({
   component: Component,
@@ -12,7 +12,7 @@ const PrivateRoutes: React.FC<{ component: any; path: any; exact: any }> = ({
   return (
     <Route
       {...rest}
-      render={(props) =>
+      render={props =>
         !authenticated && !loading ? (
           <Redirect to="/login" />
         ) : (

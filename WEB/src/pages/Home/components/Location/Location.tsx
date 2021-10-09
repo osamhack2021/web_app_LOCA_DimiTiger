@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import "./Location.css";
+import './Location.css';
 
-import LocationChart from "../LocationChart/LocationChart";
+import LocationChart from '../LocationChart/LocationChart';
 
 class Location extends Component {
   render() {

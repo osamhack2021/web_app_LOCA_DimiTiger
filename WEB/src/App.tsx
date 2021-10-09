@@ -1,23 +1,26 @@
-import React, { useEffect } from "react";
-import { CookiesProvider, useCookies } from "react-cookie";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { RecoilRoot, useSetRecoilState } from "recoil";
-import { QueryParamProvider } from "use-query-params";
+import React, { useEffect } from 'react';
+import { CookiesProvider, useCookies } from 'react-cookie';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ConfigProvider } from 'antd';
+import koKR from 'antd/es/locale/ko_KR';
+import { RecoilRoot, useSetRecoilState } from 'recoil';
+import { QueryParamProvider } from 'use-query-params';
 
-import "./App.css";
+import 'moment/locale/ko';
+import './App.css';
 
-import client from "./api/client";
-import { useMe } from "./api/users";
-import Home from "./pages/Home";
-import LocationLogs from "./pages/LocationLogs";
-import Login from "./pages/Login";
-import PrivateRoutes from "./routes/PrivateRoutes";
-import PublicRoutes from "./routes/PublicRoutes";
-import { authState } from "./atoms";
+import client from './api/client';
+import { useMe } from './api/users';
+import Home from './pages/Home';
+import LocationLogs from './pages/LocationLogs';
+import Login from './pages/Login';
+import PrivateRoutes from './routes/PrivateRoutes';
+import PublicRoutes from './routes/PublicRoutes';
+import { authState } from './atoms';
 
 const App = () => {
-  const [cookies] = useCookies(["access_token"]);
+  const [cookies] = useCookies(['access_token']);
   const setAuthState = useSetRecoilState(authState);
   const { data: me } = useMe();
 
@@ -25,7 +28,7 @@ const App = () => {
     const { access_token } = cookies;
     if (access_token) {
       client.defaults.headers.Authorization = `Bearer ${access_token}`;
-      queryClient.invalidateQueries(["users", "me"]);
+      queryClient.invalidateQueries(['users', 'me']);
     } else {
       setAuthState({
         authenticated: false,
@@ -69,9 +72,11 @@ export const queryClient = new QueryClient();
 const Root = () => (
   <CookiesProvider>
     <QueryClientProvider client={queryClient}>
-      <RecoilRoot>
-        <App />
-      </RecoilRoot>
+      <ConfigProvider locale={koKR}>
+        <RecoilRoot>
+          <App />
+        </RecoilRoot>
+      </ConfigProvider>
     </QueryClientProvider>
   </CookiesProvider>
 );
