@@ -13,10 +13,12 @@
 
   display: flex;
   align-items: center;
+
+  padding-left: 30px;
+  padding-right: 30px;
 }
 .engine_headline > img {
   width: 30px;
-  margin-left: 30px;
   cursor: pointer;
 }
 .engine_headline > div {
@@ -32,6 +34,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px;
 }
 .search_bar {
   height: 80px;
