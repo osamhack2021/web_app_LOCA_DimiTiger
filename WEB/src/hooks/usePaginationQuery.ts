@@ -8,7 +8,7 @@ import {
 
 import PaginationData from "../types/PaginationData";
 
-const usePaginationQuery = <
+export default function usePaginationQuery<
   TQueryFnData extends PaginationData = PaginationData,
   TError = unknown,
   TData extends PaginationData = TQueryFnData,
@@ -23,7 +23,7 @@ const usePaginationQuery = <
 ): Omit<UseQueryResult<TData, TError>, "data"> & {
   data?: TData["docs"];
   pagination?: Omit<TData, "docs">;
-} => {
+} {
   const { data, ...rest } = useQuery(queryKey, queryFn, options);
 
   if (data) {
@@ -31,6 +31,4 @@ const usePaginationQuery = <
     return { data: docs, pagination, ...rest };
   }
   return { ...rest };
-};
-
-export default usePaginationQuery;
+}
