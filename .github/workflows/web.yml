@@ -63,5 +63,4 @@ jobs:
           script: |
             cd ${{ env.DIR_NAME }}
             cd WEB
-            rm .eslintrc.js
             docker-compose up --build -d
