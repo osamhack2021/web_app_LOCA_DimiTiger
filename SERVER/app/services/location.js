@@ -13,6 +13,7 @@ exports.getLocations = async ({ page, limit }) => {
 		{
 			page: page || 1,
 			limit: limit || 10,
+			pagination: limit != 0,
 			sort: {
 				createdAt: -1,
 			},
