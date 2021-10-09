@@ -1,13 +1,10 @@
-import { useCookies } from "react-cookie";
-import { useForm } from "react-hook-form";
-import { addSeconds } from "date-fns";
-import { useSetRecoilState } from "recoil";
+import { useForm } from 'react-hook-form';
+import { useSetRecoilState } from 'recoil';
 
-import "./Login.css";
+import './Login.css';
 
-import { authWithIdPassword } from "../../api/auth";
-import { queryClient } from "../../App";
-import { authState } from "../../atoms";
+import { accessTokenState, refreshTokenState } from '../../atoms';
+import useAxios from '../../hooks/useAxios';
 
 type LoginData = {
   serial: string;
@@ -15,24 +12,17 @@ type LoginData = {
 };
 
 const Login = () => {
-  const [, setCookie] = useCookies(["access_token", "refresh_token"]);
-  const setAuthState = useSetRecoilState(authState);
+  const axios = useAxios();
+  const setAccessToken = useSetRecoilState(accessTokenState);
+  const setRefreshToken = useSetRecoilState(refreshTokenState);
   const { register, handleSubmit } = useForm();
 
   const signIn = async ({ serial, password }: LoginData) => {
-    const { access_token, refresh_token, expires_in } =
-      await authWithIdPassword(serial, password);
-    setCookie("access_token", access_token, {
-      expires: addSeconds(new Date(), expires_in),
-    });
-    setCookie("refresh_token", refresh_token, {
-      expires: addSeconds(new Date(), expires_in),
-    });
-    setAuthState({
-      authenticated: true,
-      loading: false,
-    });
-    queryClient.invalidateQueries(["users", "me"]);
+    const { access_token, refresh_token } = (
+      await axios.post('/auth/token', { serial, password })
+    ).data;
+    setAccessToken(access_token);
+    setRefreshToken(refresh_token);
   };
 
   return (
@@ -44,8 +34,7 @@ const Login = () => {
             height="150"
             viewBox="0 0 345 151"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+            xmlns="http://www.w3.org/2000/svg">
             <path
               d="M195.532 70.924V77.476H162.484V27.22H169.036V70.924H195.532Z"
               fill="#4C535E"
@@ -120,8 +109,7 @@ const Login = () => {
                 width="122.462"
                 height="140.75"
                 filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB"
-              >
+                colorInterpolationFilters="sRGB">
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix
                   in="SourceAlpha"
@@ -154,8 +142,7 @@ const Login = () => {
                 y1="0"
                 x2="64"
                 y2="128"
-                gradientUnits="userSpaceOnUse"
-              >
+                gradientUnits="userSpaceOnUse">
                 <stop stopColor="#56CCF2" />
                 <stop offset="1" stopColor="#2F80ED" />
               </linearGradient>
@@ -165,8 +152,7 @@ const Login = () => {
                 y1="25.75"
                 x2="63.981"
                 y2="102.5"
-                gradientUnits="userSpaceOnUse"
-              >
+                gradientUnits="userSpaceOnUse">
                 <stop stopColor="white" />
                 <stop offset="1" stopColor="#C0F4FF" />
               </linearGradient>
@@ -179,11 +165,11 @@ const Login = () => {
             <input
               type="text"
               id="manager_id"
-              placeholder={"00-000000"}
-              {...register("serial")}
+              placeholder={'00-000000'}
+              {...register('serial')}
             />
             <div className="caption">비밀번호</div>
-            <input type="password" id="manager_pw" {...register("password")} />
+            <input type="password" id="manager_pw" {...register('password')} />
             <button type="submit">로그인</button>
           </form>
         </div>

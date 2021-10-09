@@ -1,27 +1,12 @@
-import { useQuery } from "react-query";
-
-import LocationLog from "../../types/LocationLog";
-import LocationLogQuery from "../../types/LocationLogQuery";
-import client from "../client";
-
-export async function getLocationLogs(
-  query?: LocationLogQuery
-): Promise<LocationLog[]> {
-  const { data } = await client.get("/location-logs", {
-    params: query,
-  });
-  return data;
-}
-
-export async function getLocationLog(id: string): Promise<LocationLog> {
-  const { data } = await client.get(`/location-logs/${id}`);
-  return data;
-}
+import usePaginationQuery from '../../hooks/usePaginationQuery';
+import useQuery from '../../hooks/useQuery';
+import LocationLog from '../../types/LocationLog';
+import LocationLogQuery from '../../types/LocationLogQuery';
 
 export function useLocationLogs(query?: LocationLogQuery) {
-  return useQuery(["locationLogs", query], () => getLocationLogs(query));
+  return usePaginationQuery<LocationLog>('/location-logs', query);
 }
 
 export function useLocationLog(id: string) {
-  return useQuery(["locationLog", id], () => getLocationLog(id));
+  return useQuery<LocationLog>('/location-logs', id);
 }

@@ -1,27 +1,24 @@
-import React from "react";
-import { Redirect, Route } from "react-router";
-import { useRecoilValue } from "recoil";
+import React from 'react';
+import { Redirect, Route } from 'react-router';
+import { RouteProps } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
-import { authState } from "../atoms";
+import { accessTokenState } from '../atoms';
 
-const PrivateRoutes: React.FC<{ component: any; path: any; exact: any }> = ({
-  component: Component,
-  ...rest
-}) => {
-  const { authenticated, loading } = useRecoilValue(authState);
+interface IPrivateRoute extends RouteProps {
+  component: React.ComponentType<any>;
+}
+
+const PrivateRoute = ({ component: Component, ...rest }: IPrivateRoute) => {
+  const token = useRecoilValue(accessTokenState);
   return (
     <Route
       {...rest}
-      render={(props) =>
-        !authenticated && !loading ? (
-          <Redirect to="/login" />
-        ) : (
-          <Component {...props} />
-        )
+      render={props =>
+        !token ? <Redirect to="/login" /> : <Component {...props} />
       }
     />
   );
 };
 
-export default PrivateRoutes;
-/*https://cotak.tistory.com/108*/
+export default PrivateRoute;

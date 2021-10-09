@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import "./Header.css";
+import './Header.css';
 
 interface iprops {}
 interface istate {
@@ -16,10 +16,10 @@ class Header extends Component<iprops, istate> {
     super(props);
     this.state = {
       date: new Date(),
-      timeID: "",
-      watch1: "",
-      watch2: "",
-      watch3: "",
+      timeID: '',
+      watch1: '',
+      watch2: '',
+      watch3: '',
     };
   }
 
@@ -36,21 +36,21 @@ class Header extends Component<iprops, istate> {
       date: new Date(),
       watch1: this.getToday(),
       watch2:
-        ("0" + this.state.date.getHours()).slice(-2) +
-        ":" +
-        ("0" + this.state.date.getMinutes()).slice(-2),
-      watch3: ("0" + this.state.date.getSeconds()).slice(-2),
+        ('0' + this.state.date.getHours()).slice(-2) +
+        ':' +
+        ('0' + this.state.date.getMinutes()).slice(-2),
+      watch3: ('0' + this.state.date.getSeconds()).slice(-2),
     });
   };
 
   getToday = () => {
-    const week: Array<string> = ["일", "월", "화", "수", "목", "금", "토"];
+    const week: Array<string> = ['일', '월', '화', '수', '목', '금', '토'];
     const date: Date = this.state.date;
     const year: string = String(date.getFullYear());
-    const month: string = ("0" + (1 + date.getMonth())).slice(-2);
-    const day: string = ("0" + date.getDate()).slice(-2);
+    const month: string = ('0' + (1 + date.getMonth())).slice(-2);
+    const day: string = ('0' + date.getDate()).slice(-2);
     const dayOfTheWeek: number = date.getDay();
-    return year + "-" + month + "-" + day + " " + week[dayOfTheWeek] + "요일";
+    return year + '-' + month + '-' + day + ' ' + week[dayOfTheWeek] + '요일';
   };
 
   render() {
@@ -58,7 +58,7 @@ class Header extends Component<iprops, istate> {
       <header>
         <div id="belong">
           <Link to="/">
-            <img id="belong_logo" src="./icons/25div.png" alt="logo" />
+            <img id="belong_logo" src="/icons/25div.png" alt="logo" />
             <p className="belong_name">
               70여단 <span>국사봉대대</span>
             </p>

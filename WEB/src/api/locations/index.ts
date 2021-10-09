@@ -1,13 +1,6 @@
-import { useQuery } from "react-query";
-
-import Location from "../../types/Location";
-import client from "../client";
-
-export async function getLocations(): Promise<Location[]> {
-  const { data } = await client.get("/locations");
-  return data;
-}
+import usePaginationQuery from '../../hooks/usePaginationQuery';
+import Location from '../../types/Location';
 
 export function useLocations() {
-  return useQuery(["locations"], () => getLocations());
+  return usePaginationQuery<Location>('/locations');
 }

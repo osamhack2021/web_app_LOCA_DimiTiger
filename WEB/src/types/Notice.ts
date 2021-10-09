@@ -5,4 +5,3 @@ interface Notice {
 }
 
 export default Notice;
-

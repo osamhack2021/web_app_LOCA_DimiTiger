@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './Dashboard.css';
 
-import Location from '../Location/Location';
+import LocationChart from '../LocationChart/LocationChart';
 import MilitaryDiscipline from '../MilitaryDiscipline/MilitaryDiscipline';
 import Notice from '../Notice/Notice';
 import PersonnelStatus from '../PersonnelStatus/PersonnelStatus';
@@ -17,7 +17,7 @@ class Dashboard extends Component {
         <Notice></Notice>
         <div id="container1">
           <div id="container2">
-            <Location></Location>
+            <LocationChart />
             <PersonnelStatus></PersonnelStatus>
           </div>
           <div id="container3">
@@ -31,5 +31,5 @@ class Dashboard extends Component {
     );
   }
 }
-    
-export default Dashboard;    
+
+export default Dashboard;

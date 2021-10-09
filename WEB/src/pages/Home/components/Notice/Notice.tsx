@@ -1,10 +1,9 @@
-import { useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "react-query";
+import { useForm } from 'react-hook-form';
 
-import "./Notice.css";
+import './Notice.css';
 
-import { addNotices, useNotices } from "../../api/notices";
-import Notice from "../../types/Notice";
+import { useAddNotice, useNotices } from '../../../../api/notices';
+import Notice from '../../../../types/Notice';
 
 interface NoticeElementProps {
   notice: Notice;
@@ -22,24 +21,14 @@ const NoticeElement = ({ notice }: NoticeElementProps) => {
 };
 
 const NoticeCard = () => {
-  const { notices } = useNotices();
+  const { data: notices } = useNotices();
   const { register, handleSubmit } = useForm();
 
-  type NoticeData = {
-    content: string;
-    emergency: boolean;
-  }
+  const noticeMutaion = useAddNotice();
 
-  const queryClient = useQueryClient();
-
-  const mutationNotice = useMutation(["addNotices"], {
-    onMutate: (body: object) => addNotices(body),
-    onSuccess: () => { queryClient.invalidateQueries('notices'); }
-  })
-
-  const addNotice = async ({ content, emergency }: NoticeData) => {
-    mutationNotice.mutate({ content, emergency });
-  }
+  const onSubmit = async ({ content, emergency }: Notice) => {
+    noticeMutaion.mutate({ content, emergency });
+  };
 
   return (
     <div id="notice" className="dash_component">
@@ -53,13 +42,13 @@ const NoticeCard = () => {
               return <NoticeElement notice={data} key={i} />;
             })}
         </div>
-        <form className="send_box" onSubmit={handleSubmit(addNotice)}>
+        <form className="send_box" onSubmit={handleSubmit(onSubmit)}>
           <div className="input_box">
-            <select className="send_mode" {...register("emergency")}>
+            <select className="send_mode" {...register('emergency')}>
               <option value="false">일반</option>
               <option value="true">긴급</option>
             </select>
-            <input type="text" {...register("content")} />
+            <input type="text" {...register('content')} />
           </div>
           <button type="submit" className="send_button">
             <img src="./icons/send.svg" alt="" />

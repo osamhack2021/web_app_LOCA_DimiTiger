@@ -1,8 +1,9 @@
 module.exports = {
   root: true,
   extends: ['react-app', 'react-app/jest'],
-  plugins: ['simple-import-sort', 'unused-imports'],
+  plugins: ['prettier', 'simple-import-sort', 'unused-imports'],
   rules: {
+    'prettier/prettier': 'error',
     semi: 0,
     'comma-dangle': 0,
     'simple-import-sort/imports': [
@@ -28,7 +29,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
     'unused-imports/no-unused-imports': 'error',
     'unused-imports/no-unused-vars': [
-      'error',
+      'warn',
       {
         vars: 'all',
         varsIgnorePattern: '^_',
