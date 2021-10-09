@@ -37,11 +37,7 @@ function usePaginationQuery<
       (
         await axios.get(
           `${path}${isPathParam ? '/' + params : ''}`,
-          isPathParam
-            ? {
-                params,
-              }
-            : undefined,
+          isPathParam || !params ? {} : { params },
         )
       ).data,
     options,
