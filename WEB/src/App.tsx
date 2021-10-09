@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { CookiesProvider, useCookies } from "react-cookie";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { RecoilRoot, useSetRecoilState } from "recoil";
+import { QueryParamProvider } from "use-query-params";
 
 import "./App.css";
 
@@ -31,7 +32,7 @@ const App = () => {
         loading: false,
       });
     }
-  }, [cookies]);
+  }, [cookies, setAuthState]);
 
   useEffect(() => {
     if (me) {
@@ -41,21 +42,23 @@ const App = () => {
         user: me,
       });
     }
-  }, [me]);
+  }, [me, setAuthState]);
 
   return (
     <div id="app">
       <Router>
-        <Switch>
-          <PublicRoutes
-            path="/login"
-            restricted={true}
-            component={Login}
-            exact
-          />
-          <PrivateRoutes path="/" component={Home} exact />
-          <PrivateRoutes path="/search" component={LocationLogs} exact />
-        </Switch>
+        <QueryParamProvider ReactRouterRoute={Route}>
+          <Switch>
+            <PublicRoutes
+              path="/login"
+              restricted={true}
+              component={Login}
+              exact
+            />
+            <PrivateRoutes path="/" component={Home} exact />
+            <PrivateRoutes path="/search" component={LocationLogs} exact />
+          </Switch>
+        </QueryParamProvider>
       </Router>
     </div>
   );
