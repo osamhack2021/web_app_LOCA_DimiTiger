@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const glob = require('glob');
 const GracefulExceptions = require('node-graceful');
 const path = require('path');
+const RankTypes = require('../utils/rank-types');
 
 exports.plugin = {
 	name: 'mongoose',

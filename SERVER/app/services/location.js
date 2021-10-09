@@ -5,8 +5,20 @@ const Errors = (exports.Errors = {
 	LocationNotFoundError: createError('LocationNotFoundError'),
 });
 
-exports.getLocations = async () => {
-	return await Location.find();
+exports.getLocations = async ({ page, limit }) => {
+	return await Location.paginate(
+		{
+			deleted: false,
+		},
+		{
+			page: page || 1,
+			limit: limit || 10,
+			pagination: limit != 0,
+			sort: {
+				createdAt: -1,
+			},
+		}
+	);
 };
 
 exports.getLocation = async (_id) => {
@@ -29,4 +41,8 @@ exports.updateLocation = async (_id, fields) => {
 	await location.save();
 
 	return location;
+};
+
+exports.deleteLocation = async (_id) => {
+	return await exports.updateLocation(_id, { deleted: true });
 };

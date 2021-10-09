@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const locationSchema = new mongoose.Schema(
 	{
@@ -8,6 +9,11 @@ const locationSchema = new mongoose.Schema(
 			trim: true,
 		},
 		ui: JSON,
+		deleted: {
+			type: Boolean,
+			default: false,
+			select: false,
+		},
 	},
 	{
 		timestamps: true,
@@ -20,5 +26,7 @@ const locationSchema = new mongoose.Schema(
 		},
 	}
 );
+
+locationSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('Location', locationSchema);

@@ -1,14 +1,20 @@
 const Boom = require('@hapi/boom');
 const Joi = require('joi');
 const SettingService = require('../services/setting');
+const { removeUndefined } = require('../utils/object-editor');
 
 exports.getSettings = {
 	tags: ['api', 'setting'],
 	description: '설정 목록을 가져옵니다.',
-	validate: {},
+	validate: {
+		query: Joi.object({
+			page: Joi.number().description('페이지'),
+			limit: Joi.number().description('가져올 개수'),
+		}),
+	},
 	handler: async (req, h) => {
 		try {
-			return await SettingService.getSettings();
+			return await SettingService.getSettings(removeUndefined(req.query));
 		} catch (err) {
 			throw Boom.internal(err);
 		}
@@ -47,7 +53,7 @@ exports.createSetting = {
 	tags: ['api', 'setting'],
 	description: '설정을 새로 만듭니다.',
 	validate: {
-		payload: Joi.any(),
+		payload: Joi.object(),
 	},
 	handler: async (req, h) => {
 		try {

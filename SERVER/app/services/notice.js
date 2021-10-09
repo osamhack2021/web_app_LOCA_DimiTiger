@@ -5,8 +5,20 @@ const Errors = (exports.Errors = {
 	NoticeNotFoundError: createError('NoticeNotFoundError'),
 });
 
-exports.getNotices = async () => {
-	return await Notice.find({ deleted: false }).sort({ createdAt: -1 }).exec();
+exports.getNotices = async ({ page, limit }) => {
+	return await Notice.paginate(
+		{
+			deleted: false,
+		},
+		{
+			page: page || 1,
+			limit: limit || 10,
+			pagination: limit != 0,
+			sort: {
+				createdAt: -1,
+			},
+		}
+	);
 };
 
 exports.getNotice = async (_id) => {
@@ -17,10 +29,6 @@ exports.getNotice = async (_id) => {
 
 exports.createNotice = async ({ content, emergency, creator }) => {
 	return await new Notice({ content, emergency, creator }).save();
-};
-
-exports.removeNotice = async (_id) => {
-	return await exports.updateNotice(_id, { deleted: true });
 };
 
 exports.updateNotice = async (_id, fields) => {
@@ -35,4 +43,8 @@ exports.updateNotice = async (_id, fields) => {
 	await notice.save();
 
 	return notice;
+};
+
+exports.deleteNotice = async (_id) => {
+	return await exports.updateNotice(_id, { deleted: true });
 };

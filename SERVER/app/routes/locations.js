@@ -25,6 +25,11 @@ exports.plugin = {
 				path: '/{locationId}',
 				config: Controllers.location.updateLocation,
 			},
+			{
+				method: 'DELETE',
+				path: '/{locationId}',
+				config: Controllers.location.deleteLocation,
+			},
 		]);
 	},
 };

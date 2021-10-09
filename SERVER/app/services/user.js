@@ -3,13 +3,26 @@ const { createError } = require('../utils/error');
 
 const Errors = (exports.Errors = {
 	UserNotFoundError: createError('UserNotFoundError'),
+	UserAlreadyExistError: createError('UserAlreadyExistError'),
 	PasswordNotMatchError: createError('PasswordNotMatchError'),
 });
 
-exports.getUsers = async () => {
-	const query = User.find();
-
-	return await query.exec();
+exports.getUsers = async ({ page, limit, name, serial }) => {
+	return await User.paginate(
+		{
+			deleted: false,
+			name: { $regex: name || '', $options: 'i' },
+			serial: { $regex: serial || '', $options: 'i' },
+		},
+		{
+			page: page || 1,
+			limit: limit || 10,
+			pagination: limit != 0,
+			sort: {
+				createdAt: -1,
+			},
+		}
+	);
 };
 
 exports.getUser = async (_id) => {
@@ -19,6 +32,10 @@ exports.getUser = async (_id) => {
 };
 
 exports.createUsers = async ({ serial, name, password, rank }) => {
+	const existUser = await User.findOne({ serial, deleted: false });
+
+	if (existUser) throw new Errors.UserAlreadyExistError();
+
 	return await new User({
 		serial,
 		name,
@@ -27,7 +44,7 @@ exports.createUsers = async ({ serial, name, password, rank }) => {
 	}).save();
 };
 
-exports.updateUsers = async (_id, fields) => {
+exports.updateUser = async (_id, fields) => {
 	const user = await User.findOne({
 		_id,
 	}).exec();
@@ -97,4 +114,8 @@ exports.serialLogin = async ({ serial, password }) => {
 		throw new Errors.PasswordNotMatchError();
 
 	return user;
+};
+
+exports.deleteUser = async (_id) => {
+	return await exports.updateUser(_id, { deleted: true });
 };

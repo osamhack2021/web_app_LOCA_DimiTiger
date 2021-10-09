@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 const argon2 = require('argon2');
 const rankTypes = require('../utils/rank-types');
 
@@ -42,6 +43,11 @@ const userSchema = new mongoose.Schema(
 			select: false,
 			trim: true,
 		},
+		deleted: {
+			type: Boolean,
+			default: false,
+			select: false,
+		},
 	},
 	{
 		timestamps: true,
@@ -62,5 +68,7 @@ userSchema.methods.verifyPassword = function verifyPassword(password) {
 	console.log(this.password, password);
 	return argon2.verify(this.password, password);
 };
+
+userSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('User', userSchema);

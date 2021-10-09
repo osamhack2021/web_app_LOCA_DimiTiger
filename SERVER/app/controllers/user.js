@@ -2,14 +2,22 @@ const Boom = require('@hapi/boom');
 const Joi = require('joi');
 const UserService = require('../services/user');
 const rankTypes = require('../utils/rank-types');
+const { removeUndefined } = require('../utils/object-editor');
 
 exports.getUsers = {
 	tags: ['api', 'user'],
 	description: '사용자 목록을 가져옵니다.',
-	validate: {},
+	validate: {
+		query: Joi.object({
+			page: Joi.number().description('페이지'),
+			limit: Joi.number().description('가져올 개수'),
+			name: Joi.string().description('사용자 이름'),
+			serial: Joi.string().description('군번'),
+		}),
+	},
 	handler: async (req, h) => {
 		try {
-			return await UserService.getUsers();
+			return await UserService.getUsers(removeUndefined(req.query));
 		} catch (err) {
 			throw Boom.internal(err);
 		}
@@ -70,7 +78,7 @@ exports.createUsers = {
 	},
 };
 
-exports.updateUsers = {
+exports.updateUser = {
 	auth: {
 		mode: 'optional',
 	},
@@ -93,7 +101,7 @@ exports.updateUsers = {
 		 * 관리자인 경우 무조건 가능
 		 * 관리자가 아닌 경우 본인의 정보만 수정 가능 */
 		try {
-			return await UserService.updateUsers(req.params.userId, req.payload);
+			return await UserService.updateUser(req.params.userId, req.payload);
 		} catch (err) {
 			throw Boom.internal(err);
 		}
@@ -125,6 +133,26 @@ exports.registerUsers = {
 				req.payload.identity,
 				req.payload.register
 			);
+		} catch (err) {
+			throw Boom.internal(err);
+		}
+	},
+};
+
+exports.deleteUser = {
+	tags: ['api', 'user'],
+	validate: {
+		params: Joi.object({
+			userId: Joi.string().description('사용자 _id'),
+		}),
+	},
+	handler: async (req, h) => {
+		/* todo
+		 * 권한 체크
+		 * 관리자인 경우 무조건 가능
+		 * 관리자가 아닌 경우 본인의 정보만 수정 가능 */
+		try {
+			return await UserService.deleteUser(req.params.userId);
 		} catch (err) {
 			throw Boom.internal(err);
 		}
