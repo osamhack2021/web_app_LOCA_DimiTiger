@@ -3,8 +3,8 @@ import { useMutation, useQueryClient } from "react-query";
 
 import "./Notice.css";
 
-import { addNotices, useNotices } from "../../api/notices";
-import Notice from "../../types/Notice";
+import { addNotice, useNotices } from "../../../../api/notices";
+import Notice from "../../../../types/Notice";
 
 interface NoticeElementProps {
   notice: Notice;
@@ -22,24 +22,23 @@ const NoticeElement = ({ notice }: NoticeElementProps) => {
 };
 
 const NoticeCard = () => {
-  const { notices } = useNotices();
+  const { data: notices } = useNotices();
   const { register, handleSubmit } = useForm();
 
-  type NoticeData = {
-    content: string;
-    emergency: boolean;
-  }
+  console.log("tlqkf", notices);
 
   const queryClient = useQueryClient();
 
   const mutationNotice = useMutation(["addNotices"], {
-    onMutate: (body: object) => addNotices(body),
-    onSuccess: () => { queryClient.invalidateQueries('notices'); }
-  })
+    onMutate: (body: object) => addNotice(body),
+    onSuccess: () => {
+      queryClient.invalidateQueries("notices");
+    },
+  });
 
-  const addNotice = async ({ content, emergency }: NoticeData) => {
+  const onSubmit = async ({ content, emergency }: Notice) => {
     mutationNotice.mutate({ content, emergency });
-  }
+  };
 
   return (
     <div id="notice" className="dash_component">
@@ -53,7 +52,7 @@ const NoticeCard = () => {
               return <NoticeElement notice={data} key={i} />;
             })}
         </div>
-        <form className="send_box" onSubmit={handleSubmit(addNotice)}>
+        <form className="send_box" onSubmit={handleSubmit(onSubmit)}>
           <div className="input_box">
             <select className="send_mode" {...register("emergency")}>
               <option value="false">일반</option>
