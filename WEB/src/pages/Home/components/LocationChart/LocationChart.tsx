@@ -94,8 +94,8 @@ const CustomCirclePackingComponent = (props: CircleProps<LocationDatum>) => {
           <text
             x={node.x}
             y={node.y - distance * 1.2}
-            text-anchor="middle"
-            dominant-baseline="central"
+            textAnchor="middle"
+            dominantBaseline="central"
             style={{
               fontFamily: 'sans-serif',
               fontSize: node.radius * 0.7 + 'px',
@@ -109,14 +109,14 @@ const CustomCirclePackingComponent = (props: CircleProps<LocationDatum>) => {
             y1={node.y + distance * 0.2}
             x2={node.x + lineWidth}
             y2={node.y + distance * 0.2}
-            stroke-width="5"
+            strokeWidth="5"
             stroke="#ffffff"
           />
           <text
             x={node.x}
             y={node.y + distance * 1.1}
-            text-anchor="middle"
-            dominant-baseline="central"
+            textAnchor="middle"
+            dominantBaseline="central"
             style={{
               fontFamily: 'sans-serif',
               fontSize: fontSize,
