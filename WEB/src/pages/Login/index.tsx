@@ -30,6 +30,7 @@ const Login = () => {
     });
     setAuthState({
       authenticated: true,
+      loading: false,
     });
     queryClient.invalidateQueries(["users", "me"]);
   };

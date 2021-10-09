@@ -12,12 +12,12 @@ const columns = [
   },
   {
     title: "인원",
-    dataIndex: "user",
+    dataIndex: "user.name",
     key: "user",
   },
   {
     title: "장소",
-    dataIndex: "location",
+    dataIndex: "location.name",
     key: "location",
   },
 ];
