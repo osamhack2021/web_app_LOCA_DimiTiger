@@ -1,15 +1,13 @@
 import {
   QueryKey,
-  useQuery,
+  useQuery as useQueryOriginal,
   UseQueryOptions,
   UseQueryResult,
 } from 'react-query';
 
-import PaginationData from '../types/PaginationData';
-
 import useAxios from './useAxios';
 
-function usePaginationQuery<
+function useQuery<
   TQueryFnData = unknown,
   TError = unknown,
   TData = TQueryFnData,
@@ -17,21 +15,13 @@ function usePaginationQuery<
   path: string,
   params?: string | unknown,
   options?: Omit<
-    UseQueryOptions<
-      PaginationData<TQueryFnData>,
-      TError,
-      PaginationData<TData>,
-      QueryKey
-    >,
+    UseQueryOptions<TQueryFnData, TError, TData, QueryKey>,
     'queryKey' | 'queryFn'
   >,
-): Omit<UseQueryResult<PaginationData<TData>, TError>, 'data'> & {
-  data?: TData[];
-  pagination?: Omit<PaginationData<TData>, 'docs'>;
-} {
+): UseQueryResult<TData, TError> {
   const axios = useAxios();
   const isPathParam = typeof params === 'string';
-  const { data, ...rest } = useQuery(
+  return useQueryOriginal(
     [path, params],
     async () =>
       (
@@ -46,12 +36,6 @@ function usePaginationQuery<
       ).data,
     options,
   );
-
-  if (data) {
-    const { docs, ...pagination } = data;
-    return { data: docs, pagination, ...rest };
-  }
-  return { ...rest };
 }
 
-export default usePaginationQuery;
+export default useQuery;

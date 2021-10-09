@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './Sidebar.css';
 
+import { useLogout } from '../../atoms';
+
 interface IProps {
   imgSrc: string;
   eleName: string;
@@ -25,6 +27,7 @@ const SidebarComponent = (props: IProps) => {
 
 const Sidebar = () => {
   const [hover, setHover] = useState(false);
+  const logout = useLogout();
   const sidebarMenu = [
     {
       imgSrc: './icons/sidebar_ico_home.svg',
@@ -56,11 +59,6 @@ const Sidebar = () => {
       eleName: '설정',
       link: '/',
     },
-    {
-      imgSrc: './icons/sidebar_ico_logout.svg',
-      eleName: '로그아웃',
-      link: '/',
-    },
   ];
 
   return (
@@ -79,6 +77,13 @@ const Sidebar = () => {
           />
         );
       })}
+      <div
+        id="logout"
+        className={`sidebar_item${hover && ' flexStart'}`}
+        onClick={logout}>
+        <img src="/icons/sidebar_ico_logout.svg" alt="" />
+        {hover && <div className="sidebar_item_name">로그아웃</div>}
+      </div>
     </div>
   );
 };

@@ -1,9 +1,8 @@
 import { useForm } from 'react-hook-form';
-import { useMutation, useQueryClient } from 'react-query';
 
 import './Notice.css';
 
-import { addNotice, useNotices } from '../../../../api/notices';
+import { useAddNotice, useNotices } from '../../../../api/notices';
 import Notice from '../../../../types/Notice';
 
 interface NoticeElementProps {
@@ -25,17 +24,10 @@ const NoticeCard = () => {
   const { data: notices } = useNotices();
   const { register, handleSubmit } = useForm();
 
-  const queryClient = useQueryClient();
-
-  const mutationNotice = useMutation(['addNotices'], {
-    onMutate: (body: object) => addNotice(body),
-    onSuccess: () => {
-      queryClient.invalidateQueries('notices');
-    },
-  });
+  const noticeMutaion = useAddNotice();
 
   const onSubmit = async ({ content, emergency }: Notice) => {
-    mutationNotice.mutate({ content, emergency });
+    noticeMutaion.mutate({ content, emergency });
   };
 
   return (
