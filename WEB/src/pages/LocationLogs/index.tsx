@@ -65,6 +65,8 @@ const LocationLogs = () => {
     rangeStart: query.rangeStart || undefined,
     rangeEnd: query.rangeEnd || undefined,
     location: query.location || undefined,
+    page: query.page || undefined,
+    limit: query.limit || undefined,
   });
 
   return (
@@ -94,21 +96,19 @@ const LocationLogs = () => {
             <ToolkitWrap>
               <Form
                 form={form}
-                onFinish={({
-                  range: [rangeStart, rangeEnd],
-                  userName,
-                  location,
-                }) =>
+                onFinish={({ range, userName, location, page, limit }) => {
+                  const [rangeStart, rangeEnd] = range || [];
                   setQuery(
                     {
-                      rangeStart: rangeStart?.toDate(),
-                      rangeEnd: rangeEnd?.toDate(),
+                      rangeStart: rangeStart?.toDate?.(),
+                      rangeEnd: rangeEnd?.toDate?.(),
                       location,
-                      page: 1,
+                      page,
+                      limit,
                     },
                     'replaceIn',
-                  )
-                }
+                  );
+                }}
                 layout="inline">
                 <Form.Item name="range">
                   <RangePicker
