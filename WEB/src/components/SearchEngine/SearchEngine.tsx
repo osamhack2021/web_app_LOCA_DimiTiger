@@ -4,7 +4,7 @@ import "./SearchEngine.css";
 
 import { useLocationLogs } from "../../api/location-logs";
 import User from "../../types/User";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Location from "../../types/Location";
 import { format } from "date-fns";
 import { useState } from "react";
@@ -41,6 +41,7 @@ const columns = [
 ];
 
 const SearchEngine = () => {
+  const history = useHistory();
   const [range, setRange] = useState<string[]>();
   const [userName, setUserName] = useState<string>();
   const [location, setLocation] = useState<string>();
@@ -52,7 +53,11 @@ const SearchEngine = () => {
   return (
     <div id="search_engine">
       <div className="engine_headline">
-        <img src="./icons/backspace_arrow.svg" alt="" />
+        <img
+          src="./icons/backspace_arrow.svg"
+          alt=""
+          onClick={() => history.goBack()}
+        />
         <div>유동병력 검색</div>
         <Space>
           <RangePicker
