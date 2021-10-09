@@ -21,6 +21,7 @@ header {
   font-size: 2rem;
   font-weight: 700;
   line-height: 60px;
+  color: black;
 }
 .belong_name > span {
   font-weight: 300;
