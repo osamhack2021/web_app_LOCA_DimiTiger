@@ -1,13 +1,13 @@
-import { Input, DatePicker, Select, Space, Table } from "antd";
+import { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { DatePicker, Input, Select, Space, Table } from "antd";
+import { format } from "date-fns";
 
 import "./SearchEngine.css";
 
 import { useLocationLogs } from "../../api/location-logs";
-import User from "../../types/User";
-import { Link, useHistory } from "react-router-dom";
 import Location from "../../types/Location";
-import { format } from "date-fns";
-import { useState } from "react";
+import User from "../../types/User";
 
 const { RangePicker } = DatePicker;
 const { Search } = Input;

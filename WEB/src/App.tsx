@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { CookiesProvider, useCookies } from "react-cookie";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import { RecoilRoot, useRecoilState, useSetRecoilState } from "recoil";
+import { RecoilRoot, useSetRecoilState } from "recoil";
 
 import "./App.css";
 
