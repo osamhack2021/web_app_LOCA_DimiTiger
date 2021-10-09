@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import "./SearchEngine.css";
 
 import { useLocationLogs } from "../../api/location-logs";
+import { useLocations } from "../../api/locations";
 import Location from "../../types/Location";
 import User from "../../types/User";
 
@@ -45,6 +46,7 @@ const SearchEngine = () => {
   const [range, setRange] = useState<string[]>();
   const [userName, setUserName] = useState<string>();
   const [location, setLocation] = useState<string>();
+  const { data: locations, isLoading: locationLoading } = useLocations();
   const { data: locationLogs } = useLocationLogs({
     rangeStart: range && new Date(range[0]),
     rangeEnd: range && new Date(range[1]),
@@ -59,19 +61,29 @@ const SearchEngine = () => {
           onClick={() => history.goBack()}
         />
         <div>유동병력 검색</div>
+        <div style={{ flex: 1 }} />
         <Space>
           <RangePicker
+            placeholder={["시작 시간", "종료 시간"]}
             showTime={{ format: "HH:mm" }}
             format="yyyy-MM-DD HH:mm"
             onChange={(_, r) => setRange(r)}
           />
-          <Search onChange={(e) => setUserName(e.target.value)} loading />
-          <Select
-            defaultValue=""
-            onChange={(value) => setLocation(value)}
+          <Search
+            placeholder="사용자 이름"
+            onChange={(e) => setUserName(e.target.value)}
             loading
+          />
+          <Select
+            placeholder="위치"
+            onChange={(value: string) => setLocation(value)}
+            loading={locationLoading}
+            style={{ width: 200 }}
           >
             <Option value="">전체위치</Option>
+            {locations?.map((l) => (
+              <Option value={l._id}>{l.name}</Option>
+            ))}
           </Select>
         </Space>
       </div>
