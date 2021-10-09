@@ -46,11 +46,15 @@ const SearchEngine = () => {
   const [range, setRange] = useState<string[]>();
   const [userName, setUserName] = useState<string>();
   const [location, setLocation] = useState<string>();
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
   const { data: locations, isLoading: locationLoading } = useLocations();
   const { data: locationLogs } = useLocationLogs({
     rangeStart: range && new Date(range[0]),
     rangeEnd: range && new Date(range[1]),
-    location,
+    offset: (page - 1) * pageSize,
+    limit: pageSize,
+    location: location === "" ? undefined : location,
   });
   return (
     <div id="search_engine">
@@ -72,7 +76,6 @@ const SearchEngine = () => {
           <Search
             placeholder="사용자 이름"
             onChange={(e) => setUserName(e.target.value)}
-            loading
           />
           <Select
             placeholder="위치"
@@ -91,6 +94,10 @@ const SearchEngine = () => {
         <Table
           dataSource={locationLogs}
           columns={columns}
+          onChange={(pagination) => {
+            setPage(pagination.current || 1);
+            setPageSize(pagination.pageSize || 10);
+          }}
           style={{ flex: 1 }}
         />
       </div>
