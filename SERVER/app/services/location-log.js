@@ -5,8 +5,13 @@ const { createError } = require('../utils/error');
 
 const Errors = (exports.Errors = {});
 
-exports.getLocationLogs = async (filters) => {
-	return await LocationLog.find(filters).populate('location').populate('user');
+exports.getLocationLogs = async ({ rangeStart, rangeEnd, ...filters }) => {
+	return await LocationLog.find({
+		created_on: {
+			$gte: rangeStart, 
+			$lt: rangeEnd
+		}
+	}).find(filters).populate('location').populate('user');
 };
 
 exports.createLocationLog = async ({ user, location }) => {
