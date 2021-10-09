@@ -11,6 +11,8 @@ exports.getUsers = {
 		query: Joi.object({
 			page: Joi.number().description('페이지'),
 			limit: Joi.number().description('가져올 개수'),
+			name: Joi.string().description('사용자 이름'),
+			serial: Joi.string().description('군번'),
 		}),
 	},
 	handler: async (req, h) => {
