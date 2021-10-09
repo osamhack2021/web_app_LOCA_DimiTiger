@@ -25,8 +25,6 @@ const NoticeCard = () => {
   const { data: notices } = useNotices();
   const { register, handleSubmit } = useForm();
 
-  console.log("tlqkf", notices);
-
   const queryClient = useQueryClient();
 
   const mutationNotice = useMutation(["addNotices"], {
