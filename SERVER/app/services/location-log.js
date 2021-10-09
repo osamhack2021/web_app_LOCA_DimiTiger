@@ -7,9 +7,9 @@ const Errors = (exports.Errors = {});
 
 exports.getLocationLogs = async ({ rangeStart, rangeEnd, ...filters }) => {
 	return await LocationLog.find({
-		created_on: {
+		createdAt: {
 			$gte: rangeStart, 
-			$lt: rangeEnd
+			$lte: rangeEnd
 		}
 	}).find(filters).sort({ createdAt: -1 }).populate('location').populate('user');
 };
