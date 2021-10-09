@@ -33,7 +33,7 @@ const columns = [
 ];
 
 const SearchEngine = () => {
-  const { locationLogs } = useLocationLogs();
+  const { data: locationLogs } = useLocationLogs();
   return (
     <div id="search_engine">
       <div className="engine_headline">
