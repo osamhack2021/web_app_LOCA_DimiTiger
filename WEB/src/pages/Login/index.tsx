@@ -1,13 +1,10 @@
-import { useCookies } from 'react-cookie';
 import { useForm } from 'react-hook-form';
-import { addSeconds } from 'date-fns';
 import { useSetRecoilState } from 'recoil';
 
 import './Login.css';
 
-import { authWithIdPassword } from '../../api/auth';
-import { queryClient } from '../../App';
-import { authState } from '../../atoms';
+import { accessTokenState, refreshTokenState } from '../../atoms';
+import useAxios from '../../hooks/useAxios';
 
 type LoginData = {
   serial: string;
@@ -15,24 +12,17 @@ type LoginData = {
 };
 
 const Login = () => {
-  const [, setCookie] = useCookies(['access_token', 'refresh_token']);
-  const setAuthState = useSetRecoilState(authState);
+  const axios = useAxios();
+  const setAccessToken = useSetRecoilState(accessTokenState);
+  const setRefreshToken = useSetRecoilState(refreshTokenState);
   const { register, handleSubmit } = useForm();
 
   const signIn = async ({ serial, password }: LoginData) => {
-    const { access_token, refresh_token, expires_in } =
-      await authWithIdPassword(serial, password);
-    setCookie('access_token', access_token, {
-      expires: addSeconds(new Date(), expires_in),
-    });
-    setCookie('refresh_token', refresh_token, {
-      expires: addSeconds(new Date(), expires_in),
-    });
-    setAuthState({
-      authenticated: true,
-      loading: false,
-    });
-    queryClient.invalidateQueries(['users', 'me']);
+    const { access_token, refresh_token } = (
+      await axios.post('/auth/token', { serial, password })
+    ).data;
+    setAccessToken(access_token);
+    setRefreshToken(refresh_token);
   };
 
   return (
