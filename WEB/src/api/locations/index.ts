@@ -9,10 +9,5 @@ export async function getLocations(): Promise<Location[]> {
 }
 
 export function useLocations() {
-  const { data, isLoading } = useQuery(["locations"], () => getLocations());
-
-  return {
-    locations: data,
-    isLoading,
-  };
+  return useQuery(["locations"], () => getLocations());
 }
