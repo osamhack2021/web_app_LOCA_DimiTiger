@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const locationLogSchema = new mongoose.Schema(
 	{
@@ -29,5 +30,7 @@ const locationLogSchema = new mongoose.Schema(
 		},
 	}
 );
+
+locationLogSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('LocationLog', locationLogSchema);

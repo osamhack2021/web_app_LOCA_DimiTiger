@@ -1,14 +1,20 @@
 const Boom = require('@hapi/boom');
 const Joi = require('joi');
 const NoticeService = require('../services/notice');
+const { removeUndefined } = require('../utils/object-editor');
 
 exports.getNotices = {
 	tags: ['api', 'notice'],
 	description: '공지 목록을 가져옵니다.',
-	validate: {},
+	validate: {
+		query: Joi.object({
+			page: Joi.number().description('페이지'),
+			limit: Joi.number().description('가져올 개수'),
+		}),
+	},
 	handler: async (req, h) => {
 		try {
-			return await NoticeService.getNotices();
+			return await NoticeService.getNotices(removeUndefined(req.query));
 		} catch (err) {
 			throw Boom.internal(err);
 		}

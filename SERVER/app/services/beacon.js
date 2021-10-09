@@ -6,10 +6,20 @@ const Errors = (exports.Errors = {
 	BeaconNotFoundError: createError('BeaconNotFoundError'),
 });
 
-exports.getBeacons = async () => {
-	return await Beacon.find({ deleted: false })
-		.sort({ createdAt: -1 })
-		.populate('location');
+exports.getBeacons = async ({ page, limit }) => {
+	return await Beacon.paginate(
+		{
+			deleted: false,
+		},
+		{
+			page: page || 1,
+			limit: limit || 10,
+			sort: {
+				createdAt: -1,
+			},
+			populate: ['location'],
+		}
+	);
 };
 
 exports.getBeacon = async (filters) => {

@@ -5,8 +5,19 @@ const Errors = (exports.Errors = {
 	LocationNotFoundError: createError('LocationNotFoundError'),
 });
 
-exports.getLocations = async () => {
-	return await Location.find({ deleted: false }).sort({ createdAt: -1 });
+exports.getLocations = async ({ page, limit }) => {
+	return await Location.paginate(
+		{
+			deleted: false,
+		},
+		{
+			page: page || 1,
+			limit: limit || 10,
+			sort: {
+				createdAt: -1,
+			},
+		}
+	);
 };
 
 exports.getLocation = async (_id) => {

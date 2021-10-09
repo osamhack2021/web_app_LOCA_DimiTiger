@@ -7,10 +7,19 @@ const Errors = (exports.Errors = {
 	PasswordNotMatchError: createError('PasswordNotMatchError'),
 });
 
-exports.getUsers = async () => {
-	const query = User.find({ deleted: false }).sort({ createdAt: -1 });
-
-	return await query.exec();
+exports.getUsers = async ({ page, limit }) => {
+	return await User.paginate(
+		{
+			deleted: false,
+		},
+		{
+			page: page || 1,
+			limit: limit || 10,
+			sort: {
+				createdAt: -1,
+			},
+		}
+	);
 };
 
 exports.getUser = async (_id) => {
