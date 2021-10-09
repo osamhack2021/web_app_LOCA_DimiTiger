@@ -1,4 +1,4 @@
-import { Table } from "antd";
+import { Input, DatePicker, Select, Space, Table } from "antd";
 
 import "./SearchEngine.css";
 
@@ -6,6 +6,12 @@ import { useLocationLogs } from "../../api/location-logs";
 import User from "../../types/User";
 import { Link } from "react-router-dom";
 import Location from "../../types/Location";
+import { format } from "date-fns";
+import { useState } from "react";
+
+const { RangePicker } = DatePicker;
+const { Search } = Input;
+const { Option } = Select;
 
 const columns = [
   {
@@ -13,6 +19,8 @@ const columns = [
     dataIndex: "createdAt",
     key: "timestamp",
     width: "20%",
+    render: (createdAt: string) =>
+      format(new Date(createdAt), "yyyy-MM-dd HH:mm"),
   },
   {
     title: "인원",
@@ -33,12 +41,34 @@ const columns = [
 ];
 
 const SearchEngine = () => {
-  const { data: locationLogs } = useLocationLogs();
+  const [range, setRange] = useState<string[]>();
+  const [userName, setUserName] = useState<string>();
+  const [location, setLocation] = useState<string>();
+  const { data: locationLogs } = useLocationLogs({
+    rangeStart: range && new Date(range[0]),
+    rangeEnd: range && new Date(range[1]),
+    location,
+  });
   return (
     <div id="search_engine">
       <div className="engine_headline">
         <img src="./icons/backspace_arrow.svg" alt="" />
         <div>유동병력 검색</div>
+        <Space>
+          <RangePicker
+            showTime={{ format: "HH:mm" }}
+            format="yyyy-MM-dd HH:mm"
+            onChange={(_, range) => setRange(range)}
+          />
+          <Search onChange={(e) => setUserName(e.target.value)} loading />
+          <Select
+            defaultValue=""
+            onChange={(value) => setLocation(value)}
+            loading
+          >
+            <Option value="">전체위치</Option>
+          </Select>
+        </Space>
       </div>
       <div className="engine_container">
         <Table

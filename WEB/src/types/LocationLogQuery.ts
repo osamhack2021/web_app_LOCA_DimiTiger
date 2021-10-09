@@ -1,8 +1,8 @@
 interface LocationLogQuery {
   location?: string;
   user?: string;
-  timeStart?: Date;
-  timeEnd?: Date;
+  rangeStart?: Date;
+  rangeEnd?: Date;
   active?: boolean;
 }
 
