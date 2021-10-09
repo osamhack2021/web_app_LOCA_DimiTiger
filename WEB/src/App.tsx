@@ -22,9 +22,15 @@ const App = () => {
 
   useEffect(() => {
     const { access_token } = cookies;
+    console.log("hi " + access_token);
     if (access_token) {
       client.defaults.headers.Authorization = `Bearer ${access_token}`;
       queryClient.invalidateQueries(["users", "me"]);
+    } else {
+      setAuthState({
+        authenticated: false,
+        loading: false,
+      });
     }
   }, [cookies]);
 
@@ -32,6 +38,7 @@ const App = () => {
     if (me) {
       setAuthState({
         authenticated: true,
+        loading: false,
         user: me,
       });
     }

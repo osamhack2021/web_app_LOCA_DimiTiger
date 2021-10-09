@@ -8,12 +8,16 @@ const PrivateRoutes: React.FC<{ component: any; path: any; exact: any }> = ({
   component: Component,
   ...rest
 }) => {
-  const { authenticated } = useRecoilValue(authState);
+  const { authenticated, loading } = useRecoilValue(authState);
   return (
     <Route
       {...rest}
       render={(props) =>
-        authenticated ? <Component {...props} /> : <Redirect to="/login" />
+        !authenticated && !loading ? (
+          <Redirect to="/login" />
+        ) : (
+          <Component {...props} />
+        )
       }
     />
   );

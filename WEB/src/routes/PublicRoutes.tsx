@@ -10,7 +10,7 @@ const PublicRoutes: React.FC<{
   path: any;
   exact: any;
 }> = ({ component: Component, restricted, ...rest }) => {
-  const { authenticated } = useRecoilValue(authState);
+  const { authenticated, loading } = useRecoilValue(authState);
   return (
     <Route
       {...rest}
