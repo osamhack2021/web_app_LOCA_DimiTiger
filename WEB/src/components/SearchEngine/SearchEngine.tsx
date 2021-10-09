@@ -63,7 +63,7 @@ const SearchEngine = () => {
           <RangePicker
             showTime={{ format: "HH:mm" }}
             format="yyyy-MM-DD HH:mm"
-            onChange={(_, range) => setRange(range)}
+            onChange={(_, r) => setRange(r)}
           />
           <Search onChange={(e) => setUserName(e.target.value)} loading />
           <Select
