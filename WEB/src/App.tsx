@@ -10,6 +10,7 @@ import client from "./api/client";
 import { useMe } from "./api/users";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Init from "./pages/Init";
 import SearchMover from "./pages/SearchMover";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import PublicRoutes from "./routes/PublicRoutes";
@@ -51,6 +52,12 @@ const App = () => {
             path="/login"
             restricted={true}
             component={Login}
+            exact
+          />
+          <PublicRoutes
+            path="/init"
+            restricted={true}
+            component={Init}
             exact
           />
           <PrivateRoutes path="/" component={Home} exact />

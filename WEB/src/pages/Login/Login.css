@@ -2,6 +2,7 @@
   display: flex;
   width: 100vw;
   height: 100vh;
+  background-color: #F5F6FA;
 }
 #logo {
   width: 50%;
@@ -10,8 +11,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background-color: #e5e5e5;
 }
 #loginContainer {
   width: 50%;
@@ -20,6 +19,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
+
+  border-bottom-left-radius: 200px;
 }
 #login_form {
   display: flex;

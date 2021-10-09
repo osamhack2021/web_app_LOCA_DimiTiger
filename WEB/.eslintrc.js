@@ -6,7 +6,7 @@ module.exports = {
     semi: 0,
     'comma-dangle': 0,
     'simple-import-sort/imports': [
-      'error',
+      'warn',
       {
         groups: [
           // Packages. `react` related packages come first.
@@ -26,9 +26,9 @@ module.exports = {
     ],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
-    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-imports': 'warn',
     'unused-imports/no-unused-vars': [
-      'error',
+      'warn',
       {
         vars: 'all',
         varsIgnorePattern: '^_',
