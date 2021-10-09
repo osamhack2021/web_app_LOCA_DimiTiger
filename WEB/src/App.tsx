@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { CookiesProvider, useCookies } from "react-cookie";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import { RecoilRoot, useRecoilState } from "recoil";
+import { RecoilRoot, useRecoilState, useSetRecoilState } from "recoil";
 
 import "./App.css";
 
@@ -17,12 +17,11 @@ import { authState } from "./atoms";
 
 const App = () => {
   const [cookies] = useCookies(["access_token"]);
-  const [{ authenticated }, setAuthState] = useRecoilState(authState);
+  const setAuthState = useSetRecoilState(authState);
   const { data: me } = useMe();
 
   useEffect(() => {
     const { access_token } = cookies;
-    console.log("hi " + access_token);
     if (access_token) {
       client.defaults.headers.Authorization = `Bearer ${access_token}`;
       queryClient.invalidateQueries(["users", "me"]);
