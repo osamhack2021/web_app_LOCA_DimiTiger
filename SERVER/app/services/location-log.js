@@ -6,15 +6,15 @@ const { createError } = require('../utils/error');
 const Errors = (exports.Errors = {});
 
 exports.getLocationLogs = async ({
-	active,
 	rangeStart,
 	rangeEnd,
 	page,
 	limit,
+	...rest
 }) => {
 	return await LocationLog.paginate(
 		{
-			active: active || false,
+			...rest,
 			createdAt: {
 				$gte: rangeStart || new Date(0),
 				$lte: rangeEnd || new Date(),
