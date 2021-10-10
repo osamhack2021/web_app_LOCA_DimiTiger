@@ -22,7 +22,7 @@ export function useActiveLocationLog() {
 
   return {
     data: data && data.length > 0 ? data[0] : undefined,
-    rest,
+    ...rest,
   };
 }
 
