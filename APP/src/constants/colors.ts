@@ -27,3 +27,7 @@ export const colorRedText = '#D44A7E';
 export const colorModalBackground = 'rgba(0, 0, 0, 0.5)';
 export const colorLocaStart = '#56CCF2';
 export const colorLocaEnd = '#2F80ED';
+export const colorReport = '#7f2515';
+export const colorReportStart = '#FF4B2B';
+export const colorReportEnd = '#FF416C';
+export const colorReportState = '#595959';
