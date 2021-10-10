@@ -53,8 +53,9 @@
 }
 .sidebar_item_name {
   color: #b4b4b4;
-  font-size: 1.2rem;
+  font-size: 0rem;
   font-weight: 600;
+  transition: font-size 0s step-start .2s;
 }
 .sidebar_item:hover {
   background-color: #0085ff;
@@ -62,6 +63,13 @@
 }
 .sidebar_item:hover > img {
   filter: brightness(0) invert(1);
+}
+#sidebar:hover .sidebar_item_name {
+  font-size: 1.2rem;
+}
+#sidebar:not(:hover) .sidebar_item_name {
+  font-size: 0rem;
+  transition: all 0.1s;
 }
 .sidebar_item:hover > .sidebar_item_name {
   color: white;
