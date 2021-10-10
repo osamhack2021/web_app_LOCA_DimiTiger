@@ -6,6 +6,7 @@ interface User {
   email: string;
   isAdmin: boolean;
   rank: string;
+  registered: boolean;
 }
 
 export default User;
