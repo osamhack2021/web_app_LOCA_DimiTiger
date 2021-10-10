@@ -6,7 +6,7 @@ import { useRecoilValue } from 'recoil';
 
 import RegisterDoneScreen from './screens/RegisterDoneScreen';
 
-import { authState } from '@/atoms';
+import { accessTokenState } from '@/atoms';
 import LocationScreen from '@/screens/LocationScreen';
 import MainScreen from '@/screens/MainScreen';
 import NoticeScreen from '@/screens/NoticeScreen';
@@ -19,13 +19,13 @@ import User from '@/types/User';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
-  const { authenticated } = useRecoilValue(authState);
+  const accessToken = useRecoilValue(accessTokenState);
 
   return (
     <Stack.Navigator
-      initialRouteName={authenticated ? 'MainScreen' : 'Welcome'}
+      initialRouteName={accessToken ? 'MainScreen' : 'Welcome'}
       screenOptions={{ headerShown: false, animation: 'fade' }}>
-      {authenticated ? (
+      {accessToken ? (
         <>
           <Stack.Screen name="MainScreen" component={MainScreen} />
           <Stack.Screen name="LocationScreen" component={LocationScreen} />

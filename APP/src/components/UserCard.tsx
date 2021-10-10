@@ -4,7 +4,7 @@ import { TextInput } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
 
-import { useEditUser, useUser } from '@/api/users';
+import { useEditUser, useMe } from '@/api/users';
 import Button from '@/components/Button';
 import Card from '@/components/Card';
 import Text from '@/components/Text';
@@ -15,7 +15,7 @@ import User from '@/types/User';
 
 const UserCard = () => {
   const navigation = useNavigation<RootNavigationProp<'UserScreen'>>();
-  const { user } = useUser();
+  const { data: user } = useMe();
   const editUser = useEditUser();
   const [editMode, setEditMode] = useState(false);
   const [editedUser, setEditedUser] = useState<Partial<User>>({});

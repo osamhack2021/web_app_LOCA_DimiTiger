@@ -7,15 +7,15 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValueLoadable, useSetRecoilState } from 'recoil';
 
 import Logo from '@assets/images/loca_logo.svg';
 
-import { authState, splashState } from '@/atoms';
+import { accessTokenState, splashState } from '@/atoms';
 import { colorSplashBg } from '@/constants/colors';
 
 const SplashScreen = () => {
-  const { loading } = useRecoilValue(authState);
+  const { state } = useRecoilValueLoadable(accessTokenState);
   const setSplashDone = useSetRecoilState(splashState);
   const scale = useSharedValue(1);
   const animatedLogo = useAnimatedStyle(() => ({
@@ -29,10 +29,10 @@ const SplashScreen = () => {
         runOnJS(setSplashDone)(true),
       );
     }
-    if (!loading) {
+    if (state !== 'loading') {
       hide();
     }
-  }, [loading, scale, setSplashDone]);
+  }, [scale, setSplashDone, state]);
   return (
     <View style={styles.container}>
       <Animated.View style={animatedLogo}>

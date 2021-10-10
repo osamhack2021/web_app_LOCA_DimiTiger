@@ -15,23 +15,21 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import axios from 'axios';
-import { useSetRecoilState } from 'recoil';
 
 import Logo from '@assets/images/loca_logo.svg';
 
-import { authState } from '@/atoms';
 import Button from '@/components/Button';
 import ControlledTextInput from '@/components/ControlledTextInput';
 import Text from '@/components/Text';
 import { colorTextInputLabel } from '@/constants/colors';
-import { signIn } from '@/utils/AuthUtil';
+import useSignIn from '@/hooks/useSignIn';
 
 const SignInScreen = () => {
   const { control, handleSubmit } =
     useForm<{ serial: string; password: string }>();
+  const signIn = useSignIn();
   const [error, setError] = useState<string>();
   const pwRef = useRef<TextInput>(null);
-  const setAuth = useSetRecoilState(authState);
   const scale = useSharedValue(1);
   const animatedLogo = useAnimatedStyle(() => ({
     transform: [{ scale: withTiming(scale.value) }],
@@ -49,10 +47,6 @@ const SignInScreen = () => {
     async ({ serial, password }) => {
       try {
         await signIn(serial, password);
-        setAuth({
-          authenticated: true,
-          loading: false,
-        });
       } catch (err) {
         let message = '';
         if (axios.isAxiosError(err)) {
@@ -67,7 +61,7 @@ const SignInScreen = () => {
         setError(message);
       }
     },
-    [setAuth],
+    [signIn],
   );
 
   useEffect(() => {

@@ -24,8 +24,8 @@ import { styleDivider } from '@/constants/styles';
 const LocationCard = () => {
   const linkTo = useLinkTo();
   const [changeMode, setChangeMode] = useState(false);
-  const { locations } = useLocations();
-  const { locationLog } = useActiveLocationLog();
+  const { data: locations } = useLocations();
+  const { data: locationLog } = useActiveLocationLog();
   const cardHeight = useSharedValue(192);
   const flexibleHeight = useAnimatedStyle(() => ({
     height: cardHeight.value,

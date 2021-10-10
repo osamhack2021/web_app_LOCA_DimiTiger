@@ -25,7 +25,7 @@ const { colorWhite } = colors;
 
 const NearLocationCard = () => {
   const linkTo = useLinkTo();
-  const { locationLog } = useActiveLocationLog();
+  const { data: locationLog } = useActiveLocationLog();
   const activeBeacons = useRecoilValue(beaconState);
   const cardHeight = useSharedValue(192);
   const flexibleHeight = useAnimatedStyle(() => ({
