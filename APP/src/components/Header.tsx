@@ -1,16 +1,10 @@
 import React from 'react';
-import {
-  Image,
-  Pressable,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { Image, Pressable, SafeAreaView, StyleSheet, View } from 'react-native';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import { useNavigation } from '@react-navigation/core';
 
 import { useUser } from '@/api/users';
+import Text from '@/components/Text';
 import { colorWhite } from '@/constants/colors';
 import { styleShadow } from '@/constants/styles';
 import { RootNavigationProp } from '@/Navigators';
@@ -37,7 +31,7 @@ const Header = () => {
           <>
             <Image
               style={styles.logoImage}
-              source={require('@images/kctc.png')}
+              source={require('@assets/images/kctc.png')}
             />
             <View style={styles.textContainer}>
               <Text>육군과학화전투훈련단 근무지원대대</Text>

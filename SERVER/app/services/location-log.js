@@ -10,10 +10,11 @@ exports.getLocationLogs = async ({
 	rangeEnd,
 	page,
 	limit,
-	...filters
+	...rest
 }) => {
 	return await LocationLog.paginate(
 		{
+			...rest,
 			createdAt: {
 				$gte: rangeStart || new Date(0),
 				$lte: rangeEnd || new Date(),

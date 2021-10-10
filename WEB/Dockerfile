@@ -8,6 +8,7 @@ RUN yarn install --production --frozen-lockfile --non-interactive --cache-folder
 RUN yarn global add serve
 
 COPY . .
+ENV DISABLE_ESLINT_PLUGIN=true
 RUN yarn build
 
 EXPOSE 80

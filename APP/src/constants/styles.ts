@@ -37,6 +37,14 @@ export const styleTextInput: TextStyle = {
   padding: 10,
 };
 
+export const styleNanumBarunGothic: TextStyle = {
+  fontFamily: 'NanumBarunGothicOTF',
+};
+
+export const styleNanumBarunGothicBold: TextStyle = {
+  fontFamily: 'NanumBarunGothicOTFBold',
+};
+
 export const styleTextInputFocus: TextStyle = {
   borderColor: colorButton,
 };

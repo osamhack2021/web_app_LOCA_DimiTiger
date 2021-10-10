@@ -1,0 +1,62 @@
+#loginComponent {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+#logo {
+  width: 50%;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #e5e5e5;
+}
+#loginContainer {
+  width: 50%;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#login_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.caption {
+  color: #aaaaaa;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+#login_form > input {
+  height: 30px;
+  width: 15vw;
+  background-color: #eef1f4;
+  border-radius: 14px;
+  border: 0px;
+  margin-bottom: 16px;
+  padding: 7px 15px;
+  font-size: 16px;
+  font-weight: 700;
+}
+#login_form > button {
+  width: 90px;
+  height: 48px;
+  margin-top: 15px;
+
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+
+  border: none;
+  border-radius: 15px;
+
+  background-color: #0085ff;
+  box-shadow: 4px 8px 16px #0085ff;
+
+  cursor: pointer;
+}
