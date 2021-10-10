@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema(
 		},
 		rank: {
 			type: String,
-			enum: rankTypes,
+			enum: Object.values(rankTypes),
 			required: true,
 		},
 		isAdmin: {

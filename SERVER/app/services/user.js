@@ -7,9 +7,10 @@ const Errors = (exports.Errors = {
 	PasswordNotMatchError: createError('PasswordNotMatchError'),
 });
 
-exports.getUsers = async ({ page, limit, name, serial }) => {
+exports.getUsers = async ({ page, limit, name, serial, ...fields }) => {
 	return await User.paginate(
 		{
+			...fields,
 			deleted: false,
 			name: { $regex: name || '', $options: 'i' },
 			serial: { $regex: serial || '', $options: 'i' },

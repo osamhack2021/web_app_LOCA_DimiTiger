@@ -63,7 +63,7 @@ exports.createUsers = {
 			password: Joi.string().required(),
 			rank: Joi.string()
 				.required()
-				.valid(...rankTypes),
+				.valid(...Object.values(rankTypes)),
 		}),
 	},
 	handler: async (req, h) => {
@@ -92,7 +92,7 @@ exports.updateUser = {
 			phone: Joi.string(),
 			email: Joi.string(),
 			password: Joi.string(),
-			rank: Joi.string().valid(...rankTypes),
+			rank: Joi.string().valid(...Object.values(rankTypes)),
 		}),
 	},
 	handler: async (req, h) => {
