@@ -19,10 +19,13 @@ const UserCard = () => {
   const editUser = useEditUser();
   const [editMode, setEditMode] = useState(false);
   const [editedUser, setEditedUser] = useState<Partial<User>>({});
+  const [patchLoading, setPatchLoading] = useState(false);
 
   const toggleMode = useCallback(async () => {
     if (editMode) {
+      setPatchLoading(true);
       await editUser.mutateAsync(editedUser);
+      setPatchLoading(false);
     }
 
     setEditMode(!editMode);
@@ -47,7 +50,10 @@ const UserCard = () => {
           <Icon name="chevron-left" size={30} color={colorBlack} />
         </TouchableOpacity>
         <Text style={styles.titleText}>사용자 정보</Text>
-        <Button style={styles.editButton} onPress={toggleMode}>
+        <Button
+          style={styles.editButton}
+          onPress={toggleMode}
+          loading={patchLoading}>
           {editMode ? '완료' : '수정'}
         </Button>
       </View>

@@ -28,6 +28,7 @@ const SignInScreen = () => {
   const { control, handleSubmit } =
     useForm<{ serial: string; password: string }>();
   const signIn = useSignIn();
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>();
   const pwRef = useRef<TextInput>(null);
   const scale = useSharedValue(1);
@@ -45,6 +46,7 @@ const SignInScreen = () => {
 
   const authenticate = useCallback(
     async ({ serial, password }) => {
+      setLoading(true);
       try {
         await signIn(serial, password);
       } catch (err) {
@@ -59,6 +61,7 @@ const SignInScreen = () => {
           }
         }
         setError(message);
+        setLoading(false);
       }
     },
     [signIn],
@@ -127,6 +130,7 @@ const SignInScreen = () => {
           />
           <Text style={styles.errorLabel}>{error}</Text>
           <Button
+            loading={loading}
             onPress={handleSubmit(authenticate)}
             style={styles.loginButton}>
             로그인

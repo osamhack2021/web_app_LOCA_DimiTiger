@@ -56,6 +56,7 @@ const SignUpScreen = () => {
         });
       } catch (err) {
         console.log(err);
+        setLoading(false);
       }
     },
     [axios, navigation, signIn],
