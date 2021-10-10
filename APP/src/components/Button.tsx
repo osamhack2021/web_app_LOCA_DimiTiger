@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  ActivityIndicator,
   StyleProp,
   StyleSheet,
   TextStyle,
@@ -15,13 +16,27 @@ export type ButtonProps = {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   onPress?: () => void;
+  loading?: boolean;
   children: string;
 };
 
-const Button = ({ style, textStyle, onPress, children }: ButtonProps) => {
+const Button = ({
+  style,
+  textStyle,
+  onPress,
+  loading,
+  children,
+}: ButtonProps) => {
   return (
-    <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-      <Text style={[styles.text, textStyle]}>{children}</Text>
+    <TouchableOpacity
+      style={[styles.container, style]}
+      onPress={!loading ? onPress : undefined}>
+      <Text style={[styles.text, textStyle, loading && { color: colorButton }]}>
+        {children}
+      </Text>
+      {loading && (
+        <ActivityIndicator color={colorWhite} style={styles.spinner} />
+      )}
     </TouchableOpacity>
   );
 };
@@ -40,6 +55,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginHorizontal: 15,
     marginVertical: 10,
+  },
+  spinner: {
+    alignSelf: 'center',
+    marginVertical: 8,
+    position: 'absolute',
   },
 });
 
