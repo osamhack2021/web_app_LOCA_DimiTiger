@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import { ControllerProps, FieldValues, useController } from 'react-hook-form';
 import { StyleSheet, TextInput, TextInputProps } from 'react-native';
-import Animated, { SequencedTransition } from 'react-native-reanimated';
+import Animated, { Layout } from 'react-native-reanimated';
 
 import Text from '@/components/Text';
 import { colorTextInputLabel } from '@/constants/colors';
@@ -52,7 +52,7 @@ const ControlledTextInput = <T extends FieldValues>(
     fieldState: { error },
   } = useController(controllerProps);
   return (
-    <Animated.View layout={SequencedTransition.reverse()}>
+    <Animated.View layout={Layout}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TextInput
         {...textInputProps}

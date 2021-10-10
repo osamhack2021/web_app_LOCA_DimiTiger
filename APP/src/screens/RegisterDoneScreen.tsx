@@ -39,6 +39,18 @@ const RegisterDoneScreen = () => {
       },
     );
   }, [progress]);
+
+  const AnimatedText = () => (
+    <Animated.Text
+      entering={FadeInUp}
+      exiting={FadeOutDown}
+      style={styles.doneText}>
+      {confettiAnimDone
+        ? `${name} ${rank}님, 안녕하세요.`
+        : '가입이 완료되었어요!'}
+    </Animated.Text>
+  );
+
   return (
     <View style={styles.container}>
       <AnimatedLottieView
@@ -48,15 +60,9 @@ const RegisterDoneScreen = () => {
       />
       <View style={styles.container} />
       <View style={styles.container}>
-        {!confettiAnimDone ? (
-          <Animated.Text exiting={FadeOutDown} style={styles.doneText}>
-            가입이 완료되었어요!
-          </Animated.Text>
-        ) : (
-          <Animated.Text entering={FadeInUp} style={styles.doneText}>
-            {`${name} ${rank}님, 안녕하세요.`}
-          </Animated.Text>
-        )}
+        {/* Intended nasty code for animation */}
+        {confettiAnimDone && <AnimatedText />}
+        {!confettiAnimDone && <AnimatedText />}
       </View>
       <View style={styles.container}>
         <Button onPress={() => navigation.popToTop()}>시작하기</Button>

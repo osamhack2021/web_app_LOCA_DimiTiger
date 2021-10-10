@@ -36,7 +36,7 @@ const LocationCard = () => {
   const emptyAnimProps = useAnimatedProps(() => ({
     progress: emptyAnim.value,
   }));
-  const cardHeight = useSharedValue(192);
+  const cardHeight = useSharedValue(190);
   const flexibleHeight = useAnimatedStyle(() => ({
     height: cardHeight.value,
   }));
@@ -69,7 +69,7 @@ const LocationCard = () => {
               {locations &&
                 locations.map((location, index) => (
                   <Animated.View
-                    entering={FadeInUp.delay(index * 50)}
+                    entering={FadeInUp.delay(300 + index * 50)}
                     key={location._id}>
                     <TouchableOpacity
                       style={styles.locationChip}
@@ -88,8 +88,9 @@ const LocationCard = () => {
         ) : locationLog ? (
           <Animated.View
             style={styles.locationContainer}
-            entering={FadeIn}
+            entering={FadeIn.delay(300)}
             onLayout={({ nativeEvent }) => {
+              console.info(nativeEvent.layout);
               cardHeight.value = withTiming(nativeEvent.layout.height);
             }}>
             <LocationIcon
