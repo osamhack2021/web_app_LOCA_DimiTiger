@@ -10,11 +10,12 @@ import {
   useQueryParams,
 } from 'use-query-params';
 
-import './LocationLogs.css';
-
 import { useLocationLogs } from '../../api/location-logs';
 import { useLocations } from '../../api/locations';
 import Header from '../../components/Header/Header';
+import LargeCard from '../../components/LargeCard';
+import LayoutContent from '../../components/LayoutContent';
+import LayoutContentWrapper from '../../components/LayoutContentWrapper';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Location from '../../types/Location';
 import User from '../../types/User';
@@ -70,29 +71,13 @@ const LocationLogs = () => {
   });
 
   return (
-    <div
-      style={{
-        backgroundColor: '#f2f3f5',
-        flex: 1,
-        overflow: 'hidden',
-      }}>
+    <LayoutContentWrapper>
       <Header />
-      <div
-        style={{
-          width: '90vw',
-          height: '100%',
-          padding: '3vw',
-          display: 'flex',
-        }}>
-        <div id="search_engine">
-          <div className="engine_headline">
-            <img
-              src="./icons/backspace_arrow.svg"
-              alt=""
-              onClick={() => history.goBack()}
-            />
-            <div>유동병력 검색</div>
-            <div style={{ flex: 1 }} />
+      <LayoutContent>
+        <LargeCard
+          title="유동병력 검색"
+          history={history}
+          headerComponent={
             <ToolkitWrap>
               <Form
                 form={form}
@@ -136,26 +121,24 @@ const LocationLogs = () => {
                 </Button>
               </Form>
             </ToolkitWrap>
-          </div>
-          <div className="engine_container">
-            <Table
-              dataSource={locationLogs}
-              columns={columns}
-              pagination={{
-                total: pagination?.totalDocs,
-                pageSize: pagination?.limit,
-                current: pagination?.page,
-                showTotal: total => `총 ${total}개`,
-                onChange: (page, limit) =>
-                  setQuery({ page, limit }, 'replaceIn'),
-              }}
-              style={{ flex: 1 }}
-            />
-          </div>
-        </div>
-      </div>
-      <Sidebar></Sidebar>
-    </div>
+          }>
+          <Table
+            dataSource={locationLogs}
+            rowKey={record => record._id}
+            columns={columns}
+            pagination={{
+              total: pagination?.totalDocs,
+              pageSize: pagination?.limit,
+              current: pagination?.page,
+              showTotal: total => `총 ${total}개`,
+              onChange: (page, limit) => setQuery({ page, limit }, 'replaceIn'),
+            }}
+            style={{ flex: 1, overflow: 'hidden' }}
+          />
+        </LargeCard>
+      </LayoutContent>
+      <Sidebar />
+    </LayoutContentWrapper>
   );
 };
 
