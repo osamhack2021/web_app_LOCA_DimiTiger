@@ -1,12 +1,12 @@
-const { createError } = require('../utils/error');
+const Boom = require('@hapi/boom');
 const TokenTypes = require('../utils/token-types');
 const JwtAuth = require('../utils/jwt-auth');
 const config = require('../config/config');
 
 const Errors = (exports.Errors = {
-	JWTError: createError('JWTError'),
-	TokenExpiredError: createError('TokenExpiredError'),
-	TokenTypeMismatchError: createError('TokenTypeMismatchError'),
+	JWTError: () => Boom.badData('JWTError'),
+	TokenExpiredError: () => Boom.badData('TokenExpiredError'),
+	TokenTypeMismatchError: () => Boom.badData('TokenTypeMismatchError'),
 });
 
 exports.generateToken = async (doc, tokenType, _expiresIn) => {
@@ -24,10 +24,10 @@ exports.verifyToken = async (token, tokenType) => {
 	result = await JwtAuth.verifyToken(token, tokenType !== TokenTypes.AUTH);
 
 	if (!result) {
-		throw new Errors.TokenExpiredError();
+		throw Errors.TokenExpiredError();
 	}
 	if (result.tokenType !== tokenType) {
-		throw new Errors.TokenTypeMismatchError();
+		throw Errors.TokenTypeMismatchError();
 	}
 
 	return result;

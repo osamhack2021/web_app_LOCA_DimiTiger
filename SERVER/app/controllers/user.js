@@ -20,6 +20,7 @@ exports.getUsers = {
 		try {
 			return await UserService.getUsers(removeUndefined(req.query));
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -37,6 +38,7 @@ exports.getUser = {
 		try {
 			return await UserService.getUser(req.params.userId);
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -50,6 +52,7 @@ exports.me = {
 		try {
 			return req.auth.credentials;
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -74,6 +77,7 @@ exports.createUsers = {
 		try {
 			return await UserService.createUsers(req.payload);
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -104,6 +108,7 @@ exports.updateUser = {
 		try {
 			return await UserService.updateUser(req.params.userId, req.payload);
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -135,6 +140,7 @@ exports.registerUsers = {
 				req.payload.register
 			);
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -155,6 +161,7 @@ exports.deleteUser = {
 		try {
 			return await UserService.deleteUser(req.params.userId);
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},

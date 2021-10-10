@@ -16,6 +16,7 @@ exports.getSettings = {
 		try {
 			return await SettingService.getSettings(removeUndefined(req.query));
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -32,6 +33,7 @@ exports.getSetting = {
 		try {
 			return await SettingService.getSetting(req.query.settingId);
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -44,6 +46,7 @@ exports.getCurrentSetting = {
 		try {
 			return await SettingService.getCurrentSetting();
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -62,6 +65,7 @@ exports.createSetting = {
 				data: req.payload,
 			});
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},

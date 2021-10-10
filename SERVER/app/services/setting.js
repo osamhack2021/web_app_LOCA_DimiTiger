@@ -1,8 +1,8 @@
+const Boom = require('@hapi/boom');
 const Setting = require('../models/setting');
-const { createError } = require('../utils/error');
 
 const Errors = (exports.Errors = {
-	SettingNotFoundError: createError('SettingNotFoundError'),
+	SettingNotFoundError: () => Boom.notFound('SettingNotFoundError'),
 });
 
 exports.getSettings = async ({ page, limit }) => {
@@ -21,7 +21,7 @@ exports.getSettings = async ({ page, limit }) => {
 
 exports.getSetting = async (_id) => {
 	const setting = await Setting.findById(_id).exec();
-	if (!setting) throw new Errors.SettingNotFoundError();
+	if (!setting) throw Errors.SettingNotFoundError();
 	return setting;
 };
 
