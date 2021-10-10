@@ -34,22 +34,22 @@ const Sidebar = () => {
     },
     {
       imgSrc: './icons/sidebar_ico_search.svg',
-      eleName: '유동병력검색',
+      eleName: '유동병력 검색',
       link: '/search',
     },
     {
       imgSrc: './icons/sidebar_ico_add_user.svg',
-      eleName: '인원현황',
+      eleName: '인원 현황',
       link: '/users',
     },
     {
       imgSrc: './icons/sidebar_ico_users.svg',
-      eleName: '전체인원',
+      eleName: '장소 현황',
       link: '/',
     },
     {
       imgSrc: './icons/sidebar_ico_worker.svg',
-      eleName: '근무자등록',
+      eleName: '근무자 등록',
       link: '/',
     },
     {
