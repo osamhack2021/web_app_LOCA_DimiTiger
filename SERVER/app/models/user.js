@@ -43,6 +43,10 @@ const userSchema = new mongoose.Schema(
 			select: false,
 			trim: true,
 		},
+		registered: {
+			type: Boolean,
+			default: false,
+		},
 		deleted: {
 			type: Boolean,
 			default: false,
