@@ -13,7 +13,7 @@ export function useEditUser() {
   const queryClient = useQueryClient();
   const { data: me } = useMe();
   const mutation = useMutation(
-    (user: Partial<User>) => axios.post(`/users/${me?._id}`, { user }),
+    (user: Partial<User>) => axios.patch(`/users/${me?._id}`, user),
     {
       onSettled: () => {
         queryClient.invalidateQueries('/users/me');
