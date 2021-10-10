@@ -8,6 +8,7 @@ import { accessTokenState } from '../atoms';
 import useAxios from '../hooks/useAxios';
 import Home from '../pages/Home';
 import LocationLogs from '../pages/LocationLogs';
+import Init from '../pages/Init';
 import Login from '../pages/Login';
 import User from '../types/User';
 
@@ -51,6 +52,12 @@ const Router = () => {
       <QueryParamProvider ReactRouterRoute={Route}>
         <Switch>
           <PublicRoutes
+            path="/init"
+            restricted={true}
+            component={Init}
+            exact
+          />
+          <PublicRoutes
             path="/login"
             restricted={true}
             component={Login}
@@ -58,6 +65,7 @@ const Router = () => {
           />
           <PrivateRoutes path="/" component={Home} exact />
           <PrivateRoutes path="/search" component={LocationLogs} exact />
+          <PrivateRoutes path="/users" component={CurrentUsers} exact />
         </Switch>
       </QueryParamProvider>
     </BrowserRouter>
