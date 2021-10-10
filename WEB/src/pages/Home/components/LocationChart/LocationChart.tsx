@@ -22,6 +22,8 @@ const CustomCirclePackingComponent = (props: CircleProps<LocationDatum>) => {
   const [isClicked, setisClicked] = useState({ isClicked: false });
   const { data: locationLogs } = useLocationLogs({
     location: node.data._id,
+    active: true,
+    limit: 0,
   });
 
   const onCircleClick = () => {
@@ -39,55 +41,29 @@ const CustomCirclePackingComponent = (props: CircleProps<LocationDatum>) => {
         onClick={onCircleClick}></circle>
       {isClicked.isClicked ? (
         <>
-          {locationLogs?.map((data, i) => {
-            if (i < 10) {
-              return (
-                <text
-                  x={node.x}
-                  y={
-                    node.y -
-                    (i - locationLogs.length / 2 + 0.5) *
-                      (distance / locationLogs.length) *
-                      (locationLogs.length + 1)
-                  }
-                  textAnchor="middle"
-                  dominantBaseline="central"
-                  style={{
-                    fontFamily: 'sans-serif',
-                    fontSize: node.radius * 0.175 + 'px',
-                    fontWeight: 'bold',
-                    fill: 'rgb(255, 255, 255)',
-                    pointerEvents: 'none',
-                  }}>
-                  {data.user.rank} {data.user.name}
-                </text>
-              );
-            } else if (i === 10) {
-              return (
-                <text
-                  x={node.x}
-                  y={
-                    node.y -
-                    (i - locationLogs.length / 2 + 0.5) *
-                      (distance / locationLogs.length) *
-                      (locationLogs.length + 1)
-                  }
-                  textAnchor="middle"
-                  dominantBaseline="central"
-                  style={{
-                    fontFamily: 'sans-serif',
-                    fontSize: node.radius * 0.175 + 'px',
-                    fontWeight: 'bold',
-                    fill: 'rgb(255, 255, 255)',
-                    pointerEvents: 'none',
-                  }}>
-                  ...
-                </text>
-              );
-            } else {
-              return;
-            }
-          })}
+          {locationLogs?.slice(0, 11).map((data, i) => (
+            <text
+              x={node.x}
+              y={
+                node.y -
+                (i - locationLogs.length / 2 + 0.5) *
+                  (distance / locationLogs.length) *
+                  (locationLogs.length + 1)
+              }
+              textAnchor="middle"
+              dominantBaseline="central"
+              key={data._id}
+              style={{
+                fontFamily: 'sans-serif',
+                fontSize: node.radius * 0.175 + 'px',
+                fontWeight: 'bold',
+                fill: 'rgb(255, 255, 255)',
+                pointerEvents: 'none',
+              }}>
+              {data.user.rank} {data.user.name}
+              {i === 9 && '...'}
+            </text>
+          ))}
         </>
       ) : (
         <>
@@ -134,7 +110,7 @@ const CustomCirclePackingComponent = (props: CircleProps<LocationDatum>) => {
 
 const LocationChart = () => {
   const { data: locations, isLoading } = useLocations();
-  const { data: locationLogs } = useLocationLogs({ active: true });
+  const { data: locationLogs } = useLocationLogs({ active: true, limit: 0 });
 
   const data = useMemo(() => {
     if (!locations || !locationLogs) {
