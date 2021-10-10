@@ -10,6 +10,7 @@ import Home from '../pages/Home';
 import LocationLogs from '../pages/LocationLogs';
 import Init from '../pages/Init';
 import Login from '../pages/Login';
+import CurrentUsers from '../pages/Users'
 import User from '../types/User';
 
 import PrivateRoutes from './PrivateRoutes';
