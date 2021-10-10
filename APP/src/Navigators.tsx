@@ -31,13 +31,13 @@ const RootStack = () => {
           <Stack.Screen name="LocationScreen" component={LocationScreen} />
           <Stack.Screen name="NoticeScreen" component={NoticeScreen} />
           <Stack.Screen name="UserScreen" component={UserScreen} />
+          <Stack.Screen name="RegisterDone" component={RegisterDoneScreen} />
         </>
       ) : (
         <>
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
           <Stack.Screen name="SignIn" component={SignInScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
-          <Stack.Screen name="RegisterDone" component={RegisterDoneScreen} />
         </>
       )}
     </Stack.Navigator>
