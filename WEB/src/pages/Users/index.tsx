@@ -4,6 +4,8 @@ import { Form, Input, Modal, Table } from 'antd';
 import styled from 'styled-components';
 import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
 
+import './Users.css';
+
 import { useDeleteUser, useUsers } from '../../api/users';
 import AddButton from '../../components/AddButton';
 import DeleteButton from '../../components/DeleteButton';
@@ -126,11 +128,21 @@ const Users = () => {
                 <Modal
                   title="인원 추가"
                   centered
+                  bodyStyle={{
+                    height: '200px',
+                  }}
                   visible={isModalVisible}
                   onOk={handleOk}
                   okText="추가"
                   onCancel={handleCancel}>
-                  <Input></Input>
+                  <div>
+                    <div>군번</div>
+                    <InputText type="text" />
+                  </div>
+                  <div>
+                    <div>이름</div>
+                    <InputText type="text" />
+                  </div>
                 </Modal>
               </Form>
             </ToolkitWrap>
@@ -159,6 +171,13 @@ const ToolkitWrap = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+`;
+
+const InputText = styled.input`
+  border: none;
+  border-radius: 10px;
+  background-color: #eef1f4;
+  width: auto;
 `;
 
 export default Users;
