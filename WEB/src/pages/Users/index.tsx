@@ -113,7 +113,7 @@ const Users = () => {
 
   const addUserMutation = useAddUser();
 
-  const addUser = ({ serial, name, password }: User) => {
+  const addUser = async ({ serial, name, password }: User) => {
     if (selected.selected === 'noting') {
       setSelected({
         selected: selected.selected,
