@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClientProvider } from 'react-query';
 import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
@@ -25,6 +26,11 @@ const App = () => {
 
   return (
     <NavigationContainer linking={linking}>
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="dark-content"
+      />
       {!splashDone ? <SplashScreen /> : <Navigators />}
     </NavigationContainer>
   );
