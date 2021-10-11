@@ -23,7 +23,7 @@ import LocationIcon from '@/components/LocationIcon';
 import Text from '@/components/Text';
 import { colorChipBorder } from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
-import useCardHeight from '@/hooks/useCardHeight';
+import useAnimatedHeight from '@/hooks/useAniamtedHeight';
 
 const AnimatedLottieView = Animated.createAnimatedComponent(LottieView);
 
@@ -36,7 +36,7 @@ const LocationCard = () => {
   const emptyAnimProps = useAnimatedProps(() => ({
     progress: emptyAnim.value,
   }));
-  const { style, layoutHandler } = useCardHeight(190);
+  const { style, layoutHandler } = useAnimatedHeight(190);
   useEffect(() => {
     if (!changeMode && !locationLog && !isLoading) {
       emptyAnim.value = withRepeat(withTiming(1, { duration: 6000 }), -1);

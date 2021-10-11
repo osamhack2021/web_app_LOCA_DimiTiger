@@ -24,7 +24,7 @@ import {
   colorWhite,
 } from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
-import useCardHeight from '@/hooks/useCardHeight';
+import useAnimatedHeight from '@/hooks/useAniamtedHeight';
 
 const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient);
 
@@ -41,7 +41,7 @@ const incidents = [
 
 const EmergencyReportCard = () => {
   const [reportDone, setReportDone] = useState(false);
-  const { style, layoutHandler } = useCardHeight(194);
+  const { style, layoutHandler } = useAnimatedHeight(194);
   const colorStart = useSharedValue(0);
   const colorEnd = useSharedValue(0);
   const gradientProps = useAnimatedProps(() => ({
