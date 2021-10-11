@@ -23,14 +23,14 @@ const RootStack = () => {
 
   return (
     <Stack.Navigator
-      initialRouteName={accessToken ? 'MainScreen' : 'Welcome'}
+      initialRouteName={accessToken ? 'Main' : 'Welcome'}
       screenOptions={{ headerShown: false, animation: 'fade' }}>
       {accessToken ? (
         <>
-          <Stack.Screen name="MainScreen" component={MainScreen} />
-          <Stack.Screen name="LocationScreen" component={LocationScreen} />
-          <Stack.Screen name="NoticeScreen" component={NoticeScreen} />
-          <Stack.Screen name="UserScreen" component={UserScreen} />
+          <Stack.Screen name="Main" component={MainScreen} />
+          <Stack.Screen name="Location" component={LocationScreen} />
+          <Stack.Screen name="Notice" component={NoticeScreen} />
+          <Stack.Screen name="User" component={UserScreen} />
           <Stack.Screen name="RegisterDone" component={RegisterDoneScreen} />
         </>
       ) : (
@@ -51,12 +51,12 @@ export type RootStackParamList = {
   RegisterDone: {
     user: User;
   };
-  MainScreen: undefined;
-  NoticeScreen: undefined;
-  LocationScreen: {
+  Main: undefined;
+  Notice: undefined;
+  Location: {
     location: string;
   };
-  UserScreen: undefined;
+  User: undefined;
 };
 
 export type RootNavigationProp<T extends keyof RootStackParamList> =

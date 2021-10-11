@@ -14,7 +14,7 @@ import { RootNavigationProp } from '@/Navigators';
 import User from '@/types/User';
 
 const UserCard = () => {
-  const navigation = useNavigation<RootNavigationProp<'UserScreen'>>();
+  const navigation = useNavigation<RootNavigationProp<'User'>>();
   const { data: user } = useMe();
   const editUser = useEditUser();
   const [editMode, setEditMode] = useState(false);

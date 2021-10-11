@@ -10,13 +10,13 @@ import { styleShadow } from '@/constants/styles';
 import { RootNavigationProp } from '@/Navigators';
 
 const Header = () => {
-  const navigation = useNavigation<RootNavigationProp<'MainScreen'>>();
+  const navigation = useNavigation<RootNavigationProp<'Main'>>();
   const { data: user, isLoading } = useMe();
   return (
     <SafeAreaView style={styles.container}>
       <Pressable
         style={styles.innerContainer}
-        onPress={() => navigation.push('UserScreen')}>
+        onPress={() => navigation.push('User')}>
         {isLoading ? (
           <SkeletonPlaceholder>
             <SkeletonPlaceholder.Item flexDirection="row">

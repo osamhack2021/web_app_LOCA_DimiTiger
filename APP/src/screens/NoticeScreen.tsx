@@ -11,7 +11,7 @@ import { colorBlack } from '@/constants/colors';
 import { RootNavigationProp } from '@/Navigators';
 
 const NoticeScreen = () => {
-  const navigation = useNavigation<RootNavigationProp<'NoticeScreen'>>();
+  const navigation = useNavigation<RootNavigationProp<'Notice'>>();
   const { data: notices } = useNotices();
   return (
     <View style={styles.container}>

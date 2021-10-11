@@ -13,7 +13,7 @@ import { styleDivider } from '@/constants/styles';
 import { RootNavigationProp } from '@/Navigators';
 
 const NoticeCard = () => {
-  const navigation = useNavigation<RootNavigationProp<'MainScreen'>>();
+  const navigation = useNavigation<RootNavigationProp<'Main'>>();
   const { data: notices } = useNotices();
   return (
     <Card style={styles.container}>
@@ -33,7 +33,7 @@ const NoticeCard = () => {
       <View style={styleDivider} />
       <TouchableOpacity
         style={styles.moreNoticeContainer}
-        onPress={() => navigation.navigate('NoticeScreen')}>
+        onPress={() => navigation.navigate('Notice')}>
         <Icon name="dots-horizontal" size={30} color={colorEllipsis} />
       </TouchableOpacity>
     </Card>
