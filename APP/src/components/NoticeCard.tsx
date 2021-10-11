@@ -44,11 +44,6 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 0,
   },
-  cardHeaderContainer: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
   titleText: {
     fontSize: 21,
     fontWeight: 'bold',

@@ -22,7 +22,7 @@ import Card from '@/components/Card';
 import LocationIcon from '@/components/LocationIcon';
 import Text from '@/components/Text';
 import { colorChipBorder } from '@/constants/colors';
-import { styleDivider } from '@/constants/styles';
+import { styleCardHeaderContainer, styleDivider } from '@/constants/styles';
 import useAnimatedHeight from '@/hooks/useAnimatedHeight';
 
 const AnimatedLottieView = Animated.createAnimatedComponent(LottieView);
@@ -46,7 +46,7 @@ const LocationCard = () => {
   }, [locationLog, isLoading, emptyAnim, changeMode]);
   return (
     <Card>
-      <View style={styles.cardHeaderContainer}>
+      <View style={styleCardHeaderContainer}>
         <Text style={styles.titleText}>나의 위치</Text>
         <Button
           style={styles.locationButton}
@@ -130,11 +130,6 @@ const LocationCard = () => {
 };
 
 const styles = StyleSheet.create({
-  cardHeaderContainer: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
   titleText: {
     fontSize: 21,
     fontWeight: 'bold',

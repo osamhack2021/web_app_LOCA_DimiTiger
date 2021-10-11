@@ -52,3 +52,9 @@ export const styleTextInputFocus: TextStyle = {
 export const styleTextInputBlur: TextStyle = {
   borderColor: colorTextInput,
 };
+
+export const styleCardHeaderContainer: ViewStyle = {
+  alignItems: 'center',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+};

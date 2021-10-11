@@ -1,66 +1,78 @@
 import React from 'react';
 import { Image, SafeAreaView, StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import LinearGradient from 'react-native-linear-gradient';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useNavigation, useRoute } from '@react-navigation/core';
+import { NativeStackHeaderProps } from '@react-navigation/native-stack';
 
 import { useMe } from '@/api/users';
 import Text from '@/components/Text';
 import { colorWhite } from '@/constants/colors';
-import { styleShadow } from '@/constants/styles';
-import { RootNavigationProp } from '@/Navigators';
 
-const Header = () => {
-  const navigation = useNavigation<RootNavigationProp>();
-  const route = useRoute();
+const Header = ({ navigation, route, options }: NativeStackHeaderProps) => {
   const { data: user, isLoading } = useMe();
   return (
-    <SafeAreaView style={styles.container}>
-      <TouchableOpacity
-        style={styles.innerContainer}
-        onPress={() => {
-          if (route.name !== 'Settings') {
-            navigation.push('Settings');
-          }
-        }}>
-        {isLoading ? (
-          <SkeletonPlaceholder>
-            <SkeletonPlaceholder.Item flexDirection="row">
-              <View style={styles.logoImage} />
+    <View style={styles.container}>
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.innerContainer}>
+          {isLoading ? (
+            <SkeletonPlaceholder>
+              <SkeletonPlaceholder.Item flexDirection="row">
+                <View style={styles.logoImage} />
+                <View style={styles.textContainer}>
+                  <View style={styles.unitPlaceHolder} />
+                  <View style={styles.userPlaceHolder} />
+                </View>
+              </SkeletonPlaceholder.Item>
+            </SkeletonPlaceholder>
+          ) : (
+            <>
+              <Image
+                style={styles.logoImage}
+                source={require('@assets/images/kctc.png')}
+              />
               <View style={styles.textContainer}>
-                <View style={styles.unitPlaceHolder} />
-                <View style={styles.userPlaceHolder} />
+                <Text>육군과학화전투훈련단 근무지원대대</Text>
+                <Text style={styles.nameText}>
+                  {options.title || `${user?.rank} ${user?.name}`}
+                </Text>
               </View>
-            </SkeletonPlaceholder.Item>
-          </SkeletonPlaceholder>
-        ) : (
-          <>
-            <Image
-              style={styles.logoImage}
-              source={require('@assets/images/kctc.png')}
-            />
-            <View style={styles.textContainer}>
-              <Text>육군과학화전투훈련단 근무지원대대</Text>
-              <Text
-                style={styles.nameText}>{`${user?.rank} ${user?.name}`}</Text>
-            </View>
-            {route.name !== 'Settings' && (
-              <>
-                <View style={{ flex: 1 }} />
-                <Icon name="cog" size={25} />
-              </>
-            )}
-          </>
-        )}
-      </TouchableOpacity>
-    </SafeAreaView>
+              <View style={{ flex: 1 }} />
+              <TouchableOpacity
+                onPress={() => {
+                  if (route.name === 'Main') {
+                    navigation.push('Settings');
+                  } else {
+                    navigation.goBack();
+                  }
+                }}>
+                <Icon
+                  name={route.name === 'Main' ? 'cog' : 'close'}
+                  size={25}
+                />
+              </TouchableOpacity>
+            </>
+          )}
+        </View>
+      </SafeAreaView>
+      <LinearGradient
+        colors={['rgba(0, 0, 0, 0.15)', 'rgba(0, 0, 0, 0)']}
+        style={{ backgroundColor: 'transparent', height: 20 }}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    ...styleShadow,
+    left: 0,
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    zIndex: 100,
+  },
+  safeArea: {
     backgroundColor: colorWhite,
   },
   innerContainer: {

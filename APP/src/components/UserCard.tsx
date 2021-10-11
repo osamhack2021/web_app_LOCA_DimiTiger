@@ -1,20 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useNavigation } from '@react-navigation/core';
 
 import { useEditUser, useMe } from '@/api/users';
 import Button from '@/components/Button';
 import Card from '@/components/Card';
 import Text from '@/components/Text';
-import { colorBlack } from '@/constants/colors';
-import { styleDivider } from '@/constants/styles';
-import { RootNavigationProp } from '@/Navigators';
+import { styleCardHeaderContainer, styleDivider } from '@/constants/styles';
 import User from '@/types/User';
 
 const UserCard = () => {
-  const navigation = useNavigation<RootNavigationProp<'Settings'>>();
   const { data: user } = useMe();
   const editUser = useEditUser();
   const [editMode, setEditMode] = useState(false);
@@ -43,12 +38,7 @@ const UserCard = () => {
 
   return (
     <Card style={styles.container}>
-      <View style={styles.cardHeaderContainer}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={styles.backButton}>
-          <Icon name="chevron-left" size={30} color={colorBlack} />
-        </TouchableOpacity>
+      <View style={styleCardHeaderContainer}>
         <Text style={styles.titleText}>사용자 정보</Text>
         <Button
           style={styles.editButton}
@@ -109,10 +99,6 @@ const UserCard = () => {
 
 const styles = StyleSheet.create({
   container: {},
-  cardHeaderContainer: {
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
   backButton: {
     margin: 20,
   },
@@ -120,6 +106,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 21,
     fontWeight: 'bold',
+    margin: 20,
   },
   editButton: {
     marginEnd: 20,

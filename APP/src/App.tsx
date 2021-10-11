@@ -1,4 +1,5 @@
 import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClientProvider } from 'react-query';
 import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
 import { RecoilRoot, useRecoilValue } from 'recoil';
@@ -32,9 +33,11 @@ const App = () => {
 export default () => (
   <RecoilRoot>
     <QueryClientProvider client={queryClient}>
-      <BeaconProvider>
-        <App />
-      </BeaconProvider>
+      <SafeAreaProvider>
+        <BeaconProvider>
+          <App />
+        </BeaconProvider>
+      </SafeAreaProvider>
     </QueryClientProvider>
   </RecoilRoot>
 );
