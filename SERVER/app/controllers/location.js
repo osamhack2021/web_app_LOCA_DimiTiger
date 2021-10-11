@@ -16,6 +16,7 @@ exports.getLocations = {
 		try {
 			return await LocationService.getLocations(removeUndefined(req.query));
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -32,6 +33,7 @@ exports.getLocation = {
 		try {
 			return await LocationService.getLocation(req.params.locationId);
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -50,6 +52,7 @@ exports.createLocation = {
 		try {
 			return await LocationService.createLocation(req.payload);
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -74,6 +77,7 @@ exports.updateLocation = {
 				req.payload
 			);
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -91,6 +95,7 @@ exports.deleteLocation = {
 		try {
 			return await LocationService.deleteLocation(req.params.locationId);
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},

@@ -1,8 +1,8 @@
+const Boom = require('@hapi/boom');
 const Location = require('../models/location');
-const { createError } = require('../utils/error');
 
 const Errors = (exports.Errors = {
-	LocationNotFoundError: createError('LocationNotFoundError'),
+	LocationNotFoundError: () => Boom.notFound('LocationNotFoundError'),
 });
 
 exports.getLocations = async ({ page, limit }) => {
@@ -32,7 +32,7 @@ exports.createLocation = async ({ name, ui }) => {
 exports.updateLocation = async (_id, fields) => {
 	const location = await Location.findById(_id).exec();
 
-	if (!location) throw new Errors.LocationNotFoundError();
+	if (!location) throw Errors.LocationNotFoundError();
 
 	for (const key in fields) {
 		location[key] = fields[key];

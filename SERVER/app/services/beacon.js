@@ -1,9 +1,8 @@
+const Boom = require('@hapi/boom');
 const Beacon = require('../models/beacon');
-const Location = require('../models/location');
-const { createError } = require('../utils/error');
 
 const Errors = (exports.Errors = {
-	BeaconNotFoundError: createError('BeaconNotFoundError'),
+	BeaconNotFoundError: () => Boom.notFound('BeaconNotFoundError'),
 });
 
 exports.getBeacons = async ({ page, limit }) => {
@@ -34,7 +33,7 @@ exports.createBeacon = async ({ location, region }) => {
 exports.updateBeacon = async (_id, fields) => {
 	const beacon = await Beacon.findById(_id).exec();
 
-	if (!beacon) throw new Errors.BeaconNotFoundError();
+	if (!beacon) throw Errors.BeaconNotFoundError();
 
 	for (const key in fields) {
 		beacon[key] = fields[key];

@@ -1,15 +1,16 @@
+const Boom = require('@hapi/boom');
 const User = require('../models/user');
-const { createError } = require('../utils/error');
 
 const Errors = (exports.Errors = {
-	UserNotFoundError: createError('UserNotFoundError'),
-	UserAlreadyExistError: createError('UserAlreadyExistError'),
-	PasswordNotMatchError: createError('PasswordNotMatchError'),
+	UserNotFoundError: () => Boom.notFound('UserNotFoundError'),
+	UserAlreadyExistError: () => Boom.conflict('UserAlreadyExistError'),
+	PasswordNotMatchError: () => Boom.conflict('PasswordNotMatchError'),
 });
 
-exports.getUsers = async ({ page, limit, name, serial }) => {
+exports.getUsers = async ({ page, limit, name, serial, ...fields }) => {
 	return await User.paginate(
 		{
+			...fields,
 			deleted: false,
 			name: { $regex: name || '', $options: 'i' },
 			serial: { $regex: serial || '', $options: 'i' },
@@ -34,7 +35,7 @@ exports.getUser = async (_id) => {
 exports.createUsers = async ({ serial, name, password, rank }) => {
 	const existUser = await User.findOne({ serial, deleted: false });
 
-	if (existUser) throw new Errors.UserAlreadyExistError();
+	if (existUser) throw Errors.UserAlreadyExistError();
 
 	return await new User({
 		serial,
@@ -49,7 +50,7 @@ exports.updateUser = async (_id, fields) => {
 		_id,
 	}).exec();
 
-	if (!user) throw new Errors.UserNotFoundError();
+	if (!user) throw Errors.UserNotFoundError();
 
 	for (const key in fields) {
 		if (key == 'password') user[key] = await User.hashPassword(fields[key]);
@@ -69,9 +70,9 @@ exports.registerUsers = async ({ serial, name, password }, fields) => {
 		.select('+password')
 		.exec();
 
-	if (!user) throw new Errors.UserNotFoundError();
+	if (!user) throw Errors.UserNotFoundError();
 	if (!(await user.verifyPassword(password)))
-		throw new Errors.PasswordNotMatchError();
+		throw Errors.PasswordNotMatchError();
 
 	for (const key in fields) {
 		if (key == 'password') user[key] = await User.hashPassword(fields[key]);
@@ -89,7 +90,7 @@ exports.idLogin = async ({ id, password }) => {
 	}).exec();
 
 	if (!(await user.verifyPassword(password)))
-		throw new Errors.PasswordNotMatchError();
+		throw Errors.PasswordNotMatchError();
 
 	return user;
 };
@@ -100,7 +101,7 @@ exports.emailLogin = async ({ email, password }) => {
 	}).exec();
 
 	if (!(await user.verifyPassword(password)))
-		throw new Errors.PasswordNotMatchError();
+		throw Errors.PasswordNotMatchError();
 
 	return user;
 };
@@ -111,7 +112,7 @@ exports.serialLogin = async ({ serial, password }) => {
 	}).exec();
 
 	if (!(await user.verifyPassword(password)))
-		throw new Errors.PasswordNotMatchError();
+		throw Errors.PasswordNotMatchError();
 
 	return user;
 };

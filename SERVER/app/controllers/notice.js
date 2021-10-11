@@ -16,6 +16,7 @@ exports.getNotices = {
 		try {
 			return await NoticeService.getNotices(removeUndefined(req.query));
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -32,6 +33,7 @@ exports.getNotice = {
 		try {
 			return await NoticeService.getNotice(req.params.noticeId);
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -54,6 +56,7 @@ exports.createNotice = {
 				emergency: req.payload.emergency,
 			});
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -71,6 +74,7 @@ exports.deleteNotice = {
 		try {
 			return await NoticeService.deleteNotice(req.params.noticeId);
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},

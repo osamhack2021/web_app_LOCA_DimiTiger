@@ -16,6 +16,7 @@ exports.getBeacons = {
 		try {
 			return await BeaconService.getBeacons(removeUndefined(req.query));
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -33,6 +34,7 @@ exports.getBeacon = {
 		try {
 			return await BeaconService.getBeacon(req.params.beaconId);
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -55,6 +57,7 @@ exports.createBeacon = {
 		try {
 			return await BeaconService.createBeacon(req.payload);
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -80,6 +83,7 @@ exports.udpateBeacon = {
 		try {
 			return await BeaconService.updateBeacon(req.params.beaconId, req.payload);
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},
@@ -97,6 +101,7 @@ exports.deleteBeacon = {
 		try {
 			return await BeaconService.deleteBeacon(req.params.beaconId);
 		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
 		}
 	},

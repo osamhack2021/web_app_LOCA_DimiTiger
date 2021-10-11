@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema(
 		},
 		rank: {
 			type: String,
-			enum: rankTypes,
+			enum: Object.values(rankTypes),
 			required: true,
 		},
 		isAdmin: {
@@ -42,6 +42,10 @@ const userSchema = new mongoose.Schema(
 			required: true,
 			select: false,
 			trim: true,
+		},
+		registered: {
+			type: Boolean,
+			default: false,
 		},
 		deleted: {
 			type: Boolean,

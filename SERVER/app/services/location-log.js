@@ -1,9 +1,7 @@
-const User = require('../models/user');
-const Location = require('../models/location');
+// const Boom = require('@hapi/boom');
 const LocationLog = require('../models/location-log');
-const { createError } = require('../utils/error');
 
-const Errors = (exports.Errors = {});
+// const Errors = (exports.Errors = {});
 
 exports.getLocationLogs = async ({
 	rangeStart,
