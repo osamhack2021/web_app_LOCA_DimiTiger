@@ -29,26 +29,31 @@ const RootStack = () => {
       initialRouteName={accessToken ? 'Main' : 'Welcome'}
       screenOptions={{
         animation: 'fade',
-        header: Header,
-        headerTransparent: true,
-        contentStyle: {
-          paddingTop: 90 + top,
-        },
+        headerShown: false,
       }}>
       {accessToken ? (
         <>
-          <Stack.Screen name="Main" component={MainScreen} />
+          <Stack.Group
+            screenOptions={{
+              header: Header,
+              headerShown: true,
+              contentStyle: {
+                paddingTop: 90 + top,
+              },
+            }}>
+            <Stack.Screen name="Main" component={MainScreen} />
+            <Stack.Screen
+              name="Notice"
+              component={NoticeScreen}
+              options={{ title: '공지사항' }}
+            />
+            <Stack.Screen
+              name="Settings"
+              component={SettingsScreen}
+              options={{ title: '앱 설정' }}
+            />
+          </Stack.Group>
           <Stack.Screen name="Location" component={LocationScreen} />
-          <Stack.Screen
-            name="Notice"
-            component={NoticeScreen}
-            options={{ title: '공지사항' }}
-          />
-          <Stack.Screen
-            name="Settings"
-            component={SettingsScreen}
-            options={{ title: '앱 설정' }}
-          />
           <Stack.Screen name="RegisterDone" component={RegisterDoneScreen} />
         </>
       ) : (
