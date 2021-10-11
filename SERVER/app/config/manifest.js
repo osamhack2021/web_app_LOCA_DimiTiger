@@ -20,6 +20,9 @@ module.exports = {
 		plugins: [
 			{
 				plugin: 'hapi-cors',
+				options: {
+					methods: ['POST, GET, OPTIONS, PUT, DELETE'],
+				}
 			},
 			{
 				// Static file and directory handlers for hapi.js.
