@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, {
   FadeIn,
