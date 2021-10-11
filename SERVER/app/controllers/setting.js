@@ -16,6 +16,10 @@ exports.getSettings = {
 		try {
 			return await SettingService.getSettings(removeUndefined(req.query));
 		} catch (err) {
+<<<<<<< HEAD
+=======
+			if (Boom.isBoom(err)) throw err;
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -32,6 +36,10 @@ exports.getSetting = {
 		try {
 			return await SettingService.getSetting(req.query.settingId);
 		} catch (err) {
+<<<<<<< HEAD
+=======
+			if (Boom.isBoom(err)) throw err;
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -44,6 +52,10 @@ exports.getCurrentSetting = {
 		try {
 			return await SettingService.getCurrentSetting();
 		} catch (err) {
+<<<<<<< HEAD
+=======
+			if (Boom.isBoom(err)) throw err;
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -62,6 +74,10 @@ exports.createSetting = {
 				data: req.payload,
 			});
 		} catch (err) {
+<<<<<<< HEAD
+=======
+			if (Boom.isBoom(err)) throw err;
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},

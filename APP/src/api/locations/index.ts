@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useQuery } from 'react-query';
 
 import client from '../client';
@@ -32,4 +33,20 @@ export function useLocation(location: string) {
     location: data,
     isLoading,
   };
+=======
+import usePaginationQuery from '@/hooks/usePaginationQuery';
+import useQuery from '@/hooks/useQuery';
+import Location from '@/types/Location';
+import PaginationQuery from '@/types/PaginationQuery';
+
+export function useLocations() {
+  const query: PaginationQuery = {
+    limit: 0,
+  };
+  return usePaginationQuery<Location>('/locations', query);
+}
+
+export function useLocation(location: string) {
+  return useQuery<Location>('/locations', location);
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 }

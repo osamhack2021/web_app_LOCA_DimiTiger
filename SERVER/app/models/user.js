@@ -29,7 +29,11 @@ const userSchema = new mongoose.Schema(
 		},
 		rank: {
 			type: String,
+<<<<<<< HEAD
 			enum: rankTypes,
+=======
+			enum: Object.values(rankTypes),
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			required: true,
 		},
 		isAdmin: {
@@ -43,6 +47,13 @@ const userSchema = new mongoose.Schema(
 			select: false,
 			trim: true,
 		},
+<<<<<<< HEAD
+=======
+		registered: {
+			type: Boolean,
+			default: false,
+		},
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 		deleted: {
 			type: Boolean,
 			default: false,

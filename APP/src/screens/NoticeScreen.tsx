@@ -12,7 +12,11 @@ import { RootNavigationProp } from '@/Navigators';
 
 const NoticeScreen = () => {
   const navigation = useNavigation<RootNavigationProp<'NoticeScreen'>>();
+<<<<<<< HEAD
   const { notices } = useNotices();
+=======
+  const { data: notices } = useNotices();
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.headerContainer}>

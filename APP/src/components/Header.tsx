@@ -3,7 +3,11 @@ import { Image, Pressable, SafeAreaView, StyleSheet, View } from 'react-native';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import { useNavigation } from '@react-navigation/core';
 
+<<<<<<< HEAD
 import { useUser } from '@/api/users';
+=======
+import { useMe } from '@/api/users';
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 import Text from '@/components/Text';
 import { colorWhite } from '@/constants/colors';
 import { styleShadow } from '@/constants/styles';
@@ -11,7 +15,11 @@ import { RootNavigationProp } from '@/Navigators';
 
 const Header = () => {
   const navigation = useNavigation<RootNavigationProp<'MainScreen'>>();
+<<<<<<< HEAD
   const { user, isLoading } = useUser();
+=======
+  const { data: user, isLoading } = useMe();
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
   return (
     <SafeAreaView style={styles.container}>
       <Pressable

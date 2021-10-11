@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 const Notice = require('../models/notice');
 const { createError } = require('../utils/error');
 
 const Errors = (exports.Errors = {
 	NoticeNotFoundError: createError('NoticeNotFoundError'),
+=======
+const Boom = require('@hapi/boom');
+const Notice = require('../models/notice');
+
+const Errors = (exports.Errors = {
+	NoticeNotFoundError: () => Boom.notFound('NoticeNotFoundError'),
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 });
 
 exports.getNotices = async ({ page, limit }) => {
@@ -23,7 +31,11 @@ exports.getNotices = async ({ page, limit }) => {
 
 exports.getNotice = async (_id) => {
 	const notice = await Notice.findById(_id).exec();
+<<<<<<< HEAD
 	if (!notice) throw new Errors.NoticeNotFoundError();
+=======
+	if (!notice) throw Errors.NoticeNotFoundError();
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 	return notice;
 };
 
@@ -34,7 +46,11 @@ exports.createNotice = async ({ content, emergency, creator }) => {
 exports.updateNotice = async (_id, fields) => {
 	const notice = await Notice.findById(_id).exec();
 
+<<<<<<< HEAD
 	if (!notice) throw new Errors.NoticeNotFoundError();
+=======
+	if (!notice) throw Errors.NoticeNotFoundError();
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 
 	for (const key in fields) {
 		notice[key] = fields[key];

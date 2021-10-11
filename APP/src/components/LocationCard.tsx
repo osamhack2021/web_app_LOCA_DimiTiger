@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Animated, {
@@ -5,12 +6,28 @@ import Animated, {
   FadeInUp,
   useAnimatedStyle,
   useSharedValue,
+=======
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import Animated, {
+  cancelAnimation,
+  FadeIn,
+  FadeInUp,
+  useAnimatedProps,
+  useAnimatedStyle,
+  useSharedValue,
+  withRepeat,
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
   withTiming,
 } from 'react-native-reanimated';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import { useLinkTo } from '@react-navigation/native';
 import { formatDistanceToNow } from 'date-fns';
 import { ko } from 'date-fns/locale';
+<<<<<<< HEAD
+=======
+import LottieView from 'lottie-react-native';
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 
 import { useActiveLocationLog } from '@/api/location-logs';
 import { useLocations } from '@/api/locations';
@@ -21,6 +38,7 @@ import Text from '@/components/Text';
 import { colorChipBorder } from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
 
+<<<<<<< HEAD
 const LocationCard = () => {
   const linkTo = useLinkTo();
   const [changeMode, setChangeMode] = useState(false);
@@ -30,6 +48,30 @@ const LocationCard = () => {
   const flexibleHeight = useAnimatedStyle(() => ({
     height: cardHeight.value,
   }));
+=======
+const AnimatedLottieView = Animated.createAnimatedComponent(LottieView);
+
+const LocationCard = () => {
+  const linkTo = useLinkTo();
+  const [changeMode, setChangeMode] = useState(false);
+  const { data: locations } = useLocations();
+  const { data: locationLog, isLoading } = useActiveLocationLog();
+  const emptyAnim = useSharedValue(0);
+  const emptyAnimProps = useAnimatedProps(() => ({
+    progress: emptyAnim.value,
+  }));
+  const cardHeight = useSharedValue(190);
+  const flexibleHeight = useAnimatedStyle(() => ({
+    height: cardHeight.value,
+  }));
+  useEffect(() => {
+    if (!changeMode && !locationLog && !isLoading) {
+      emptyAnim.value = withRepeat(withTiming(1, { duration: 6000 }), -1);
+    } else {
+      cancelAnimation(emptyAnim);
+    }
+  }, [locationLog, isLoading, emptyAnim, changeMode]);
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
   return (
     <Card>
       <View style={styles.cardHeaderContainer}>
@@ -52,7 +94,11 @@ const LocationCard = () => {
               {locations &&
                 locations.map((location, index) => (
                   <Animated.View
+<<<<<<< HEAD
                     entering={FadeInUp.delay(index * 50)}
+=======
+                    entering={FadeInUp.delay(300 + index * 50)}
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
                     key={location._id}>
                     <TouchableOpacity
                       style={styles.locationChip}
@@ -71,8 +117,14 @@ const LocationCard = () => {
         ) : locationLog ? (
           <Animated.View
             style={styles.locationContainer}
+<<<<<<< HEAD
             entering={FadeIn}
             onLayout={({ nativeEvent }) => {
+=======
+            entering={FadeIn.delay(300)}
+            onLayout={({ nativeEvent }) => {
+              console.info(nativeEvent.layout);
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
               cardHeight.value = withTiming(nativeEvent.layout.height);
             }}>
             <LocationIcon
@@ -86,12 +138,49 @@ const LocationCard = () => {
               { addSuffix: true, locale: ko },
             )}`}</Text>
           </Animated.View>
+<<<<<<< HEAD
         ) : (
           <SkeletonPlaceholder>
             <View style={styles.locationContainer}>
               <View />
             </View>
           </SkeletonPlaceholder>
+=======
+        ) : isLoading ? (
+          <Animated.View
+            entering={FadeIn}
+            onLayout={({ nativeEvent }) => {
+              cardHeight.value = withTiming(nativeEvent.layout.height);
+            }}>
+            <SkeletonPlaceholder>
+              <View style={styles.locationContainer}>
+                <SkeletonPlaceholder.Item
+                  width={100}
+                  height={100}
+                  borderRadius={50}
+                />
+                <SkeletonPlaceholder.Item width={150} height={21} margin={5} />
+                <SkeletonPlaceholder.Item width={140} height={14} />
+              </View>
+            </SkeletonPlaceholder>
+          </Animated.View>
+        ) : (
+          <Animated.View
+            entering={FadeIn}
+            onLayout={({ nativeEvent }) => {
+              cardHeight.value = withTiming(nativeEvent.layout.height);
+            }}
+            style={styles.locationContainer}>
+            <AnimatedLottieView
+              style={{ height: 100 }}
+              source={require('@assets/jsons/404.json')}
+              animatedProps={emptyAnimProps}
+            />
+            <Text style={styles.nullLocationText}>
+              아직 체크인한 위치가 없습니다.
+            </Text>
+          </Animated.View>
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
         )}
       </Animated.View>
     </Card>
@@ -137,6 +226,13 @@ const styles = StyleSheet.create({
   locationChipText: {
     fontWeight: 'bold',
   },
+<<<<<<< HEAD
+=======
+  nullLocationText: {
+    fontSize: 18,
+    marginTop: 20,
+  },
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 });
 
 export default LocationCard;

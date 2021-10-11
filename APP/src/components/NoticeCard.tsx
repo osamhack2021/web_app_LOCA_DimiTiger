@@ -14,7 +14,11 @@ import { RootNavigationProp } from '@/Navigators';
 
 const NoticeCard = () => {
   const navigation = useNavigation<RootNavigationProp<'MainScreen'>>();
+<<<<<<< HEAD
   const { notices } = useNotices();
+=======
+  const { data: notices } = useNotices();
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
   return (
     <Card style={styles.container}>
       <Text style={styles.titleText}>공지사항</Text>

@@ -59,7 +59,11 @@ async function postLoad(server) {
 			serial: '00-000000',
 			password: await User.hashPassword('admin'),
 			name: '최고관리자',
+<<<<<<< HEAD
 			rank: '병장',
+=======
+			rank: RankTypes.병장,
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			phone: '01012345678',
 			email: 'admin@admin.com',
 			isAdmin: true,

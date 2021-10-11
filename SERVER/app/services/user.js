@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const User = require('../models/user');
 const { createError } = require('../utils/error');
 
@@ -10,6 +11,21 @@ const Errors = (exports.Errors = {
 exports.getUsers = async ({ page, limit, name, serial }) => {
 	return await User.paginate(
 		{
+=======
+const Boom = require('@hapi/boom');
+const User = require('../models/user');
+
+const Errors = (exports.Errors = {
+	UserNotFoundError: () => Boom.notFound('UserNotFoundError'),
+	UserAlreadyExistError: () => Boom.conflict('UserAlreadyExistError'),
+	PasswordNotMatchError: () => Boom.conflict('PasswordNotMatchError'),
+});
+
+exports.getUsers = async ({ page, limit, name, serial, ...fields }) => {
+	return await User.paginate(
+		{
+			...fields,
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			deleted: false,
 			name: { $regex: name || '', $options: 'i' },
 			serial: { $regex: serial || '', $options: 'i' },
@@ -34,7 +50,11 @@ exports.getUser = async (_id) => {
 exports.createUsers = async ({ serial, name, password, rank }) => {
 	const existUser = await User.findOne({ serial, deleted: false });
 
+<<<<<<< HEAD
 	if (existUser) throw new Errors.UserAlreadyExistError();
+=======
+	if (existUser) throw Errors.UserAlreadyExistError();
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 
 	return await new User({
 		serial,
@@ -49,7 +69,11 @@ exports.updateUser = async (_id, fields) => {
 		_id,
 	}).exec();
 
+<<<<<<< HEAD
 	if (!user) throw new Errors.UserNotFoundError();
+=======
+	if (!user) throw Errors.UserNotFoundError();
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 
 	for (const key in fields) {
 		if (key == 'password') user[key] = await User.hashPassword(fields[key]);
@@ -69,9 +93,15 @@ exports.registerUsers = async ({ serial, name, password }, fields) => {
 		.select('+password')
 		.exec();
 
+<<<<<<< HEAD
 	if (!user) throw new Errors.UserNotFoundError();
 	if (!(await user.verifyPassword(password)))
 		throw new Errors.PasswordNotMatchError();
+=======
+	if (!user) throw Errors.UserNotFoundError();
+	if (!(await user.verifyPassword(password)))
+		throw Errors.PasswordNotMatchError();
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 
 	for (const key in fields) {
 		if (key == 'password') user[key] = await User.hashPassword(fields[key]);
@@ -89,7 +119,11 @@ exports.idLogin = async ({ id, password }) => {
 	}).exec();
 
 	if (!(await user.verifyPassword(password)))
+<<<<<<< HEAD
 		throw new Errors.PasswordNotMatchError();
+=======
+		throw Errors.PasswordNotMatchError();
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 
 	return user;
 };
@@ -100,7 +134,11 @@ exports.emailLogin = async ({ email, password }) => {
 	}).exec();
 
 	if (!(await user.verifyPassword(password)))
+<<<<<<< HEAD
 		throw new Errors.PasswordNotMatchError();
+=======
+		throw Errors.PasswordNotMatchError();
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 
 	return user;
 };
@@ -111,7 +149,11 @@ exports.serialLogin = async ({ serial, password }) => {
 	}).exec();
 
 	if (!(await user.verifyPassword(password)))
+<<<<<<< HEAD
 		throw new Errors.PasswordNotMatchError();
+=======
+		throw Errors.PasswordNotMatchError();
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 
 	return user;
 };
