@@ -45,7 +45,7 @@ const Sidebar = () => {
     {
       imgSrc: './icons/sidebar_ico_users.svg',
       eleName: '장소 현황',
-      link: '/',
+      link: '/locations',
     },
     {
       imgSrc: './icons/sidebar_ico_worker.svg',
