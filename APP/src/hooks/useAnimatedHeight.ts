@@ -6,7 +6,7 @@ import {
   withTiming,
 } from 'react-native-reanimated';
 
-const useCardHeight = (initialHeight: number) => {
+const useAnimatedHeight = (initialHeight: number) => {
   const height = useSharedValue(initialHeight);
   const prevHeight = useRef(initialHeight);
   const style = useAnimatedStyle(() => ({
@@ -30,4 +30,4 @@ const useCardHeight = (initialHeight: number) => {
   };
 };
 
-export default useCardHeight;
+export default useAnimatedHeight;

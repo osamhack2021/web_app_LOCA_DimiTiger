@@ -24,7 +24,7 @@ import {
   colorWhite,
 } from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
-import useAnimatedHeight from '@/hooks/useAniamtedHeight';
+import useAnimatedHeight from '@/hooks/useAnimatedHeight';
 
 const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient);
 

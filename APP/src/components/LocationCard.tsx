@@ -23,7 +23,7 @@ import LocationIcon from '@/components/LocationIcon';
 import Text from '@/components/Text';
 import { colorChipBorder } from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
-import useAnimatedHeight from '@/hooks/useAniamtedHeight';
+import useAnimatedHeight from '@/hooks/useAnimatedHeight';
 
 const AnimatedLottieView = Animated.createAnimatedComponent(LottieView);
 
