@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+import React, { useState } from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import Animated, {
+  FadeIn,
+  FadeInUp,
+  useAnimatedStyle,
+  useSharedValue,
+=======
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Animated, {
@@ -8,13 +17,17 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withRepeat,
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
   withTiming,
 } from 'react-native-reanimated';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import { useLinkTo } from '@react-navigation/native';
 import { formatDistanceToNow } from 'date-fns';
 import { ko } from 'date-fns/locale';
+<<<<<<< HEAD
+=======
 import LottieView from 'lottie-react-native';
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 
 import { useActiveLocationLog } from '@/api/location-logs';
 import { useLocations } from '@/api/locations';
@@ -25,6 +38,17 @@ import Text from '@/components/Text';
 import { colorChipBorder } from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
 
+<<<<<<< HEAD
+const LocationCard = () => {
+  const linkTo = useLinkTo();
+  const [changeMode, setChangeMode] = useState(false);
+  const { locations } = useLocations();
+  const { locationLog } = useActiveLocationLog();
+  const cardHeight = useSharedValue(192);
+  const flexibleHeight = useAnimatedStyle(() => ({
+    height: cardHeight.value,
+  }));
+=======
 const AnimatedLottieView = Animated.createAnimatedComponent(LottieView);
 
 const LocationCard = () => {
@@ -47,6 +71,7 @@ const LocationCard = () => {
       cancelAnimation(emptyAnim);
     }
   }, [locationLog, isLoading, emptyAnim, changeMode]);
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
   return (
     <Card>
       <View style={styles.cardHeaderContainer}>
@@ -69,7 +94,11 @@ const LocationCard = () => {
               {locations &&
                 locations.map((location, index) => (
                   <Animated.View
+<<<<<<< HEAD
+                    entering={FadeInUp.delay(index * 50)}
+=======
                     entering={FadeInUp.delay(300 + index * 50)}
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
                     key={location._id}>
                     <TouchableOpacity
                       style={styles.locationChip}
@@ -88,9 +117,14 @@ const LocationCard = () => {
         ) : locationLog ? (
           <Animated.View
             style={styles.locationContainer}
+<<<<<<< HEAD
+            entering={FadeIn}
+            onLayout={({ nativeEvent }) => {
+=======
             entering={FadeIn.delay(300)}
             onLayout={({ nativeEvent }) => {
               console.info(nativeEvent.layout);
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
               cardHeight.value = withTiming(nativeEvent.layout.height);
             }}>
             <LocationIcon
@@ -104,6 +138,14 @@ const LocationCard = () => {
               { addSuffix: true, locale: ko },
             )}`}</Text>
           </Animated.View>
+<<<<<<< HEAD
+        ) : (
+          <SkeletonPlaceholder>
+            <View style={styles.locationContainer}>
+              <View />
+            </View>
+          </SkeletonPlaceholder>
+=======
         ) : isLoading ? (
           <Animated.View
             entering={FadeIn}
@@ -138,6 +180,7 @@ const LocationCard = () => {
               아직 체크인한 위치가 없습니다.
             </Text>
           </Animated.View>
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
         )}
       </Animated.View>
     </Card>
@@ -183,10 +226,13 @@ const styles = StyleSheet.create({
   locationChipText: {
     fontWeight: 'bold',
   },
+<<<<<<< HEAD
+=======
   nullLocationText: {
     fontSize: 18,
     marginTop: 20,
   },
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 });
 
 export default LocationCard;

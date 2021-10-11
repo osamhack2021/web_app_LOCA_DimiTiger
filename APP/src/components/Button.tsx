@@ -1,6 +1,9 @@
 import React from 'react';
 import {
+<<<<<<< HEAD
+=======
   ActivityIndicator,
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
   StyleProp,
   StyleSheet,
   TextStyle,
@@ -16,6 +19,15 @@ export type ButtonProps = {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   onPress?: () => void;
+<<<<<<< HEAD
+  children: string;
+};
+
+const Button = ({ style, textStyle, onPress, children }: ButtonProps) => {
+  return (
+    <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
+      <Text style={[styles.text, textStyle]}>{children}</Text>
+=======
   loading?: boolean;
   children: string;
 };
@@ -37,6 +49,7 @@ const Button = ({
       {loading && (
         <ActivityIndicator color={colorWhite} style={styles.spinner} />
       )}
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
     </TouchableOpacity>
   );
 };
@@ -56,11 +69,14 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     marginVertical: 10,
   },
+<<<<<<< HEAD
+=======
   spinner: {
     alignSelf: 'center',
     marginVertical: 8,
     position: 'absolute',
   },
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 });
 
 export default Button;

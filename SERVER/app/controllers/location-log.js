@@ -23,7 +23,10 @@ exports.getLocationLogs = {
 				removeUndefined(req.query)
 			);
 		} catch (err) {
+<<<<<<< HEAD
+=======
 			if (Boom.isBoom(err)) throw err;
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -42,7 +45,10 @@ exports.createLocationLog = {
 		try {
 			return await LocationLogService.createLocationLog(req.payload);
 		} catch (err) {
+<<<<<<< HEAD
+=======
 			if (Boom.isBoom(err)) throw err;
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},

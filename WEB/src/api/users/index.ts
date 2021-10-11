@@ -18,11 +18,21 @@ export function usePatchUser() {
   );
 }
 
+export function useAddUser() {
+  const axios = useAxios();
+  const queryClient = useQueryClient();
+  return useMutation((user: Partial<User>) => axios.post(`/users`, user), {
+    onSettled: () => {
+      queryClient.invalidateQueries('/users');
+    },
+  });
+}
+
 export function useDeleteUser() {
   const axios = useAxios();
   const queryClient = useQueryClient();
   return useMutation(
-    ({ _id }: Partial<User>) => axios.delete(`/users/${_id}`),
+    ({ _id }: Pick<User, '_id'>) => axios.delete(`/users/${_id}`),
     {
       onSettled: () => {
         queryClient.invalidateQueries('/users');

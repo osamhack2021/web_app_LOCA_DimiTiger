@@ -15,22 +15,40 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import axios from 'axios';
+<<<<<<< HEAD
+import { useSetRecoilState } from 'recoil';
 
 import Logo from '@assets/images/loca_logo.svg';
 
+import { authState } from '@/atoms';
+=======
+
+import Logo from '@assets/images/loca_logo.svg';
+
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 import Button from '@/components/Button';
 import ControlledTextInput from '@/components/ControlledTextInput';
 import Text from '@/components/Text';
 import { colorTextInputLabel } from '@/constants/colors';
+<<<<<<< HEAD
+import { signIn } from '@/utils/AuthUtil';
+=======
 import useSignIn from '@/hooks/useSignIn';
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 
 const SignInScreen = () => {
   const { control, handleSubmit } =
     useForm<{ serial: string; password: string }>();
+<<<<<<< HEAD
+  const [error, setError] = useState<string>();
+  const pwRef = useRef<TextInput>(null);
+  const setAuth = useSetRecoilState(authState);
+=======
   const signIn = useSignIn();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>();
   const pwRef = useRef<TextInput>(null);
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
   const scale = useSharedValue(1);
   const animatedLogo = useAnimatedStyle(() => ({
     transform: [{ scale: withTiming(scale.value) }],
@@ -46,9 +64,18 @@ const SignInScreen = () => {
 
   const authenticate = useCallback(
     async ({ serial, password }) => {
+<<<<<<< HEAD
+      try {
+        await signIn(serial, password);
+        setAuth({
+          authenticated: true,
+          loading: false,
+        });
+=======
       setLoading(true);
       try {
         await signIn(serial, password);
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
       } catch (err) {
         let message = '';
         if (axios.isAxiosError(err)) {
@@ -61,10 +88,16 @@ const SignInScreen = () => {
           }
         }
         setError(message);
+<<<<<<< HEAD
+      }
+    },
+    [setAuth],
+=======
         setLoading(false);
       }
     },
     [signIn],
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
   );
 
   useEffect(() => {
@@ -130,7 +163,10 @@ const SignInScreen = () => {
           />
           <Text style={styles.errorLabel}>{error}</Text>
           <Button
+<<<<<<< HEAD
+=======
             loading={loading}
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
             onPress={handleSubmit(authenticate)}
             style={styles.loginButton}>
             로그인

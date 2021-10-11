@@ -9,6 +9,12 @@
     font-weight: 900;
     letter-spacing: -2px;
 }
+.ant-modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .ant-btn {
     border-radius: 10px;
     font-size: 0.9rem;

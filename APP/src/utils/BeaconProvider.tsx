@@ -13,7 +13,11 @@ type BeaconProviderProps = {
 };
 
 const BeaconProvider = ({ children }: BeaconProviderProps) => {
+<<<<<<< HEAD
+  const { beacons } = useBeacons();
+=======
   const { data: beacons } = useBeacons();
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
   const { fullyGranted } = usePermissions();
   const [visibleBeacons, setVisibleBeacons] = useRecoilState(beaconState);
 

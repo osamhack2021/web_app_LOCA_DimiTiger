@@ -32,9 +32,17 @@ const App = () => {
 export default () => (
   <RecoilRoot>
     <QueryClientProvider client={queryClient}>
+<<<<<<< HEAD
+      <AuthProvider>
+        <BeaconProvider>
+          <App />
+        </BeaconProvider>
+      </AuthProvider>
+=======
       <BeaconProvider>
         <App />
       </BeaconProvider>
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
     </QueryClientProvider>
   </RecoilRoot>
 );

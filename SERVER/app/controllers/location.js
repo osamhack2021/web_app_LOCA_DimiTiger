@@ -16,7 +16,10 @@ exports.getLocations = {
 		try {
 			return await LocationService.getLocations(removeUndefined(req.query));
 		} catch (err) {
+<<<<<<< HEAD
+=======
 			if (Boom.isBoom(err)) throw err;
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -33,7 +36,10 @@ exports.getLocation = {
 		try {
 			return await LocationService.getLocation(req.params.locationId);
 		} catch (err) {
+<<<<<<< HEAD
+=======
 			if (Boom.isBoom(err)) throw err;
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -52,7 +58,10 @@ exports.createLocation = {
 		try {
 			return await LocationService.createLocation(req.payload);
 		} catch (err) {
+<<<<<<< HEAD
+=======
 			if (Boom.isBoom(err)) throw err;
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -77,7 +86,10 @@ exports.updateLocation = {
 				req.payload
 			);
 		} catch (err) {
+<<<<<<< HEAD
+=======
 			if (Boom.isBoom(err)) throw err;
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -95,7 +107,10 @@ exports.deleteLocation = {
 		try {
 			return await LocationService.deleteLocation(req.params.locationId);
 		} catch (err) {
+<<<<<<< HEAD
+=======
 			if (Boom.isBoom(err)) throw err;
+>>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
