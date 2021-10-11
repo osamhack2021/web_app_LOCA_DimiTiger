@@ -1,4 +1,4 @@
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 
 import useAxios from '../../hooks/useAxios';
 import usePaginationQuery from '../../hooks/usePaginationQuery';
@@ -15,6 +15,19 @@ export function usePatchUser() {
   return useMutation(
     ({ _id, ...rest }: Partial<User>) => axios.patch(`/users/${_id}`, rest),
     {},
+  );
+}
+
+export function useDeleteUser() {
+  const axios = useAxios();
+  const queryClient = useQueryClient();
+  return useMutation(
+    ({ _id }: Partial<User>) => axios.delete(`/users/${_id}`),
+    {
+      onSettled: () => {
+        queryClient.invalidateQueries('/users');
+      },
+    },
   );
 }
 
