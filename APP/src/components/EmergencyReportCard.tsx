@@ -45,8 +45,8 @@ const EmergencyReportCard = () => {
   const color = useSharedValue(0);
   const gradientProps = useAnimatedProps(() => ({
     colors: [
-      interpolateColor(color.value, [0, 1], [colorReport, colorReportStart]),
-      interpolateColor(color.value, [0, 1], [colorReport, colorReportEnd]),
+      interpolateColor(color.value, [0, 1], [colorReportStart, colorReport]),
+      interpolateColor(color.value, [0, 1], [colorReportEnd, colorReport]),
     ],
   }));
 
@@ -66,7 +66,7 @@ const EmergencyReportCard = () => {
 
   const longPressHandler = useCallback(() => {
     setReportDone(true);
-    color.value = 1;
+    color.value = withTiming(0);
   }, [color]);
 
   const pressHandler = useCallback(() => {
@@ -74,8 +74,7 @@ const EmergencyReportCard = () => {
       return;
     }
     setReportDone(false);
-    color.value = 0;
-  }, [color, reportDone]);
+  }, [reportDone]);
 
   const ReportIcon = () => (
     <Animated.View entering={ZoomIn} exiting={ZoomOut}>
