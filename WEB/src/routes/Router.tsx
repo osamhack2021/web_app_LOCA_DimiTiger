@@ -7,8 +7,11 @@ import { QueryParamProvider } from 'use-query-params';
 import { accessTokenState } from '../atoms';
 import useAxios from '../hooks/useAxios';
 import Home from '../pages/Home';
+import Init from '../pages/Init';
 import LocationLogs from '../pages/LocationLogs';
+import Locations from '../pages/Locations';
 import Login from '../pages/Login';
+import CurrentUsers from '../pages/Users';
 import User from '../types/User';
 
 import PrivateRoutes from './PrivateRoutes';
@@ -50,6 +53,7 @@ const Router = () => {
     <BrowserRouter>
       <QueryParamProvider ReactRouterRoute={Route}>
         <Switch>
+          <PublicRoutes path="/init" restricted={true} component={Init} exact />
           <PublicRoutes
             path="/login"
             restricted={true}
@@ -58,6 +62,8 @@ const Router = () => {
           />
           <PrivateRoutes path="/" component={Home} exact />
           <PrivateRoutes path="/search" component={LocationLogs} exact />
+          <PrivateRoutes path="/users" component={CurrentUsers} exact />
+          <PrivateRoutes path="/locations" component={Locations} exact />
         </Switch>
       </QueryParamProvider>
     </BrowserRouter>
