@@ -12,9 +12,9 @@ import queryClient from '@/utils/queryClient';
 const linking: LinkingOptions<RootStackParamList> = {
   prefixes: ['https://api.loca.kimjisub.me/link'],
   config: {
-    initialRouteName: 'MainScreen',
+    initialRouteName: 'Main',
     screens: {
-      LocationScreen: 'location-log/:location',
+      Location: 'location-log/:location',
     },
   },
 };
