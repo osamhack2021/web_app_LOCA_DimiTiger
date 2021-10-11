@@ -1,15 +1,20 @@
 import { atom } from 'recoil';
 
-import AuthState from '@/types/AuthState';
+import asyncStorageEffect from './effects/asyncStorageEffect';
+
 import Beacon from '@/types/Beacon';
 import PermissionState from '@/types/PermissionState';
 
-export const authState = atom<AuthState>({
-  key: 'authState',
-  default: {
-    authenticated: false,
-    loading: true,
-  },
+export const accessTokenState = atom({
+  key: 'accessTokenState',
+  default: '',
+  effects_UNSTABLE: [asyncStorageEffect('accessTokenState')],
+});
+
+export const refreshTokenState = atom({
+  key: 'refreshTokenState',
+  default: '',
+  effects_UNSTABLE: [asyncStorageEffect('refreshTokenState')],
 });
 
 export const permissionState = atom<PermissionState>({

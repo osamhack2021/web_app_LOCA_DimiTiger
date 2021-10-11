@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Animated, {
+  cancelAnimation,
   FadeIn,
   FadeInUp,
+  useAnimatedProps,
   useAnimatedStyle,
   useSharedValue,
+  withRepeat,
   withTiming,
 } from 'react-native-reanimated';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import { useLinkTo } from '@react-navigation/native';
 import { formatDistanceToNow } from 'date-fns';
 import { ko } from 'date-fns/locale';
+import LottieView from 'lottie-react-native';
 
 import { useActiveLocationLog } from '@/api/location-logs';
 import { useLocations } from '@/api/locations';
@@ -21,15 +25,28 @@ import Text from '@/components/Text';
 import { colorChipBorder } from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
 
+const AnimatedLottieView = Animated.createAnimatedComponent(LottieView);
+
 const LocationCard = () => {
   const linkTo = useLinkTo();
   const [changeMode, setChangeMode] = useState(false);
-  const { locations } = useLocations();
-  const { locationLog } = useActiveLocationLog();
-  const cardHeight = useSharedValue(192);
+  const { data: locations } = useLocations();
+  const { data: locationLog, isLoading } = useActiveLocationLog();
+  const emptyAnim = useSharedValue(0);
+  const emptyAnimProps = useAnimatedProps(() => ({
+    progress: emptyAnim.value,
+  }));
+  const cardHeight = useSharedValue(190);
   const flexibleHeight = useAnimatedStyle(() => ({
     height: cardHeight.value,
   }));
+  useEffect(() => {
+    if (!changeMode && !locationLog && !isLoading) {
+      emptyAnim.value = withRepeat(withTiming(1, { duration: 6000 }), -1);
+    } else {
+      cancelAnimation(emptyAnim);
+    }
+  }, [locationLog, isLoading, emptyAnim, changeMode]);
   return (
     <Card>
       <View style={styles.cardHeaderContainer}>
@@ -52,7 +69,7 @@ const LocationCard = () => {
               {locations &&
                 locations.map((location, index) => (
                   <Animated.View
-                    entering={FadeInUp.delay(index * 50)}
+                    entering={FadeInUp.delay(300 + index * 50)}
                     key={location._id}>
                     <TouchableOpacity
                       style={styles.locationChip}
@@ -71,8 +88,9 @@ const LocationCard = () => {
         ) : locationLog ? (
           <Animated.View
             style={styles.locationContainer}
-            entering={FadeIn}
+            entering={FadeIn.delay(300)}
             onLayout={({ nativeEvent }) => {
+              console.info(nativeEvent.layout);
               cardHeight.value = withTiming(nativeEvent.layout.height);
             }}>
             <LocationIcon
@@ -86,12 +104,40 @@ const LocationCard = () => {
               { addSuffix: true, locale: ko },
             )}`}</Text>
           </Animated.View>
+        ) : isLoading ? (
+          <Animated.View
+            entering={FadeIn}
+            onLayout={({ nativeEvent }) => {
+              cardHeight.value = withTiming(nativeEvent.layout.height);
+            }}>
+            <SkeletonPlaceholder>
+              <View style={styles.locationContainer}>
+                <SkeletonPlaceholder.Item
+                  width={100}
+                  height={100}
+                  borderRadius={50}
+                />
+                <SkeletonPlaceholder.Item width={150} height={21} margin={5} />
+                <SkeletonPlaceholder.Item width={140} height={14} />
+              </View>
+            </SkeletonPlaceholder>
+          </Animated.View>
         ) : (
-          <SkeletonPlaceholder>
-            <View style={styles.locationContainer}>
-              <View />
-            </View>
-          </SkeletonPlaceholder>
+          <Animated.View
+            entering={FadeIn}
+            onLayout={({ nativeEvent }) => {
+              cardHeight.value = withTiming(nativeEvent.layout.height);
+            }}
+            style={styles.locationContainer}>
+            <AnimatedLottieView
+              style={{ height: 100 }}
+              source={require('@assets/jsons/404.json')}
+              animatedProps={emptyAnimProps}
+            />
+            <Text style={styles.nullLocationText}>
+              아직 체크인한 위치가 없습니다.
+            </Text>
+          </Animated.View>
         )}
       </Animated.View>
     </Card>
@@ -136,6 +182,10 @@ const styles = StyleSheet.create({
   },
   locationChipText: {
     fontWeight: 'bold',
+  },
+  nullLocationText: {
+    fontSize: 18,
+    marginTop: 20,
   },
 });
 

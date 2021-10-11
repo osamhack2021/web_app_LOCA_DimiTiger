@@ -1,35 +1,16 @@
-import { useQuery } from 'react-query';
+import { useRecoilValueLoadable } from 'recoil';
 
-import client from '../client';
-
+import { accessTokenState } from '@/atoms';
+import usePaginationQuery from '@/hooks/usePaginationQuery';
 import Beacon from '@/types/Beacon';
-
-async function getBeacons(): Promise<Beacon[]> {
-  const { data } = await client.get('/beacons');
-  return data;
-}
-
-async function getBeacon(beacon: string): Promise<Beacon> {
-  const { data } = await client.get(`/beacons/${beacon}`);
-  return data;
-}
+import PaginationQuery from '@/types/PaginationQuery';
 
 export function useBeacons() {
-  const { data, isLoading } = useQuery(['beacons'], () => getBeacons());
-
-  return {
-    beacons: data,
-    isLoading,
+  const { state, contents } = useRecoilValueLoadable(accessTokenState);
+  const query: PaginationQuery = {
+    limit: 0,
   };
-}
-
-export function useBeacon(beacon: string) {
-  const { data, isLoading } = useQuery(['beacons', beacon], () =>
-    getBeacon(beacon),
-  );
-
-  return {
-    beacon: data,
-    isLoading,
-  };
+  return usePaginationQuery<Beacon>('/beacons', query, {
+    enabled: state === 'hasValue' && !!contents,
+  });
 }

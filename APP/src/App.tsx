@@ -3,8 +3,6 @@ import { QueryClientProvider } from 'react-query';
 import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
 import { RecoilRoot, useRecoilValue } from 'recoil';
 
-import AuthProvider from './utils/AuthProvider';
-
 import { splashState } from '@/atoms';
 import Navigators, { RootStackParamList } from '@/Navigators';
 import SplashScreen from '@/screens/SplashScreen';
@@ -34,11 +32,9 @@ const App = () => {
 export default () => (
   <RecoilRoot>
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <BeaconProvider>
-          <App />
-        </BeaconProvider>
-      </AuthProvider>
+      <BeaconProvider>
+        <App />
+      </BeaconProvider>
     </QueryClientProvider>
   </RecoilRoot>
 );

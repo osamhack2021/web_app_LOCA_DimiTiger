@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import {
   KeyboardAvoidingView,
@@ -11,43 +11,56 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
+import { AxiosResponse } from 'axios';
 
-import { registerUser } from '@/api/users';
 import Button from '@/components/Button';
 import ControlledTextInput from '@/components/ControlledTextInput';
 import Text from '@/components/Text';
 import { colorBlack } from '@/constants/colors';
+import useAxios from '@/hooks/useAxios';
+import useSignIn from '@/hooks/useSignIn';
 import { RootNavigationProp } from '@/Navigators';
 import RegisterData from '@/types/RegisterData';
-import { signIn } from '@/utils/AuthUtil';
+import User from '@/types/User';
 
 const SignUpScreen = () => {
   const navigation = useNavigation<RootNavigationProp<'SignUp'>>();
+  const axios = useAxios();
+  const signIn = useSignIn();
   const nameRef = useRef<TextInput>(null);
   const codeRef = useRef<TextInput>(null);
   const phoneRef = useRef<TextInput>(null);
   const emailRef = useRef<TextInput>(null);
   const passwordRef = useRef<TextInput>(null);
   const reEnterRef = useRef<TextInput>(null);
+  const [loading, setLoading] = useState(false);
   const { control, handleSubmit, getValues } = useForm<
     RegisterData & { pwCheck: string }
-  >({
-    mode: 'onBlur',
-  });
+  >();
 
-  async function onSubmit(data: RegisterData & { pwCheck?: string }) {
-    delete data.pwCheck;
-    try {
-      const user = await registerUser(data);
-      await signIn(data.identity.serial, data.register.password);
+  const onSubmit = useCallback(
+    async (data: RegisterData & { pwCheck?: string }) => {
+      setLoading(true);
+      delete data.pwCheck;
+      try {
+        const user = (
+          await axios.post<RegisterData, AxiosResponse<User>>(
+            '/users/register',
+            data,
+          )
+        ).data;
+        await signIn(data.identity.serial, data.register.password);
 
-      navigation.navigate('RegisterDone', {
-        user,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }
+        navigation.navigate('RegisterDone', {
+          user,
+        });
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
+    },
+    [axios, navigation, signIn],
+  );
 
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -175,7 +188,10 @@ const SignUpScreen = () => {
               },
             }}
           />
-          <Button onPress={handleSubmit(onSubmit)} style={styles.loginButton}>
+          <Button
+            onPress={handleSubmit(onSubmit)}
+            loading={loading}
+            style={styles.loginButton}>
             등록
           </Button>
         </SafeAreaView>

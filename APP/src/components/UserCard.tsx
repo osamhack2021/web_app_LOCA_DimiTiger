@@ -4,7 +4,7 @@ import { TextInput } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
 
-import { useEditUser, useUser } from '@/api/users';
+import { useEditUser, useMe } from '@/api/users';
 import Button from '@/components/Button';
 import Card from '@/components/Card';
 import Text from '@/components/Text';
@@ -15,14 +15,17 @@ import User from '@/types/User';
 
 const UserCard = () => {
   const navigation = useNavigation<RootNavigationProp<'UserScreen'>>();
-  const { user } = useUser();
+  const { data: user } = useMe();
   const editUser = useEditUser();
   const [editMode, setEditMode] = useState(false);
   const [editedUser, setEditedUser] = useState<Partial<User>>({});
+  const [patchLoading, setPatchLoading] = useState(false);
 
   const toggleMode = useCallback(async () => {
     if (editMode) {
+      setPatchLoading(true);
       await editUser.mutateAsync(editedUser);
+      setPatchLoading(false);
     }
 
     setEditMode(!editMode);
@@ -47,7 +50,10 @@ const UserCard = () => {
           <Icon name="chevron-left" size={30} color={colorBlack} />
         </TouchableOpacity>
         <Text style={styles.titleText}>사용자 정보</Text>
-        <Button style={styles.editButton} onPress={toggleMode}>
+        <Button
+          style={styles.editButton}
+          onPress={toggleMode}
+          loading={patchLoading}>
           {editMode ? '완료' : '수정'}
         </Button>
       </View>
