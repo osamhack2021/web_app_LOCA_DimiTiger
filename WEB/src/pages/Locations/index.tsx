@@ -30,7 +30,7 @@ const Locations = () => {
     page: query.page || undefined,
     limit: query.limit || undefined,
   });
-  const { data: beacons, isLoading: isLooding } = useBeacons();
+  const { data: beacons, isLoading } = useBeacons();
 
   const columns = [
     {

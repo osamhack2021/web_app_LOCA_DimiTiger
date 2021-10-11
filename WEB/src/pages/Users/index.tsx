@@ -21,14 +21,21 @@ const { Option } = Select;
 
 const Users = () => {
   const history = useHistory();
-  const [selected, setSelected] = useState('noting');
+  const [selected, setSelected] = useState({
+    selected: 'noting',
+    isChecked: false,
+  });
   const [query, setQuery] = useQueryParams({
     page: NumberParam,
     limit: NumberParam,
     name: StringParam,
   });
   const [form] = Form.useForm();
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const { data: users, pagination } = useUsers({
     name: query.name || undefined,
     page: query.page || undefined,
@@ -91,6 +98,7 @@ const Users = () => {
     setIsModalVisible(true);
   };
   const handleCancel = () => {
+    Modal.destroyAll();
     setIsModalVisible(false);
   };
 
@@ -106,8 +114,16 @@ const Users = () => {
   const addUserMutation = useAddUser();
 
   const addUser = ({ serial, name, password }: User) => {
-    console.log(serial, name, password, selected);
-    addUserMutation.mutate({ serial, name, password, rank: selected });
+    if (selected.selected === 'noting') {
+      setSelected({
+        selected: selected.selected,
+        isChecked: true,
+      });
+      return;
+    }
+    console.log(serial, name, password, selected.selected);
+    addUserMutation.mutate({ serial, name, password, rank: selected.selected });
+    Modal.destroyAll();
     setIsModalVisible(false);
   };
 
@@ -137,6 +153,7 @@ const Users = () => {
             </ToolkitWrap>
           }>
           <Modal
+            destroyOnClose={true}
             title="인원 추가"
             centered
             bodyStyle={{
@@ -148,36 +165,68 @@ const Users = () => {
             okText="추가"
             onCancel={handleCancel}>
             <form>
-              <ModalInputWrap
-                style={{
-                  marginBottom: '20px',
-                }}>
+              <ModalInputWrap>
                 <ModalInputLabel>군번</ModalInputLabel>
                 <InputText
                   type="text"
                   placeholder={'00-000000'}
-                  {...register('serial')}
+                  {...register('serial', { required: true })}
                 />
               </ModalInputWrap>
+              {errors.serial && (
+                <span
+                  style={{
+                    position: 'absolute',
+                  }}>
+                  This field is required
+                </span>
+              )}
               <ModalInputWrap
                 style={{
-                  marginBottom: '20px',
+                  marginTop: '25px',
                 }}>
                 <ModalInputLabel>이름</ModalInputLabel>
-                <InputText type="text" {...register('name')} />
+                <InputText
+                  type="text"
+                  {...register('name', { required: true })}
+                />
               </ModalInputWrap>
+              {errors.name && (
+                <span
+                  style={{
+                    position: 'absolute',
+                  }}>
+                  This field is required
+                </span>
+              )}
               <ModalInputWrap
                 style={{
-                  marginBottom: '20px',
+                  marginTop: '25px',
                 }}>
                 <ModalInputLabel>가입코드</ModalInputLabel>
-                <InputText type="password" {...register('password')} />
+                <InputText
+                  type="password"
+                  {...register('password', { required: true })}
+                />
               </ModalInputWrap>
-              <ModalInputWrap>
+              {errors.password && (
+                <span
+                  style={{
+                    position: 'absolute',
+                  }}>
+                  This field is required
+                </span>
+              )}
+              <ModalInputWrap
+                style={{
+                  marginTop: '25px',
+                }}>
                 <ModalInputLabel>계급</ModalInputLabel>
                 <Select
                   style={{ width: 200 }}
-                  onChange={(value: string) => setSelected(value)}
+                  onChange={(value: string) =>
+                    setSelected({ selected: value, isChecked: false })
+                  }
                   placeholder="Select a rank">
                   <Option value="이병">이병</Option>
                   <Option value="일병">일병</Option>
@@ -185,6 +234,14 @@ const Users = () => {
                   <Option value="병장">병장</Option>
                 </Select>
               </ModalInputWrap>
+              {selected.isChecked && (
+                <span
+                  style={{
+                    position: 'absolute',
+                  }}>
+                  This field is required
+                </span>
+              )}
             </form>
           </Modal>
           <Table
