@@ -10,9 +10,9 @@ import { accessTokenState } from '@/atoms';
 import LocationScreen from '@/screens/LocationScreen';
 import MainScreen from '@/screens/MainScreen';
 import NoticeScreen from '@/screens/NoticeScreen';
+import SettingsScreen from '@/screens/SettingsScreen';
 import SignInScreen from '@/screens/SignInScreen';
 import SignUpScreen from '@/screens/SignUpScreen';
-import UserScreen from '@/screens/UserScreen';
 import WelcomeScreen from '@/screens/WelcomeScreen';
 import User from '@/types/User';
 
@@ -30,7 +30,7 @@ const RootStack = () => {
           <Stack.Screen name="Main" component={MainScreen} />
           <Stack.Screen name="Location" component={LocationScreen} />
           <Stack.Screen name="Notice" component={NoticeScreen} />
-          <Stack.Screen name="User" component={UserScreen} />
+          <Stack.Screen name="Settings" component={SettingsScreen} />
           <Stack.Screen name="RegisterDone" component={RegisterDoneScreen} />
         </>
       ) : (
@@ -56,18 +56,16 @@ export type RootStackParamList = {
   Location: {
     location: string;
   };
-  User: undefined;
+  Settings: undefined;
 };
 
-export type RootNavigationProp<T extends keyof RootStackParamList> =
+export type RootNavigationProp<T extends keyof RootStackParamList = 'Main'> =
   StackNavigationProp<RootStackParamList, T>;
 
-export type RootRouteProp<T extends keyof RootStackParamList> = RouteProp<
-  RootStackParamList,
-  T
->;
+export type RootRouteProp<T extends keyof RootStackParamList = 'Main'> =
+  RouteProp<RootStackParamList, T>;
 
-export type RootScreenProps<T extends keyof RootStackParamList> =
+export type RootScreenProps<T extends keyof RootStackParamList = 'Main'> =
   StackScreenProps<RootStackParamList, T>;
 
 export default RootStack;

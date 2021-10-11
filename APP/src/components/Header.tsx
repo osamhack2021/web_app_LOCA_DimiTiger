@@ -1,7 +1,9 @@
 import React from 'react';
-import { Image, Pressable, SafeAreaView, StyleSheet, View } from 'react-native';
+import { Image, SafeAreaView, StyleSheet, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
-import { useNavigation } from '@react-navigation/core';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation, useRoute } from '@react-navigation/core';
 
 import { useMe } from '@/api/users';
 import Text from '@/components/Text';
@@ -10,13 +12,18 @@ import { styleShadow } from '@/constants/styles';
 import { RootNavigationProp } from '@/Navigators';
 
 const Header = () => {
-  const navigation = useNavigation<RootNavigationProp<'Main'>>();
+  const navigation = useNavigation<RootNavigationProp>();
+  const route = useRoute();
   const { data: user, isLoading } = useMe();
   return (
     <SafeAreaView style={styles.container}>
-      <Pressable
+      <TouchableOpacity
         style={styles.innerContainer}
-        onPress={() => navigation.push('User')}>
+        onPress={() => {
+          if (route.name !== 'Settings') {
+            navigation.push('Settings');
+          }
+        }}>
         {isLoading ? (
           <SkeletonPlaceholder>
             <SkeletonPlaceholder.Item flexDirection="row">
@@ -38,9 +45,15 @@ const Header = () => {
               <Text
                 style={styles.nameText}>{`${user?.rank} ${user?.name}`}</Text>
             </View>
+            {route.name !== 'Settings' && (
+              <>
+                <View style={{ flex: 1 }} />
+                <Icon name="cog" size={25} />
+              </>
+            )}
           </>
         )}
-      </Pressable>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -51,6 +64,7 @@ const styles = StyleSheet.create({
     backgroundColor: colorWhite,
   },
   innerContainer: {
+    alignItems: 'center',
     flexDirection: 'row',
     padding: 20,
   },
