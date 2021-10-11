@@ -6,7 +6,6 @@ import Animated, {
   FadeOutDown,
   interpolateColor,
   useAnimatedProps,
-  useAnimatedStyle,
   useSharedValue,
   withTiming,
   ZoomIn,
@@ -25,6 +24,7 @@ import {
   colorWhite,
 } from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
+import useCardHeight from '@/hooks/useCardHeight';
 
 const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient);
 
@@ -41,10 +41,7 @@ const incidents = [
 
 const EmergencyReportCard = () => {
   const [reportDone, setReportDone] = useState(false);
-  const cardHeight = useSharedValue(164);
-  const flexibleHeight = useAnimatedStyle(() => ({
-    height: cardHeight.value,
-  }));
+  const { style, layoutHandler } = useCardHeight(194);
   const colorStart = useSharedValue(0);
   const colorEnd = useSharedValue(0);
   const gradientProps = useAnimatedProps(() => ({
@@ -116,13 +113,8 @@ const EmergencyReportCard = () => {
         <Text style={styles.titleText}>긴급 신고</Text>
       </View>
       <View style={styleDivider} />
-      <Animated.View style={[flexibleHeight]}>
-        <View
-          style={styles.contentContainer}
-          onLayout={({ nativeEvent }) => {
-            console.log(nativeEvent.layout);
-            cardHeight.value = withTiming(nativeEvent.layout.height);
-          }}>
+      <Animated.View style={[style]}>
+        <View style={styles.contentContainer} onLayout={layoutHandler}>
           <Pressable
             delayLongPress={1000}
             onLongPress={longPressHandler}

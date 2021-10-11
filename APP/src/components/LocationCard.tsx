@@ -5,7 +5,6 @@ import Animated, {
   FadeIn,
   FadeInUp,
   useAnimatedProps,
-  useAnimatedStyle,
   useSharedValue,
   withRepeat,
   withTiming,
@@ -24,6 +23,7 @@ import LocationIcon from '@/components/LocationIcon';
 import Text from '@/components/Text';
 import { colorChipBorder } from '@/constants/colors';
 import { styleDivider } from '@/constants/styles';
+import useCardHeight from '@/hooks/useCardHeight';
 
 const AnimatedLottieView = Animated.createAnimatedComponent(LottieView);
 
@@ -36,10 +36,7 @@ const LocationCard = () => {
   const emptyAnimProps = useAnimatedProps(() => ({
     progress: emptyAnim.value,
   }));
-  const cardHeight = useSharedValue(190);
-  const flexibleHeight = useAnimatedStyle(() => ({
-    height: cardHeight.value,
-  }));
+  const { style, layoutHandler } = useCardHeight(190);
   useEffect(() => {
     if (!changeMode && !locationLog && !isLoading) {
       emptyAnim.value = withRepeat(withTiming(1, { duration: 6000 }), -1);
@@ -58,12 +55,9 @@ const LocationCard = () => {
         </Button>
       </View>
       <View style={styleDivider} />
-      <Animated.View style={[flexibleHeight]}>
+      <Animated.View style={[style]}>
         {changeMode ? (
-          <View
-            onLayout={({ nativeEvent }) => {
-              cardHeight.value = withTiming(nativeEvent.layout.height);
-            }}>
+          <View onLayout={layoutHandler}>
             <View />
             <View style={styles.locationChipContainer}>
               {locations &&
@@ -89,10 +83,7 @@ const LocationCard = () => {
           <Animated.View
             style={styles.locationContainer}
             entering={FadeIn.delay(300)}
-            onLayout={({ nativeEvent }) => {
-              console.info(nativeEvent.layout);
-              cardHeight.value = withTiming(nativeEvent.layout.height);
-            }}>
+            onLayout={layoutHandler}>
             <LocationIcon
               width="100"
               height="100"
@@ -105,11 +96,7 @@ const LocationCard = () => {
             )}`}</Text>
           </Animated.View>
         ) : isLoading ? (
-          <Animated.View
-            entering={FadeIn}
-            onLayout={({ nativeEvent }) => {
-              cardHeight.value = withTiming(nativeEvent.layout.height);
-            }}>
+          <Animated.View entering={FadeIn} onLayout={layoutHandler}>
             <SkeletonPlaceholder>
               <View style={styles.locationContainer}>
                 <SkeletonPlaceholder.Item
@@ -125,9 +112,7 @@ const LocationCard = () => {
         ) : (
           <Animated.View
             entering={FadeIn}
-            onLayout={({ nativeEvent }) => {
-              cardHeight.value = withTiming(nativeEvent.layout.height);
-            }}
+            onLayout={layoutHandler}
             style={styles.locationContainer}>
             <AnimatedLottieView
               style={{ height: 100 }}
