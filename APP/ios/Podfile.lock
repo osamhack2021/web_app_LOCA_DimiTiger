@@ -367,13 +367,16 @@ PODS:
     - React-Core
   - RNBootSplash (3.2.6):
     - React-Core
-  - RNCAsyncStorage (1.15.8):
+  - RNCAsyncStorage (1.15.9):
     - React-Core
   - RNCMaskedView (0.2.6):
     - React-Core
   - RNGestureHandler (1.10.3):
     - React-Core
-  - RNNotifee (3.0.0):
+  - RNNotifee (3.0.1):
+    - React-Core
+    - RNNotifee/NotifeeCore (= 3.0.1)
+  - RNNotifee/NotifeeCore (3.0.1):
     - React-Core
   - RNPermissions (3.0.5):
     - React-Core
@@ -655,10 +658,10 @@ SPEC CHECKSUMS:
   ReactCommon: eafed38eec7b591c31751bfa7494801618460459
   ReactNativeBeaconsManager: 28b4ffd10e15eb2a5fee3b3b9d561feb478640b7
   RNBootSplash: 51eef7e143faeab63f81ddbb7c1de38b8fba66ed
-  RNCAsyncStorage: e8b8d6320a0dd90eb610fb0d0b1ef90596697c69
+  RNCAsyncStorage: 26f25150da507524a7815f2ada06ca0967f65633
   RNCMaskedView: c298b644a10c0c142055b3ae24d83879ecb13ccd
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNNotifee: 5483be618e37e4b2a4409e4a939458cfe8f59f4e
+  RNNotifee: aeafe138adea11e0cf716188d2fe1b7dd850888d
   RNPermissions: 7043bacbf928eae25808275cfe73799b8f618911
   RNReanimated: 8858ae02cb8360d304611463bbc1ea876d272cd2
   RNScreens: 6e1ea5787989f92b0671049b808aef64fa1ef98c
