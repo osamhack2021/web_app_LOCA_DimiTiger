@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-import { Form, Input, Modal, Table } from 'antd';
+import { Form, Modal, Select, Table } from 'antd';
 import styled from 'styled-components';
 import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
 
 import './Users.css';
 
-import { useDeleteUser, useUsers } from '../../api/users';
+import { useAddUser, useDeleteUser, useUsers } from '../../api/users';
 import AddButton from '../../components/AddButton';
 import DeleteButton from '../../components/DeleteButton';
 import Header from '../../components/Header/Header';
@@ -16,16 +17,18 @@ import LayoutContentWrapper from '../../components/LayoutContentWrapper';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import User from '../../types/User';
 
-const { Search } = Input;
+const { Option } = Select;
 
 const Users = () => {
   const history = useHistory();
+  const [selected, setSelected] = useState('noting');
   const [query, setQuery] = useQueryParams({
     page: NumberParam,
     limit: NumberParam,
     name: StringParam,
   });
   const [form] = Form.useForm();
+  const { register, handleSubmit } = useForm();
   const { data: users, pagination } = useUsers({
     name: query.name || undefined,
     page: query.page || undefined,
@@ -70,7 +73,7 @@ const Users = () => {
       dataIndex: 'registered',
       key: 'registered',
       width: '7%',
-      render: (registered: User['registered']) => <>{registered}</>,
+      render: (registered: User['registered']) => <>{String(registered)}</>,
     },
     {
       title: '',
@@ -87,9 +90,6 @@ const Users = () => {
   const showModal = () => {
     setIsModalVisible(true);
   };
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
   const handleCancel = () => {
     setIsModalVisible(false);
   };
@@ -101,6 +101,14 @@ const Users = () => {
     const button: HTMLButtonElement = event.currentTarget;
     const _id: User['_id'] = button.name;
     deleteUserMutation.mutate({ _id });
+  };
+
+  const addUserMutation = useAddUser();
+
+  const addUser = ({ serial, name, password }: User) => {
+    console.log(serial, name, password, selected);
+    addUserMutation.mutate({ serial, name, password, rank: selected });
+    setIsModalVisible(false);
   };
 
   return (
@@ -125,28 +133,60 @@ const Users = () => {
                 }}
                 layout="inline">
                 <AddButton onClick={showModal}></AddButton>
-                <Modal
-                  title="인원 추가"
-                  centered
-                  bodyStyle={{
-                    height: '200px',
-                  }}
-                  visible={isModalVisible}
-                  onOk={handleOk}
-                  okText="추가"
-                  onCancel={handleCancel}>
-                  <div>
-                    <div>군번</div>
-                    <InputText type="text" />
-                  </div>
-                  <div>
-                    <div>이름</div>
-                    <InputText type="text" />
-                  </div>
-                </Modal>
               </Form>
             </ToolkitWrap>
           }>
+          <Modal
+            title="인원 추가"
+            centered
+            bodyStyle={{
+              height: '250px',
+            }}
+            width="500px"
+            visible={isModalVisible}
+            onOk={handleSubmit(addUser)}
+            okText="추가"
+            onCancel={handleCancel}>
+            <form>
+              <ModalInputWrap
+                style={{
+                  marginBottom: '20px',
+                }}>
+                <ModalInputLabel>군번</ModalInputLabel>
+                <InputText
+                  type="text"
+                  placeholder={'00-000000'}
+                  {...register('serial')}
+                />
+              </ModalInputWrap>
+              <ModalInputWrap
+                style={{
+                  marginBottom: '20px',
+                }}>
+                <ModalInputLabel>이름</ModalInputLabel>
+                <InputText type="text" {...register('name')} />
+              </ModalInputWrap>
+              <ModalInputWrap
+                style={{
+                  marginBottom: '20px',
+                }}>
+                <ModalInputLabel>가입코드</ModalInputLabel>
+                <InputText type="password" {...register('password')} />
+              </ModalInputWrap>
+              <ModalInputWrap>
+                <ModalInputLabel>계급</ModalInputLabel>
+                <Select
+                  style={{ width: 200 }}
+                  onChange={(value: string) => setSelected(value)}
+                  placeholder="Select a rank">
+                  <Option value="이병">이병</Option>
+                  <Option value="일병">일병</Option>
+                  <Option value="상병">상병</Option>
+                  <Option value="병장">병장</Option>
+                </Select>
+              </ModalInputWrap>
+            </form>
+          </Modal>
           <Table
             dataSource={users}
             rowKey={record => record._id}
@@ -172,12 +212,21 @@ const ToolkitWrap = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
 `;
-
+const ModalInputWrap = styled.div``;
+const ModalInputLabel = styled.div`
+  display: inline-block;
+  width: 80px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-right: 20px;
+`;
 const InputText = styled.input`
   border: none;
   border-radius: 10px;
   background-color: #eef1f4;
-  width: auto;
+  padding: 0 10px;
+  width: 200px;
+  height: 35px;
 `;
 
 export default Users;
