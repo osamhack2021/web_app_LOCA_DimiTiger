@@ -1,0 +1,15 @@
+.ant-modal-content {
+    border-radius: 20px;
+}
+.ant-modal-header {
+    border-radius: 20px;
+}
+.ant-modal-header .ant-modal-title {
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+}
+.ant-btn {
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
