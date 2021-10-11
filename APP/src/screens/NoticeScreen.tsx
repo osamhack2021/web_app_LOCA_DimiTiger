@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, StyleSheet, View } from 'react-native';
 
 import { useNotices } from '@/api/notices';
 import NoticeItem from '@/components/NoticeItem';

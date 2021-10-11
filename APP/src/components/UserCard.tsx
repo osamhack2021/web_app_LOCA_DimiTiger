@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import { StyleSheet, TextInput, View } from 'react-native';
 
 import { useEditUser, useMe } from '@/api/users';
 import Button from '@/components/Button';
