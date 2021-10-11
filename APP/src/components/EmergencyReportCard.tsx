@@ -42,16 +42,11 @@ const incidents = [
 const EmergencyReportCard = () => {
   const [reportDone, setReportDone] = useState(false);
   const { style, layoutHandler } = useAnimatedHeight(194);
-  const colorStart = useSharedValue(0);
-  const colorEnd = useSharedValue(0);
+  const color = useSharedValue(0);
   const gradientProps = useAnimatedProps(() => ({
     colors: [
-      interpolateColor(
-        colorStart.value,
-        [0, 1],
-        [colorReport, colorReportStart],
-      ),
-      interpolateColor(colorEnd.value, [0, 1], [colorReport, colorReportEnd]),
+      interpolateColor(color.value, [0, 1], [colorReport, colorReportStart]),
+      interpolateColor(color.value, [0, 1], [colorReport, colorReportEnd]),
     ],
   }));
 
@@ -59,32 +54,28 @@ const EmergencyReportCard = () => {
     if (reportDone) {
       return;
     }
-    colorStart.value = withTiming(1, { duration: 1000 });
-    colorEnd.value = withTiming(1, { duration: 1000 });
-  }, [colorEnd, colorStart, reportDone]);
+    color.value = withTiming(1, { duration: 1000 });
+  }, [color, reportDone]);
 
   const pressOutHandler = useCallback(() => {
     if (reportDone) {
       return;
     }
-    colorStart.value = withTiming(0);
-    colorEnd.value = withTiming(0);
-  }, [colorEnd, colorStart, reportDone]);
+    color.value = withTiming(0);
+  }, [color, reportDone]);
 
   const longPressHandler = useCallback(() => {
     setReportDone(true);
-    colorStart.value = 1;
-    colorEnd.value = 1;
-  }, [colorEnd, colorStart]);
+    color.value = 1;
+  }, [color]);
 
   const pressHandler = useCallback(() => {
     if (!reportDone) {
       return;
     }
     setReportDone(false);
-    colorStart.value = 0;
-    colorEnd.value = 0;
-  }, [colorEnd, colorStart, reportDone]);
+    color.value = 0;
+  }, [color, reportDone]);
 
   const ReportIcon = () => (
     <Animated.View entering={ZoomIn} exiting={ZoomOut}>
