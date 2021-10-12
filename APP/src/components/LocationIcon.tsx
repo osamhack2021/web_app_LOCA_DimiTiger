@@ -18,7 +18,7 @@ type LocationIconProps = SvgProps & {
   icon: string;
 };
 
-const LocationIcon = (props: LocationIconProps) => {
+const LocationIcon = ({ style, ...props }: LocationIconProps) => {
   const { data } = useQuery(['svg', props.icon], () => getSvg(props.icon), {
     cacheTime: Infinity,
   });
@@ -30,7 +30,7 @@ const LocationIcon = (props: LocationIconProps) => {
     [props.height],
   );
   return (
-    <View style={{ width: size, height: size }}>
+    <View style={[{ width: size, height: size }, style]}>
       {data ? (
         <SvgXml {...props} xml={data || null} />
       ) : (
