@@ -16,10 +16,7 @@ exports.getBeacons = {
 		try {
 			return await BeaconService.getBeacons(removeUndefined(req.query));
 		} catch (err) {
-<<<<<<< HEAD
-=======
 			if (Boom.isBoom(err)) throw err;
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -37,10 +34,7 @@ exports.getBeacon = {
 		try {
 			return await BeaconService.getBeacon(req.params.beaconId);
 		} catch (err) {
-<<<<<<< HEAD
-=======
 			if (Boom.isBoom(err)) throw err;
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -63,10 +57,7 @@ exports.createBeacon = {
 		try {
 			return await BeaconService.createBeacon(req.payload);
 		} catch (err) {
-<<<<<<< HEAD
-=======
 			if (Boom.isBoom(err)) throw err;
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -92,10 +83,7 @@ exports.udpateBeacon = {
 		try {
 			return await BeaconService.updateBeacon(req.params.beaconId, req.payload);
 		} catch (err) {
-<<<<<<< HEAD
-=======
 			if (Boom.isBoom(err)) throw err;
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -113,10 +101,7 @@ exports.deleteBeacon = {
 		try {
 			return await BeaconService.deleteBeacon(req.params.beaconId);
 		} catch (err) {
-<<<<<<< HEAD
-=======
 			if (Boom.isBoom(err)) throw err;
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},

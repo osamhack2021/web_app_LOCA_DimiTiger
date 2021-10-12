@@ -13,20 +13,14 @@ exports.getUsers = {
 			limit: Joi.number().description('가져올 개수'),
 			name: Joi.string().description('사용자 이름'),
 			serial: Joi.string().description('군번'),
-<<<<<<< HEAD
-=======
 			registered: Joi.boolean().description('회원가입여부'),
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 		}),
 	},
 	handler: async (req, h) => {
 		try {
 			return await UserService.getUsers(removeUndefined(req.query));
 		} catch (err) {
-<<<<<<< HEAD
-=======
 			if (Boom.isBoom(err)) throw err;
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -44,10 +38,7 @@ exports.getUser = {
 		try {
 			return await UserService.getUser(req.params.userId);
 		} catch (err) {
-<<<<<<< HEAD
-=======
 			if (Boom.isBoom(err)) throw err;
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -61,10 +52,7 @@ exports.me = {
 		try {
 			return req.auth.credentials;
 		} catch (err) {
-<<<<<<< HEAD
-=======
 			if (Boom.isBoom(err)) throw err;
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -79,11 +67,7 @@ exports.createUsers = {
 			password: Joi.string().required(),
 			rank: Joi.string()
 				.required()
-<<<<<<< HEAD
-				.valid(...rankTypes),
-=======
 				.valid(...Object.values(rankTypes)),
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 		}),
 	},
 	handler: async (req, h) => {
@@ -93,10 +77,7 @@ exports.createUsers = {
 		try {
 			return await UserService.createUsers(req.payload);
 		} catch (err) {
-<<<<<<< HEAD
-=======
 			if (Boom.isBoom(err)) throw err;
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -116,11 +97,7 @@ exports.updateUser = {
 			phone: Joi.string(),
 			email: Joi.string(),
 			password: Joi.string(),
-<<<<<<< HEAD
-			rank: Joi.string().valid(...rankTypes),
-=======
 			rank: Joi.string().valid(...Object.values(rankTypes)),
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 		}),
 	},
 	handler: async (req, h) => {
@@ -131,10 +108,7 @@ exports.updateUser = {
 		try {
 			return await UserService.updateUser(req.params.userId, req.payload);
 		} catch (err) {
-<<<<<<< HEAD
-=======
 			if (Boom.isBoom(err)) throw err;
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -166,10 +140,7 @@ exports.registerUsers = {
 				req.payload.register
 			);
 		} catch (err) {
-<<<<<<< HEAD
-=======
 			if (Boom.isBoom(err)) throw err;
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -190,10 +161,7 @@ exports.deleteUser = {
 		try {
 			return await UserService.deleteUser(req.params.userId);
 		} catch (err) {
-<<<<<<< HEAD
-=======
 			if (Boom.isBoom(err)) throw err;
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
