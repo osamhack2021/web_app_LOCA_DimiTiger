@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RouteProp } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -38,7 +39,7 @@ const RootStack = () => {
               header: Header,
               headerShown: true,
               contentStyle: {
-                paddingTop: 90 + top,
+                paddingTop: Platform.OS === 'ios' ? 90 + top : 0,
               },
             }}>
             <Stack.Screen name="Main" component={MainScreen} />

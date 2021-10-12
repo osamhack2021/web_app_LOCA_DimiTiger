@@ -1,12 +1,13 @@
 import React from 'react';
 import {
   Image,
-  SafeAreaView,
+  Platform,
   StyleSheet,
   TouchableOpacity,
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { NativeStackHeaderProps } from '@react-navigation/native-stack';
@@ -19,7 +20,7 @@ const Header = ({ navigation, route, options }: NativeStackHeaderProps) => {
   const { data: user, isLoading } = useMe();
   return (
     <View style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
+      <SafeAreaView edges={['top']} style={styles.safeArea}>
         <View style={styles.innerContainer}>
           {isLoading ? (
             <SkeletonPlaceholder>
@@ -61,22 +62,30 @@ const Header = ({ navigation, route, options }: NativeStackHeaderProps) => {
           )}
         </View>
       </SafeAreaView>
-      <LinearGradient
-        colors={['rgba(0, 0, 0, 0.15)', 'rgba(0, 0, 0, 0)']}
-        style={{ backgroundColor: 'transparent', height: 20 }}
-      />
+      {Platform.OS === 'ios' && (
+        <LinearGradient
+          colors={['rgba(0, 0, 0, 0.15)', 'rgba(0, 0, 0, 0)']}
+          style={{ backgroundColor: 'transparent', height: 20 }}
+        />
+      )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    left: 0,
-    position: 'absolute',
-    right: 0,
-    top: 0,
-    zIndex: 100,
-  },
+  container: Platform.select({
+    ios: {
+      left: 0,
+      position: 'absolute',
+      right: 0,
+      top: 0,
+      zIndex: 100,
+    },
+    default: {
+      backgroundColor: colorWhite,
+      elevation: 10,
+    },
+  }),
   safeArea: {
     backgroundColor: colorWhite,
   },
