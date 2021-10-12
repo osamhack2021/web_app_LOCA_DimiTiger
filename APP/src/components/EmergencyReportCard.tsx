@@ -153,11 +153,16 @@ const EmergencyReportCard = () => {
                   entering={FadeInDown}
                   style={styles.additionalInputContainer}>
                   <TextInput
+                    value={additionalText}
                     onChangeText={text => setAdditionalText(text)}
                     placeholder="추가 보고사항 입력"
                     style={[styleTextInput, styles.additionalInput]}
                   />
-                  <TouchableOpacity onPress={() => addReport(additionalText)}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      addReport(additionalText);
+                      setAdditionalText('');
+                    }}>
                     <Icon
                       name="arrow-up-circle"
                       color={colorReportEnd}
