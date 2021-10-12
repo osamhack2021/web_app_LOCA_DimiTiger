@@ -35,7 +35,7 @@ const Sidebar = () => {
     {
       imgSrc: './icons/sidebar_ico_search.svg',
       eleName: '유동병력 검색',
-      link: '/search',
+      link: '/location-logs',
     },
     {
       imgSrc: './icons/sidebar_ico_add_user.svg',

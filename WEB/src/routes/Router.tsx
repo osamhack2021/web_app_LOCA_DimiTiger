@@ -61,7 +61,7 @@ const Router = () => {
             exact
           />
           <PrivateRoutes path="/" component={Home} exact />
-          <PrivateRoutes path="/search" component={LocationLogs} exact />
+          <PrivateRoutes path="/location-logs" component={LocationLogs} exact />
           <PrivateRoutes path="/users" component={CurrentUsers} exact />
           <PrivateRoutes path="/locations" component={Locations} exact />
         </Switch>
