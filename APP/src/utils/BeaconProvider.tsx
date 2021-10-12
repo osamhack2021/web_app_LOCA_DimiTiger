@@ -54,10 +54,8 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
       }),
       DeviceEventEmitter.addListener(
         'beaconsDidRange',
-        ({ identifier, beacons: regions }) => {
-          const beacon = beacons.find(
-            value => value.region.identifier === identifier,
-          );
+        ({ region: { identifier }, beacons: regions }) => {
+          const beacon = beacons.find(b => b.region.identifier === identifier);
           if (beacon) {
             regions.forEach(({ distance }: typeof beacon.region) => {
               setVisibleBeacons(prevBeacons => {
