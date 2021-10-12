@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "postinstall": "patch-package && cp patches/react-native-reanimated-66-hermes.aar node_modules/react-native-reanimated/android/"
   },
   "dependencies": {
     "@notifee/react-native": "^3.0.1",
@@ -23,7 +24,7 @@
     "proxy-polyfill": "^0.3.2",
     "react": "17.0.2",
     "react-hook-form": "^7.17.1",
-    "react-native": "0.65.1",
+    "react-native": "0.66.0",
     "react-native-beacons-manager": "git://github.com/wjaykim/react-native-beacons-manager.git#466c9b918a70d26ed6bc1324ee91744b04015fd8",
     "react-native-bootsplash": "^3.2.6",
     "react-native-gesture-handler": "^1.10.3",
@@ -54,7 +55,7 @@
     "eslint-plugin-unused-imports": "^1.1.5",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.66.2",
-    "react-native-codegen": "^0.0.8",
+    "patch-package": "^6.4.7",
     "react-native-svg-transformer": "^0.14.3",
     "react-test-renderer": "17.0.2",
     "typescript": "^4.4.3"

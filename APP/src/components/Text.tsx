@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { StyleSheet, Text as RNText, TextProps } from 'react-native';
 
+import { colorBlack } from '@/constants/colors';
 import {
   styleNanumBarunGothic,
   styleNanumBarunGothicBold,
@@ -15,7 +16,7 @@ const Text = (props: PropsWithChildren<TextProps>) => {
         fontWeight === 'bold'
           ? styleNanumBarunGothicBold
           : styleNanumBarunGothic,
-        { fontSize: 14 },
+        { color: colorBlack, fontSize: 14 },
         style,
       ]}
       {...rest}
