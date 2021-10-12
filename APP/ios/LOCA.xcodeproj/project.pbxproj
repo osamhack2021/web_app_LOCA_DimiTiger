@@ -17,7 +17,6 @@
 		7EF68E3733C33B6898317E18 /* libPods-LOCA-LOCATests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-LOCA-LOCATests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		F44F7CDD2708B596001DC7DD /* Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F7CDC2708B596001DC7DD /* Swift.swift */; };
-		F459D61726ECF10300F7F86A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F459D61626ECF10300F7F86A /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +65,6 @@
 		EA1DADE90246495A8B27B1F4 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F44F7CDC2708B596001DC7DD /* Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift.swift; sourceTree = "<group>"; };
-		F459D61626ECF10300F7F86A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F459D61826EE48B900F7F86A /* LOCA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = LOCA.entitlements; path = LOCA/LOCA.entitlements; sourceTree = "<group>"; };
 		F783670DAEAA4B9AB8FA0CD6 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,7 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				F459D61826EE48B900F7F86A /* LOCA.entitlements */,
-				F459D61626ECF10300F7F86A /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -298,7 +295,6 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				F459D61726ECF10300F7F86A /* GoogleService-Info.plist in Resources */,
 				17A2C6008DC742838B604C18 /* NanumBarunGothicOTF.otf in Resources */,
 				69252307E86F4101BDCC39BD /* NanumBarunGothicOTFBold.otf in Resources */,
 			);
