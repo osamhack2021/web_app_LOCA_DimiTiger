@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './Sidebar.css';
@@ -8,14 +8,13 @@ import { useLogout } from '../../atoms';
 interface IProps {
   imgSrc: string;
   eleName: string;
-  hover: boolean;
   link: string;
 }
 
 const SidebarComponent = (props: IProps) => {
   return (
     <Link to={props.link}>
-      <div className={`sidebar_item ${props.hover && ' flexStart'}`}>
+      <div className="sidebar_item">
         <img src={props.imgSrc} alt="" />
         <div className="sidebar_item_name">{props.eleName}</div>
       </div>
@@ -24,7 +23,6 @@ const SidebarComponent = (props: IProps) => {
 };
 
 const Sidebar = () => {
-  const [hover, setHover] = useState(false);
   const logout = useLogout();
   const sidebarMenu = [
     {
@@ -57,29 +55,24 @@ const Sidebar = () => {
       eleName: '설정',
       link: '/',
     },
-    {
-      imgSrc: '/icons/sidebar_ico_logout.svg',
-      eleName: '로그아웃',
-      link: '/',
-    },
   ];
 
   return (
-    <div
-      id="sidebar"
-      onMouseOver={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}>
+    <div id="sidebar">
       {sidebarMenu.map((menu, i) => {
         return (
           <SidebarComponent
             imgSrc={menu.imgSrc}
             eleName={menu.eleName}
-            hover={hover}
             link={menu.link}
             key={i}
           />
         );
       })}
+      <div className="sidebar_item" onClick={logout}>
+        <img src="/icons/sidebar_ico_logout.svg" alt="" />
+        <div className="sidebar_item_name">로그아웃</div>
+      </div>
     </div>
   );
 };
