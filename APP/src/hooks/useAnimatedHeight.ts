@@ -3,10 +3,11 @@ import { LayoutChangeEvent } from 'react-native';
 import {
   useAnimatedStyle,
   useSharedValue,
+  withDelay,
   withTiming,
 } from 'react-native-reanimated';
 
-const useAnimatedHeight = (initialHeight: number) => {
+const useAnimatedHeight = (initialHeight: number, delayMs = 0) => {
   const height = useSharedValue(initialHeight);
   const prevHeight = useRef(initialHeight);
   const style = useAnimatedStyle(() => ({
@@ -17,10 +18,10 @@ const useAnimatedHeight = (initialHeight: number) => {
     ({ nativeEvent: { layout } }: LayoutChangeEvent) => {
       if (Math.floor(layout.height) !== prevHeight.current) {
         prevHeight.current = layout.height;
-        height.value = withTiming(layout.height);
+        height.value = withDelay(delayMs, withTiming(layout.height));
       }
     },
-    [height],
+    [delayMs, height],
   );
 
   return {

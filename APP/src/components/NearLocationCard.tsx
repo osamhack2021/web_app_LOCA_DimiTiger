@@ -25,7 +25,7 @@ const NearLocationCard = () => {
   const linkTo = useLinkTo();
   const { data: locationLog } = useActiveLocationLog();
   const visibleBeacons = useRecoilValue(beaconState);
-  const { style, height } = useAnimatedHeight(0);
+  const { style, height } = useAnimatedHeight(0, 300);
 
   useEffect(() => {
     height.value = (visibleBeacons.length + 1) * 40;
@@ -45,7 +45,7 @@ const NearLocationCard = () => {
           <Animated.View style={[styles.locationContainer, style]}>
             {visibleBeacons.map((beacon, index) => (
               <Animated.View
-                entering={FadeInUp.delay(300 + index * 50)}
+                entering={FadeInUp.delay(600 + index * 50)}
                 exiting={FadeInDown}
                 key={beacon.region.identifier}>
                 <TouchableOpacity
