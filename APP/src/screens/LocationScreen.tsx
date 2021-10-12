@@ -16,11 +16,7 @@ import { RootNavigationProp, RootRouteProp } from '@/Navigators';
 const LocationScreen = () => {
   const { params } = useRoute<RootRouteProp<'LocationScreen'>>();
   const navigation = useNavigation<RootNavigationProp<'LocationScreen'>>();
-<<<<<<< HEAD
-  const { location } = useLocation(params.location);
-=======
   const { data: location } = useLocation(params.location);
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
   const logMutation = useLogLocation();
   return (
     <View style={styles.container}>

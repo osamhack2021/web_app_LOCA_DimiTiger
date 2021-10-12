@@ -16,10 +16,7 @@ exports.getNotices = {
 		try {
 			return await NoticeService.getNotices(removeUndefined(req.query));
 		} catch (err) {
-<<<<<<< HEAD
-=======
 			if (Boom.isBoom(err)) throw err;
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -36,10 +33,7 @@ exports.getNotice = {
 		try {
 			return await NoticeService.getNotice(req.params.noticeId);
 		} catch (err) {
-<<<<<<< HEAD
-=======
 			if (Boom.isBoom(err)) throw err;
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -62,10 +56,7 @@ exports.createNotice = {
 				emergency: req.payload.emergency,
 			});
 		} catch (err) {
-<<<<<<< HEAD
-=======
 			if (Boom.isBoom(err)) throw err;
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},
@@ -83,10 +74,7 @@ exports.deleteNotice = {
 		try {
 			return await NoticeService.deleteNotice(req.params.noticeId);
 		} catch (err) {
-<<<<<<< HEAD
-=======
 			if (Boom.isBoom(err)) throw err;
->>>>>>> ea2fd2bc8e50c20f9062a8bb0168195300911070
 			throw Boom.internal(err);
 		}
 	},

@@ -6,7 +6,6 @@ interface User {
   email: string;
   isAdmin: boolean;
   rank: string;
-  password?: string;
   registered: boolean;
 }
 
