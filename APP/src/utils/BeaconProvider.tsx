@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { DeviceEventEmitter, Platform } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { AppState, DeviceEventEmitter, Platform } from 'react-native';
 import Beacons from 'react-native-beacons-manager';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRecoilState } from 'recoil';
@@ -16,6 +16,7 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
   const { data: beacons } = useBeacons();
   const { fullyGranted } = usePermissions();
   const [visibleBeacons, setVisibleBeacons] = useRecoilState(beaconState);
+  const [isForeground, setForeground] = useState(false);
 
   useEffect(() => {
     if (!beacons || !fullyGranted) {
@@ -27,7 +28,8 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
     Promise.all(
       beacons.map(async beacon => {
         await Beacons.startMonitoringForRegion(beacon.region);
-        await Beacons.startRangingBeaconsInRegion(beacon.region);
+        AppState.currentState === 'active' &&
+          (await Beacons.startRangingBeaconsInRegion(beacon.region));
       }),
     );
     if (Platform.OS === 'ios') {
@@ -89,7 +91,7 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
       }
       subscriptions.forEach(subscription => subscription.remove());
     };
-  }, [beacons, fullyGranted, setVisibleBeacons]);
+  }, [beacons, fullyGranted, isForeground, setVisibleBeacons]);
 
   useEffect(() => {
     if (visibleBeacons.length === 0) {
@@ -97,6 +99,13 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
     }
     //setModalVisible(true);
   }, [visibleBeacons.length]);
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', state =>
+      setForeground(state === 'active'),
+    );
+    () => subscription.remove();
+  }, []);
 
   useEffect(() => {
     if (!beacons) {
