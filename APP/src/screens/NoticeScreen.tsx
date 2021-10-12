@@ -1,32 +1,23 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useNavigation } from '@react-navigation/native';
+import { FlatList, StyleSheet, View } from 'react-native';
 
 import { useNotices } from '@/api/notices';
 import NoticeItem from '@/components/NoticeItem';
-import Text from '@/components/Text';
-import { colorBlack } from '@/constants/colors';
-import { RootNavigationProp } from '@/Navigators';
+import { colorWhite } from '@/constants/colors';
 
 const NoticeScreen = () => {
-  const navigation = useNavigation<RootNavigationProp<'NoticeScreen'>>();
   const { data: notices } = useNotices();
   return (
     <View style={styles.container}>
-      <SafeAreaView style={styles.headerContainer}>
-        <Text style={styles.titleText}>공지사항</Text>
-        <TouchableOpacity
-          style={styles.closeIcon}
-          onPress={() => navigation.goBack()}>
-          <Icon name="close" size={30} color={colorBlack} />
-        </TouchableOpacity>
-      </SafeAreaView>
       <FlatList
         data={notices}
         renderItem={({ item, index }) => (
-          <NoticeItem notice={item} style={{ marginTop: index > 0 ? 0 : 20 }} />
+          <NoticeItem
+            notice={item}
+            style={{
+              marginTop: index > 0 ? 0 : 20,
+            }}
+          />
         )}
         style={styles.container}
       />
@@ -36,6 +27,7 @@ const NoticeScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: colorWhite,
     flex: 1,
   },
   headerContainer: {
@@ -43,11 +35,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   titleText: {
-    fontSize: 30,
+    flex: 1,
+    fontSize: 21,
     fontWeight: 'bold',
-    margin: 20,
   },
-  closeIcon: {
+  backButton: {
     margin: 20,
   },
 });

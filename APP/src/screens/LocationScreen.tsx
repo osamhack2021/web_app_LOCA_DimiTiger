@@ -14,8 +14,8 @@ import * as colors from '@/constants/colors';
 import { RootNavigationProp, RootRouteProp } from '@/Navigators';
 
 const LocationScreen = () => {
-  const { params } = useRoute<RootRouteProp<'LocationScreen'>>();
-  const navigation = useNavigation<RootNavigationProp<'LocationScreen'>>();
+  const { params } = useRoute<RootRouteProp<'Location'>>();
+  const navigation = useNavigation<RootNavigationProp<'Location'>>();
   const { data: location } = useLocation(params.location);
   const logMutation = useLogLocation();
   return (

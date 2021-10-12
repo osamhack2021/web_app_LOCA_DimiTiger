@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import RNBootSplash from 'react-native-bootsplash';
 import Animated, {
@@ -15,6 +15,7 @@ import { accessTokenState, splashState } from '@/atoms';
 import { colorSplashBg } from '@/constants/colors';
 
 const SplashScreen = () => {
+  const [time, setTime] = useState(0);
   const { state } = useRecoilValueLoadable(accessTokenState);
   const setSplashDone = useSetRecoilState(splashState);
   const scale = useSharedValue(1);
@@ -29,10 +30,20 @@ const SplashScreen = () => {
         runOnJS(setSplashDone)(true),
       );
     }
-    if (state !== 'loading') {
+    if (state !== 'loading' && time > 1) {
       hide();
     }
-  }, [scale, setSplashDone, state]);
+  }, [scale, setSplashDone, state, time]);
+
+  useEffect(() => {
+    // Wait for 2 seconds
+    if (time > 1) {
+      return;
+    }
+    const timeout = setTimeout(() => setTime(time + 1), 1000);
+    return () => clearTimeout(timeout);
+  }, [time]);
+
   return (
     <View style={styles.container}>
       <Animated.View style={animatedLogo}>

@@ -5,8 +5,6 @@ import Animated, {
   FadeInLeft,
   FadeInUp,
   FadeOutRight,
-  useAnimatedStyle,
-  useSharedValue,
 } from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useLinkTo } from '@react-navigation/native';
@@ -14,46 +12,40 @@ import { useRecoilValue } from 'recoil';
 
 import { useActiveLocationLog } from '@/api/location-logs';
 import { beaconState } from '@/atoms';
-import Button from '@/components/Button';
 import Card from '@/components/Card';
 import LocationIcon from '@/components/LocationIcon';
 import Text from '@/components/Text';
 import * as colors from '@/constants/colors';
-import { styleDivider } from '@/constants/styles';
+import { styleCardHeaderContainer, styleDivider } from '@/constants/styles';
+import useAnimatedHeight from '@/hooks/useAnimatedHeight';
 
 const { colorWhite } = colors;
 
 const NearLocationCard = () => {
   const linkTo = useLinkTo();
   const { data: locationLog } = useActiveLocationLog();
-  const activeBeacons = useRecoilValue(beaconState);
-  const cardHeight = useSharedValue(192);
-  const flexibleHeight = useAnimatedStyle(() => ({
-    height: cardHeight.value,
-  }));
+  const visibleBeacons = useRecoilValue(beaconState);
+  const { style, height } = useAnimatedHeight(0, 300);
 
   useEffect(() => {
-    cardHeight.value = (activeBeacons.length + 1) * 40;
-  }, [activeBeacons.length, cardHeight]);
+    height.value = (visibleBeacons.length + 1) * 40;
+  }, [visibleBeacons.length, height]);
 
   return (
     <>
-      {activeBeacons.length > 0 && (
+      {visibleBeacons.length > 0 && (
         <Card
           style={styles.container}
           entering={FadeInLeft}
           exiting={FadeOutRight}>
-          <View style={styles.cardHeaderContainer}>
+          <View style={styleCardHeaderContainer}>
             <Text style={styles.titleText}>근처 위치</Text>
-            <Button style={styles.locationButton} onPress={() => {}}>
-              새로고침
-            </Button>
           </View>
           <View style={styleDivider} />
-          <Animated.View style={[styles.locationContainer, flexibleHeight]}>
-            {activeBeacons.map((beacon, index) => (
+          <Animated.View style={[styles.locationContainer, style]}>
+            {visibleBeacons.map((beacon, index) => (
               <Animated.View
-                entering={FadeInUp.delay(index * 50)}
+                entering={FadeInUp.delay(600 + index * 50)}
                 exiting={FadeInDown}
                 key={beacon.region.identifier}>
                 <TouchableOpacity
@@ -99,18 +91,10 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 0,
   },
-  cardHeaderContainer: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
   titleText: {
     fontSize: 21,
     fontWeight: 'bold',
     margin: 20,
-  },
-  locationButton: {
-    marginEnd: 20,
   },
   locationContainer: {
     padding: 20,

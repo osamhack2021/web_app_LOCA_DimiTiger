@@ -1,56 +1,96 @@
 import React from 'react';
-import { Image, Pressable, SafeAreaView, StyleSheet, View } from 'react-native';
+import {
+  Image,
+  Platform,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
-import { useNavigation } from '@react-navigation/core';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { NativeStackHeaderProps } from '@react-navigation/native-stack';
 
 import { useMe } from '@/api/users';
 import Text from '@/components/Text';
 import { colorWhite } from '@/constants/colors';
-import { styleShadow } from '@/constants/styles';
-import { RootNavigationProp } from '@/Navigators';
 
-const Header = () => {
-  const navigation = useNavigation<RootNavigationProp<'MainScreen'>>();
+const Header = ({ navigation, route, options }: NativeStackHeaderProps) => {
   const { data: user, isLoading } = useMe();
   return (
-    <SafeAreaView style={styles.container}>
-      <Pressable
-        style={styles.innerContainer}
-        onPress={() => navigation.push('UserScreen')}>
-        {isLoading ? (
-          <SkeletonPlaceholder>
-            <SkeletonPlaceholder.Item flexDirection="row">
-              <View style={styles.logoImage} />
+    <View style={styles.container}>
+      <SafeAreaView edges={['top']} style={styles.safeArea}>
+        <View style={styles.innerContainer}>
+          {isLoading ? (
+            <SkeletonPlaceholder>
+              <SkeletonPlaceholder.Item flexDirection="row">
+                <View style={styles.logoImage} />
+                <View style={styles.textContainer}>
+                  <View style={styles.unitPlaceHolder} />
+                  <View style={styles.userPlaceHolder} />
+                </View>
+              </SkeletonPlaceholder.Item>
+            </SkeletonPlaceholder>
+          ) : (
+            <>
+              <Image
+                style={styles.logoImage}
+                source={require('@assets/images/kctc.png')}
+              />
               <View style={styles.textContainer}>
-                <View style={styles.unitPlaceHolder} />
-                <View style={styles.userPlaceHolder} />
+                <Text>육군과학화전투훈련단 근무지원대대</Text>
+                <Text style={styles.nameText}>
+                  {options.title || `${user?.rank} ${user?.name}`}
+                </Text>
               </View>
-            </SkeletonPlaceholder.Item>
-          </SkeletonPlaceholder>
-        ) : (
-          <>
-            <Image
-              style={styles.logoImage}
-              source={require('@assets/images/kctc.png')}
-            />
-            <View style={styles.textContainer}>
-              <Text>육군과학화전투훈련단 근무지원대대</Text>
-              <Text
-                style={styles.nameText}>{`${user?.rank} ${user?.name}`}</Text>
-            </View>
-          </>
-        )}
-      </Pressable>
-    </SafeAreaView>
+              <View style={{ flex: 1 }} />
+              <TouchableOpacity
+                onPress={() => {
+                  if (route.name === 'Main') {
+                    navigation.push('Settings');
+                  } else {
+                    navigation.goBack();
+                  }
+                }}>
+                <Icon
+                  name={route.name === 'Main' ? 'cog' : 'close'}
+                  size={25}
+                />
+              </TouchableOpacity>
+            </>
+          )}
+        </View>
+      </SafeAreaView>
+      {Platform.OS === 'ios' && (
+        <LinearGradient
+          colors={['rgba(0, 0, 0, 0.15)', 'rgba(0, 0, 0, 0)']}
+          style={{ backgroundColor: 'transparent', height: 20 }}
+        />
+      )}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    ...styleShadow,
+  container: Platform.select({
+    ios: {
+      left: 0,
+      position: 'absolute',
+      right: 0,
+      top: 0,
+      zIndex: 100,
+    },
+    default: {
+      backgroundColor: colorWhite,
+      elevation: 10,
+    },
+  }),
+  safeArea: {
     backgroundColor: colorWhite,
   },
   innerContainer: {
+    alignItems: 'center',
     flexDirection: 'row',
     padding: 20,
   },

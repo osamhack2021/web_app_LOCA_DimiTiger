@@ -1,12 +1,19 @@
 import React, { useCallback, useState } from 'react';
-import { Pressable, StyleSheet, TouchableOpacity, View } from 'react-native';
+import {
+  Pressable,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, {
+  FadeInDown,
   FadeInUp,
   FadeOutDown,
+  FadeOutUp,
   interpolateColor,
   useAnimatedProps,
-  useAnimatedStyle,
   useSharedValue,
   withTiming,
   ZoomIn,
@@ -24,7 +31,9 @@ import {
   colorReportState,
   colorWhite,
 } from '@/constants/colors';
-import { styleDivider } from '@/constants/styles';
+import { styleDivider, styleTextInput } from '@/constants/styles';
+import useAnimatedHeight from '@/hooks/useAnimatedHeight';
+import useEmergencyReport from '@/hooks/useEmergencyReport';
 
 const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient);
 
@@ -40,74 +49,70 @@ const incidents = [
 ];
 
 const EmergencyReportCard = () => {
-  const [reportDone, setReportDone] = useState(false);
-  const cardHeight = useSharedValue(164);
-  const flexibleHeight = useAnimatedStyle(() => ({
-    height: cardHeight.value,
-  }));
-  const colorStart = useSharedValue(0);
-  const colorEnd = useSharedValue(0);
+  const { report, hasAdditionalReport, createReport, addReport } =
+    useEmergencyReport();
+  const [additionalText, setAdditionalText] = useState('');
+  const { style, layoutHandler } = useAnimatedHeight(194);
+  const color = useSharedValue(0);
   const gradientProps = useAnimatedProps(() => ({
     colors: [
-      interpolateColor(
-        colorStart.value,
-        [0, 1],
-        [colorReport, colorReportStart],
-      ),
-      interpolateColor(colorEnd.value, [0, 1], [colorReport, colorReportEnd]),
+      interpolateColor(color.value, [0, 1], [colorReportStart, colorReport]),
+      interpolateColor(color.value, [0, 1], [colorReportEnd, colorReport]),
     ],
   }));
 
   const pressInHandler = useCallback(() => {
-    if (reportDone) {
+    if (report) {
       return;
     }
-    colorStart.value = withTiming(1, { duration: 1000 });
-    colorEnd.value = withTiming(1, { duration: 1000 });
-  }, [colorEnd, colorStart, reportDone]);
+    color.value = withTiming(1, { duration: 1000 });
+  }, [color, report]);
 
   const pressOutHandler = useCallback(() => {
-    if (reportDone) {
+    if (report) {
       return;
     }
-    colorStart.value = withTiming(0);
-    colorEnd.value = withTiming(0);
-  }, [colorEnd, colorStart, reportDone]);
+    color.value = withTiming(0);
+  }, [color, report]);
 
   const longPressHandler = useCallback(() => {
-    setReportDone(true);
-    colorStart.value = 1;
-    colorEnd.value = 1;
-  }, [colorEnd, colorStart]);
+    createReport();
+    color.value = withTiming(0);
+  }, [color, createReport]);
 
   const pressHandler = useCallback(() => {
-    if (!reportDone) {
+    if (!report) {
       return;
     }
-    setReportDone(false);
-    colorStart.value = 0;
-    colorEnd.value = 0;
-  }, [colorEnd, colorStart, reportDone]);
+  }, [report]);
 
-  const ReportIcon = () => (
-    <Animated.View entering={ZoomIn} exiting={ZoomOut}>
-      <Icon
-        name={reportDone ? 'checkbox-marked-circle' : 'alert'}
-        size={50}
-        color={colorWhite}
-      />
-    </Animated.View>
+  const ReportIcon = useCallback(
+    () => (
+      <Animated.View entering={ZoomIn} exiting={ZoomOut}>
+        <Icon
+          name={report ? 'checkbox-marked-circle' : 'alert'}
+          size={50}
+          color={colorWhite}
+        />
+      </Animated.View>
+    ),
+    [report],
   );
 
-  const StateText = () => (
-    <Animated.Text
-      entering={FadeInUp}
-      exiting={FadeOutDown}
-      style={styles.stateText}>
-      {reportDone
-        ? '신고가 완료되었습니다. 사고 내용을 알려주실 수 있으신가요?'
-        : '버튼을 길게 누르면 자동으로 보고됩니다.'}
-    </Animated.Text>
+  const StateText = useCallback(
+    () => (
+      <Animated.Text
+        entering={FadeInUp}
+        exiting={FadeOutDown}
+        style={styles.stateText}>
+        {report
+          ? hasAdditionalReport
+            ? '추가 보고되었습니다. 계속해서 추가 보고할 수 있습니다.'
+            : '신고가 완료되었습니다. 세부 내용을 알려주실 수 있으신가요?'
+          : '버튼을 길게 누르면 자동으로 보고됩니다.'}
+      </Animated.Text>
+    ),
+    [hasAdditionalReport, report],
   );
 
   return (
@@ -116,13 +121,8 @@ const EmergencyReportCard = () => {
         <Text style={styles.titleText}>긴급 신고</Text>
       </View>
       <View style={styleDivider} />
-      <Animated.View style={[flexibleHeight]}>
-        <View
-          style={styles.contentContainer}
-          onLayout={({ nativeEvent }) => {
-            console.log(nativeEvent.layout);
-            cardHeight.value = withTiming(nativeEvent.layout.height);
-          }}>
+      <Animated.View style={[style]}>
+        <View style={styles.contentContainer} onLayout={layoutHandler}>
           <Pressable
             delayLongPress={1000}
             onLongPress={longPressHandler}
@@ -134,25 +134,61 @@ const EmergencyReportCard = () => {
               animatedProps={gradientProps}
               style={styles.reportButton}>
               {/* Intended nasty code for animation */}
-              {reportDone && <ReportIcon />}
-              {!reportDone && <ReportIcon />}
+              {report && <ReportIcon />}
+              {!report && <ReportIcon />}
             </AnimatedGradient>
           </Pressable>
           {/* Intended nasty code for animation */}
-          {reportDone && <StateText />}
-          {!reportDone && <StateText />}
-          {reportDone && (
-            <View style={styles.chipContainer}>
-              {incidents.map((incident, index) => (
+          {report && (
+            <>
+              {hasAdditionalReport && <StateText />}
+              {!hasAdditionalReport && <StateText />}
+            </>
+          )}
+          {!report && <StateText />}
+          {report && (
+            <>
+              {hasAdditionalReport && (
                 <Animated.View
-                  entering={FadeInUp.delay(300 + index * 50)}
-                  key={incident}>
-                  <TouchableOpacity style={styles.chip} onPress={() => {}}>
-                    <Text style={styles.chipText}>{incident}</Text>
+                  entering={FadeInDown}
+                  style={styles.additionalInputContainer}>
+                  <TextInput
+                    value={additionalText}
+                    onChangeText={text => setAdditionalText(text)}
+                    placeholder="추가 보고사항 입력"
+                    style={[styleTextInput, styles.additionalInput]}
+                  />
+                  <TouchableOpacity
+                    onPress={() => {
+                      addReport(additionalText);
+                      setAdditionalText('');
+                    }}>
+                    <Icon
+                      name="arrow-up-circle"
+                      color={colorReportEnd}
+                      size={32}
+                    />
                   </TouchableOpacity>
                 </Animated.View>
-              ))}
-            </View>
+              )}
+              {!hasAdditionalReport && (
+                <Animated.View exiting={FadeOutUp} style={styles.chipContainer}>
+                  {incidents.map((incident, index) => (
+                    <Animated.View
+                      entering={FadeInUp.delay(300 + index * 50)}
+                      key={incident}>
+                      <TouchableOpacity
+                        style={styles.chip}
+                        onPress={() => {
+                          addReport(incident);
+                        }}>
+                        <Text style={styles.chipText}>{incident}</Text>
+                      </TouchableOpacity>
+                    </Animated.View>
+                  ))}
+                </Animated.View>
+              )}
+            </>
           )}
         </View>
       </Animated.View>
@@ -204,6 +240,17 @@ const styles = StyleSheet.create({
     color: colorReportState,
     fontSize: 12,
     marginVertical: 20,
+  },
+  additionalInputContainer: {
+    flexDirection: 'row',
+    width: '100%',
+  },
+  additionalInput: {
+    borderWidth: 0,
+    flex: 1,
+    fontSize: 12,
+    marginEnd: 10,
+    marginStart: 0,
   },
 });
 

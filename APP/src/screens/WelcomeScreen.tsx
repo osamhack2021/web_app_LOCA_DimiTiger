@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, {
   FadeIn,
@@ -22,23 +21,17 @@ const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient);
 
 const WelcomeScreen = () => {
   const navigation = useNavigation<RootNavigationProp<'Welcome'>>();
-  const colorStart = useSharedValue(0);
-  const colorEnd = useSharedValue(0);
+  const color = useSharedValue(0);
   const gradientProps = useAnimatedProps(() => ({
     colors: [
-      interpolateColor(
-        colorStart.value,
-        [0, 1],
-        [colorLocaStart, colorLocaEnd],
-      ),
-      interpolateColor(colorEnd.value, [0, 1], [colorLocaEnd, colorLocaStart]),
+      interpolateColor(color.value, [0, 1], [colorLocaStart, colorLocaEnd]),
+      interpolateColor(color.value, [0, 1], [colorLocaEnd, colorLocaStart]),
     ],
   }));
 
   useEffect(() => {
-    colorStart.value = withRepeat(withTiming(1, { duration: 5000 }), -1, true);
-    colorEnd.value = withRepeat(withTiming(1, { duration: 5000 }), -1, true);
-  }, [colorEnd, colorStart]);
+    color.value = withRepeat(withTiming(1, { duration: 5000 }), -1, true);
+  }, [color]);
 
   return (
     <AnimatedGradient

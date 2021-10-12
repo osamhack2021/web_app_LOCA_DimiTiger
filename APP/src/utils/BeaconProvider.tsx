@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
-import { DeviceEventEmitter, Platform } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { AppState, DeviceEventEmitter, Platform } from 'react-native';
 import Beacons from 'react-native-beacons-manager';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 
 import { useBeacons } from '@/api/beacons';
+import { useActiveLocationLog } from '@/api/location-logs';
 import { beaconState } from '@/atoms';
 import usePermissions from '@/hooks/usePermissions';
 
@@ -14,8 +15,10 @@ type BeaconProviderProps = {
 
 const BeaconProvider = ({ children }: BeaconProviderProps) => {
   const { data: beacons } = useBeacons();
+  const { data: locationLog } = useActiveLocationLog();
   const { fullyGranted } = usePermissions();
-  const [visibleBeacons, setVisibleBeacons] = useRecoilState(beaconState);
+  const setVisibleBeacons = useSetRecoilState(beaconState);
+  const [isForeground, setForeground] = useState(false);
 
   useEffect(() => {
     if (!beacons || !fullyGranted) {
@@ -27,7 +30,8 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
     Promise.all(
       beacons.map(async beacon => {
         await Beacons.startMonitoringForRegion(beacon.region);
-        await Beacons.startRangingBeaconsInRegion(beacon.region);
+        AppState.currentState === 'active' &&
+          (await Beacons.startRangingBeaconsInRegion(beacon.region));
       }),
     );
     if (Platform.OS === 'ios') {
@@ -54,10 +58,8 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
       }),
       DeviceEventEmitter.addListener(
         'beaconsDidRange',
-        ({ identifier, beacons: regions }) => {
-          const beacon = beacons.find(
-            value => value.region.identifier === identifier,
-          );
+        ({ region: { identifier }, beacons: regions }) => {
+          const beacon = beacons.find(b => b.region.identifier === identifier);
           if (beacon) {
             regions.forEach(({ distance }: typeof beacon.region) => {
               setVisibleBeacons(prevBeacons => {
@@ -91,14 +93,14 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
       }
       subscriptions.forEach(subscription => subscription.remove());
     };
-  }, [beacons, fullyGranted, setVisibleBeacons]);
+  }, [beacons, fullyGranted, isForeground, setVisibleBeacons]);
 
   useEffect(() => {
-    if (visibleBeacons.length === 0) {
-      return;
-    }
-    //setModalVisible(true);
-  }, [visibleBeacons.length]);
+    const subscription = AppState.addEventListener('change', state =>
+      setForeground(state === 'active'),
+    );
+    () => subscription.remove();
+  }, []);
 
   useEffect(() => {
     if (!beacons) {
@@ -106,6 +108,13 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
     }
     AsyncStorage.setItem('beacons', JSON.stringify(beacons));
   }, [beacons]);
+
+  useEffect(() => {
+    if (!locationLog) {
+      return;
+    }
+    AsyncStorage.setItem('currentLocation', locationLog.location._id);
+  }, [locationLog]);
 
   return <>{children}</>;
 };

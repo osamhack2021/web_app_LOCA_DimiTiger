@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { View } from 'react-native';
 import { SvgProps, SvgXml } from 'react-native-svg';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useQuery } from 'react-query';
 import axios from 'axios';
+
+import { colorEllipsis } from '@/constants/colors';
 
 async function getSvg(icon: string) {
   const { data } = await axios.get(
@@ -14,11 +18,26 @@ type LocationIconProps = SvgProps & {
   icon: string;
 };
 
-const LocationIcon = (props: LocationIconProps) => {
+const LocationIcon = ({ style, ...props }: LocationIconProps) => {
   const { data } = useQuery(['svg', props.icon], () => getSvg(props.icon), {
     cacheTime: Infinity,
   });
-  return <SvgXml {...props} xml={data || null} />;
+  const size = useMemo(
+    () =>
+      typeof props.height === 'string'
+        ? parseInt(props.height, 10)
+        : props.height,
+    [props.height],
+  );
+  return (
+    <View style={[{ width: size, height: size }, style]}>
+      {data ? (
+        <SvgXml {...props} xml={data || null} />
+      ) : (
+        <Icon name="cloud-sync-outline" color={colorEllipsis} size={size} />
+      )}
+    </View>
+  );
 };
 
 export default LocationIcon;
