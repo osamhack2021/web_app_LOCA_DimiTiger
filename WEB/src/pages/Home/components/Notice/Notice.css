@@ -6,6 +6,7 @@
   align-items: center;
 }
 .message_box {
+  width: 100%;
   max-height: calc(100% - 60px);
   overflow-y: auto;
   -ms-overflow-style: none;
