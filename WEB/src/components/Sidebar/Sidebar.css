@@ -26,6 +26,7 @@
   justify-content: center;
 
   text-decoration: none;
+  cursor: pointer;
 }
 #sidebar:hover {
   width: 220px;
@@ -33,6 +34,13 @@
 }
 #sidebar:hover .sidebar_item {
   justify-content: flex-start;
+}
+#sidebar:hover .sidebar_item_name {
+  font-size: 1.2rem;
+}
+#sidebar:not(:hover) .sidebar_item_name {
+  font-size: 0rem;
+  transition: all 0.1s;
 }
 .sidebar_item {
   width: 100%;
@@ -59,13 +67,6 @@
 }
 .sidebar_item:hover > img {
   filter: brightness(0) invert(1);
-}
-#sidebar:hover .sidebar_item_name {
-  font-size: 1.2rem;
-}
-#sidebar:not(:hover) .sidebar_item_name {
-  font-size: 0rem;
-  transition: all 0.1s;
 }
 .sidebar_item:hover > .sidebar_item_name {
   color: white;
