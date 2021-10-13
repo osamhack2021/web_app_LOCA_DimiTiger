@@ -10,7 +10,7 @@ export default async function ({ identifier, state }: BackgroundMonitorEvent) {
   const beacons: Beacon[] = JSON.parse(beaconsJSON || '[]');
   const beacon = beacons.find(b => b.region.identifier === identifier);
 
-  if (!beacon) {
+  if (!beacon || !currentLocation) {
     return;
   }
 
