@@ -11,7 +11,7 @@ const useEmergencyReport = () => {
 
   const createReport = useCallback(async () => {
     if (!report) {
-      const { data } = await axios.post<EmergencyReport>('/emergencys');
+      const { data } = await axios.post<EmergencyReport>('/emergencies');
       setReport(data);
     }
   }, [axios, report]);
@@ -20,7 +20,7 @@ const useEmergencyReport = () => {
     async (content: string) => {
       if (report) {
         const { data } = await axios.patch<{}, AxiosResponse<EmergencyReport>>(
-          `/emergencys/${report._id}/additional-report`,
+          `/emergencies/${report._id}/additional-report`,
           {
             content,
           },
