@@ -20,7 +20,7 @@ const LargeCard = ({
   <CardContainer style={{ flex: 1 }}>
     <CardHeader>
       <img
-        src="./icons/backspace_arrow.svg"
+        src="/icons/backspace_arrow.svg"
         alt=""
         onClick={() => history.goBack()}
       />

@@ -26,32 +26,32 @@ const Sidebar = () => {
   const logout = useLogout();
   const sidebarMenu = [
     {
-      imgSrc: './icons/sidebar_ico_home.svg',
+      imgSrc: '/icons/sidebar_ico_home.svg',
       eleName: '홈',
       link: '/',
     },
     {
-      imgSrc: './icons/sidebar_ico_search.svg',
+      imgSrc: '/icons/sidebar_ico_search.svg',
       eleName: '유동병력 검색',
       link: '/location-logs',
     },
     {
-      imgSrc: './icons/sidebar_ico_add_user.svg',
+      imgSrc: '/icons/sidebar_ico_add_user.svg',
       eleName: '인원 현황',
       link: '/users',
     },
     {
-      imgSrc: './icons/sidebar_ico_users.svg',
+      imgSrc: '/icons/sidebar_ico_users.svg',
       eleName: '장소 현황',
       link: '/locations',
     },
     {
-      imgSrc: './icons/sidebar_ico_worker.svg',
+      imgSrc: '/icons/sidebar_ico_worker.svg',
       eleName: '근무자 등록',
       link: '/',
     },
     {
-      imgSrc: './icons/sidebar_ico_setting.svg',
+      imgSrc: '/icons/sidebar_ico_setting.svg',
       eleName: '설정',
       link: '/',
     },
