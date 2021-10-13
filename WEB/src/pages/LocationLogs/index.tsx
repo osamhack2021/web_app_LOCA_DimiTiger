@@ -16,6 +16,7 @@ import Header from '../../components/Header/Header';
 import LargeCard from '../../components/LargeCard';
 import LayoutContent from '../../components/LayoutContent';
 import LayoutContentWrapper from '../../components/LayoutContentWrapper';
+import LocationIcon from '../../components/LocationIcon';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import UserSearchSelect from '../../components/UserSearchSelect';
 import Location from '../../types/Location';
@@ -129,8 +130,14 @@ const LocationLogs = () => {
                 dataIndex: 'location',
                 key: 'location',
                 render: (location: Location) => (
-                  <Link
-                    to={`/locations/${location._id}`}>{`${location.name}`}</Link>
+                  <>
+                    <LocationIcon
+                      icon={location.ui?.icon}
+                      style={{ height: 20, marginRight: 10 }}
+                    />
+                    <Link
+                      to={`/locations/${location._id}`}>{`${location.name}`}</Link>
+                  </>
                 ),
               },
             ]}
