@@ -13,6 +13,7 @@ import LocationLogs from '../pages/LocationLogs';
 import Locations from '../pages/Locations';
 import LocationDetail from '../pages/Locations/LocationDetail';
 import Login from '../pages/Login';
+import Settings from '../pages/Settings';
 import CurrentUsers from '../pages/Users';
 import UserDetail from '../pages/Users/UserDetail';
 import User from '../types/User';
@@ -74,6 +75,7 @@ const Router = () => {
             exact
           />
           <PrivateRoutes path="/beacons" component={Beacons} exact />
+          <PrivateRoutes path="/settings" component={Settings} exact />
         </Switch>
       </QueryParamProvider>
     </BrowserRouter>
