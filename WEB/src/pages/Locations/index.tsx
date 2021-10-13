@@ -73,19 +73,20 @@ const Locations = () => {
             rowKey={record => record._id}
             columns={[
               {
-                title: '이름',
-                dataIndex: 'name',
-                key: 'name',
-                width: '20%',
-                render: (name: Location['name']) => <>{name}</>,
-              },
-              {
                 title: '아이콘',
                 dataIndex: 'ui',
                 key: 'ui',
-                width: '15%',
+                width: '10%',
                 render: (ui: Location['ui']) => (
-                  <LocationIcon icon={ui?.icon} style={{ width: '200px' }} />
+                  <LocationIcon icon={ui?.icon} style={{ height: 50 }} />
+                ),
+              },
+              {
+                title: '이름',
+                key: 'name',
+                width: '20%',
+                render: ({ name, _id }) => (
+                  <Link to={`/locations/${_id}`}>{name}</Link>
                 ),
               },
               {

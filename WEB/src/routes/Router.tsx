@@ -11,9 +11,10 @@ import Home from '../pages/Home';
 import Init from '../pages/Init';
 import LocationLogs from '../pages/LocationLogs';
 import Locations from '../pages/Locations';
+import LocationDetail from '../pages/Locations/LocationDetail';
 import Login from '../pages/Login';
 import CurrentUsers from '../pages/Users';
-import UserPage from '../pages/Users/User';
+import UserDetail from '../pages/Users/UserDetail';
 import User from '../types/User';
 
 import PrivateRoutes from './PrivateRoutes';
@@ -65,8 +66,13 @@ const Router = () => {
           <PrivateRoutes path="/" component={Home} exact />
           <PrivateRoutes path="/location-logs" component={LocationLogs} exact />
           <PrivateRoutes path="/users" component={CurrentUsers} exact />
-          <PrivateRoutes path="/users/:id" component={UserPage} exact />
+          <PrivateRoutes path="/users/:id" component={UserDetail} exact />
           <PrivateRoutes path="/locations" component={Locations} exact />
+          <PrivateRoutes
+            path="/locations/:id"
+            component={LocationDetail}
+            exact
+          />
           <PrivateRoutes path="/beacons" component={Beacons} exact />
         </Switch>
       </QueryParamProvider>
