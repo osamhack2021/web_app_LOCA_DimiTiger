@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Beacon from '@/types/Beacon';
 
-export default async function ({ identifier, state }: BackgroundMonitorEvent) {
+export default async function ({ identifier, event }: BackgroundMonitorEvent) {
   const beaconsJSON = await AsyncStorage.getItem('beacons');
   const currentLocation = await AsyncStorage.getItem('currentLocation');
   const beacons: Beacon[] = JSON.parse(beaconsJSON || '[]');
@@ -14,7 +14,17 @@ export default async function ({ identifier, state }: BackgroundMonitorEvent) {
     return;
   }
 
-  const isEnter = state === 'inside';
+  let isEnter = false;
+  switch (event) {
+    case 'enter':
+      isEnter = true;
+      break;
+    case 'exit':
+      isEnter = false;
+      break;
+    default:
+      return;
+  }
 
   if (
     (isEnter && currentLocation === beacon.location._id) ||
