@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Form, Table } from 'antd';
+import { Button, Form, Table } from 'antd';
 import styled from 'styled-components';
 import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
 
 import { useBeacons } from '../../api/beacons';
 import { useDeleteLocation, useLocations } from '../../api/locations';
-import AddButton from '../../components/AddButton';
 import DeleteButton from '../../components/DeleteButton';
 import Header from '../../components/Header/Header';
 import LargeCard from '../../components/LargeCard';
@@ -64,7 +63,7 @@ const Locations = () => {
                   );
                 }}
                 layout="inline">
-                <AddButton onClick={() => setModalVisible(true)}></AddButton>
+                <Button onClick={() => setModalVisible(true)}>추가</Button>
               </Form>
             </ToolkitWrap>
           }>
