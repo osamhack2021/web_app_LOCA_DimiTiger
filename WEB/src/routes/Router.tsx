@@ -13,6 +13,7 @@ import LocationLogs from '../pages/LocationLogs';
 import Locations from '../pages/Locations';
 import Login from '../pages/Login';
 import CurrentUsers from '../pages/Users';
+import UserPage from '../pages/Users/User';
 import User from '../types/User';
 
 import PrivateRoutes from './PrivateRoutes';
@@ -64,6 +65,7 @@ const Router = () => {
           <PrivateRoutes path="/" component={Home} exact />
           <PrivateRoutes path="/location-logs" component={LocationLogs} exact />
           <PrivateRoutes path="/users" component={CurrentUsers} exact />
+          <PrivateRoutes path="/users/:id" component={UserPage} exact />
           <PrivateRoutes path="/locations" component={Locations} exact />
           <PrivateRoutes path="/beacons" component={Beacons} exact />
         </Switch>

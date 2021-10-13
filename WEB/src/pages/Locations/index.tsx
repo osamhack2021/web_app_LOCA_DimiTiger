@@ -9,10 +9,10 @@ import { useDeleteLocation, useLocations } from '../../api/locations';
 import AddButton from '../../components/AddButton';
 import DeleteButton from '../../components/DeleteButton';
 import Header from '../../components/Header/Header';
-import ImageProvider from '../../components/ImageProvider';
 import LargeCard from '../../components/LargeCard';
 import LayoutContent from '../../components/LayoutContent';
 import LayoutContentWrapper from '../../components/LayoutContentWrapper';
+import LocationIcon from '../../components/LocationIcon';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Location from '../../types/Location';
 
@@ -84,7 +84,9 @@ const Locations = () => {
                 dataIndex: 'ui',
                 key: 'ui',
                 width: '15%',
-                render: (ui: Location['ui']) => <>{ImageProvider(ui?.icon)}</>,
+                render: (ui: Location['ui']) => (
+                  <LocationIcon icon={ui?.icon} style={{ width: '200px' }} />
+                ),
               },
               {
                 title: '비콘',

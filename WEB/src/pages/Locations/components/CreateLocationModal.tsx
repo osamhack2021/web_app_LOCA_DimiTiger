@@ -3,7 +3,7 @@ import { Form, Modal } from 'antd';
 import styled from 'styled-components';
 
 import { useAddLocation } from '../../../api/locations';
-import ImageProvider from '../../../components/ImageProvider';
+import LocationIcon from '../../../components/LocationIcon';
 
 const uiColumns = [
   {
@@ -128,9 +128,7 @@ const CreateLocationModal = ({ visible, closeHandler }: ModalProps) => {
               backgroundSize: '200px 200px',
             }}
             className="unitIcon">
-            {ImageProvider(uiData?.icon, {
-              style: { width: '200px' },
-            })}
+            <LocationIcon icon={uiData.icon} style={{ width: '200px' }} />
           </label>
           <Form.Item name="icon">
             <Input

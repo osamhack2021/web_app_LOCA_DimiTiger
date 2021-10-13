@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Button, DatePicker, Form, Input, Select, Table } from 'antd';
+import { Button, DatePicker, Form, Select, Table } from 'antd';
 import { format } from 'date-fns';
 import styled from 'styled-components';
 import {
@@ -17,11 +17,11 @@ import LargeCard from '../../components/LargeCard';
 import LayoutContent from '../../components/LayoutContent';
 import LayoutContentWrapper from '../../components/LayoutContentWrapper';
 import Sidebar from '../../components/Sidebar/Sidebar';
+import UserSearchSelect from '../../components/UserSearchSelect';
 import Location from '../../types/Location';
 import User from '../../types/User';
 
 const { RangePicker } = DatePicker;
-const { Search } = Input;
 const { Option } = Select;
 
 const columns = [
@@ -59,6 +59,7 @@ const LocationLogs = () => {
     page: NumberParam,
     limit: NumberParam,
     location: StringParam,
+    user: StringParam,
   });
   const [form] = Form.useForm();
   const { data: locations, isLoading: locationLoading } = useLocations();
@@ -66,6 +67,7 @@ const LocationLogs = () => {
     rangeStart: query.rangeStart || undefined,
     rangeEnd: query.rangeEnd || undefined,
     location: query.location || undefined,
+    user: query.user || undefined,
     page: query.page || undefined,
     limit: query.limit || undefined,
   });
@@ -81,15 +83,19 @@ const LocationLogs = () => {
             <ToolkitWrap>
               <Form
                 form={form}
-                onFinish={({ range, userName, location, page, limit }) => {
+                initialValues={{
+                  location: query.location,
+                  user: query.user,
+                  range: [query.rangeStart, query.rangeEnd],
+                }}
+                onFinish={({ range, user, location }) => {
                   const [rangeStart, rangeEnd] = range || [];
                   setQuery(
                     {
                       rangeStart: rangeStart?.toDate?.(),
                       rangeEnd: rangeEnd?.toDate?.(),
                       location,
-                      page,
-                      limit,
+                      user,
                     },
                     'replaceIn',
                   );
@@ -102,8 +108,8 @@ const LocationLogs = () => {
                     format="yyyy-MM-DD HH:mm"
                   />
                 </Form.Item>
-                <Form.Item name="userName">
-                  <Search placeholder="사용자 이름" />
+                <Form.Item name="user">
+                  <UserSearchSelect />
                 </Form.Item>
                 <Form.Item name="location">
                   <Select
@@ -112,7 +118,9 @@ const LocationLogs = () => {
                     style={{ width: 200 }}>
                     <Option value="">전체위치</Option>
                     {locations?.map(l => (
-                      <Option value={l._id}>{l.name}</Option>
+                      <Option value={l._id} key={l.name}>
+                        {l.name}
+                      </Option>
                     ))}
                   </Select>
                 </Form.Item>

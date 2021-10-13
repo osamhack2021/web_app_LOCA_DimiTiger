@@ -10,6 +10,10 @@ export function useUsers(query?: UserQuery) {
   return usePaginationQuery<User>('/users', query);
 }
 
+export function useUser(id: string) {
+  return useQuery<User>('/users', id);
+}
+
 export function usePatchUser() {
   const axios = useAxios();
   return useMutation(

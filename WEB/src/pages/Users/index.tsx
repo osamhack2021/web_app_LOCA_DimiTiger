@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Form, Input, Table } from 'antd';
 import styled from 'styled-components';
 import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
@@ -78,14 +78,14 @@ const Users = () => {
                 dataIndex: 'serial',
                 key: 'serial',
                 width: '20%',
-                render: (serial: string) => <>{serial}</>,
               },
               {
                 title: '이름',
-                dataIndex: 'name',
                 key: 'name',
                 width: '10%',
-                render: (name: User['name']) => <>{name}</>,
+                render: ({ _id, name }: User) => (
+                  <Link to={`/users/${_id}`}>{name}</Link>
+                ),
               },
               {
                 title: '계급',
