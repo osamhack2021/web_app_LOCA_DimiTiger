@@ -24,33 +24,6 @@ import User from '../../types/User';
 const { RangePicker } = DatePicker;
 const { Option } = Select;
 
-const columns = [
-  {
-    title: '시간',
-    dataIndex: 'createdAt',
-    key: 'timestamp',
-    width: '20%',
-    render: (createdAt: string) =>
-      format(new Date(createdAt), 'yyyy-MM-dd HH:mm'),
-  },
-  {
-    title: '인원',
-    dataIndex: 'user',
-    key: 'user',
-    render: (user: User) => (
-      <Link to={`/user/${user._id}`}>{`${user.rank} ${user.name}`}</Link>
-    ),
-  },
-  {
-    title: '장소',
-    dataIndex: 'location',
-    key: 'location',
-    render: (location: Location) => (
-      <Link to={`/location/${location._id}`}>{`${location.name}`}</Link>
-    ),
-  },
-];
-
 const LocationLogs = () => {
   const history = useHistory();
   const [query, setQuery] = useQueryParams({
@@ -133,7 +106,34 @@ const LocationLogs = () => {
           <Table
             dataSource={locationLogs}
             rowKey={record => record._id}
-            columns={columns}
+            columns={[
+              {
+                title: '시간',
+                dataIndex: 'createdAt',
+                key: 'timestamp',
+                width: '20%',
+                render: (createdAt: string) =>
+                  format(new Date(createdAt), 'yyyy-MM-dd HH:mm'),
+              },
+              {
+                title: '인원',
+                dataIndex: 'user',
+                key: 'user',
+                render: (user: User) => (
+                  <Link
+                    to={`/users/${user._id}`}>{`${user.rank} ${user.name}`}</Link>
+                ),
+              },
+              {
+                title: '장소',
+                dataIndex: 'location',
+                key: 'location',
+                render: (location: Location) => (
+                  <Link
+                    to={`/locations/${location._id}`}>{`${location.name}`}</Link>
+                ),
+              },
+            ]}
             pagination={{
               total: pagination?.totalDocs,
               pageSize: pagination?.limit,
