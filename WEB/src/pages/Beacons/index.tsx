@@ -29,7 +29,7 @@ const Beacons = () => {
   const { data: beacons, pagination } = useBeacons({
     page: query.page || undefined,
     limit: query.limit || undefined,
-    location: query.location || undefined,
+    locationId: query.location || undefined,
   });
   const { data: locations, isLoading: locationLoading } = useLocations({
     limit: 0,

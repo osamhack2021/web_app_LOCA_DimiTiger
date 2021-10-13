@@ -1,5 +1,5 @@
 interface BeaconQuery {
-  location?: string;
+  locationId?: string;
   page?: number;
   limit?: number;
 }
