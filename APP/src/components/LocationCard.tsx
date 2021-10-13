@@ -96,7 +96,7 @@ const LocationCard = () => {
             )}`}</Text>
           </Animated.View>
         ) : isLoading ? (
-          <Animated.View entering={FadeIn} onLayout={layoutHandler}>
+          <Animated.View entering={FadeIn.delay(300)} onLayout={layoutHandler}>
             <SkeletonPlaceholder>
               <View style={styles.locationContainer}>
                 <SkeletonPlaceholder.Item
@@ -111,7 +111,7 @@ const LocationCard = () => {
           </Animated.View>
         ) : (
           <Animated.View
-            entering={FadeIn}
+            entering={FadeIn.delay(300)}
             onLayout={layoutHandler}
             style={styles.locationContainer}>
             <AnimatedLottieView
