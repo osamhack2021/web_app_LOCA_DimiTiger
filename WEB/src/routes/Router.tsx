@@ -6,6 +6,7 @@ import { QueryParamProvider } from 'use-query-params';
 
 import { accessTokenState } from '../atoms';
 import useAxios from '../hooks/useAxios';
+import Beacons from '../pages/Beacons';
 import Home from '../pages/Home';
 import Init from '../pages/Init';
 import LocationLogs from '../pages/LocationLogs';
@@ -64,6 +65,7 @@ const Router = () => {
           <PrivateRoutes path="/location-logs" component={LocationLogs} exact />
           <PrivateRoutes path="/users" component={CurrentUsers} exact />
           <PrivateRoutes path="/locations" component={Locations} exact />
+          <PrivateRoutes path="/beacons" component={Beacons} exact />
         </Switch>
       </QueryParamProvider>
     </BrowserRouter>

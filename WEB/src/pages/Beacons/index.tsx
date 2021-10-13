@@ -1,46 +1,49 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Form, Table } from 'antd';
+import { Button, Form, Select, Table } from 'antd';
 import styled from 'styled-components';
 import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
 
-import { useBeacons } from '../../api/beacons';
-import { useDeleteLocation, useLocations } from '../../api/locations';
+import { useBeacons, useDeleteBeacon } from '../../api/beacons';
+import { useLocations } from '../../api/locations';
 import AddButton from '../../components/AddButton';
 import DeleteButton from '../../components/DeleteButton';
 import Header from '../../components/Header/Header';
-import ImageProvider from '../../components/ImageProvider';
 import LargeCard from '../../components/LargeCard';
 import LayoutContent from '../../components/LayoutContent';
 import LayoutContentWrapper from '../../components/LayoutContentWrapper';
 import Sidebar from '../../components/Sidebar/Sidebar';
+import Beacon from '../../types/Beacon';
 import Location from '../../types/Location';
 
-import CreateLocationModal from './components/CreateLocationModal';
+import CreateBeaconModal from './components/CreateBeaconModal';
 
-const Locations = () => {
+const Beacons = () => {
   const history = useHistory();
   const [query, setQuery] = useQueryParams({
     page: NumberParam,
     limit: NumberParam,
-    name: StringParam,
+    location: StringParam,
   });
   const [form] = Form.useForm();
-  const { data: locations, pagination } = useLocations({
+  const { data: beacons, pagination } = useBeacons({
     page: query.page || undefined,
     limit: query.limit || undefined,
+    location: query.location || undefined,
   });
-  const { data: beacons } = useBeacons({ limit: 0 });
+  const { data: locations, isLoading: locationLoading } = useLocations({
+    limit: 0,
+  });
 
   const [modalVisible, setModalVisible] = useState(false);
 
-  const deleteLocationMutation = useDeleteLocation();
+  const deleteBeaconMutation = useDeleteBeacon();
 
-  const deleteLocation = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const deleteBeacon = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const button: HTMLButtonElement = event.currentTarget;
-    const _id: Location['_id'] = button.name;
-    deleteLocationMutation.mutate({ _id });
+    const _id: Beacon['_id'] = button.name;
+    deleteBeaconMutation.mutate({ _id });
   };
 
   return (
@@ -48,67 +51,78 @@ const Locations = () => {
       <Header />
       <LayoutContent>
         <LargeCard
-          title="장소 관리"
+          title="비콘 관리"
           history={history}
           headerComponent={
             <ToolkitWrap>
               <Form
                 form={form}
-                onFinish={({ page, limit }) => {
+                onFinish={({ location }) => {
                   setQuery(
                     {
-                      page,
-                      limit,
+                      location,
                     },
                     'replaceIn',
                   );
                 }}
                 layout="inline">
+                <Form.Item name="location">
+                  <Select
+                    placeholder="위치"
+                    loading={locationLoading}
+                    style={{ width: 200 }}>
+                    <Select.Option value="">전체위치</Select.Option>
+                    {locations?.map(l => (
+                      <Select.Option value={l._id}>{l.name}</Select.Option>
+                    ))}
+                  </Select>
+                </Form.Item>
+                <Button type="primary" htmlType="submit">
+                  검색
+                </Button>
                 <AddButton onClick={() => setModalVisible(true)}></AddButton>
               </Form>
             </ToolkitWrap>
           }>
           <Table
-            dataSource={locations}
+            dataSource={beacons}
             rowKey={record => record._id}
             columns={[
               {
-                title: '이름',
-                dataIndex: 'name',
-                key: 'name',
-                width: '20%',
-                render: (name: Location['name']) => <>{name}</>,
-              },
-              {
-                title: '아이콘',
-                dataIndex: 'ui',
-                key: 'ui',
+                title: '할당 위치',
+                dataIndex: 'location',
+                key: 'location',
                 width: '15%',
-                render: (ui: Location['ui']) => <>{ImageProvider(ui?.icon)}</>,
-              },
-              {
-                title: '비콘',
-                dataIndex: '_id',
-                key: 'beacon',
-                width: '15%',
-                render: _id => (
-                  <Link to={`/beacons?location=${_id}`}>
-                    {
-                      beacons?.filter(beacon => beacon.location._id === _id)
-                        .length
-                    }
-                    개
-                  </Link>
+                render: ({ _id, name }: Location) => (
+                  <Link to={`/locations?id=${_id}`}>{name}</Link>
                 ),
+              },
+              {
+                title: 'UUID',
+                dataIndex: ['region', 'uuid'],
+                key: 'uuid',
+                width: '20%',
+              },
+              {
+                title: 'Major',
+                dataIndex: ['region', 'major'],
+                key: 'major',
+                width: '15%',
+              },
+              {
+                title: 'minor',
+                dataIndex: ['region', 'minor'],
+                key: 'minor',
+                width: '15%',
               },
               {
                 title: '',
                 dataIndex: '_id',
-                key: '_id',
+                key: 'delete',
                 width: '5%',
                 render: (_id: Location['_id']) => (
                   <DeleteButton
-                    onClick={deleteLocation}
+                    onClick={deleteBeacon}
                     name={_id}></DeleteButton>
                 ),
               },
@@ -125,7 +139,7 @@ const Locations = () => {
         </LargeCard>
       </LayoutContent>
       <Sidebar />
-      <CreateLocationModal
+      <CreateBeaconModal
         visible={modalVisible}
         closeHandler={() => setModalVisible(false)}
       />
@@ -139,4 +153,4 @@ const ToolkitWrap = styled.div`
   flex-wrap: wrap;
 `;
 
-export default Locations;
+export default Beacons;
