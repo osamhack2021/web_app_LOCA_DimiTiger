@@ -1,7 +1,5 @@
 import { useQuery, UseQueryOptions, UseQueryResult } from 'react-query';
-import { useRecoilValueLoadable } from 'recoil';
 
-import { accessTokenState } from '@/atoms';
 import useAxios from '@/hooks/useAxios';
 import PaginationData from '@/types/PaginationData';
 
@@ -28,7 +26,6 @@ function usePaginationQuery<
   >,
 ): Omit<UseQueryResult<PaginationData<TData>, TError>, 'data'> &
   PagintionDataWrapper<TData> {
-  const { state, contents } = useRecoilValueLoadable(accessTokenState);
   const axios = useAxios();
   const isPathParam = typeof params === 'string';
   const { data, ...rest } = useQuery(
@@ -40,7 +37,7 @@ function usePaginationQuery<
           isPathParam || !params ? {} : { params },
         )
       ).data,
-    { enabled: state === 'hasValue' && !!contents, ...options },
+    options,
   );
 
   if (data) {

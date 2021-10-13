@@ -3,9 +3,7 @@ import {
   UseQueryOptions,
   UseQueryResult,
 } from 'react-query';
-import { useRecoilValueLoadable } from 'recoil';
 
-import { accessTokenState } from '@/atoms';
 import useAxios from '@/hooks/useAxios';
 
 function useQuery<
@@ -20,7 +18,6 @@ function useQuery<
     'queryKey' | 'queryFn'
   >,
 ): UseQueryResult<TData, TError> {
-  const { state, contents } = useRecoilValueLoadable(accessTokenState);
   const axios = useAxios();
   const isPathParam = typeof params === 'string';
   return useQueryOriginal(
@@ -32,7 +29,7 @@ function useQuery<
           isPathParam || !params ? {} : { params },
         )
       ).data,
-    { enabled: state === 'hasValue' && !!contents, ...options },
+    options,
   );
 }
 
