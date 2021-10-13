@@ -5,6 +5,8 @@ import Animated, {
   FadeInLeft,
   FadeInUp,
   FadeOutRight,
+  withDelay,
+  withTiming,
 } from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useLinkTo } from '@react-navigation/native';
@@ -28,7 +30,7 @@ const NearLocationCard = () => {
   const { style, height } = useAnimatedHeight(0, 300);
 
   useEffect(() => {
-    height.value = (visibleBeacons.length + 1) * 40;
+    height.value = withDelay(300, withTiming((visibleBeacons.length + 1) * 40));
   }, [visibleBeacons.length, height]);
 
   return (
