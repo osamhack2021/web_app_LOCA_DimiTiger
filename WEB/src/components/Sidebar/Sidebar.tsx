@@ -47,8 +47,8 @@ const Sidebar = () => {
     },
     {
       imgSrc: '/icons/sidebar_ico_worker.svg',
-      eleName: '근무자 등록',
-      link: '/',
+      eleName: '비콘 현황',
+      link: '/beacons',
     },
     {
       imgSrc: '/icons/sidebar_ico_setting.svg',
