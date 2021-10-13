@@ -10,6 +10,7 @@ interface ILargeCard {
   headerComponent?: React.ReactNode;
   children: React.ReactNode;
   style?: React.CSSProperties;
+  bodyStyle?: React.CSSProperties;
 }
 
 const LargeCard = ({
@@ -18,6 +19,7 @@ const LargeCard = ({
   headerComponent,
   children,
   style,
+  bodyStyle,
 }: ILargeCard) => (
   <CardContainer style={style || { width: '100%' }}>
     <CardHeader>
@@ -32,7 +34,7 @@ const LargeCard = ({
       <div style={{ flex: 1 }} />
       {headerComponent}
     </CardHeader>
-    <CardBody>{children}</CardBody>
+    <CardBody style={bodyStyle || { width: '100%' }}>{children}</CardBody>
   </CardContainer>
 );
 

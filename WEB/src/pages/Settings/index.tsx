@@ -21,7 +21,14 @@ const Settings = () => {
     <LayoutContentWrapper>
       <Header />
       <LayoutContent>
-        <LargeCard title="설정" history={history}>
+        <LargeCard
+          title="설정"
+          history={history}
+          bodyStyle={{
+            padding: '0',
+            height: 'calc(100vh - 6vw - 170px)',
+            display: 'flex',
+          }}>
           <LayoutSidebar>
             <SiderbarItem
               className={tab === 1 ? 'selected' : ''}
@@ -74,7 +81,7 @@ const Settings = () => {
 const LayoutSidebar = styled.div`
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 220px;
   height: 100%;
   background-color: #313545;
   border-bottom-left-radius: 20px;
