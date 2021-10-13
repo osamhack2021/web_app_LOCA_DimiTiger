@@ -45,9 +45,14 @@ exports.createEmergency = {
 	validate: {},
 	handler: async (req, h) => {
 		try {
-			return await EmergencyService.createEmergency({
+			const emergency = await EmergencyService.createEmergency({
 				creator: req.auth.credentials._id,
 			});
+
+			const io = req.server.plugins['hapi-socket.io'].io;
+			io.sockets.emit('emergencies', { added: [emergency] });
+
+			return emergency;
 		} catch (err) {
 			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
@@ -65,7 +70,14 @@ exports.deleteEmergency = {
 	},
 	handler: async (req, h) => {
 		try {
-			return await EmergencyService.deleteEmergency(req.params.emergencyId);
+			const emergency = await EmergencyService.deleteEmergency(
+				req.params.emergencyId
+			);
+
+			const io = req.server.plugins['hapi-socket.io'].io;
+			io.sockets.emit('emergencies', { deleted: [emergency] });
+
+			return emergency;
 		} catch (err) {
 			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
@@ -83,7 +95,14 @@ exports.deactivateEmergency = {
 	},
 	handler: async (req, h) => {
 		try {
-			return await EmergencyService.deactivateEmergency(req.params.emergencyId);
+			const emergency = await EmergencyService.deactivateEmergency(
+				req.params.emergencyId
+			);
+
+			const io = req.server.plugins['hapi-socket.io'].io;
+			io.sockets.emit('emergencies', { updated: [emergency] });
+
+			return emergency;
 		} catch (err) {
 			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
@@ -104,12 +123,17 @@ exports.addEmergencyAdditionalReport = {
 	},
 	handler: async (req, h) => {
 		try {
-			return await EmergencyService.addEmergencyAdditionalReport(
+			const emergency = await EmergencyService.addEmergencyAdditionalReport(
 				req.params.emergencyId,
 				{
 					content: req.payload.content,
 				}
 			);
+
+			const io = req.server.plugins['hapi-socket.io'].io;
+			io.sockets.emit('emergencies', { updated: [emergency] });
+
+			return emergency;
 		} catch (err) {
 			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
@@ -130,10 +154,15 @@ exports.updateEmergency = {
 	},
 	handler: async (req, h) => {
 		try {
-			return await EmergencyService.updateEmergency(
+			const emergency = await EmergencyService.updateEmergency(
 				req.params.emergencyId,
 				req.payload
 			);
+
+			const io = req.server.plugins['hapi-socket.io'].io;
+			io.sockets.emit('emergencies', { updated: [emergency] });
+
+			return emergency;
 		} catch (err) {
 			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);

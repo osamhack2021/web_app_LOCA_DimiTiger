@@ -26,6 +26,28 @@ exports.getUsers = {
 	},
 };
 
+exports.getUsersStream = {
+	tags: ['api', 'user'],
+	description: '사용자 목록을 가져옵니다.',
+	validate: {
+		query: Joi.object({
+			page: Joi.number().description('페이지'),
+			limit: Joi.number().description('가져올 개수'),
+			name: Joi.string().description('사용자 이름'),
+			serial: Joi.string().description('군번'),
+			registered: Joi.boolean().description('회원가입여부'),
+		}),
+	},
+	handler: async (req, h) => {
+		try {
+			return await UserService.getUsers(removeUndefined(req.query));
+		} catch (err) {
+			if (Boom.isBoom(err)) throw err;
+			throw Boom.internal(err);
+		}
+	},
+};
+
 exports.getUser = {
 	tags: ['api', 'user'],
 	description: '사용자를 가져옵니다.',

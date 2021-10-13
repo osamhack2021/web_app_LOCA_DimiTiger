@@ -50,7 +50,11 @@ exports.createLocation = {
 	},
 	handler: async (req, h) => {
 		try {
-			return await LocationService.createLocation(req.payload);
+			const location = await LocationService.createLocation(req.payload);
+
+			const io = req.server.plugins['hapi-socket.io'].io;
+			io.sockets.emit('locations', { added: [location] });
+			return location;
 		} catch (err) {
 			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
@@ -72,10 +76,15 @@ exports.updateLocation = {
 	},
 	handler: async (req, h) => {
 		try {
-			return await LocationService.updateLocation(
+			const location = await LocationService.updateLocation(
 				req.params.locationId,
 				req.payload
 			);
+
+			const io = req.server.plugins['hapi-socket.io'].io;
+			io.sockets.emit('locations', { updated: [location] });
+
+			return location;
 		} catch (err) {
 			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
@@ -93,7 +102,14 @@ exports.deleteLocation = {
 	},
 	handler: async (req, h) => {
 		try {
-			return await LocationService.deleteLocation(req.params.locationId);
+			const location = await LocationService.deleteLocation(
+				req.params.locationId
+			);
+
+			const io = req.server.plugins['hapi-socket.io'].io;
+			io.sockets.emit('locations', { deleted: [location] });
+
+			return location;
 		} catch (err) {
 			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);
