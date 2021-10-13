@@ -7,8 +7,9 @@ import CardHeader from './CardHeader';
 interface ILargeCard {
   title: string;
   history: History;
-  headerComponent: React.ReactNode;
+  headerComponent?: React.ReactNode;
   children: React.ReactNode;
+  props?: any;
 }
 
 const LargeCard = ({
@@ -16,6 +17,7 @@ const LargeCard = ({
   history,
   headerComponent,
   children,
+  props,
 }: ILargeCard) => (
   <CardContainer style={{ flex: 1 }}>
     <CardHeader>
@@ -28,7 +30,7 @@ const LargeCard = ({
       <div style={{ flex: 1 }} />
       {headerComponent}
     </CardHeader>
-    <CardBody>{children}</CardBody>
+    <CardBody {...props}>{children}</CardBody>
   </CardContainer>
 );
 

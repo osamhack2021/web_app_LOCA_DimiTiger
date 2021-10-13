@@ -53,7 +53,7 @@ const Sidebar = () => {
     {
       imgSrc: './icons/sidebar_ico_setting.svg',
       eleName: '설정',
-      link: '/',
+      link: '/settings',
     },
   ];
 
