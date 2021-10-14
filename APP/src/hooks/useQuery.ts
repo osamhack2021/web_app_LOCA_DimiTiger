@@ -24,7 +24,7 @@ function useQuery<
     [path, params],
     async () =>
       (
-        await axios.get(
+        await axios.get<TQueryFnData>(
           `${path}${isPathParam ? '/' + params : ''}`,
           isPathParam || !params ? {} : { params },
         )

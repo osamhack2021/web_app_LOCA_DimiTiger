@@ -32,7 +32,7 @@ function usePaginationQuery<
     [path, params],
     async () =>
       (
-        await axios.get(
+        await axios.get<PaginationData<TQueryFnData>>(
           `${path}${isPathParam ? '/' + params : ''}`,
           isPathParam || !params ? {} : { params },
         )
