@@ -36,7 +36,7 @@ const CustomCirclePackingComponent = (props: CircleProps<LocationDatum>) => {
         cx={node.x}
         cy={node.y}
         r={node.radius}
-        fill={node.color}
+        fill={isClicked.isClicked ? 'rgb(0, 0, 0)' : node.color}
         opacity={1}
         onClick={onCircleClick}></circle>
       {isClicked.isClicked ? (
@@ -158,6 +158,10 @@ const LocationChart = () => {
                 <stop offset="90%" stopColor="#4071FF" />
               </linearGradient>
               <linearGradient id="gradientId4" {...gradProps}>
+                <stop offset="0%" stopColor="#D7F0A0" />
+                <stop offset="75%" stopColor="#78CC0E" />
+              </linearGradient>
+              <linearGradient id="gradientId5" {...gradProps}>
                 <stop offset="0%" stopColor="#D7F0A0" />
                 <stop offset="75%" stopColor="#78CC0E" />
               </linearGradient>
