@@ -56,6 +56,14 @@ jobs:
           source: ./**
           target: ${{ env.DIR_NAME }}
 
+      - name: print secrets
+        run: |
+            echo $ENV_FILE >> SERVER/.env
+            cat SERVER/.env
+        shell: bash
+        env:
+          ENV_FILE : ${{secrets.SERVER_ENV}}
+
       - name: Launch as Docker
         uses: appleboy/ssh-action@master
         with:

@@ -7,10 +7,10 @@ services:
       target: release
     restart: always
     environment:
-      PORT: '80'
+      PORT: "${PORT}"
       LOG_DISABLED: 'false'
-      JWT_SECRET: '0development0'
-      MONGO_URI: 'mongodb://mongo:27017/loca'
+      JWT_SECRET: '${JWT_SECRET}'
+      MONGO_URI: '${MONGO_URI}'
       VIRTUAL_HOST: api.loca.kimjisub.me
       LETSENCRYPT_HOST: api.loca.kimjisub.me
     depends_on:
@@ -25,6 +25,9 @@ services:
       - default
     ports:
       - 27017:27017
+    environment:
+      - 'MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}'
+      - 'MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}'
 
 networks:
   default:
