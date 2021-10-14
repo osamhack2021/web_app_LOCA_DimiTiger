@@ -49,10 +49,10 @@ jobs:
 
       - name: Make .env
         run: |
-            echo -e "${ENV_FILE}" | base64 -d >> SERVER/.env
+            echo "${SERVER_ENV_BASE64}" | base64 -d >> SERVER/.env
         shell: bash
         env:
-          ENV_FILE : ${{secrets.SERVER_ENV}}
+          SERVER_ENV_BASE64 : ${{secrets.SERVER_ENV_BASE64}}
             
       - name: Upload Repository
         uses: appleboy/scp-action@master
