@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const GracefulExceptions = require('node-graceful');
 GracefulExceptions.captureException = true;
 

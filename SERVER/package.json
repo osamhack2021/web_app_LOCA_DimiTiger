@@ -6,7 +6,8 @@
 	"scripts": {
 		"start": "node index.js",
 		"live": "nodemon",
-		"test": "mocha"
+		"test": "mocha",
+		"docker:start": "docker-compose up -d"
 	},
 	"dependencies": {
 		"@hapi/glue": "^8.0.0",
@@ -15,6 +16,7 @@
 		"@hapi/joi": "^17.1.1",
 		"@hapi/vision": "^6.1.0",
 		"argon2": "^0.28.2",
+		"dotenv": "^10.0.0",
 		"glob": "^7.1.7",
 		"handlebars": "^4.7.7",
 		"hapi-auth-jwt2": "^10.2.0",
