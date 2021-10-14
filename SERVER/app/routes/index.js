@@ -7,6 +7,7 @@ const routes = [
 	require('./settings'),
 	require('./notices'),
 	require('./emergencies'),
+	require('./files'),
 ];
 
 exports.plugin = {
