@@ -46,6 +46,14 @@ jobs:
             cd ..
             cd ..
             rm -rf ${{ env.DIR_NAME }}
+
+      - name: Make .env
+        run: |
+            echo $ENV_FILE >> SERVER/.env
+            cat SERVER/.env
+        shell: bash
+        env:
+          ENV_FILE : ${{secrets.SERVER_ENV}}
             
       - name: Upload Repository
         uses: appleboy/scp-action@master
@@ -55,14 +63,6 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           source: ./**
           target: ${{ env.DIR_NAME }}
-
-      - name: print secrets
-        run: |
-            echo $ENV_FILE >> SERVER/.env
-            cat SERVER/.env
-        shell: bash
-        env:
-          ENV_FILE : ${{secrets.SERVER_ENV}}
 
       - name: Launch as Docker
         uses: appleboy/ssh-action@master
