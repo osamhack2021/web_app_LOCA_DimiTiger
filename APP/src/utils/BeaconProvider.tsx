@@ -24,6 +24,7 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
     if (!beacons || !fullyGranted) {
       return;
     }
+    setVisibleBeacons(beacons);
     if (Platform.OS === 'android') {
       Beacons.detectIBeacons();
     }

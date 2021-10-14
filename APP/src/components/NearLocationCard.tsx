@@ -27,7 +27,7 @@ const NearLocationCard = () => {
   const linkTo = useLinkTo();
   const { data: locationLog } = useActiveLocationLog();
   const visibleBeacons = useRecoilValue(beaconState);
-  const { style, height } = useAnimatedHeight(0, 300);
+  const { style, height } = useAnimatedHeight(0, 300, [visibleBeacons]);
 
   useEffect(() => {
     height.value = withDelay(300, withTiming((visibleBeacons.length + 1) * 40));

@@ -36,7 +36,10 @@ const LocationCard = () => {
   const emptyAnimProps = useAnimatedProps(() => ({
     progress: emptyAnim.value,
   }));
-  const { style, layoutHandler } = useAnimatedHeight(190);
+  const { style, layoutHandler } = useAnimatedHeight(190, 0, [
+    changeMode,
+    locationLog,
+  ]);
   useEffect(() => {
     if (!changeMode && !locationLog && !isLoading) {
       emptyAnim.value = withRepeat(withTiming(1, { duration: 6000 }), -1);

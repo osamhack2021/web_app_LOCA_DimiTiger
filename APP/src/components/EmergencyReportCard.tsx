@@ -52,7 +52,10 @@ const EmergencyReportCard = () => {
   const { report, hasAdditionalReport, createReport, addReport } =
     useEmergencyReport();
   const [additionalText, setAdditionalText] = useState('');
-  const { style, layoutHandler } = useAnimatedHeight(194);
+  const { style, layoutHandler } = useAnimatedHeight(194, 0, [
+    report,
+    hasAdditionalReport,
+  ]);
   const color = useSharedValue(0);
   const gradientProps = useAnimatedProps(() => ({
     colors: [
