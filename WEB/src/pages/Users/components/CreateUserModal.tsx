@@ -1,6 +1,9 @@
 import { Form, Modal } from 'antd';
 import styled from 'styled-components';
 
+import { useAddUser } from '../../../api/users';
+import User from '../../../types/User';
+
 type ModalProps = {
   visible: boolean;
   closeHandler: () => void;
@@ -8,9 +11,10 @@ type ModalProps = {
 
 const CreateUserModal = ({ visible, closeHandler }: ModalProps) => {
   const [form] = Form.useForm();
+  const addUserMutation = useAddUser();
 
-  const handleOk = async () => {
-    form.resetFields();
+  const handleOk = () => {
+    form.submit();
     closeHandler();
   };
 
@@ -29,7 +33,12 @@ const CreateUserModal = ({ visible, closeHandler }: ModalProps) => {
       onOk={handleOk}
       okText="추가"
       onCancel={handleCancel}>
-      <Form form={form}>
+      <Form
+        form={form}
+        onFinish={({ serial, name, rank, password }: User) => {
+          addUserMutation.mutate({ serial, name, rank, password });
+          form.resetFields();
+        }}>
         <ModalInputWrap>
           <ModalInputLabel>군번</ModalInputLabel>
           <Form.Item name="serial" required>

@@ -14,6 +14,16 @@ export function useUser(id: string) {
   return useQuery<User>('/users', id);
 }
 
+export function useAddUser() {
+  const axios = useAxios();
+  const queryClient = useQueryClient();
+  return useMutation((user: Partial<User>) => axios.post(`/users`, user), {
+    onSettled: () => {
+      queryClient.invalidateQueries('/users');
+    },
+  });
+}
+
 export function usePatchUser() {
   const axios = useAxios();
   return useMutation(
