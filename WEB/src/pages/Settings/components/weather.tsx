@@ -24,6 +24,11 @@ const Input = styled.input`
   border-radius: 13px;
   background-color: #f5f6fa;
   font-size: 1rem;
+  transition: border 0.5s ease;
+  &:focus {
+    outline: none;
+    border: solid 2px #0008f5;
+  }
 `;
 const WrapperContent = styled.div`
   padding: 40px;
