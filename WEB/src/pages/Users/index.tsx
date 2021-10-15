@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Button, Form, Table } from 'antd';
+import { Button, Form, Popconfirm, Table } from 'antd';
 import styled from 'styled-components';
 import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
 
 import './Users.css';
 
 import { useDeleteUser, useUsers } from '../../api/users';
-import DeleteButton from '../../components/DeleteButton';
 import Header from '../../components/Header/Header';
 import LargeCard from '../../components/LargeCard';
 import LayoutContent from '../../components/LayoutContent';
@@ -35,10 +34,7 @@ const Users = () => {
 
   const deleteUserMutation = useDeleteUser();
 
-  const deleteUser = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    const button: HTMLButtonElement = event.currentTarget;
-    const _id: User['_id'] = button.name;
+  const deleteUser = (_id: string) => {
     deleteUserMutation.mutate({ _id });
   };
 
@@ -115,8 +111,14 @@ const Users = () => {
                 dataIndex: '_id',
                 key: '_id',
                 width: '5%',
-                render: (_id: User['_id']) => (
-                  <DeleteButton onClick={deleteUser} name={_id}></DeleteButton>
+                render: (_id: string) => (
+                  <Popconfirm
+                    title="정말로 삭제하시겠습니까?"
+                    onConfirm={() => deleteUser(_id)}
+                    okText="확인"
+                    cancelText="취소">
+                    <Button danger>삭제</Button>
+                  </Popconfirm>
                 ),
               },
             ]}
