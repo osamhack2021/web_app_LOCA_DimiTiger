@@ -4,6 +4,7 @@ import { Button, DatePicker, Form, Select, Table } from 'antd';
 import { format } from 'date-fns';
 import styled from 'styled-components';
 import {
+  BooleanParam,
   DateParam,
   NumberParam,
   StringParam,
@@ -34,6 +35,7 @@ const LocationLogs = () => {
     limit: NumberParam,
     location: StringParam,
     user: StringParam,
+    active: BooleanParam,
   });
   const [form] = Form.useForm();
   const { data: locations, isLoading: locationLoading } = useLocations();
@@ -42,6 +44,7 @@ const LocationLogs = () => {
     rangeEnd: query.rangeEnd || undefined,
     location: query.location || undefined,
     user: query.user || undefined,
+    active: query.active || undefined,
     page: query.page || undefined,
     limit: query.limit || undefined,
   });
@@ -62,14 +65,15 @@ const LocationLogs = () => {
                   user: query.user,
                   range: [query.rangeStart, query.rangeEnd],
                 }}
-                onFinish={({ range, user, location }) => {
+                onFinish={({ range, user, location, active }) => {
                   const [rangeStart, rangeEnd] = range || [];
                   setQuery(
                     {
                       rangeStart: rangeStart?.toDate?.(),
                       rangeEnd: rangeEnd?.toDate?.(),
-                      location,
-                      user,
+                      location: location || undefined,
+                      user: user || undefined,
+                      active,
                     },
                     'replaceIn',
                   );
@@ -96,6 +100,15 @@ const LocationLogs = () => {
                         {l.name}
                       </Option>
                     ))}
+                  </Select>
+                </Form.Item>
+                <Form.Item name="active">
+                  <Select
+                    placeholder="상태"
+                    loading={locationLoading}
+                    style={{ width: 200 }}>
+                    <Option value="">전체</Option>
+                    <Option value="true">현재위치</Option>
                   </Select>
                 </Form.Item>
                 <Button type="primary" htmlType="submit">
@@ -139,6 +152,12 @@ const LocationLogs = () => {
                       to={`/locations/${location._id}`}>{`${location.name}`}</Link>
                   </>
                 ),
+              },
+              {
+                title: '상태',
+                dataIndex: 'active',
+                key: 'active',
+                render: (active: boolean) => (active ? '현재위치' : '과거위치'),
               },
             ]}
             pagination={{
