@@ -2,14 +2,50 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
-
+ @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap');
 .heroBanner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background-color: #F5F6FA;
+  color: #E7E9F0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
-
+.heroBanner:hover {
+  color: #353B50;
+}
+.title{
+  font-size:10rem;
+  flex-direction: column;
+  font-family: 'Nunito', sans-serif;
+  font-size: 10rem;
+  display: flex;
+  justify-content: center;
+}
+.titleRight{
+  font-size:10rem;
+  flex-direction: column;
+  font-family: 'Nunito', sans-serif;
+  font-size: 10rem;
+  display: flex;
+  justify-content: center;
+  letter-spacing: -10px;
+  margin-left: -20px;
+}
+.orgLogo {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+}
+.heroBanner h1 {
+  font-family: 'Nunito', sans-serif;
+}
+.container {
+  display: flex; transition: all 0.2s;flex-direction: row;justify-content: center;
+}
 @media screen and (max-width: 966px) {
   .heroBanner {
     padding: 2rem;
