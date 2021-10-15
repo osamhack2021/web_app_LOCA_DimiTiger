@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Button, Form, Input, Table } from 'antd';
+import { Button, Form, Table } from 'antd';
 import styled from 'styled-components';
 import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
 
@@ -13,11 +13,10 @@ import LargeCard from '../../components/LargeCard';
 import LayoutContent from '../../components/LayoutContent';
 import LayoutContentWrapper from '../../components/LayoutContentWrapper';
 import Sidebar from '../../components/Sidebar/Sidebar';
+import UserSearchSelect from '../../components/UserSearchSelect';
 import User from '../../types/User';
 
 import CreateUserModal from './components/CreateUserModal';
-
-const { Search } = Input;
 
 const Users = () => {
   const history = useHistory();
@@ -54,16 +53,19 @@ const Users = () => {
             <ToolkitWrap>
               <Form
                 form={form}
-                onFinish={({ page, limit }) => {
-                  setQuery(
-                    {
-                      page,
-                      limit,
-                    },
-                    'replaceIn',
-                  );
+                onFinish={({ user }) => {
+                  history.push(`/users/${user}`);
                 }}
                 layout="inline">
+                <Form.Item name="user">
+                  <UserSearchSelect />
+                </Form.Item>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  style={{ marginRight: 15 }}>
+                  검색
+                </Button>
                 <Button onClick={() => setModalVisible(true)}>추가</Button>
               </Form>
             </ToolkitWrap>
@@ -91,26 +93,22 @@ const Users = () => {
                 dataIndex: 'rank',
                 key: 'rank',
                 width: '10%',
-                render: (rank: User['rank']) => <>{rank}</>,
               },
               {
                 title: '이메일',
                 dataIndex: 'email',
                 key: 'email',
-                render: (email: User['email']) => <>{email}</>,
               },
               {
                 title: '전화번호',
                 dataIndex: 'phone',
                 key: 'phone',
-                render: (phone: User['phone']) => <>{phone}</>,
               },
               {
                 title: '가입여부',
                 dataIndex: 'registered',
                 key: 'registered',
                 width: '7%',
-                render: (registered: User['registered']) => <>{registered}</>,
               },
               {
                 title: '',
