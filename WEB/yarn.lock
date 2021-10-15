@@ -1643,6 +1643,17 @@
   dependencies:
     "@react-spring/web" "9.2.6"
 
+"@nivo/treemap@^0.74.0":
+  version "0.74.0"
+  resolved "https://registry.yarnpkg.com/@nivo/treemap/-/treemap-0.74.0.tgz#c1c17c095c93f006b6644f8296b747a87746839c"
+  integrity sha512-X0upzy/DC9Yiae8XfsB3S5cVpVqrMmA1TTjWCy1tmKRpG1pxXod+AmJBSsd98N4Z4KmGCN6y8GA+Zho46WMDQg==
+  dependencies:
+    "@nivo/colors" "0.74.0"
+    "@nivo/tooltip" "0.74.0"
+    "@react-spring/web" "9.2.6"
+    d3-hierarchy "^1.1.8"
+    lodash "^4.17.21"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
@@ -1928,6 +1939,11 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+"@types/d3-hierarchy@^1.1.6":
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/@types/d3-hierarchy/-/d3-hierarchy-1.1.8.tgz#50657f420d565a06c0b950a4b82eee0a369f2dea"
+  integrity sha512-AbStKxNyWiMDQPGDguG2Kuhlq1Sv539pZSxYbx4UZeYkutpPwXCcgyiRrlV4YH64nIOsKx7XVnOMy9O7rJsXkg==
+
 "@types/eslint@^7.2.6":
   version "7.28.0"
   resolved "https://registry.npmjs.org/@types/eslint/-/eslint-7.28.0.tgz"
@@ -2007,6 +2023,11 @@
   version "0.0.29"
   resolved "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
+
+"@types/lodash@^4.14.172":
+  version "4.14.175"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.175.tgz#b78dfa959192b01fae0ad90e166478769b215f45"
+  integrity sha512-XmdEOrKQ8a1Y/yxQFOMbC47G/V2VDO1GvMRnl4O75M4GW/abC5tnfzadQYkqEveqRM1dEJGFFegfPNA2vvx2iw==
 
 "@types/minimatch@*":
   version "3.0.5"
@@ -2263,6 +2284,38 @@
   dependencies:
     "@typescript-eslint/types" "4.32.0"
     eslint-visitor-keys "^2.0.0"
+
+"@visx/group@2.1.0", "@visx/group@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@visx/group/-/group-2.1.0.tgz#65d4a72feb20dd09443f73cdc12ad5fb339792ef"
+  integrity sha512-bZKa54yVjGYPZZhzYHLz4AVlidSr4ET9B/xmSa7nnictMJWr7e/IuZThB/bMfDQlgdtvhcfTgs+ZluySc5SBUg==
+  dependencies:
+    "@types/react" "*"
+    classnames "^2.3.1"
+    prop-types "^15.6.2"
+
+"@visx/hierarchy@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@visx/hierarchy/-/hierarchy-2.1.2.tgz#7ca88d12e93b5b0089d6efd7f70ed9af8d3ef8e4"
+  integrity sha512-dza9X3OpX5vvw/mZ14OpuZSkWP+8ig8Mfm1c4yE6bK2TmobiqR9uJ1D8ouw1dBit5zUVb03XWuY2VqG6yzyKAg==
+  dependencies:
+    "@types/d3-hierarchy" "^1.1.6"
+    "@types/react" "*"
+    "@visx/group" "2.1.0"
+    classnames "^2.3.1"
+    d3-hierarchy "^1.1.4"
+    prop-types "^15.6.1"
+
+"@visx/responsive@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@visx/responsive/-/responsive-2.1.2.tgz#8b783a54097eea82b0c9b0a49d2723c979e6bf17"
+  integrity sha512-trN6In0fPO9rJV9SUlidM5IrW7IeUfP/fGocLFPM1HRHkG9XhnN1V7Q1CM+t9DAoRBpiByBGDpURo3AFkTa7QQ==
+  dependencies:
+    "@types/lodash" "^4.14.172"
+    "@types/react" "*"
+    lodash "^4.17.21"
+    prop-types "^15.6.1"
+    resize-observer-polyfill "1.5.1"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -3609,7 +3662,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@2.x, classnames@^2.2.1, classnames@^2.2.3, classnames@^2.2.5, classnames@^2.2.6:
+classnames@2.x, classnames@^2.2.1, classnames@^2.2.3, classnames@^2.2.5, classnames@^2.2.6, classnames@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
@@ -4276,7 +4329,7 @@ d3-format@^1.4.4:
   resolved "https://registry.npmjs.org/d3-format/-/d3-format-1.4.5.tgz"
   integrity sha512-J0piedu6Z8iB6TbIGfZgDzfXxUFN3qQRMofy2oPdXzQibYGqPB/9iMcxr/TGalU+2RsyDO+U4f33id8tbnSRMQ==
 
-d3-hierarchy@^1.1.8:
+d3-hierarchy@^1.1.4, d3-hierarchy@^1.1.8:
   version "1.1.9"
   resolved "https://registry.npmjs.org/d3-hierarchy/-/d3-hierarchy-1.1.9.tgz"
   integrity sha512-j8tPxlqh1srJHAtxfvOUwKNYJkQuBFdM1+JAUfq6xqH5eAqf93L7oG1NVqDa4CpFZNvnNKtCYEUC8KY9yEn9lQ==
@@ -9410,7 +9463,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.5.8, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -10348,7 +10401,7 @@ requires-port@^1.0.0:
   resolved "https://registry.npmjs.org/requires-port/-/requires-port-1.0.0.tgz"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
 
-resize-observer-polyfill@^1.5.0, resize-observer-polyfill@^1.5.1:
+resize-observer-polyfill@1.5.1, resize-observer-polyfill@^1.5.0, resize-observer-polyfill@^1.5.1:
   version "1.5.1"
   resolved "https://registry.npmjs.org/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz"
   integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
