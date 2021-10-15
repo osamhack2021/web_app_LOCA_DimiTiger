@@ -1,3 +1,5 @@
+import { useMutation, useQueryClient } from 'react-query';
+
 import useAxios from '../../hooks/useAxios';
 import usePaginationQuery from '../../hooks/usePaginationQuery';
 import Setting from '../../types/Setting';
@@ -6,7 +8,12 @@ export function useSettings() {
   return usePaginationQuery<Setting>('/settings');
 }
 
-export function useUploadFile(imageFile: FileList) {
+export function useAddSetting() {
   const axios = useAxios();
-  return axios.post(`/files/upload`, imageFile);
+  const queryClient = useQueryClient();
+  return useMutation((setting: Setting) => axios.post(`/settings`, setting), {
+    onSettled: () => {
+      queryClient.invalidateQueries('/settings');
+    },
+  });
 }

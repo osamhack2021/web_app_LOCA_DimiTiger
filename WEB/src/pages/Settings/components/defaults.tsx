@@ -1,7 +1,18 @@
 import { ChangeEvent, useState } from 'react';
+import { Button, Form } from 'antd';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 
+import { useAddSetting } from '../../../api/settings';
+import { settingState } from '../../../atoms';
+import useAxios from '../../../hooks/useAxios';
+import Setting from '../../../types/Setting';
+
 const Defaults = () => {
+  const [form] = Form.useForm();
+  const setSetting = useSetRecoilState(settingState);
+  const [settings] = useRecoilState(settingState);
+  const settingsValue = useRecoilValue<Setting>(settingState);
   const [data, setData] = useState<{
     file: File | null;
     previewURL: string | ArrayBuffer | null;
@@ -25,11 +36,43 @@ const Defaults = () => {
     };
     reader.readAsDataURL(file);
   };
+
+  const axios = useAxios();
+  const fileUploader = async (formData: FormData) => {
+    const { filename } = (await axios.post(`/files/upload`, formData)).data;
+    return filename;
+  };
+
+  const addSetting = useAddSetting();
+
   return (
     <WrapperContent>
-      <form>
+      <Form
+        form={form}
+        onFinish={({ name }) => {
+          const formData = new FormData();
+          if (data.file != null) {
+            formData.append('file', data.file);
+            fileUploader(formData).then((filename: string) => {
+              const tempSetting: Setting = {
+                defaults: {
+                  name: name,
+                  icon: filename,
+                  belong: settings.defaults.belong,
+                },
+                weather: settings.weather,
+                militaryDiscipline: settings.militaryDiscipline,
+                chartDesign: settings.chartDesign,
+              };
+              setSetting(tempSetting);
+              addSetting.mutate(settings);
+            });
+          }
+        }}>
         <Label>부대명</Label>
-        <Input></Input>
+        <Form.Item name="name">
+          <Input></Input>
+        </Form.Item>
         <Label>아이콘</Label>
         <label
           htmlFor="profile-img"
@@ -48,7 +91,14 @@ const Defaults = () => {
           accept="image/jpg,impge/png,image/jpeg,image/gif"
           name="profile_img"
         />
-      </form>
+        <Button
+          type="primary"
+          onClick={() => {
+            form.submit();
+          }}>
+          추가
+        </Button>
+      </Form>
     </WrapperContent>
   );
 };
