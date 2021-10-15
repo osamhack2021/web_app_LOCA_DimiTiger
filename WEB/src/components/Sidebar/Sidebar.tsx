@@ -46,7 +46,7 @@ const Sidebar = () => {
       link: '/locations',
     },
     {
-      imgSrc: '/icons/sidebar_ico_worker.svg',
+      imgSrc: '/icons/sidebar_ico_beacon.svg',
       eleName: '비콘 현황',
       link: '/beacons',
     },
