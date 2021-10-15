@@ -6,7 +6,6 @@ import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
 
 import { useBeacons, useDeleteBeacon } from '../../api/beacons';
 import { useLocations } from '../../api/locations';
-import AddButton from '../../components/AddButton';
 import DeleteButton from '../../components/DeleteButton';
 import Header from '../../components/Header/Header';
 import LargeCard from '../../components/LargeCard';
@@ -77,10 +76,13 @@ const Beacons = () => {
                     ))}
                   </Select>
                 </Form.Item>
-                <Button type="primary" htmlType="submit">
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  style={{ marginRight: 15 }}>
                   검색
                 </Button>
-                <AddButton onClick={() => setModalVisible(true)}></AddButton>
+                <Button onClick={() => setModalVisible(true)}>추가</Button>
               </Form>
             </ToolkitWrap>
           }>
