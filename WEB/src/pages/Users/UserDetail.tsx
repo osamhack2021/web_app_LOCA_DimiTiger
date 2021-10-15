@@ -42,7 +42,7 @@ const UserDetail = () => {
             headerComponent={
               <Space>
                 <Button onClick={() => {}}>수정</Button>
-                <Button onClick={() => {}} danger>
+                <Button onClick={deleteUser} danger>
                   삭제
                 </Button>
               </Space>
