@@ -8,7 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "postinstall": "patch-package && cp patches/react-native-reanimated-66-hermes.aar node_modules/react-native-reanimated/android/"
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@notifee/react-native": "^3.0.1",
