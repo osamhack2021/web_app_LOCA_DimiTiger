@@ -18,6 +18,7 @@
 		"argon2": "^0.28.2",
 		"dotenv": "^10.0.0",
 		"glob": "^7.1.7",
+		"got": "^11.8.2",
 		"handlebars": "^4.7.7",
 		"hapi-auth-jwt2": "^10.2.0",
 		"hapi-cors": "^1.0.3",
@@ -29,6 +30,7 @@
 		"mongoose-paginate-v2": "^1.4.2",
 		"ms": "^3.0.0-canary.1",
 		"node-graceful": "^3.1.0",
+		"openweather-apis": "^4.4.2",
 		"pino": "^6.13.2",
 		"pino-pretty": "^7.0.0"
 	},
