@@ -1,20 +1,19 @@
 import { ChangeEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 import './Init.css';
 
 import { useAddSetting } from '../../api/settings';
-import { settingState } from '../../atoms';
+import { settingsState } from '../../atoms';
 import useAxios from '../../hooks/useAxios';
-import Setting from '../../types/Setting';
+import Settings from '../../types/Settings';
 
 const Init = () => {
   const { register, handleSubmit } = useForm();
   const history = useHistory();
-  const setSetting = useSetRecoilState(settingState);
-  const [settings] = useRecoilState(settingState);
+  const [settings, setSettings] = useRecoilState(settingsState);
   const [data, setData] = useState<{
     file: File | null;
     previewURL: string | ArrayBuffer | null;
@@ -22,11 +21,6 @@ const Init = () => {
     file: null,
     previewURL: './icons/addPhoto.svg',
   });
-
-  type initData = {
-    belong: string;
-    name: string;
-  };
 
   const axios = useAxios();
   const fileUploader = async (formData: FormData) => {
@@ -36,23 +30,23 @@ const Init = () => {
 
   const addSetting = useAddSetting();
 
-  const initialize = async ({ belong, name }: initData) => {
+  const initialize = async ({ branch, name }: Settings['information']) => {
     console.log(name);
     const formData = new FormData();
     if (data.file != null) {
       formData.append('file', data.file);
       fileUploader(formData).then((filename: string) => {
-        const tempSetting: Setting = {
-          defaults: {
-            name: name,
+        const tempSetting: Settings = {
+          information: {
+            name,
             icon: filename,
-            belong: belong,
+            branch,
           },
           weather: settings.weather,
           militaryDiscipline: settings.militaryDiscipline,
           chartDesign: settings.chartDesign,
         };
-        setSetting(tempSetting);
+        setSettings(tempSetting);
         addSetting.mutate(settings);
         history.push('/');
       });
@@ -96,7 +90,7 @@ const Init = () => {
                 display: 'none',
               }}
               onChange={handleFileOnChange}
-              accept="image/jpg,impge/png,image/jpeg,image/gif"
+              accept="image/jpg,image/png,image/jpeg,image/gif"
               name="profile_img"
             />
             <div>

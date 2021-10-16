@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 
 import './Header.css';
 
-import { settingState } from '../../atoms';
+import { settingsState } from '../../atoms';
 
 const Header = () => {
   const [date, setDate] = useState(new Date());
-  const [setting] = useRecoilState(settingState);
+  const { information } = useRecoilValue(settingsState);
 
   useEffect(() => {
     const interval = setInterval(() => setDate(new Date()), 1000);
@@ -28,22 +28,21 @@ const Header = () => {
           <img
             id="belong_logo"
             src={
-              'https://api.loca.kimjisub.me/static/uploads/' +
-              setting.defaults.icon
+              'https://api.loca.kimjisub.me/static/uploads/' + information.icon
             }
             alt="logo"
           />
           <p className="belong_name">
-            {setting.defaults.name
-              ? setting.defaults.name.indexOf(' ') !== -1
-                ? setting.defaults.name.split(' ')[0] + ' '
-                : setting.defaults.name
+            {information.name
+              ? information.name.indexOf(' ') !== -1
+                ? information.name.split(' ')[0] + ' '
+                : information.name
               : ''}
             {
               <span>
-                {setting.defaults.name
-                  ? setting.defaults.name.indexOf(' ') !== -1
-                    ? setting.defaults.name.split(' ')[1]
+                {information.name
+                  ? information.name.indexOf(' ') !== -1
+                    ? information.name.split(' ')[1]
                     : ''
                   : ''}
               </span>

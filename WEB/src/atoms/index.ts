@@ -24,13 +24,13 @@ export const refreshTokenState = atom({
   effects_UNSTABLE: [localStorageEffect('refreshTokenState')],
 });
 
-export const settingState = atom({
-  key: 'settingState',
+export const settingsState = atom({
+  key: 'settingsState',
   default: {
-    defaults: {
+    information: {
       name: '',
       icon: '1634306266203_loca_icon.svg',
-      belong: '',
+      branch: '',
     },
     weather: {
       location: '',
@@ -38,7 +38,7 @@ export const settingState = atom({
     militaryDiscipline: getFormatDate(new Date()),
     chartDesign: true,
   },
-  effects_UNSTABLE: [localStorageEffect('settingState')],
+  effects_UNSTABLE: [localStorageEffect('settingsState')],
 });
 
 export const useLogout = () => {

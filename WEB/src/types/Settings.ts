@@ -1,8 +1,8 @@
-interface Setting {
-  defaults: {
+interface Settings {
+  information: {
     name: string;
     icon: string;
-    belong: string;
+    branch: string;
   };
   weather: {
     location: string;
@@ -10,4 +10,4 @@ interface Setting {
   militaryDiscipline: string;
   chartDesign: boolean;
 }
-export default Setting;
+export default Settings;

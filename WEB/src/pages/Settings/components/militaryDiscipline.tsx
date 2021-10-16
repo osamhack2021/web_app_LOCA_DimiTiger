@@ -1,15 +1,14 @@
 import { Button, DatePicker, Form } from 'antd';
 import moment from 'moment';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 import { useAddSetting } from '../../../api/settings';
-import { settingState } from '../../../atoms';
-import Setting from '../../../types/Setting';
+import { settingsState } from '../../../atoms';
+import Settings from '../../../types/Settings';
 const MilitaryDiscipline = () => {
   const [form] = Form.useForm();
-  const [settings] = useRecoilState(settingState);
-  const setSetting = useSetRecoilState(settingState);
+  const [settings, setSettings] = useRecoilState(settingsState);
   const addSetting = useAddSetting();
 
   const dateFormat = 'YYYY/MM/DD';
@@ -19,13 +18,13 @@ const MilitaryDiscipline = () => {
       <Form
         form={form}
         onFinish={({ militaryDisciplineDate }) => {
-          const tempSetting: Setting = {
-            defaults: settings.defaults,
+          const tempSetting: Settings = {
+            information: settings.information,
             weather: settings.weather,
             militaryDiscipline: militaryDisciplineDate,
             chartDesign: settings.chartDesign,
           };
-          setSetting(tempSetting);
+          setSettings(tempSetting);
 
           addSetting.mutate(settings);
         }}>

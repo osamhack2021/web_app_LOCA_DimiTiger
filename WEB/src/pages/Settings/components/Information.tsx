@@ -1,17 +1,16 @@
 import { ChangeEvent, useState } from 'react';
 import { Button, Form } from 'antd';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 import { useAddSetting } from '../../../api/settings';
-import { settingState } from '../../../atoms';
+import { settingsState } from '../../../atoms';
 import useAxios from '../../../hooks/useAxios';
-import Setting from '../../../types/Setting';
+import Settings from '../../../types/Settings';
 
-const Defaults = () => {
+const Information = () => {
   const [form] = Form.useForm();
-  const [settings] = useRecoilState(settingState);
-  const setSetting = useSetRecoilState(settingState);
+  const [settings, setSettings] = useRecoilState(settingsState);
   const [data, setData] = useState<{
     file: File | null;
     previewURL: string | ArrayBuffer | null;
@@ -53,23 +52,23 @@ const Defaults = () => {
           if (data.file != null) {
             formData.append('file', data.file);
             fileUploader(formData).then((filename: string) => {
-              const tempSetting: Setting = {
-                defaults: {
+              const tempSetting: Settings = {
+                information: {
                   name: unitName,
                   icon: filename,
-                  belong: settings.defaults.belong,
+                  branch: settings.information.branch,
                 },
                 weather: settings.weather,
                 militaryDiscipline: settings.militaryDiscipline,
                 chartDesign: settings.chartDesign,
               };
-              setSetting(tempSetting);
+              setSettings(tempSetting);
               addSetting.mutate(settings);
             });
           }
         }}>
         <Label>부대명</Label>
-        <Form.Item name="unitName" initialValue={settings.defaults.name}>
+        <Form.Item name="unitName" initialValue={settings.information.name}>
           <Input />
         </Form.Item>
         <Label>아이콘</Label>
@@ -87,7 +86,7 @@ const Defaults = () => {
             display: 'none',
           }}
           onChange={handleFileOnChange}
-          accept="image/jpg,impge/png,image/jpeg,image/gif"
+          accept="image/jpg,image/png,image/jpeg,image/gif"
           name="profile_img"
         />
         <Button type="primary" htmlType="submit">
@@ -120,4 +119,4 @@ const Input = styled.input`
 const WrapperContent = styled.div`
   padding: 40px;
 `;
-export default Defaults;
+export default Information;

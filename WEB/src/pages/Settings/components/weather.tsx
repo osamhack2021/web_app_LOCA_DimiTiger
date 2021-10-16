@@ -3,12 +3,12 @@ import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 import { useAddSetting } from '../../../api/settings';
-import { settingState } from '../../../atoms';
-import Setting from '../../../types/Setting';
+import { settingsState } from '../../../atoms';
+import Settings from '../../../types/Settings';
 
 const Weather = () => {
   const [form] = Form.useForm();
-  const [settings] = useRecoilState(settingState);
+  const [settings] = useRecoilState(settingsState);
 
   const addSetting = useAddSetting();
 
@@ -17,8 +17,8 @@ const Weather = () => {
       <Form
         form={form}
         onFinish={({ unitLocation }) => {
-          const tempSetting: Setting = {
-            defaults: settings.defaults,
+          const tempSetting: Settings = {
+            information: settings.information,
             weather: {
               location: unitLocation,
             },
