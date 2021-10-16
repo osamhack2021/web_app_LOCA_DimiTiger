@@ -10,8 +10,8 @@ import Setting from '../../../types/Setting';
 
 const Defaults = () => {
   const [form] = Form.useForm();
-  const setSetting = useSetRecoilState(settingState);
   const [settings] = useRecoilState(settingState);
+  const setSetting = useSetRecoilState(settingState);
   const [data, setData] = useState<{
     file: File | null;
     previewURL: string | ArrayBuffer | null;
@@ -48,14 +48,14 @@ const Defaults = () => {
     <WrapperContent>
       <Form
         form={form}
-        onFinish={({ name }) => {
+        onFinish={({ unitName }) => {
           const formData = new FormData();
           if (data.file != null) {
             formData.append('file', data.file);
             fileUploader(formData).then((filename: string) => {
               const tempSetting: Setting = {
                 defaults: {
-                  name: name,
+                  name: unitName,
                   icon: filename,
                   belong: settings.defaults.belong,
                 },
@@ -69,8 +69,8 @@ const Defaults = () => {
           }
         }}>
         <Label>부대명</Label>
-        <Form.Item name="name">
-          <Input placeholder={settings.defaults.name} />
+        <Form.Item name="unitName" initialValue={settings.defaults.name}>
+          <Input />
         </Form.Item>
         <Label>아이콘</Label>
         <label
@@ -90,11 +90,7 @@ const Defaults = () => {
           accept="image/jpg,impge/png,image/jpeg,image/gif"
           name="profile_img"
         />
-        <Button
-          type="primary"
-          onClick={() => {
-            form.submit();
-          }}>
+        <Button type="primary" htmlType="submit">
           설정
         </Button>
       </Form>

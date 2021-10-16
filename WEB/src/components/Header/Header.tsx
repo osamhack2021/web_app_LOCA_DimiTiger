@@ -34,8 +34,20 @@ const Header = () => {
             alt="logo"
           />
           <p className="belong_name">
-            {setting.defaults.name.split(' ')[0]}{' '}
-            <span>{setting.defaults.name.split(' ')[1]}</span>
+            {setting.defaults.name
+              ? setting.defaults.name.indexOf(' ') !== -1
+                ? setting.defaults.name.split(' ')[0] + ' '
+                : setting.defaults.name
+              : ''}
+            {
+              <span>
+                {setting.defaults.name
+                  ? setting.defaults.name.indexOf(' ') !== -1
+                    ? setting.defaults.name.split(' ')[1]
+                    : ''
+                  : ''}
+              </span>
+            }
           </p>
         </Link>
       </div>

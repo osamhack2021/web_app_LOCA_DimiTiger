@@ -34,8 +34,6 @@ export const settingState = atom({
     },
     weather: {
       location: '',
-      temperature: 0,
-      temperatureIndex: 0,
     },
     militaryDiscipline: getFormatDate(new Date()),
     chartDesign: true,

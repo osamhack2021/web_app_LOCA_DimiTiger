@@ -1,5 +1,5 @@
 import { Button, Form } from 'antd';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 import { useAddSetting } from '../../../api/settings';
@@ -8,7 +8,6 @@ import Setting from '../../../types/Setting';
 
 const Weather = () => {
   const [form] = Form.useForm();
-  const setSetting = useSetRecoilState(settingState);
   const [settings] = useRecoilState(settingState);
 
   const addSetting = useAddSetting();
@@ -19,31 +18,20 @@ const Weather = () => {
         form={form}
         onFinish={({ unitLocation }) => {
           const tempSetting: Setting = {
-            defaults: {
-              name: settings.defaults.name,
-              icon: settings.defaults.icon,
-              belong: settings.defaults.belong,
-            },
+            defaults: settings.defaults,
             weather: {
               location: unitLocation,
-              temperature: settings.weather.temperature,
-              temperatureIndex: settings.weather.temperatureIndex,
             },
             militaryDiscipline: settings.militaryDiscipline,
             chartDesign: settings.chartDesign,
           };
-          setSetting(tempSetting);
-          addSetting.mutate(settings);
+          addSetting.mutate(tempSetting);
         }}>
         <Label>부대위치</Label>
-        <Form.Item name="unitLocation">
-          <Input placeholder={settings.weather.location}></Input>
+        <Form.Item name="unitLocation" initialValue={settings.weather.location}>
+          <Input></Input>
         </Form.Item>
-        <Button
-          type="primary"
-          onClick={() => {
-            form.submit();
-          }}>
+        <Button type="primary" htmlType="submit">
           설정
         </Button>
       </Form>

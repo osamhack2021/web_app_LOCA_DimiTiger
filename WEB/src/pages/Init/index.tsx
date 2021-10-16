@@ -1,16 +1,20 @@
 import { ChangeEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 
 import './Init.css';
 
-type initData = {
-  icon: string;
-  belong: string;
-  name: string;
-};
+import { useAddSetting } from '../../api/settings';
+import { settingState } from '../../atoms';
+import useAxios from '../../hooks/useAxios';
+import Setting from '../../types/Setting';
 
 const Init = () => {
   const { register, handleSubmit } = useForm();
+  const history = useHistory();
+  const setSetting = useSetRecoilState(settingState);
+  const [settings] = useRecoilState(settingState);
   const [data, setData] = useState<{
     file: File | null;
     previewURL: string | ArrayBuffer | null;
@@ -19,7 +23,41 @@ const Init = () => {
     previewURL: './icons/addPhoto.svg',
   });
 
-  const initialize = async ({ icon, belong, name }: initData) => {};
+  type initData = {
+    belong: string;
+    name: string;
+  };
+
+  const axios = useAxios();
+  const fileUploader = async (formData: FormData) => {
+    const { filename } = (await axios.post(`/files/upload`, formData)).data;
+    return filename;
+  };
+
+  const addSetting = useAddSetting();
+
+  const initialize = async ({ belong, name }: initData) => {
+    console.log(name);
+    const formData = new FormData();
+    if (data.file != null) {
+      formData.append('file', data.file);
+      fileUploader(formData).then((filename: string) => {
+        const tempSetting: Setting = {
+          defaults: {
+            name: name,
+            icon: filename,
+            belong: belong,
+          },
+          weather: settings.weather,
+          militaryDiscipline: settings.militaryDiscipline,
+          chartDesign: settings.chartDesign,
+        };
+        setSetting(tempSetting);
+        addSetting.mutate(settings);
+        history.push('/');
+      });
+    }
+  };
 
   const handleFileOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -63,7 +101,7 @@ const Init = () => {
             />
             <div>
               <p className="initHeader">소속</p>
-              <select name="" id="" className="initBelong">
+              <select id="" className="initBelong" {...register('belong')}>
                 <option value="국방부/국직">국방부/국직</option>
                 <option value="육군">육군</option>
                 <option value="해군">해군</option>
@@ -72,7 +110,11 @@ const Init = () => {
             </div>
             <div>
               <p className="initHeader">부대명</p>
-              <input type="search" className="initUnitName" />
+              <input
+                type="search"
+                className="initUnitName"
+                {...register('name')}
+              />
             </div>
             <div className="initSubmitContainer">
               <input type="submit" className="initSubmit" value="완료" />

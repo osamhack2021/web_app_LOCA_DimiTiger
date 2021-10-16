@@ -6,8 +6,6 @@ interface Setting {
   };
   weather: {
     location: string;
-    temperature: number;
-    temperatureIndex: number;
   };
   militaryDiscipline: string;
   chartDesign: boolean;

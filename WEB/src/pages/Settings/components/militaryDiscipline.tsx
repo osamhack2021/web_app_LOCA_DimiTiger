@@ -8,9 +8,8 @@ import { settingState } from '../../../atoms';
 import Setting from '../../../types/Setting';
 const MilitaryDiscipline = () => {
   const [form] = Form.useForm();
-  const setSetting = useSetRecoilState(settingState);
   const [settings] = useRecoilState(settingState);
-
+  const setSetting = useSetRecoilState(settingState);
   const addSetting = useAddSetting();
 
   const dateFormat = 'YYYY/MM/DD';
@@ -27,13 +26,14 @@ const MilitaryDiscipline = () => {
             chartDesign: settings.chartDesign,
           };
           setSetting(tempSetting);
+
           addSetting.mutate(settings);
         }}>
         <Label>군기강 확립 작전 시작일</Label>
         <Form.Item name="militaryDisciplineDate">
           <DatePicker
             showToday
-            defaultValue={moment(settings.militaryDiscipline)}
+            defaultValue={moment(settings.militaryDiscipline, dateFormat)}
             style={{
               height: '44px',
               width: '180px',
@@ -44,11 +44,7 @@ const MilitaryDiscipline = () => {
             }}
           />
         </Form.Item>
-        <Button
-          type="primary"
-          onClick={() => {
-            form.submit();
-          }}>
+        <Button type="primary" htmlType="submit">
           설정
         </Button>
       </Form>
