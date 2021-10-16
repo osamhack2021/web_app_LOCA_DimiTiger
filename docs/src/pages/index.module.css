@@ -44,7 +44,7 @@
   font-family: 'Nunito', sans-serif;
 }
 .container {
-  display: flex; transition: all 0.2s;flex-direction: row;justify-content: center;
+  display: flex; transition: all 0.1s;flex-direction: row;justify-content: center;
 }
 @media screen and (max-width: 966px) {
   .heroBanner {
