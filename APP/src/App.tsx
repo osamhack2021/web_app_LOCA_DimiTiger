@@ -63,17 +63,21 @@ const linking: LinkingOptions<RootStackParamList> = {
 const App = () => {
   const splashDone = useRecoilValue(splashState);
 
-  return !splashDone ? (
-    <SplashScreen />
-  ) : (
-    <NavigationContainer linking={linking}>
+  return (
+    <>
       <StatusBar
         translucent
         backgroundColor="transparent"
         barStyle="dark-content"
       />
-      <Navigators />
-    </NavigationContainer>
+      {!splashDone ? (
+        <SplashScreen />
+      ) : (
+        <NavigationContainer linking={linking}>
+          <Navigators />
+        </NavigationContainer>
+      )}
+    </>
   );
 };
 

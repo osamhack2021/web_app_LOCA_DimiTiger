@@ -28,6 +28,7 @@ const WelcomeScreen = () => {
       interpolateColor(color.value, [0, 1], [colorLocaEnd, colorLocaStart]),
     ],
   }));
+  const nullAniamtedProps = useAnimatedProps(() => ({}));
 
   useEffect(() => {
     if (Platform.OS !== 'android') {
@@ -37,8 +38,10 @@ const WelcomeScreen = () => {
 
   return (
     <AnimatedGradient
-      colors={[]}
-      animatedProps={gradientProps}
+      colors={Platform.OS === 'android' ? [colorLocaStart, colorLocaEnd] : []}
+      animatedProps={
+        Platform.OS === 'android' ? nullAniamtedProps : gradientProps
+      }
       style={styles.container}>
       <Animated.View style={styles.centerContainer} entering={FadeIn}>
         <Logo style={styles.logo} />
