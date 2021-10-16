@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Select, SelectProps, Spin } from 'antd';
 
-import { useUsers } from '../api/users';
+import { useUsers } from '@/api/users';
 
 const UserSearchSelect = (props: SelectProps<string>) => {
   const [text, setText] = useState('');

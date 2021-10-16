@@ -12,14 +12,14 @@ import {
 } from 'antd';
 import { format } from 'date-fns';
 
-import { useLocationLogs } from '../../api/location-logs';
-import { useDeleteUser, useUser } from '../../api/users';
-import Header from '../../components/Header/Header';
-import LargeCard from '../../components/LargeCard';
-import LayoutContent from '../../components/LayoutContent';
-import LayoutContentWrapper from '../../components/LayoutContentWrapper';
-import ImageProvider from '../../components/LocationIcon';
-import Sidebar from '../../components/Sidebar/Sidebar';
+import { useLocationLogs } from '@/api/location-logs';
+import { useDeleteUser, useUser } from '@/api/users';
+import Header from '@/components/Header/Header';
+import LargeCard from '@/components/LargeCard';
+import LayoutContent from '@/components/LayoutContent';
+import LayoutContentWrapper from '@/components/LayoutContentWrapper';
+import ImageProvider from '@/components/LocationIcon';
+import Sidebar from '@/components/Sidebar/Sidebar';
 
 const UserDetail = () => {
   const history = useHistory();

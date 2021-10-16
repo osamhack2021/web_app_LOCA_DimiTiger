@@ -11,17 +11,17 @@ import {
   useQueryParams,
 } from 'use-query-params';
 
-import { useLocationLogs } from '../../api/location-logs';
-import { useLocations } from '../../api/locations';
-import Header from '../../components/Header/Header';
-import LargeCard from '../../components/LargeCard';
-import LayoutContent from '../../components/LayoutContent';
-import LayoutContentWrapper from '../../components/LayoutContentWrapper';
-import LocationIcon from '../../components/LocationIcon';
-import Sidebar from '../../components/Sidebar/Sidebar';
-import UserSearchSelect from '../../components/UserSearchSelect';
-import Location from '../../types/Location';
-import User from '../../types/User';
+import { useLocationLogs } from '@/api/location-logs';
+import { useLocations } from '@/api/locations';
+import Header from '@/components/Header/Header';
+import LargeCard from '@/components/LargeCard';
+import LayoutContent from '@/components/LayoutContent';
+import LayoutContentWrapper from '@/components/LayoutContentWrapper';
+import LocationIcon from '@/components/LocationIcon';
+import Sidebar from '@/components/Sidebar/Sidebar';
+import UserSearchSelect from '@/components/UserSearchSelect';
+import Location from '@/types/Location';
+import User from '@/types/User';
 
 const { RangePicker } = DatePicker;
 const { Option } = Select;

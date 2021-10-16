@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from 'react-query';
 
-import useAxios from '../../hooks/useAxios';
-import usePaginationQuery from '../../hooks/usePaginationQuery';
-import Beacon from '../../types/Beacon';
-import BeaconQuery from '../../types/BeaconQuery';
+import useAxios from '@/hooks/useAxios';
+import usePaginationQuery from '@/hooks/usePaginationQuery';
+import Beacon from '@/types/Beacon';
+import BeaconQuery from '@/types/BeaconQuery';
 
 export function useBeacons(query?: BeaconQuery) {
   return usePaginationQuery<Beacon>('/beacons', query);

@@ -3,12 +3,8 @@ import { useSetRecoilState } from 'recoil';
 
 import './Login.css';
 
-import {
-  accessTokenState,
-  refreshTokenState,
-  settingsState,
-} from '../../atoms';
-import useAxios from '../../hooks/useAxios';
+import { accessTokenState, refreshTokenState, settingsState } from '@/atoms';
+import useAxios from '@/hooks/useAxios';
 
 type LoginData = {
   serial: string;

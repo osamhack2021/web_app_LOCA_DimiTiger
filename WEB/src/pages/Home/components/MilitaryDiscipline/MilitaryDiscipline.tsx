@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil';
 
 import './MilitaryDiscipline.css';
 
-import { settingsState } from '../../../../atoms';
+import { settingsState } from '@/atoms';
 
 const MilitaryDiscipline = () => {
   const { militaryDiscipline } = useRecoilValue(settingsState);

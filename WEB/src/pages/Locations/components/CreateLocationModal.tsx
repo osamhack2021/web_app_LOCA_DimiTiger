@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Form, Modal } from 'antd';
 import styled from 'styled-components';
 
-import { useAddLocation } from '../../../api/locations';
-import LocationIcon from '../../../components/LocationIcon';
+import { useAddLocation } from '@/api/locations';
+import LocationIcon from '@/components/LocationIcon';
 
 const uiColumns = [
   {

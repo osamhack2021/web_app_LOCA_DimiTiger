@@ -3,9 +3,9 @@ import { CircleProps, ResponsiveCirclePacking } from '@nivo/circle-packing';
 
 import './LocationChart.css';
 
-import { useLocationLogs } from '../../../../api/location-logs';
-import { useLocations } from '../../../../api/locations';
-import Location from '../../../../types/Location';
+import { useLocationLogs } from '@/api/location-logs';
+import { useLocations } from '@/api/locations';
+import Location from '@/types/Location';
 
 interface LocationDatum extends Location {
   id: string;

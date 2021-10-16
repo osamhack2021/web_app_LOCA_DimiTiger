@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from 'react-query';
 
-import useAxios from '../../hooks/useAxios';
-import usePaginationQuery from '../../hooks/usePaginationQuery';
-import Notice from '../../types/Notice';
+import useAxios from '@/hooks/useAxios';
+import usePaginationQuery from '@/hooks/usePaginationQuery';
+import Notice from '@/types/Notice';
 
 export function useAddNotice() {
   const axios = useAxios();

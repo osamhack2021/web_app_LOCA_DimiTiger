@@ -6,7 +6,7 @@ import { useRecoilValue } from 'recoil';
 
 import './Header.css';
 
-import { settingsState } from '../../atoms';
+import { settingsState } from '@/atoms';
 
 const Header = () => {
   const [date, setDate] = useState(new Date());

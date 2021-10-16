@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
 
-import { accessTokenState, refreshTokenState, useLogout } from '../atoms';
+import { accessTokenState, refreshTokenState, useLogout } from '@/atoms';
 
 const BASE_URL =
   process.env.REACT_APP_API_URL || 'https://api.loca.kimjisub.me';

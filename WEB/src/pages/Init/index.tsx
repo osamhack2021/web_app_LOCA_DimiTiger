@@ -5,10 +5,10 @@ import { useRecoilState } from 'recoil';
 
 import './Init.css';
 
-import { useAddSetting } from '../../api/settings';
-import { settingsState } from '../../atoms';
-import useAxios from '../../hooks/useAxios';
-import Settings from '../../types/Settings';
+import { useAddSetting } from '@/api/settings';
+import { settingsState } from '@/atoms';
+import useAxios from '@/hooks/useAxios';
+import Settings from '@/types/Settings';
 
 const Init = () => {
   const { register, handleSubmit } = useForm();

@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Route } from 'react-router';
 import { useRecoilValue } from 'recoil';
 
-import { accessTokenState } from '../atoms';
+import { accessTokenState } from '@/atoms';
 
 const PublicRoutes: React.FC<{
   component: any;

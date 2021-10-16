@@ -3,10 +3,10 @@ import { Button, Form } from 'antd';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 
-import { useAddSetting } from '../../../api/settings';
-import { settingsState } from '../../../atoms';
-import useAxios from '../../../hooks/useAxios';
-import Settings from '../../../types/Settings';
+import { useAddSetting } from '@/api/settings';
+import { settingsState } from '@/atoms';
+import useAxios from '@/hooks/useAxios';
+import Settings from '@/types/Settings';
 
 const Information = () => {
   const [form] = Form.useForm();

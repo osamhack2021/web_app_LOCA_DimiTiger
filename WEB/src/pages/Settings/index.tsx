@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Header from '../../components/Header/Header';
-import LargeCard from '../../components/LargeCard';
-import LayoutContent from '../../components/LayoutContent';
-import LayoutContentWrapper from '../../components/LayoutContentWrapper';
-import Sidebar from '../../components/Sidebar/Sidebar';
-
 import Information from './components/Information';
 import MilitaryDiscipline from './components/MilitaryDiscipline';
 import Opensource from './components/OpenSource';
 import Team from './components/Team';
 import Weather from './components/Weather';
+
+import Header from '@/components/Header/Header';
+import LargeCard from '@/components/LargeCard';
+import LayoutContent from '@/components/LayoutContent';
+import LayoutContentWrapper from '@/components/LayoutContentWrapper';
+import Sidebar from '@/components/Sidebar/Sidebar';
 const Settings = () => {
   const history = useHistory();
   const [tab, setTab] = useState(1);

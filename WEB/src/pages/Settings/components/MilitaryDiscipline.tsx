@@ -3,9 +3,9 @@ import moment from 'moment';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 
-import { useAddSetting } from '../../../api/settings';
-import { settingsState } from '../../../atoms';
-import Settings from '../../../types/Settings';
+import { useAddSetting } from '@/api/settings';
+import { settingsState } from '@/atoms';
+import Settings from '@/types/Settings';
 const MilitaryDiscipline = () => {
   const [form] = Form.useForm();
   const [settings, setSettings] = useRecoilState(settingsState);

@@ -4,22 +4,22 @@ import { BrowserRouter } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { QueryParamProvider } from 'use-query-params';
 
-import { accessTokenState, settingsState, useLogout } from '../atoms';
-import useAxios from '../hooks/useAxios';
-import Beacons from '../pages/Beacons';
-import Home from '../pages/Home';
-import Init from '../pages/Init';
-import LocationLogs from '../pages/LocationLogs';
-import Locations from '../pages/Locations';
-import LocationDetail from '../pages/Locations/LocationDetail';
-import Login from '../pages/Login';
-import Settings from '../pages/Settings';
-import CurrentUsers from '../pages/Users';
-import UserDetail from '../pages/Users/UserDetail';
-import User from '../types/User';
-
 import PrivateRoutes from './PrivateRoutes';
 import PublicRoutes from './PublicRoutes';
+
+import { accessTokenState, settingsState, useLogout } from '@/atoms';
+import useAxios from '@/hooks/useAxios';
+import Beacons from '@/pages/Beacons';
+import Home from '@/pages/Home';
+import Init from '@/pages/Init';
+import LocationLogs from '@/pages/LocationLogs';
+import Locations from '@/pages/Locations';
+import LocationDetail from '@/pages/Locations/LocationDetail';
+import Login from '@/pages/Login';
+import Settings from '@/pages/Settings';
+import CurrentUsers from '@/pages/Users';
+import UserDetail from '@/pages/Users/UserDetail';
+import User from '@/types/User';
 
 const Router = () => {
   const axios = useAxios();

@@ -5,9 +5,9 @@ import {
   UseQueryResult,
 } from 'react-query';
 
-import PaginationData from '../types/PaginationData';
-
 import useAxios from './useAxios';
+
+import PaginationData from '@/types/PaginationData';
 
 function usePaginationQuery<
   TQueryFnData = unknown,

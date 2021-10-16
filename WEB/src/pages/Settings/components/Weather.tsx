@@ -2,9 +2,9 @@ import { Button, Form } from 'antd';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 
-import { useAddSetting } from '../../../api/settings';
-import { settingsState } from '../../../atoms';
-import Settings from '../../../types/Settings';
+import { useAddSetting } from '@/api/settings';
+import { settingsState } from '@/atoms';
+import Settings from '@/types/Settings';
 
 const Weather = () => {
   const [form] = Form.useForm();

@@ -2,8 +2,8 @@ import { useForm } from 'react-hook-form';
 
 import './Notice.css';
 
-import { useAddNotice, useNotices } from '../../../../api/notices';
-import Notice from '../../../../types/Notice';
+import { useAddNotice, useNotices } from '@/api/notices';
+import Notice from '@/types/Notice';
 
 interface NoticeElementProps {
   notice: Notice;

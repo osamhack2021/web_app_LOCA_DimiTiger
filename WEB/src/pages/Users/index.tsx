@@ -6,16 +6,16 @@ import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
 
 import './Users.css';
 
-import { useDeleteUser, useUsers } from '../../api/users';
-import Header from '../../components/Header/Header';
-import LargeCard from '../../components/LargeCard';
-import LayoutContent from '../../components/LayoutContent';
-import LayoutContentWrapper from '../../components/LayoutContentWrapper';
-import Sidebar from '../../components/Sidebar/Sidebar';
-import UserSearchSelect from '../../components/UserSearchSelect';
-import User from '../../types/User';
-
 import CreateUserModal from './components/CreateUserModal';
+
+import { useDeleteUser, useUsers } from '@/api/users';
+import Header from '@/components/Header/Header';
+import LargeCard from '@/components/LargeCard';
+import LayoutContent from '@/components/LayoutContent';
+import LayoutContentWrapper from '@/components/LayoutContentWrapper';
+import Sidebar from '@/components/Sidebar/Sidebar';
+import UserSearchSelect from '@/components/UserSearchSelect';
+import User from '@/types/User';
 
 const Users = () => {
   const history = useHistory();

@@ -8,10 +8,10 @@ import withParentSize, {
 
 import './LocationChart.css';
 
-import { useLocationLogs } from '../../../../api/location-logs';
-import { useLocations } from '../../../../api/locations';
-import Location from '../../../../types/Location';
-import User from '../../../../types/User';
+import { useLocationLogs } from '@/api/location-logs';
+import { useLocations } from '@/api/locations';
+import Location from '@/types/Location';
+import User from '@/types/User';
 
 interface Datum {
   location?: Location;

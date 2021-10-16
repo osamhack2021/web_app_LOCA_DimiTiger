@@ -1,8 +1,8 @@
 import { Form, Modal } from 'antd';
 import styled from 'styled-components';
 
-import { useAddUser } from '../../../api/users';
-import User from '../../../types/User';
+import { useAddUser } from '@/api/users';
+import User from '@/types/User';
 
 type ModalProps = {
   visible: boolean;
