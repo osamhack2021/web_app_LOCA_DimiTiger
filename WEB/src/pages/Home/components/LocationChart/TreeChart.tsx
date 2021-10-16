@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Group } from '@visx/group';
 import { hierarchy, Treemap, treemapBinary } from '@visx/hierarchy';
@@ -57,11 +57,7 @@ const Chart = ({
     [data],
   );
 
-  console.log(root);
-
-  useLayoutEffect(() => {
-    root.count();
-  }, [root]);
+  root.count();
 
   return (
     <svg width={width} height={height}>
