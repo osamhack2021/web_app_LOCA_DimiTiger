@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
+import { useRecoilState } from 'recoil';
 
 import './Header.css';
 
+import { settingState } from '../../atoms';
+
 const Header = () => {
   const [date, setDate] = useState(new Date());
+  const [setting] = useRecoilState(settingState);
 
   useEffect(() => {
     const interval = setInterval(() => setDate(new Date()), 1000);
@@ -16,10 +20,22 @@ const Header = () => {
   return (
     <header>
       <div id="belong">
-        <Link to="/">
-          <img id="belong_logo" src="/icons/25div.png" alt="logo" />
+        <Link
+          to="/"
+          style={{
+            display: 'flex',
+          }}>
+          <img
+            id="belong_logo"
+            src={
+              'https://api.loca.kimjisub.me/static/uploads/' +
+              setting.defaults.icon
+            }
+            alt="logo"
+          />
           <p className="belong_name">
-            70여단 <span>국사봉대대</span>
+            {setting.defaults.name.split(' ')[0]}{' '}
+            <span>{setting.defaults.name.split(' ')[1]}</span>
           </p>
         </Link>
       </div>
