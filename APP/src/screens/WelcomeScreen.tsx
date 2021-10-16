@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, {
   FadeIn,
@@ -30,7 +30,9 @@ const WelcomeScreen = () => {
   }));
 
   useEffect(() => {
-    color.value = withRepeat(withTiming(1, { duration: 5000 }), -1, true);
+    if (Platform.OS !== 'android') {
+      color.value = withRepeat(withTiming(1, { duration: 5000 }), -1, true);
+    }
   }, [color]);
 
   return (
