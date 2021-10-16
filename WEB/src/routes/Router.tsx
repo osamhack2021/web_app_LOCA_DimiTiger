@@ -57,7 +57,6 @@ const Router = () => {
     <BrowserRouter>
       <QueryParamProvider ReactRouterRoute={Route}>
         <Switch>
-          <PublicRoutes path="/init" restricted={true} component={Init} exact />
           <PublicRoutes
             path="/login"
             restricted={true}
@@ -65,6 +64,7 @@ const Router = () => {
             exact
           />
           <PrivateRoutes path="/" component={Home} exact />
+          <PrivateRoutes path="/init" component={Init} exact />
           <PrivateRoutes path="/location-logs" component={LocationLogs} exact />
           <PrivateRoutes path="/users" component={CurrentUsers} exact />
           <PrivateRoutes path="/users/:id" component={UserDetail} exact />

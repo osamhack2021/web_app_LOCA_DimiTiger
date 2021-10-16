@@ -1,23 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Redirect } from 'react-router';
+import { useRecoilState } from 'recoil';
 
+import { settingState } from '../../atoms';
 import Header from '../../components/Header/Header';
 import Sidebar from '../../components/Sidebar/Sidebar';
 
 import Dashboard from './components/Dashboard/Dashboard';
 
-class Home extends Component {
-  render() {
-    return (
-      <div
-        style={{
-          backgroundColor: '#f2f3f5',
-        }}>
-        <Header></Header>
-        <Dashboard></Dashboard>
-        <Sidebar></Sidebar>
-      </div>
-    );
-  }
-}
+const Home = () => {
+  const [settings] = useRecoilState(settingState);
+  return settings.defaults.name === '' ? (
+    <Redirect to="/init" />
+  ) : (
+    <div
+      style={{
+        backgroundColor: '#f2f3f5',
+      }}>
+      <Header></Header>
+      <Dashboard></Dashboard>
+      <Sidebar></Sidebar>
+    </div>
+  );
+};
 
 export default Home;

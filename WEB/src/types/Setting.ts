@@ -5,10 +5,11 @@ interface Setting {
     belong: string;
   };
   weather: {
+    location: string;
     temperature: number;
     temperatureIndex: number;
   };
-  militaryDiscipline: number;
+  militaryDiscipline: string;
   chartDesign: boolean;
 }
 export default Setting;

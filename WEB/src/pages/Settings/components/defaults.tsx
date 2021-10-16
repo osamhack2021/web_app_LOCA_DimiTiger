@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import { Button, Form } from 'antd';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 
 import { useAddSetting } from '../../../api/settings';
@@ -12,7 +12,6 @@ const Defaults = () => {
   const [form] = Form.useForm();
   const setSetting = useSetRecoilState(settingState);
   const [settings] = useRecoilState(settingState);
-  const settingsValue = useRecoilValue<Setting>(settingState);
   const [data, setData] = useState<{
     file: File | null;
     previewURL: string | ArrayBuffer | null;
@@ -71,7 +70,7 @@ const Defaults = () => {
         }}>
         <Label>부대명</Label>
         <Form.Item name="name">
-          <Input></Input>
+          <Input placeholder={settings.defaults.name} />
         </Form.Item>
         <Label>아이콘</Label>
         <label
@@ -96,7 +95,7 @@ const Defaults = () => {
           onClick={() => {
             form.submit();
           }}>
-          추가
+          설정
         </Button>
       </Form>
     </WrapperContent>
