@@ -1,5 +1,4 @@
 import {
-  QueryKey,
   useQuery as useQueryOriginal,
   UseQueryOptions,
   UseQueryResult,
@@ -15,7 +14,7 @@ function useQuery<
   path: string,
   params?: string | unknown,
   options?: Omit<
-    UseQueryOptions<TQueryFnData, TError, TData, QueryKey>,
+    UseQueryOptions<TQueryFnData, TError, TData, unknown[]>,
     'queryKey' | 'queryFn'
   >,
 ): UseQueryResult<TData, TError> {
@@ -25,7 +24,7 @@ function useQuery<
     [path, params],
     async () =>
       (
-        await axios.get(
+        await axios.get<TQueryFnData>(
           `${path}${isPathParam ? '/' + params : ''}`,
           isPathParam || !params ? {} : { params },
         )

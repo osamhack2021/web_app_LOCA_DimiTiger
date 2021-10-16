@@ -3,7 +3,11 @@ import { Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RouteProp } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  StackNavigationProp,
+  StackScreenProps,
+} from '@react-navigation/stack';
 import { useRecoilValue } from 'recoil';
 
 import RegisterDoneScreen from './screens/RegisterDoneScreen';
@@ -19,7 +23,10 @@ import SignUpScreen from '@/screens/SignUpScreen';
 import WelcomeScreen from '@/screens/WelcomeScreen';
 import User from '@/types/User';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack =
+  Platform.OS === 'android'
+    ? createStackNavigator<RootStackParamList>()
+    : createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
   const accessToken = useRecoilValue(accessTokenState);

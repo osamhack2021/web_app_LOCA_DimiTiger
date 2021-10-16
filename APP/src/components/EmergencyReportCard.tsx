@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import {
+  Platform,
   Pressable,
   StyleSheet,
   TextInput,
@@ -52,7 +53,10 @@ const EmergencyReportCard = () => {
   const { report, hasAdditionalReport, createReport, addReport } =
     useEmergencyReport();
   const [additionalText, setAdditionalText] = useState('');
-  const { style, layoutHandler } = useAnimatedHeight(194);
+  const { style, layoutHandler } = useAnimatedHeight(194, 0, [
+    report,
+    hasAdditionalReport,
+  ]);
   const color = useSharedValue(0);
   const gradientProps = useAnimatedProps(() => ({
     colors: [
@@ -60,6 +64,7 @@ const EmergencyReportCard = () => {
       interpolateColor(color.value, [0, 1], [colorReportEnd, colorReport]),
     ],
   }));
+  const nullAniamtedProps = useAnimatedProps(() => ({}));
 
   const pressInHandler = useCallback(() => {
     if (report) {
@@ -130,8 +135,14 @@ const EmergencyReportCard = () => {
             onPressIn={pressInHandler}
             onPressOut={pressOutHandler}>
             <AnimatedGradient
-              colors={[]}
-              animatedProps={gradientProps}
+              colors={
+                Platform.OS === 'android'
+                  ? [colorReportStart, colorReportEnd]
+                  : []
+              }
+              animatedProps={
+                Platform.OS === 'android' ? nullAniamtedProps : gradientProps
+              }
               style={styles.reportButton}>
               {/* Intended nasty code for animation */}
               {report && <ReportIcon />}

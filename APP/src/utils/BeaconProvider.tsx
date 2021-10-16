@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { AppState, DeviceEventEmitter, Platform } from 'react-native';
 import Beacons from 'react-native-beacons-manager';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilValueLoadable, useSetRecoilState } from 'recoil';
 
 import { useBeacons } from '@/api/beacons';
 import { useActiveLocationLog } from '@/api/location-logs';
-import { beaconState } from '@/atoms';
+import { accessTokenState, beaconState } from '@/atoms';
 import usePermissions from '@/hooks/usePermissions';
 
 type BeaconProviderProps = {
@@ -119,4 +119,17 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
   return <>{children}</>;
 };
 
-export default BeaconProvider;
+export default function BeaconProviderWrapper({
+  children,
+}: BeaconProviderProps) {
+  const { state, contents } = useRecoilValueLoadable(accessTokenState);
+  return (
+    <>
+      {state !== 'loading' && !!contents ? (
+        <BeaconProvider>{children}</BeaconProvider>
+      ) : (
+        children
+      )}
+    </>
+  );
+}

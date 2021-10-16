@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
   },
   emergencyText: {
+    color: colorWhite,
     fontWeight: 'bold',
   },
 });

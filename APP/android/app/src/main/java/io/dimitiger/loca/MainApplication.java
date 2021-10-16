@@ -58,8 +58,6 @@ public class MainApplication extends Application implements ReactApplication {
         SoLoader.init(this, /* native exopackage */ false);
         initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
         RNBeacon.init(this);
-        BeaconManager.setBeaconSimulator(new TimedBeaconSimulator());
-        ((TimedBeaconSimulator) BeaconManager.getBeaconSimulator()).createTimedSimulatedBeacons();
     }
 
     /**

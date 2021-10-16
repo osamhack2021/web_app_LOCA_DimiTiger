@@ -4,17 +4,27 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Beacon from '@/types/Beacon';
 
-export default async function ({ identifier, state }: BackgroundMonitorEvent) {
+export default async function ({ identifier, event }: BackgroundMonitorEvent) {
   const beaconsJSON = await AsyncStorage.getItem('beacons');
   const currentLocation = await AsyncStorage.getItem('currentLocation');
   const beacons: Beacon[] = JSON.parse(beaconsJSON || '[]');
   const beacon = beacons.find(b => b.region.identifier === identifier);
 
-  if (!beacon) {
+  if (!beacon || !currentLocation) {
     return;
   }
 
-  const isEnter = state === 'inside';
+  let isEnter = false;
+  switch (event) {
+    case 'enter':
+      isEnter = true;
+      break;
+    case 'exit':
+      isEnter = false;
+      break;
+    default:
+      return;
+  }
 
   if (
     (isEnter && currentLocation === beacon.location._id) ||
@@ -31,6 +41,7 @@ export default async function ({ identifier, state }: BackgroundMonitorEvent) {
   await notifee.displayNotification({
     title: '위치 탐지 알림',
     body: `${beacon.location.name}에${isEnter ? ' 진입' : '서 이탈'}했습니다.`,
+    id: isEnter ? 'enter' : 'exit',
     data: {
       location: isEnter ? beacon.location._id : '',
     },

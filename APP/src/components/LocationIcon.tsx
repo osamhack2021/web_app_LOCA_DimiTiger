@@ -8,7 +8,7 @@ import axios from 'axios';
 import { colorEllipsis } from '@/constants/colors';
 
 async function getSvg(icon: string) {
-  const { data } = await axios.get(
+  const { data } = await axios.get<string>(
     `https://api.loca.kimjisub.me/static/icons/ic_${icon}.svg`,
   );
   return data;

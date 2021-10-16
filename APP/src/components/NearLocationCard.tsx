@@ -1,11 +1,6 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import Animated, {
-  FadeInDown,
-  FadeInLeft,
-  FadeInUp,
-  FadeOutRight,
-} from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useLinkTo } from '@react-navigation/native';
 import { useRecoilValue } from 'recoil';
@@ -25,29 +20,24 @@ const NearLocationCard = () => {
   const linkTo = useLinkTo();
   const { data: locationLog } = useActiveLocationLog();
   const visibleBeacons = useRecoilValue(beaconState);
-  const { style, height } = useAnimatedHeight(0, 300);
+  const { style, height } = useAnimatedHeight(0, 0, [visibleBeacons]);
 
   useEffect(() => {
-    height.value = (visibleBeacons.length + 1) * 40;
+    const nextHeight = (visibleBeacons.length + 1) * 40;
+    height.value = nextHeight;
   }, [visibleBeacons.length, height]);
 
   return (
     <>
       {visibleBeacons.length > 0 && (
-        <Card
-          style={styles.container}
-          entering={FadeInLeft}
-          exiting={FadeOutRight}>
+        <Card style={styles.container}>
           <View style={styleCardHeaderContainer}>
             <Text style={styles.titleText}>근처 위치</Text>
           </View>
           <View style={styleDivider} />
           <Animated.View style={[styles.locationContainer, style]}>
-            {visibleBeacons.map((beacon, index) => (
-              <Animated.View
-                entering={FadeInUp.delay(600 + index * 50)}
-                exiting={FadeInDown}
-                key={beacon.region.identifier}>
+            {visibleBeacons.map(beacon => (
+              <Animated.View key={beacon.region.identifier}>
                 <TouchableOpacity
                   onPress={() => linkTo(`/location-log/${beacon.location._id}`)}
                   style={styles.locationItem}>

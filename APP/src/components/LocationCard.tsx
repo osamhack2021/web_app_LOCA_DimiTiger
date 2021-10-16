@@ -36,7 +36,7 @@ const LocationCard = () => {
   const emptyAnimProps = useAnimatedProps(() => ({
     progress: emptyAnim.value,
   }));
-  const { style, layoutHandler } = useAnimatedHeight(190);
+  const { style, layoutHandler } = useAnimatedHeight(190, 0, [changeMode]);
   useEffect(() => {
     if (!changeMode && !locationLog && !isLoading) {
       emptyAnim.value = withRepeat(withTiming(1, { duration: 6000 }), -1);
@@ -58,12 +58,11 @@ const LocationCard = () => {
       <Animated.View style={[style]}>
         {changeMode ? (
           <View onLayout={layoutHandler}>
-            <View />
             <View style={styles.locationChipContainer}>
               {locations &&
                 locations.map((location, index) => (
                   <Animated.View
-                    entering={FadeInUp.delay(300 + index * 50)}
+                    entering={FadeInUp.delay(index * 50)}
                     key={location._id}>
                     <TouchableOpacity
                       style={styles.locationChip}
@@ -82,7 +81,7 @@ const LocationCard = () => {
         ) : locationLog ? (
           <Animated.View
             style={styles.locationContainer}
-            entering={FadeIn.delay(300)}
+            entering={FadeIn}
             onLayout={layoutHandler}>
             <LocationIcon
               width="100"
@@ -119,9 +118,8 @@ const LocationCard = () => {
               source={require('@assets/jsons/404.json')}
               animatedProps={emptyAnimProps}
             />
-            <Text style={styles.nullLocationText}>
-              아직 체크인한 위치가 없습니다.
-            </Text>
+            <Text style={styles.locationText}>정보 없음</Text>
+            <Text>아직 체크인한 위치가 없습니다.</Text>
           </Animated.View>
         )}
       </Animated.View>
@@ -162,10 +160,6 @@ const styles = StyleSheet.create({
   },
   locationChipText: {
     fontWeight: 'bold',
-  },
-  nullLocationText: {
-    fontSize: 18,
-    marginTop: 20,
   },
 });
 
