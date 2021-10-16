@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { QueryParamProvider } from 'use-query-params';
 
-import { accessTokenState } from '../atoms';
+import { accessTokenState, settingsState, useLogout } from '../atoms';
 import useAxios from '../hooks/useAxios';
 import Beacons from '../pages/Beacons';
 import Home from '../pages/Home';
@@ -23,7 +23,9 @@ import PublicRoutes from './PublicRoutes';
 
 const Router = () => {
   const axios = useAxios();
+  const logout = useLogout();
   const accessToken = useRecoilValue(accessTokenState);
+  const setSettings = useSetRecoilState(settingsState);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -36,10 +38,15 @@ const Router = () => {
       .get<User>('/users/me')
       .then(({ data }) => {
         if (!data.isAdmin) {
+          logout();
         }
+        return axios.get('/settings/current');
+      })
+      .then(({ data }) => {
+        setSettings(data);
       })
       .finally(() => setLoading(false));
-  }, [accessToken, axios]);
+  }, [accessToken, axios, logout, setSettings]);
 
   if (loading) {
     return (

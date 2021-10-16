@@ -38,7 +38,6 @@ export const settingsState = atom({
     militaryDiscipline: getFormatDate(new Date()),
     chartDesign: true,
   },
-  effects_UNSTABLE: [localStorageEffect('settingsState')],
 });
 
 export const useLogout = () => {
