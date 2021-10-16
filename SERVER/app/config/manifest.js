@@ -108,6 +108,7 @@ module.exports = {
 							jwt: [],
 						},
 					],
+					expanded: 'none',
 					documentationRouteTags: ['swaggerui'],
 				},
 			},
