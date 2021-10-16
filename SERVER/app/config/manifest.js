@@ -83,7 +83,7 @@ module.exports = {
 			{
 				plugin: 'hapi-socket.io',
 				options: {
-					//auth: 'jwt',
+					auth: 'jwt',
 					socketoptions: {
 						//Adicionar las opciones necesarias, el plugin tiene las opciones por defecto de socket.io las cuales puede ver en https://socket.io/docs/server-api/#new-server-httpserver-options
 					},
