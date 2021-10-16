@@ -18,6 +18,7 @@
 		"argon2": "^0.28.2",
 		"dotenv": "^10.0.0",
 		"glob": "^7.1.7",
+		"got": "^11.8.2",
 		"handlebars": "^4.7.7",
 		"hapi-auth-jwt2": "^10.2.0",
 		"hapi-cors": "^1.0.3",
