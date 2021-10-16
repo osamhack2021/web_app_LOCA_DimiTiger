@@ -79,6 +79,8 @@ exports.registerUsers = async ({ serial, name, password }, fields) => {
 		else user[key] = fields[key];
 	}
 
+	user.registered = true;
+
 	await user.save();
 
 	return user;
