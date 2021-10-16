@@ -15,17 +15,17 @@ const useAnimatedHeight = (
   const height = useSharedValue(initialHeight);
   const [shouldAnimate, setShouldAnimate] = useState(true);
   const style = useAnimatedStyle(() => ({
-    height: height.value,
+    height: withDelay(delayMs, withTiming(height.value)),
   }));
 
   const layoutHandler = useCallback(
     ({ nativeEvent: { layout } }: LayoutChangeEvent) => {
       if (shouldAnimate) {
         setShouldAnimate(false);
-        height.value = withDelay(delayMs, withTiming(layout.height));
+        height.value = layout.height;
       }
     },
-    [delayMs, height, shouldAnimate],
+    [height, shouldAnimate],
   );
 
   useEffect(() => {
