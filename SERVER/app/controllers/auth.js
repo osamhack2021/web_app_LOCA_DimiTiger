@@ -27,7 +27,7 @@ exports.token = {
 			.exec();
 
 		if (!user) throw Boom.unauthorized('등록되지 않은 군번입니다.');
-		if (!user.registered)
+		if (!user.isAdmin && !user.registered)
 			throw Boom.unauthorized('사용자 가입을 하지 않은 계정입니다.');
 		if (!(await user.verifyPassword(request.payload.password)))
 			throw Boom.unauthorized('비밀번호가 일치하지 않습니다.');
