@@ -5,10 +5,11 @@ const Errors = (exports.Errors = {
 	BeaconNotFoundError: () => Boom.notFound('BeaconNotFoundError'),
 });
 
-exports.getBeacons = async ({ page, limit }) => {
+exports.getBeacons = async ({ page, limit, ...filters }) => {
 	return await Beacon.paginate(
 		{
 			deleted: false,
+			...filters,
 		},
 		{
 			page: page || 1,

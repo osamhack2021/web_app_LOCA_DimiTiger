@@ -22,7 +22,7 @@ module.exports = {
 				plugin: 'hapi-cors',
 				options: {
 					methods: ['POST, GET, OPTIONS, PUT, DELETE'],
-				}
+				},
 			},
 			{
 				// Static file and directory handlers for hapi.js.
@@ -32,7 +32,6 @@ module.exports = {
 				// Template rendering support for hapi.js.
 				plugin: '@hapi/vision',
 			},
-
 			{
 				name: 'static',
 				register: async (server, options) => {
@@ -81,11 +80,10 @@ module.exports = {
 					});
 				},
 			},
-
 			{
 				plugin: 'hapi-socket.io',
 				options: {
-					auth: 'jwt',
+					//auth: 'jwt',
 					socketoptions: {
 						//Adicionar las opciones necesarias, el plugin tiene las opciones por defecto de socket.io las cuales puede ver en https://socket.io/docs/server-api/#new-server-httpserver-options
 					},

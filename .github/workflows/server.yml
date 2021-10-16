@@ -46,6 +46,13 @@ jobs:
             cd ..
             cd ..
             rm -rf ${{ env.DIR_NAME }}
+
+      - name: Make .env
+        run: |
+            echo "${SERVER_ENV_BASE64}" | base64 -d >> SERVER/.env
+        shell: bash
+        env:
+          SERVER_ENV_BASE64 : ${{secrets.SERVER_ENV_BASE64}}
             
       - name: Upload Repository
         uses: appleboy/scp-action@master

@@ -1,3 +1,4 @@
+# [Base]
 FROM mhart/alpine-node:14 AS base
 ENV WORKDIR=/usr/src/app
 WORKDIR $WORKDIR
@@ -8,6 +9,7 @@ COPY yarn.lock ./
 RUN yarn
 # install --production --frozen-lockfile --non-interactive
 
+# [Realease]
 FROM base AS release
 
 COPY . .

@@ -40,7 +40,14 @@ exports.createLocationLog = {
 	},
 	handler: async (req, h) => {
 		try {
-			return await LocationLogService.createLocationLog(req.payload);
+			const locationLog = await LocationLogService.createLocationLog(
+				req.payload
+			);
+
+			const io = req.server.plugins['hapi-socket.io'].io;
+			io.sockets.emit('location-logs', { added: [locationLog] });
+
+			return locationLog;
 		} catch (err) {
 			if (Boom.isBoom(err)) throw err;
 			throw Boom.internal(err);

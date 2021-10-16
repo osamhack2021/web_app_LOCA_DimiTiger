@@ -10,6 +10,7 @@ exports.getBeacons = {
 		query: Joi.object({
 			page: Joi.number().description('페이지'),
 			limit: Joi.number().description('가져올 개수'),
+			locationId: Joi.string().description('위치 _id'),
 		}),
 	},
 	handler: async (req, h) => {

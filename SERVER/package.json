@@ -6,7 +6,8 @@
 	"scripts": {
 		"start": "node index.js",
 		"live": "nodemon",
-		"test": "mocha"
+		"test": "mocha",
+		"docker:start": "docker-compose up -d"
 	},
 	"dependencies": {
 		"@hapi/glue": "^8.0.0",

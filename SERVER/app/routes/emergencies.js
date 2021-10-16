@@ -1,5 +1,5 @@
 exports.plugin = {
-	name: 'routes_emergencys',
+	name: 'routes_emergencies',
 	register: async (server, options) => {
 		const Controllers = {
 			emergency: require('../controllers/emergency'),
