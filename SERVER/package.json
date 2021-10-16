@@ -30,6 +30,7 @@
 		"mongoose-paginate-v2": "^1.4.2",
 		"ms": "^3.0.0-canary.1",
 		"node-graceful": "^3.1.0",
+		"openweather-apis": "^4.4.2",
 		"pino": "^6.13.2",
 		"pino-pretty": "^7.0.0"
 	},
