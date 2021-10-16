@@ -41,6 +41,7 @@ export default async function ({ identifier, event }: BackgroundMonitorEvent) {
   await notifee.displayNotification({
     title: '위치 탐지 알림',
     body: `${beacon.location.name}에${isEnter ? ' 진입' : '서 이탈'}했습니다.`,
+    id: isEnter ? 'enter' : 'exit',
     data: {
       location: isEnter ? beacon.location._id : '',
     },
