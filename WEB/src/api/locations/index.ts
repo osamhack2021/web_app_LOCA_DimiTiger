@@ -2,11 +2,16 @@ import { useMutation, useQueryClient } from 'react-query';
 
 import useAxios from '../../hooks/useAxios';
 import usePaginationQuery from '../../hooks/usePaginationQuery';
+import useQuery from '../../hooks/useQuery';
 import Location from '../../types/Location';
 import UserQuery from '../../types/UserQuery';
 
 export function useLocations(query?: UserQuery) {
   return usePaginationQuery<Location>('/locations', query);
+}
+
+export function useLocation(id: string) {
+  return useQuery<Location>('/locations', id);
 }
 
 export function useAddLocation() {

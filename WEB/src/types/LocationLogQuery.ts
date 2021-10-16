@@ -1,6 +1,6 @@
 interface LocationLogQuery {
   location?: string;
-  user?: object;
+  user?: string;
   rangeStart?: Date;
   rangeEnd?: Date;
   page?: number;

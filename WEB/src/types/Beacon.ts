@@ -1,6 +1,9 @@
+import Location from './Location';
+
 interface Beacon {
   _id: string;
-  region?: {
+  location: Location;
+  region: {
     uuid: string;
     major: number;
     minor: number;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './Sidebar.css';
@@ -8,14 +8,13 @@ import { useLogout } from '../../atoms';
 interface IProps {
   imgSrc: string;
   eleName: string;
-  hover: boolean;
   link: string;
 }
 
 const SidebarComponent = (props: IProps) => {
   return (
     <Link to={props.link}>
-      <div className={`sidebar_item ${props.hover && ' flexStart'}`}>
+      <div className="sidebar_item">
         <img src={props.imgSrc} alt="" />
         <div className="sidebar_item_name">{props.eleName}</div>
       </div>
@@ -24,62 +23,56 @@ const SidebarComponent = (props: IProps) => {
 };
 
 const Sidebar = () => {
-  const [hover, setHover] = useState(false);
   const logout = useLogout();
   const sidebarMenu = [
     {
-      imgSrc: './icons/sidebar_ico_home.svg',
+      imgSrc: '/icons/sidebar_ico_home.svg',
       eleName: '홈',
       link: '/',
     },
     {
-      imgSrc: './icons/sidebar_ico_search.svg',
+      imgSrc: '/icons/sidebar_ico_search.svg',
       eleName: '유동병력 검색',
-      link: '/search',
+      link: '/location-logs',
     },
     {
-      imgSrc: './icons/sidebar_ico_add_user.svg',
+      imgSrc: '/icons/sidebar_ico_add_user.svg',
       eleName: '인원 현황',
       link: '/users',
     },
     {
-      imgSrc: './icons/sidebar_ico_users.svg',
+      imgSrc: '/icons/sidebar_ico_users.svg',
       eleName: '장소 현황',
       link: '/locations',
     },
     {
-      imgSrc: './icons/sidebar_ico_worker.svg',
-      eleName: '근무자 등록',
-      link: '/',
+      imgSrc: '/icons/sidebar_ico_beacon.svg',
+      eleName: '비콘 현황',
+      link: '/beacons',
     },
     {
-      imgSrc: './icons/sidebar_ico_setting.svg',
+      imgSrc: '/icons/sidebar_ico_setting.svg',
       eleName: '설정',
-      link: '/',
-    },
-    {
-      imgSrc: '/icons/sidebar_ico_logout.svg',
-      eleName: '로그아웃',
-      link: '/',
+      link: '/settings',
     },
   ];
 
   return (
-    <div
-      id="sidebar"
-      onMouseOver={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}>
+    <div id="sidebar">
       {sidebarMenu.map((menu, i) => {
         return (
           <SidebarComponent
             imgSrc={menu.imgSrc}
             eleName={menu.eleName}
-            hover={hover}
             link={menu.link}
             key={i}
           />
         );
       })}
+      <div className="sidebar_item" onClick={logout}>
+        <img src="/icons/sidebar_ico_logout.svg" alt="" />
+        <div className="sidebar_item_name">로그아웃</div>
+      </div>
     </div>
   );
 };

@@ -6,9 +6,11 @@ import CardHeader from './CardHeader';
 
 interface ILargeCard {
   title: string;
-  history: History;
-  headerComponent: React.ReactNode;
+  history?: History;
+  headerComponent?: React.ReactNode;
   children: React.ReactNode;
+  style?: React.CSSProperties;
+  bodyStyle?: React.CSSProperties;
 }
 
 const LargeCard = ({
@@ -16,19 +18,23 @@ const LargeCard = ({
   history,
   headerComponent,
   children,
+  style,
+  bodyStyle,
 }: ILargeCard) => (
-  <CardContainer style={{ flex: 1 }}>
+  <CardContainer style={style || { width: '100%' }}>
     <CardHeader>
-      <img
-        src="./icons/backspace_arrow.svg"
-        alt=""
-        onClick={() => history.goBack()}
-      />
+      {history && (
+        <img
+          src="/icons/backspace_arrow.svg"
+          alt=""
+          onClick={() => history.goBack()}
+        />
+      )}
       <h1>{title}</h1>
       <div style={{ flex: 1 }} />
       {headerComponent}
     </CardHeader>
-    <CardBody>{children}</CardBody>
+    <CardBody style={bodyStyle || { width: '100%' }}>{children}</CardBody>
   </CardContainer>
 );
 

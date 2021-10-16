@@ -15,6 +15,24 @@ export const refreshTokenState = atom({
   effects_UNSTABLE: [localStorageEffect('refreshTokenState')],
 });
 
+export const settingState = atom({
+  key: 'settingState',
+  default: {
+    defaults: {
+      name: '',
+      icon: '1634306266203_loca_icon.svg',
+      belong: '',
+    },
+    weather: {
+      temperature: 0,
+      temperatureIndex: 0,
+    },
+    militaryDiscipline: 0,
+    chartDesign: true,
+  },
+  effects_UNSTABLE: [localStorageEffect('settingState')],
+});
+
 export const useLogout = () => {
   const history = useHistory();
   const resetAccessToken = useResetRecoilState(accessTokenState);
