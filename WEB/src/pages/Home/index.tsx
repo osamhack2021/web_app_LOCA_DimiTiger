@@ -10,7 +10,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 
 const Home = () => {
   const { information } = useRecoilValue(settingsState);
-  return information.name === '' ? (
+  return !information || information.name === '' ? (
     <Redirect to="/init" />
   ) : (
     <div

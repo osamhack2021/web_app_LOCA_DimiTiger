@@ -31,12 +31,11 @@ const Init = () => {
   const addSetting = useAddSetting();
 
   const initialize = async ({ branch, name }: Settings['information']) => {
-    console.log(name);
     const formData = new FormData();
     if (data.file != null) {
       formData.append('file', data.file);
       fileUploader(formData).then((filename: string) => {
-        const tempSetting: Settings = {
+        const newSettings: Settings = {
           information: {
             name,
             icon: filename,
@@ -46,8 +45,8 @@ const Init = () => {
           militaryDiscipline: settings.militaryDiscipline,
           chartDesign: settings.chartDesign,
         };
-        setSettings(tempSetting);
-        addSetting.mutate(settings);
+        setSettings(newSettings);
+        addSetting.mutate(newSettings);
         history.push('/');
       });
     }

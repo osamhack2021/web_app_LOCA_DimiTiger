@@ -29,7 +29,7 @@ const Router = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!accessToken) {
+    if (!accessToken || !loading) {
       setLoading(false);
       return;
     }
@@ -43,10 +43,10 @@ const Router = () => {
         return axios.get('/settings/current');
       })
       .then(({ data }) => {
-        setSettings(data);
+        setSettings(data.data);
       })
       .finally(() => setLoading(false));
-  }, [accessToken, axios, logout, setSettings]);
+  }, [accessToken, axios, loading, logout, setSettings]);
 
   if (loading) {
     return (
