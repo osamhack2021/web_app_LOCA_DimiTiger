@@ -30,5 +30,5 @@ exports.getCurrentSetting = async () => {
 };
 
 exports.createSetting = async ({ creator, data }) => {
-	return await new Setting({ creator, data }).save().exec();
+	return await new Setting({ creator, data }).save();
 };
