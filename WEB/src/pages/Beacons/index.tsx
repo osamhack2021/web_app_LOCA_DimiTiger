@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Button, Form, Select, Table } from 'antd';
+import { Button, Form, Popconfirm, Select, Table } from 'antd';
 import styled from 'styled-components';
 import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
 
 import { useBeacons, useDeleteBeacon } from '../../api/beacons';
 import { useLocations } from '../../api/locations';
-import AddButton from '../../components/AddButton';
-import DeleteButton from '../../components/DeleteButton';
 import Header from '../../components/Header/Header';
 import LargeCard from '../../components/LargeCard';
 import LayoutContent from '../../components/LayoutContent';
 import LayoutContentWrapper from '../../components/LayoutContentWrapper';
+import LocationIcon from '../../components/LocationIcon';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import Beacon from '../../types/Beacon';
 import Location from '../../types/Location';
 
 import CreateBeaconModal from './components/CreateBeaconModal';
@@ -39,10 +37,7 @@ const Beacons = () => {
 
   const deleteBeaconMutation = useDeleteBeacon();
 
-  const deleteBeacon = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    const button: HTMLButtonElement = event.currentTarget;
-    const _id: Beacon['_id'] = button.name;
+  const deleteBeacon = (_id: string) => {
     deleteBeaconMutation.mutate({ _id });
   };
 
@@ -77,10 +72,13 @@ const Beacons = () => {
                     ))}
                   </Select>
                 </Form.Item>
-                <Button type="primary" htmlType="submit">
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  style={{ marginRight: 15 }}>
                   검색
                 </Button>
-                <AddButton onClick={() => setModalVisible(true)}></AddButton>
+                <Button onClick={() => setModalVisible(true)}>추가</Button>
               </Form>
             </ToolkitWrap>
           }>
@@ -93,8 +91,15 @@ const Beacons = () => {
                 dataIndex: 'location',
                 key: 'location',
                 width: '15%',
-                render: ({ _id, name }: Location) => (
-                  <Link to={`/locations?id=${_id}`}>{name}</Link>
+                render: (location: Location) => (
+                  <>
+                    <LocationIcon
+                      icon={location.ui?.icon}
+                      style={{ height: 20, marginRight: 10 }}
+                    />
+                    <Link
+                      to={`/locations/${location._id}`}>{`${location.name}`}</Link>
+                  </>
                 ),
               },
               {
@@ -116,14 +121,18 @@ const Beacons = () => {
                 width: '15%',
               },
               {
-                title: '',
+                title: '동작',
                 dataIndex: '_id',
                 key: 'delete',
                 width: '5%',
-                render: (_id: Location['_id']) => (
-                  <DeleteButton
-                    onClick={deleteBeacon}
-                    name={_id}></DeleteButton>
+                render: (_id: string) => (
+                  <Popconfirm
+                    title="정말로 삭제하시겠습니까?"
+                    onConfirm={() => deleteBeacon(_id)}
+                    okText="확인"
+                    cancelText="취소">
+                    <Button danger>삭제</Button>
+                  </Popconfirm>
                 ),
               },
             ]}

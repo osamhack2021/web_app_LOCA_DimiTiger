@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Button, Form, Table } from 'antd';
+import { Button, Form, Popconfirm, Table } from 'antd';
 import styled from 'styled-components';
 import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
 
 import { useBeacons } from '../../api/beacons';
 import { useDeleteLocation, useLocations } from '../../api/locations';
-import DeleteButton from '../../components/DeleteButton';
 import Header from '../../components/Header/Header';
 import LargeCard from '../../components/LargeCard';
 import LayoutContent from '../../components/LayoutContent';
@@ -35,10 +34,7 @@ const Locations = () => {
 
   const deleteLocationMutation = useDeleteLocation();
 
-  const deleteLocation = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    const button: HTMLButtonElement = event.currentTarget;
-    const _id: Location['_id'] = button.name;
+  const deleteLocation = (_id: string) => {
     deleteLocationMutation.mutate({ _id });
   };
 
@@ -104,14 +100,18 @@ const Locations = () => {
                 ),
               },
               {
-                title: '',
+                title: '동작',
                 dataIndex: '_id',
                 key: '_id',
                 width: '5%',
-                render: (_id: Location['_id']) => (
-                  <DeleteButton
-                    onClick={deleteLocation}
-                    name={_id}></DeleteButton>
+                render: (_id: string) => (
+                  <Popconfirm
+                    title="정말로 삭제하시겠습니까?"
+                    onConfirm={() => deleteLocation(_id)}
+                    okText="확인"
+                    cancelText="취소">
+                    <Button danger>삭제</Button>
+                  </Popconfirm>
                 ),
               },
             ]}

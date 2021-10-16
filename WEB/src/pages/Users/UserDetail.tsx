@@ -1,6 +1,15 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { Button, Col, Descriptions, Form, Row, Space, Timeline } from 'antd';
+import {
+  Button,
+  Col,
+  Descriptions,
+  Form,
+  Popconfirm,
+  Row,
+  Space,
+  Timeline,
+} from 'antd';
 import { format } from 'date-fns';
 
 import { useLocationLogs } from '../../api/location-logs';
@@ -11,7 +20,6 @@ import LayoutContent from '../../components/LayoutContent';
 import LayoutContentWrapper from '../../components/LayoutContentWrapper';
 import ImageProvider from '../../components/LocationIcon';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import User from '../../types/User';
 
 const UserDetail = () => {
   const history = useHistory();
@@ -24,11 +32,9 @@ const UserDetail = () => {
 
   const deleteUserMutation = useDeleteUser();
 
-  const deleteUser = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    const button: HTMLButtonElement = event.currentTarget;
-    const _id: User['_id'] = button.name;
-    deleteUserMutation.mutate({ _id });
+  const deleteUser = () => {
+    deleteUserMutation.mutate({ _id: id });
+    history.push('/users');
   };
 
   return (
@@ -42,9 +48,13 @@ const UserDetail = () => {
             headerComponent={
               <Space>
                 <Button onClick={() => {}}>수정</Button>
-                <Button onClick={deleteUser} danger>
-                  삭제
-                </Button>
+                <Popconfirm
+                  title="정말로 삭제하시겠습니까?"
+                  onConfirm={deleteUser}
+                  okText="확인"
+                  cancelText="취소">
+                  <Button danger>삭제</Button>
+                </Popconfirm>
               </Space>
             }>
             <Descriptions

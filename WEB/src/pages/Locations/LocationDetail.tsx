@@ -1,18 +1,25 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { Button, Col, Descriptions, Form, Row, Space, Timeline } from 'antd';
+import {
+  Button,
+  Col,
+  Descriptions,
+  Form,
+  Popconfirm,
+  Row,
+  Space,
+  Timeline,
+} from 'antd';
 import { format } from 'date-fns';
 
 import { useLocationLogs } from '../../api/location-logs';
-import { useLocation } from '../../api/locations';
-import { useDeleteUser } from '../../api/users';
+import { useDeleteLocation, useLocation } from '../../api/locations';
 import Header from '../../components/Header/Header';
 import LargeCard from '../../components/LargeCard';
 import LayoutContent from '../../components/LayoutContent';
 import LayoutContentWrapper from '../../components/LayoutContentWrapper';
 import LocationIcon from '../../components/LocationIcon';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import User from '../../types/User';
 
 const UserDetail = () => {
   const history = useHistory();
@@ -23,13 +30,11 @@ const UserDetail = () => {
     location: id,
   });
 
-  const deleteUserMutation = useDeleteUser();
+  const deleteLocationMutation = useDeleteLocation();
 
-  const deleteUser = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    const button: HTMLButtonElement = event.currentTarget;
-    const _id: User['_id'] = button.name;
-    deleteUserMutation.mutate({ _id });
+  const deleteLocation = () => {
+    deleteLocationMutation.mutate({ _id: id });
+    history.push('/locations');
   };
 
   return (
@@ -43,9 +48,13 @@ const UserDetail = () => {
             headerComponent={
               <Space>
                 <Button onClick={() => {}}>수정</Button>
-                <Button onClick={() => {}} danger>
-                  삭제
-                </Button>
+                <Popconfirm
+                  title="정말로 삭제하시겠습니까?"
+                  onConfirm={deleteLocation}
+                  okText="확인"
+                  cancelText="취소">
+                  <Button danger>삭제</Button>
+                </Popconfirm>
               </Space>
             }>
             <Descriptions

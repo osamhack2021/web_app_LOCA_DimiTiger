@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Button, Form, Input, Table } from 'antd';
+import { Button, Form, Popconfirm, Table } from 'antd';
 import styled from 'styled-components';
 import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
 
 import './Users.css';
 
 import { useDeleteUser, useUsers } from '../../api/users';
-import DeleteButton from '../../components/DeleteButton';
 import Header from '../../components/Header/Header';
 import LargeCard from '../../components/LargeCard';
 import LayoutContent from '../../components/LayoutContent';
 import LayoutContentWrapper from '../../components/LayoutContentWrapper';
 import Sidebar from '../../components/Sidebar/Sidebar';
+import UserSearchSelect from '../../components/UserSearchSelect';
 import User from '../../types/User';
 
 import CreateUserModal from './components/CreateUserModal';
-
-const { Search } = Input;
 
 const Users = () => {
   const history = useHistory();
@@ -36,10 +34,7 @@ const Users = () => {
 
   const deleteUserMutation = useDeleteUser();
 
-  const deleteUser = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    const button: HTMLButtonElement = event.currentTarget;
-    const _id: User['_id'] = button.name;
+  const deleteUser = (_id: string) => {
     deleteUserMutation.mutate({ _id });
   };
 
@@ -54,16 +49,19 @@ const Users = () => {
             <ToolkitWrap>
               <Form
                 form={form}
-                onFinish={({ page, limit }) => {
-                  setQuery(
-                    {
-                      page,
-                      limit,
-                    },
-                    'replaceIn',
-                  );
+                onFinish={({ user }) => {
+                  history.push(`/users/${user}`);
                 }}
                 layout="inline">
+                <Form.Item name="user">
+                  <UserSearchSelect />
+                </Form.Item>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  style={{ marginRight: 15 }}>
+                  검색
+                </Button>
                 <Button onClick={() => setModalVisible(true)}>추가</Button>
               </Form>
             </ToolkitWrap>
@@ -91,34 +89,36 @@ const Users = () => {
                 dataIndex: 'rank',
                 key: 'rank',
                 width: '10%',
-                render: (rank: User['rank']) => <>{rank}</>,
               },
               {
                 title: '이메일',
                 dataIndex: 'email',
                 key: 'email',
-                render: (email: User['email']) => <>{email}</>,
               },
               {
                 title: '전화번호',
                 dataIndex: 'phone',
                 key: 'phone',
-                render: (phone: User['phone']) => <>{phone}</>,
               },
               {
                 title: '가입여부',
                 dataIndex: 'registered',
                 key: 'registered',
                 width: '7%',
-                render: (registered: User['registered']) => <>{registered}</>,
               },
               {
                 title: '',
                 dataIndex: '_id',
                 key: '_id',
                 width: '5%',
-                render: (_id: User['_id']) => (
-                  <DeleteButton onClick={deleteUser} name={_id}></DeleteButton>
+                render: (_id: string) => (
+                  <Popconfirm
+                    title="정말로 삭제하시겠습니까?"
+                    onConfirm={() => deleteUser(_id)}
+                    okText="확인"
+                    cancelText="취소">
+                    <Button danger>삭제</Button>
+                  </Popconfirm>
                 ),
               },
             ]}

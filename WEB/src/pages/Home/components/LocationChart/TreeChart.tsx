@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useMemo } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Group } from '@visx/group';
 import { hierarchy, Treemap, treemapBinary } from '@visx/hierarchy';
 import withParentSize, {
@@ -24,6 +25,7 @@ const Chart = ({
 }: WithParentSizeProvidedProps) => {
   const { data: locations } = useLocations();
   const { data: locationLogs } = useLocationLogs({ active: true, limit: 0 });
+  const history = useHistory();
 
   const data = useMemo<Datum>(() => {
     if (!locations || !locationLogs) {
@@ -93,6 +95,12 @@ const Chart = ({
                         rx={20}
                         ry={20}
                         fill={`url(#gradient${location!.ui!.color})`}
+                        onClick={() =>
+                          history.push(
+                            `/location-logs?location=${location!._id}&active=1`,
+                          )
+                        }
+                        cursor="pointer"
                       />
                       <text
                         dx={20}
