@@ -28,8 +28,8 @@ export default function Licenses() {
       description="LOCA Open Source License Notice">
       <h1>LOCA {capitalizeFirstLetter(tech)} Open Source License Notice</h1>
       {loading && <h2>Loading...</h2>}
-      {licenses.map(license => (
-        <div>
+      {licenses.map((license, index) => (
+        <div key={license.name + index}>
           <h2>{license.name}</h2>
           <p>{license.licenseText}</p>
         </div>
