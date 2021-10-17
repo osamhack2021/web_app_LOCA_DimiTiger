@@ -3,10 +3,10 @@ import { useRecoilState } from 'recoil';
 
 import './Dashboard.css';
 
-import EmergencyReportsCard from '../EmergencyReports/EmergencyReports';
 import LocationChart from '../LocationChart/LocationChart';
 import TreeChart from '../LocationChart/TreeChart';
 import MilitaryDiscipline from '../MilitaryDiscipline/MilitaryDiscipline';
+import NoticeCard from '../Notice/Notice';
 import Temperature from '../Temperature/Temperature';
 import Weather from '../Weather/Weather';
 import Worker from '../Worker/Worker';
@@ -18,7 +18,7 @@ const Dashboard = () => {
 
   return (
     <div id="dashboard">
-      <EmergencyReportsCard></EmergencyReportsCard>
+      <NoticeCard></NoticeCard>
       <div id="container1">
         <div id="container2">
           {settings.chartDesign ? <LocationChart /> : <TreeChart />}
