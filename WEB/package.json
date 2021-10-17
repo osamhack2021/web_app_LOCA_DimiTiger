@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.3.0",
     "@nivo/circle-packing": "^0.74.0",
     "@nivo/core": "^0.74.0",
     "@nivo/tooltip": "^0.74.0",
@@ -12,6 +13,7 @@
     "@visx/responsive": "^2.1.2",
     "antd": "^4.16.13",
     "axios": "^0.21.4",
+    "babel-plugin-module-resolver": "^4.1.0",
     "date-fns": "^2.24.0",
     "moment": "^2.29.1",
     "prop-types": "^15.7.2",
@@ -35,6 +37,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.3.0",
     "@types/styled-components": "^5.1.15",
+    "craco-alias": "^3.0.1",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-prettier": "^4.0.0",
@@ -43,10 +46,9 @@
     "prettier": "^2.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "serve": "npx serve -l 80 -s build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --ignore-pattern node_modules/"
   },

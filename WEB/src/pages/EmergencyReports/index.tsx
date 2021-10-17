@@ -26,7 +26,7 @@ import User from '@/types/User';
 const { RangePicker } = DatePicker;
 const { Option } = Select;
 
-const LocationLogs = () => {
+const EmergencyReprots = () => {
   const history = useHistory();
   const [query, setQuery] = useQueryParams({
     rangeStart: DateParam,
@@ -182,4 +182,4 @@ const ToolkitWrap = styled.div`
   flex-wrap: wrap;
 `;
 
-export default LocationLogs;
+export default EmergencyReprots;

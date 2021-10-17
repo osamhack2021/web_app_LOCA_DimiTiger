@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from 'react-query';
 
-import useAxios from '../../hooks/useAxios';
-import usePaginationQuery from '../../hooks/usePaginationQuery';
-import useQuery from '../../hooks/useQuery';
-import User from '../../types/User';
-import UserQuery from '../../types/UserQuery';
+import useAxios from '@/hooks/useAxios';
+import usePaginationQuery from '@/hooks/usePaginationQuery';
+import useQuery from '@/hooks/useQuery';
+import User from '@/types/User';
+import UserQuery from '@/types/UserQuery';
 
 export function useUsers(query?: UserQuery) {
   return usePaginationQuery<User>('/users', query);

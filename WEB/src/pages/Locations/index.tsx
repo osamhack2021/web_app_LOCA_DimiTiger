@@ -4,17 +4,17 @@ import { Button, Form, Popconfirm, Table } from 'antd';
 import styled from 'styled-components';
 import { NumberParam, StringParam, useQueryParams } from 'use-query-params';
 
-import { useBeacons } from '../../api/beacons';
-import { useDeleteLocation, useLocations } from '../../api/locations';
-import Header from '../../components/Header/Header';
-import LargeCard from '../../components/LargeCard';
-import LayoutContent from '../../components/LayoutContent';
-import LayoutContentWrapper from '../../components/LayoutContentWrapper';
-import LocationIcon from '../../components/LocationIcon';
-import Sidebar from '../../components/Sidebar/Sidebar';
-import Location from '../../types/Location';
-
 import CreateLocationModal from './components/CreateLocationModal';
+
+import { useBeacons } from '@/api/beacons';
+import { useDeleteLocation, useLocations } from '@/api/locations';
+import Header from '@/components/Header/Header';
+import LargeCard from '@/components/LargeCard';
+import LayoutContent from '@/components/LayoutContent';
+import LayoutContentWrapper from '@/components/LayoutContentWrapper';
+import LocationIcon from '@/components/LocationIcon';
+import Sidebar from '@/components/Sidebar/Sidebar';
+import Location from '@/types/Location';
 
 const Locations = () => {
   const history = useHistory();

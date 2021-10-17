@@ -3,8 +3,8 @@ import { useSetRecoilState } from 'recoil';
 
 import './Login.css';
 
-import { accessTokenState, refreshTokenState } from '../../atoms';
-import useAxios from '../../hooks/useAxios';
+import { accessTokenState, refreshTokenState, settingsState } from '@/atoms';
+import useAxios from '@/hooks/useAxios';
 
 type LoginData = {
   serial: string;
@@ -15,6 +15,7 @@ const Login = () => {
   const axios = useAxios();
   const setAccessToken = useSetRecoilState(accessTokenState);
   const setRefreshToken = useSetRecoilState(refreshTokenState);
+  const setSettings = useSetRecoilState(settingsState);
   const { register, handleSubmit } = useForm();
 
   const signIn = async ({ serial, password }: LoginData) => {
@@ -23,6 +24,9 @@ const Login = () => {
     ).data;
     setAccessToken(access_token);
     setRefreshToken(refresh_token);
+
+    const settings = (await axios.get('/settings/current')).data;
+    setSettings(settings);
   };
 
   return (

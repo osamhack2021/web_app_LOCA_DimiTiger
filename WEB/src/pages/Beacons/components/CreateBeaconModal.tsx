@@ -1,8 +1,8 @@
 import { Form, Modal, Select } from 'antd';
 import styled from 'styled-components';
 
-import { useAddBeacon } from '../../../api/beacons';
-import { useLocations } from '../../../api/locations';
+import { useAddBeacon } from '@/api/beacons';
+import { useLocations } from '@/api/locations';
 
 type ModalProps = {
   visible: boolean;

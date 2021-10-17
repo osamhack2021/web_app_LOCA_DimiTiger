@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Group } from '@visx/group';
 import { hierarchy, Treemap, treemapBinary } from '@visx/hierarchy';
@@ -8,10 +8,10 @@ import withParentSize, {
 
 import './LocationChart.css';
 
-import { useLocationLogs } from '../../../../api/location-logs';
-import { useLocations } from '../../../../api/locations';
-import Location from '../../../../types/Location';
-import User from '../../../../types/User';
+import { useLocationLogs } from '@/api/location-logs';
+import { useLocations } from '@/api/locations';
+import Location from '@/types/Location';
+import User from '@/types/User';
 
 interface Datum {
   location?: Location;
@@ -57,11 +57,7 @@ const Chart = ({
     [data],
   );
 
-  console.log(root);
-
-  useLayoutEffect(() => {
-    root.count();
-  }, [root]);
+  root.count();
 
   return (
     <svg width={width} height={height}>

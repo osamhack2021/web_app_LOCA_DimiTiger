@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './Sidebar.css';
 
-import { useLogout } from '../../atoms';
+import { useLogout } from '@/atoms';
 
 interface IProps {
   imgSrc: string;

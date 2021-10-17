@@ -3,6 +3,15 @@ import { atom, useResetRecoilState } from 'recoil';
 
 import localStorageEffect from './effects/localStorageEffect';
 
+function getFormatDate(date: Date) {
+  var year = date.getFullYear();
+  var month: number | string = 1 + date.getMonth();
+  month = month >= 10 ? month : '0' + month;
+  var day: number | string = date.getDate();
+  day = day >= 10 ? day : '0' + day;
+  return year + '-' + month + '-' + day;
+}
+
 export const accessTokenState = atom({
   key: 'accessTokenState',
   default: '',
@@ -15,22 +24,20 @@ export const refreshTokenState = atom({
   effects_UNSTABLE: [localStorageEffect('refreshTokenState')],
 });
 
-export const settingState = atom({
-  key: 'settingState',
+export const settingsState = atom({
+  key: 'settingsState',
   default: {
-    defaults: {
+    information: {
       name: '',
       icon: '1634306266203_loca_icon.svg',
-      belong: '',
+      branch: '',
     },
     weather: {
-      temperature: 0,
-      temperatureIndex: 0,
+      location: '',
     },
-    militaryDiscipline: 0,
+    militaryDiscipline: getFormatDate(new Date()),
     chartDesign: true,
   },
-  effects_UNSTABLE: [localStorageEffect('settingState')],
 });
 
 export const useLogout = () => {
