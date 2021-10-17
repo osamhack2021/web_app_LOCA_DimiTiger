@@ -17,6 +17,7 @@ exports.getEmergencies = async ({ page, limit }) => {
 			sort: {
 				createdAt: -1,
 			},
+			populate: ['creator'],
 		}
 	);
 };
