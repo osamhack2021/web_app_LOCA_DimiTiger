@@ -90,7 +90,8 @@
   height: fit-content;
   margin-bottom: 20px;
   border-radius: 10px;
-  background-color: #F5F6FA;
+  border: 1px solid #f5f6fa;
+  background-color: #f5f6fa;
 }
 .reportHeader {
   padding: 20px 15px 20px 25px;
@@ -99,12 +100,6 @@
   font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
-}
-.reportAdditional {
-  display: none;
-}
-.clicked {
-  display: block;
 }
 .ant-timeline-item:last-child {
   padding-bottom: 10px;
@@ -116,12 +111,12 @@
   height: 70px;
   line-height: 70px;
   letter-spacing: -2px;
-  color: #D1D1D1;
+  color: #d1d1d1;
+  cursor: pointer;
 }
 .reportHeaderDate {
-  display: inline-block;
   font-size: 1.05rem;
-  color: #7D7D7D;
+  color: #7d7d7d;
   font-weight: 500;
   margin-right: 15px;
   float: right;
@@ -131,13 +126,13 @@
 }
 .clickedContainer {
   background-color: #ffffff;
-  border: 1px solid #E9EBF1;
+  border: 1px solid #e9ebf1;
 }
 .headlineSelected {
-  border-bottom: solid 4px #0085FF;
+  border-bottom: solid 4px #0085ff;
   color: #000 !important;
 }
 .reportThumbnail {
-  border-top: 1px solid #E9EBF1;
+  border-top: 1px solid #e9ebf1;
   padding: 10px 10px 10px 25px;
 }
