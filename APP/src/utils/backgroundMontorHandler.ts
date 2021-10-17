@@ -2,6 +2,7 @@ import { BackgroundMonitorEvent } from 'react-native-beacons-manager';
 import notifee from '@notifee/react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { colorLocaEnd } from '@/constants/colors';
 import Beacon from '@/types/Beacon';
 
 export default async function ({ identifier, event }: BackgroundMonitorEvent) {
@@ -47,6 +48,8 @@ export default async function ({ identifier, event }: BackgroundMonitorEvent) {
     },
     android: {
       channelId,
+      smallIcon: 'ic_noti',
+      color: colorLocaEnd,
       pressAction: {
         id: 'default',
       },
