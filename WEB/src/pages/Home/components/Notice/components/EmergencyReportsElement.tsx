@@ -16,7 +16,21 @@ const EmergencyReportElement = ({
   return (
     <div className={'reportContainer ' + (clicked ? '' : 'clickedContainer')}>
       <div className="reportHeader" onClick={() => SetClicked(!clicked)}>
-        {emergencyReport.creator.rank + ' ' + emergencyReport.creator.name}
+        <div
+          style={{
+            display: 'inline-block',
+          }}>
+          <img
+            style={
+              emergencyReport.active
+                ? { marginRight: '10px' }
+                : { marginRight: '10px', visibility: 'hidden' }
+            }
+            src="./icons/updateCircle.svg"
+            alt=""
+          />
+          {emergencyReport.creator.rank + ' ' + emergencyReport.creator.name}
+        </div>
         <div className="reportHeaderArrow">
           {clicked ? <UpOutlined /> : <DownOutlined />}
         </div>

@@ -26,7 +26,7 @@ import User from '@/types/User';
 const { RangePicker } = DatePicker;
 const { Option } = Select;
 
-const EmergencyReprots = () => {
+const EmergencyReports = () => {
   const history = useHistory();
   const [query, setQuery] = useQueryParams({
     rangeStart: DateParam,
@@ -54,7 +54,7 @@ const EmergencyReprots = () => {
       <Header />
       <LayoutContent>
         <LargeCard
-          title="유동병력 검색"
+          title="긴급 신고 현황"
           history={history}
           headerComponent={
             <ToolkitWrap>
@@ -65,13 +65,12 @@ const EmergencyReprots = () => {
                   user: query.user,
                   range: [query.rangeStart, query.rangeEnd],
                 }}
-                onFinish={({ range, user, location, active }) => {
+                onFinish={({ range, user, active }) => {
                   const [rangeStart, rangeEnd] = range || [];
                   setQuery(
                     {
                       rangeStart: rangeStart?.toDate?.(),
                       rangeEnd: rangeEnd?.toDate?.(),
-                      location: location || undefined,
                       user: user || undefined,
                       active,
                     },
@@ -182,4 +181,4 @@ const ToolkitWrap = styled.div`
   flex-wrap: wrap;
 `;
 
-export default EmergencyReprots;
+export default EmergencyReports;
