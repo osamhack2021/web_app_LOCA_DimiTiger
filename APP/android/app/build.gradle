@@ -159,6 +159,11 @@ android {
                 storePassword APP_RELEASE_STORE_PASSWORD
                 keyAlias APP_RELEASE_KEY_ALIAS
                 keyPassword APP_RELEASE_KEY_PASSWORD
+            } else {
+                storeFile file('debug.keystore')
+                storePassword 'android'
+                keyAlias 'androiddebugkey'
+                keyPassword 'android'
             }
         }
     }
