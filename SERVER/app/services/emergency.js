@@ -5,9 +5,20 @@ const Errors = (exports.Errors = {
 	EmergencyNotFoundError: () => Boom.notFound('EmergencyNotFoundError'),
 });
 
-exports.getEmergencies = async ({ page, limit }) => {
+exports.getEmergencies = async ({
+	rangeStart,
+	rangeEnd,
+	page,
+	limit,
+	...rest
+}) => {
 	return await Emergency.paginate(
 		{
+			...rest,
+			createdAt: {
+				$gte: rangeStart || new Date(0),
+				$lte: rangeEnd || new Date(),
+			},
 			deleted: false,
 		},
 		{
