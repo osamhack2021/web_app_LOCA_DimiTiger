@@ -46,6 +46,7 @@ const linking: LinkingOptions<RootStackParamList> = {
     const unsubscribe = notifee.onForegroundEvent(({ type, detail }) => {
       const { notification } = detail;
       if (type === EventType.PRESS && notification) {
+        console.log('hi');
         if (notification.id === 'enter' && notification.data) {
           const url = `${prefix}/location-log/${notification.data.location}`;
           onReceiveURL({ url });

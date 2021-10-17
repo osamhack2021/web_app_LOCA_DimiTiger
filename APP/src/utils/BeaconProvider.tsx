@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DeviceEventEmitter, Platform } from 'react-native';
 import Beacons from 'react-native-beacons-manager';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -20,6 +20,7 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
   const { fullyGranted } = usePermissions();
   const settingsLoadable = useRecoilValueLoadable(settingsState);
   const setVisibleBeacons = useSetRecoilState(beaconState);
+  const [backgroundScan, setBackgroundScan] = useState(true);
 
   useEffect(() => {
     if (!beacons || !fullyGranted) {
@@ -82,18 +83,44 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
       ),
     ];
     return () => {
-      Promise.all(
-        beacons.map(async beacon => {
-          await Beacons.stopMonitoringForRegion(beacon.region);
-          await Beacons.stopRangingBeaconsInRegion(beacon.region);
-        }),
-      );
+      Beacons.cleanUpRegions();
       if (Platform.OS === 'ios') {
         Beacons.stopUpdatingLocation();
       }
       subscriptions.forEach(subscription => subscription.remove());
     };
-  }, [beacons, fullyGranted, setVisibleBeacons]);
+  }, [backgroundScan, beacons, fullyGranted, setVisibleBeacons]);
+
+  useEffect(() => {
+    async function toggleBackgroundScan() {
+      const { state, contents } = settingsLoadable;
+      if (state !== 'loading') {
+        const { backgroundScanEnabled } = contents as AppSettings;
+
+        await Beacons.cleanUpRegions();
+
+        if (Platform.OS === 'android') {
+          if (backgroundScanEnabled) {
+            Beacons.setBackgroundBetweenScanPeriod(0);
+            Beacons.setBackgroundScanPeriod(1000 * 10);
+            Beacons.enableForegroundServiceScanning({
+              activity: 'io.dimitiger.loca.SplashActivity',
+              icon: 'ic_noti',
+              title: '비콘 스캔중입니다.',
+              channelId: 'loca-beacon-scanning',
+              channelName: 'LOCA 백그라운드 비콘 스캔 알림',
+            });
+          } else {
+            Beacons.disableForegroundServiceScanning();
+          }
+        } else {
+          Beacons.allowsBackgroundLocationUpdates(backgroundScanEnabled);
+        }
+        setBackgroundScan(backgroundScanEnabled);
+      }
+    }
+    toggleBackgroundScan();
+  }, [settingsLoadable]);
 
   useEffect(() => {
     if (!beacons) {
@@ -108,30 +135,6 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
     }
     AsyncStorage.setItem('currentLocation', locationLog.location._id);
   }, [locationLog]);
-
-  useEffect(() => {
-    const { state, contents } = settingsLoadable;
-    if (state !== 'loading') {
-      const { backgroundScanEnabled } = contents as AppSettings;
-      if (Platform.OS === 'android') {
-        if (backgroundScanEnabled) {
-          Beacons.setBackgroundBetweenScanPeriod(1000 * 60 * 5);
-          Beacons.setBackgroundScanPeriod(1000 * 10);
-          Beacons.enableForegroundServiceScanning({
-            activity: 'io.dimitiger.loca.SplashActivity',
-            icon: 'ic_noti',
-            title: '비콘 스캔중입니다.',
-            channelId: 'loca-beacon-scanning',
-            channelName: 'LOCA 백그라운드 비콘 스캔 알림',
-          });
-        } else {
-          Beacons.disableForegroundServiceScanning();
-        }
-      } else {
-        Beacons.allowsBackgroundLocationUpdates(backgroundScanEnabled);
-      }
-    }
-  }, [settingsLoadable]);
 
   return <>{children}</>;
 };

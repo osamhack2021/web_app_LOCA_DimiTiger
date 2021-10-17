@@ -25,7 +25,7 @@
     "react": "17.0.2",
     "react-hook-form": "^7.17.3",
     "react-native": "0.66.0",
-    "react-native-beacons-manager": "git://github.com/wjaykim/react-native-beacons-manager.git#abdab5ef766621fdcf1236f70ac4afc661bc542e",
+    "react-native-beacons-manager": "git://github.com/wjaykim/react-native-beacons-manager.git#0c33327dfd0b8ec2ce29069bbd666704f76adf28",
     "react-native-bootsplash": "^3.2.6",
     "react-native-fast-image": "^8.5.11",
     "react-native-gesture-handler": "^1.10.3",
