@@ -21,7 +21,6 @@ import Animated, {
   withSequence,
   withTiming,
   ZoomIn,
-  ZoomOut,
 } from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -148,10 +147,7 @@ const EmergencyReportCard = () => {
               style={styles.reportButton}>
               {/* Intended nasty code for animation */}
               {report && (
-                <Animated.View
-                  entering={ZoomIn}
-                  exiting={ZoomOut}
-                  style={vibrationStyle}>
+                <Animated.View entering={ZoomIn} style={vibrationStyle}>
                   <Icon
                     name={'checkbox-marked-circle'}
                     size={50}
@@ -160,10 +156,7 @@ const EmergencyReportCard = () => {
                 </Animated.View>
               )}
               {!report && (
-                <Animated.View
-                  entering={ZoomIn}
-                  exiting={ZoomOut}
-                  style={vibrationStyle}>
+                <Animated.View entering={ZoomIn} style={vibrationStyle}>
                   <Icon name={'alert'} size={50} color={colorWhite} />
                 </Animated.View>
               )}
