@@ -19,7 +19,7 @@ const Weather = () => {
       <Form
         form={form}
         onFinish={({ unitLocation, militaryDisciplineDate, chartSetting }) => {
-          const tempSetting: Settings = {
+          const newSetting: Settings = {
             information: settings.information,
             weather: {
               location: unitLocation,
@@ -27,9 +27,9 @@ const Weather = () => {
             militaryDiscipline: militaryDisciplineDate,
             chartDesign: chartSetting,
           };
-          setSettings(tempSetting);
+          setSettings(newSetting);
 
-          addSetting.mutate(tempSetting);
+          addSetting.mutate(newSetting);
         }}>
         <Label>부대위치</Label>
         <Form.Item name="unitLocation" initialValue={settings.weather.location}>
