@@ -47,6 +47,9 @@ export default async function ({ identifier, event }: BackgroundMonitorEvent) {
     },
     android: {
       channelId,
+      pressAction: {
+        id: 'default',
+      },
     },
     ios: {},
   });

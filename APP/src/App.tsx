@@ -2,7 +2,7 @@ import React from 'react';
 import { Linking, StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClientProvider } from 'react-query';
-import notifee from '@notifee/react-native';
+import notifee, { EventType } from '@notifee/react-native';
 import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
 import { RecoilRoot, useRecoilValue } from 'recoil';
 
@@ -12,8 +12,10 @@ import SplashScreen from '@/screens/SplashScreen';
 import BeaconProvider from '@/utils/BeaconProvider';
 import queryClient from '@/utils/queryClient';
 
+const prefix = 'https://api.loca.kimjisub.me/link';
+
 const linking: LinkingOptions<RootStackParamList> = {
-  prefixes: ['https://api.loca.kimjisub.me/link'],
+  prefixes: [prefix],
   config: {
     initialRouteName: 'Main',
     screens: {
@@ -28,10 +30,33 @@ const linking: LinkingOptions<RootStackParamList> = {
     }
 
     const noti = await notifee.getInitialNotification();
-    const location: string | undefined = noti?.notification.data?.location;
-    if (location) {
-      return `${this.prefixes[0]}/location-log/${location}`;
+    if (noti != null) {
+      const { id, data } = noti.notification;
+      if (id === 'enter' && data) {
+        return `${prefix}/location-log/${data.location}`;
+      }
     }
+
+    return null;
+  },
+  subscribe(listener) {
+    const onReceiveURL = ({ url }: { url: string }) => listener(url);
+
+    const subscription = Linking.addEventListener('url', onReceiveURL);
+    const unsubscribe = notifee.onForegroundEvent(({ type, detail }) => {
+      const { notification } = detail;
+      if (type === EventType.PRESS && notification) {
+        if (notification.id === 'enter' && notification.data) {
+          const url = `${prefix}/location-log/${notification.data.location}`;
+          onReceiveURL({ url });
+        }
+      }
+    });
+
+    return () => {
+      subscription.remove();
+      unsubscribe();
+    };
   },
 };
 
@@ -39,14 +64,20 @@ const App = () => {
   const splashDone = useRecoilValue(splashState);
 
   return (
-    <NavigationContainer linking={linking}>
+    <>
       <StatusBar
         translucent
         backgroundColor="transparent"
         barStyle="dark-content"
       />
-      {!splashDone ? <SplashScreen /> : <Navigators />}
-    </NavigationContainer>
+      {!splashDone ? (
+        <SplashScreen />
+      ) : (
+        <NavigationContainer linking={linking}>
+          <Navigators />
+        </NavigationContainer>
+      )}
+    </>
   );
 };
 
