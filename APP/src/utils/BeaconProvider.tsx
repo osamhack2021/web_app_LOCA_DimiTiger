@@ -117,11 +117,13 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
         if (backgroundScanEnabled) {
           Beacons.setBackgroundBetweenScanPeriod(1000 * 60 * 5);
           Beacons.setBackgroundScanPeriod(1000 * 10);
-          Beacons.enableForegroundServiceScanning(
-            'SplashActivity',
-            'ic_noti',
-            '비콘 스캔중입니다.',
-          );
+          Beacons.enableForegroundServiceScanning({
+            activity: 'io.dimitiger.loca.SplashActivity',
+            icon: 'ic_noti',
+            title: '비콘 스캔중입니다.',
+            channelId: 'loca-beacon-scanning',
+            channelName: 'LOCA 백그라운드 비콘 스캔 알림',
+          });
         } else {
           Beacons.disableForegroundServiceScanning();
         }

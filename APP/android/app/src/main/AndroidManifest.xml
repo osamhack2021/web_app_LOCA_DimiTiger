@@ -24,7 +24,7 @@
             android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
-            android:name="com.zoontek.rnbootsplash.RNBootSplashActivity"
+            android:name=".SplashActivity"
             android:theme="@style/BootTheme"
             android:launchMode="singleTask"
             android:exported="true">
