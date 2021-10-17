@@ -15,6 +15,7 @@
   --ifm-color-primary-lightest: #7fb1f4;
   --ifm-code-font-size: 95%;
   --ifm-navbar-shadow: 0 4px 8px rgba(0, 0, 0, 0.07);
+  --ifm-container-width: 838px;
 }
 
 .docusaurus-highlight-code-line {
@@ -30,4 +31,4 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 
 p {
   word-break: keep-all;
-}
+}  

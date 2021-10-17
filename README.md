@@ -1,17 +1,112 @@
-### 본 페이지는 샘플입니다. 아래의 *[샘플 양식에 포함되어 있는 항목은 필수 기재사항]*   입니다.
-해당 내용은 모두 예시이며 설명이 부족하거나 추가하고싶은 부분이 있으면 개발자님이 추가해서 작성하셔도 무관합니다. (동영상, 이미지, 텍스트 적용 전부 자유)
-
-
 # LOCA - 유동병력관리체계
-![Logo](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbZN8dI%2FbtrfG2IOPcR%2FM8186zekZwhg7Er2mz709k%2Fimg.png)
 
+<div align="center">
+
+![https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/docs_hero_image.png?raw=true](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/docs_hero_image.png?raw=true)
+
+![languages](https://img.shields.io/github/languages/count/osamhack2021/web_app_LOCA_DimiTiger)
+![GitHub contributors](https://img.shields.io/github/contributors/osamhack2021/web_app_LOCA_DimiTiger.svg)
+![GitHub commit](https://img.shields.io/github/last-commit/osamhack2021/web_app_LOCA_DimiTiger.svg)
+![GitHub commit interval](https://img.shields.io/github/commit-activity/w/osamhack2021/web_app_LOCA_DimiTiger.svg)
+![license](https://img.shields.io/github/license/osamhack2021/web_app_LOCA_DimiTiger.svg)
+
+</div>
+</br>
 
 ## 프로젝트 소개
-- 설명 기입
+LOCA는 기존의 유동 병력 관리 방식을 완전히 개선하기 위해 탄생한 프로젝트입니다.
 
+### 프로젝트 배경
+군대에서 유동 병력을 정확하게 파악하는 것은 중요합니다. 그러나 저희는 기존의 유동 병력 관리 방식에서 다음과 같은 문제점을 발견할 수 있었습니다.
+
+- 병력의 이동 내용이 수기 또는 구두로 전달되기 때문에 전체 인원 파악이 어렵다.
+- 유동 병력 현황판과 실제 병력의 위치가 일치하지 않는 경우가 많다.
+- 과거에 방문했던 위치나 이동 동선은 전혀 파악할 방법이 없다.
+
+위와 같은 문제점을 해결하고자 쉽고 간편하게 자신의 위치를 보고하면서도, 관리자 입장에서는 언제 어디서나 한 눈에 유동 병력 현황을 확인할 수 있는 프로젝트를 계획하게 되었습니다.
+
+<br/>
+<br/>
+
+### 프로젝트 목표
+
+1. 병력이 이동 현황을 언제 어디서든 쉽게 보고할 수 있어야 한다.
+2. 유동병력 현황판은 실시간으로 최신화되어야 하며, 병력의 위치를 한 눈에 파악할 수 있어야 한다.
+3. 특정 장소에 대한 출입 기록과 병력의 이동 동선을 파악할 수 있어야 한다.
+4. 긴급 상황 전파와 전달 사항 전파가 정확하고 신속하게 이루어져야 한다.
+
+<br/>
+<br/>
 
 ## 기능 설명
- - 설명 기입
+
+<table>
+        <tbody>
+        <tr>
+			<td>
+				<b>ㆍ 🧭 쉽고 간편한 위치 보고</b>
+			</td>
+            <td>
+				<b>ㆍ 👀 한 눈에 보는 유동병력 현황</b>
+			</td>
+		</tr>
+        <tr>
+            <td>
+			    <div align="center"><a href="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/feature1.png?raw=true"><img src="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/feature1.png?raw=true" width="100%"></a></div>
+            </td>
+            <td>
+				<div align="center"><a href="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/feature2.png?raw=true"><img src="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/feature2.png?raw=true" width="100%""></a></div>
+			</td>
+		</tr>
+        <tr>
+			<td>
+				NFC 태그에 스마트폰을 태그하거나 비콘을 활용하여 간편하게 위치를 보고합니다.
+			</td>
+            <td>
+				실시간 데이터베이스에 전송된 정보를 바탕으로 병력들의 위치를 웹 대시보드에 표시합니다.
+			</td>
+		</tr>
+   </tbody>
+</table>
+</br>
+<table>
+        <tbody>
+        <tr>
+			<td>
+				<b>ㆍ ⚠ 위치 기반 긴급보고 체계</b>
+			</td>
+            <td>
+				<b>ㆍ 🚪 병사 이동 동선 및 위치 출입 기록</b>
+			</td>
+		</tr>
+        <tr>
+            <td>
+			    <div align="center"><a href="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/feature3.png?raw=true"><img src="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/feature3.png?raw=true" width="100%"></a></div>
+            </td>
+            <td>
+				<div align="center"><a href="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/feature4.png?raw=true"><img src="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/feature4.png?raw=true" width="100%""></a></div>
+			</td>
+		</tr>
+        <tr>
+			<td>
+				사고가 발생하여 긴급 보고 시 사용자의 위치를 바탕으로 신속한 조치가 가능합니다.
+			</td>
+            <td>
+				사용자가 보고한 위치를 바탕으로 개인의 이동 동선과 위치의 출입 기록을 확인할 수 있습니다.
+			</td>
+		</tr>
+   </tbody>
+</table>
+
+## 팀 정보 (Team Information)
+DimiTiger팀은 고등학교 동창 네 명이 만나 이루어진 팀입니다. 기존의 경험을 통해 최고의 팀워크를 이룰 수 있었습니다.
+
+![https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/team_dimitiger.png?raw=true](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/team_dimitiger.png?raw=true)
+
+- 팀장 김우재([wjaykim](https://github.com/wjaykim)) - 프로젝트 총괄, 모바일 앱 개발
+- 팀원 김지섭([kimjisub](https://github.com/kimjisub)) - 서버, DB 개발  
+- 팀원 박재성([jspark6815](https://github.com/jspark6815)) - 웹 프론트 개발   
+- 팀원 김평주([pjookim](https://github.com/pjookim)) - 웹/모바일 앱 디자인
 
 ## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 * ECMAScript 6 지원 브라우저 사용
@@ -50,10 +145,7 @@ $ yarn start or npm run start
 
 ## 프로젝트 사용법 (Getting Started)
 **마크다운 문법을 이용하여 자유롭게 기재**
- 
-## 팀 정보 (Team Information)
-- [김우재](https://github.com/wjaykim)
-- 김지섭 (0226daniel@gmail.com)
+
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
  * [MIT](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/master/license.md)
