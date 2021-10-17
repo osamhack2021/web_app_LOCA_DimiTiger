@@ -101,7 +101,7 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
 
         if (Platform.OS === 'android') {
           if (backgroundScanEnabled) {
-            Beacons.setBackgroundBetweenScanPeriod(0);
+            Beacons.setBackgroundBetweenScanPeriod(1000 * 60 * 5);
             Beacons.setBackgroundScanPeriod(1000 * 10);
             Beacons.enableForegroundServiceScanning({
               activity: 'io.dimitiger.loca.SplashActivity',
