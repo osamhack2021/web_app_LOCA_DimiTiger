@@ -5,7 +5,9 @@ import { useEditUser, useMe } from '@/api/users';
 import Button from '@/components/Button';
 import Card from '@/components/Card';
 import Text from '@/components/Text';
+import { colorSignOut } from '@/constants/colors';
 import { styleCardHeaderContainer, styleDivider } from '@/constants/styles';
+import useSignOut from '@/hooks/useSignOut';
 import User from '@/types/User';
 
 const UserCard = () => {
@@ -14,6 +16,7 @@ const UserCard = () => {
   const [editMode, setEditMode] = useState(false);
   const [editedUser, setEditedUser] = useState<Partial<User>>({});
   const [patchLoading, setPatchLoading] = useState(false);
+  const signOut = useSignOut();
 
   const toggleMode = useCallback(async () => {
     if (editMode) {
@@ -91,13 +94,20 @@ const UserCard = () => {
           <Text>비밀번호</Text>
           <Button onPress={() => {}}>변경</Button>
         </View>
+        <View style={styles.signOutContainer}>
+          <Button onPress={() => signOut()} style={styles.signOutButton}>
+            로그아웃
+          </Button>
+        </View>
       </View>
     </Card>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    marginTop: 0,
+  },
   backButton: {
     margin: 20,
   },
@@ -121,6 +131,13 @@ const styles = StyleSheet.create({
   },
   dataText: {
     fontWeight: 'bold',
+  },
+  signOutContainer: {
+    alignItems: 'center',
+  },
+  signOutButton: {
+    backgroundColor: colorSignOut,
+    shadowColor: colorSignOut,
   },
 });
 

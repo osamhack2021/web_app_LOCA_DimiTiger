@@ -6,8 +6,9 @@ import { useRecoilValueLoadable, useSetRecoilState } from 'recoil';
 
 import { useBeacons } from '@/api/beacons';
 import { useActiveLocationLog } from '@/api/location-logs';
-import { accessTokenState, beaconState } from '@/atoms';
+import { accessTokenState, beaconState, settingsState } from '@/atoms';
 import usePermissions from '@/hooks/usePermissions';
+import AppSettings from '@/types/AppSettings';
 
 type BeaconProviderProps = {
   children: React.ReactNode;
@@ -17,6 +18,7 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
   const { data: beacons } = useBeacons();
   const { data: locationLog } = useActiveLocationLog();
   const { fullyGranted } = usePermissions();
+  const settingsLoadable = useRecoilValueLoadable(settingsState);
   const setVisibleBeacons = useSetRecoilState(beaconState);
 
   useEffect(() => {
@@ -33,8 +35,8 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
       }),
     );
     if (Platform.OS === 'ios') {
-      Beacons.allowsBackgroundLocationUpdates(true);
       Beacons.startUpdatingLocation();
+      Beacons.shouldDropEmptyRanges(true);
     }
     const subscriptions = [
       DeviceEventEmitter.addListener('regionDidExit', ({ identifier }) => {
@@ -106,6 +108,28 @@ const BeaconProvider = ({ children }: BeaconProviderProps) => {
     }
     AsyncStorage.setItem('currentLocation', locationLog.location._id);
   }, [locationLog]);
+
+  useEffect(() => {
+    const { state, contents } = settingsLoadable;
+    if (state !== 'loading') {
+      const { backgroundScanEnabled } = contents as AppSettings;
+      if (Platform.OS === 'android') {
+        if (backgroundScanEnabled) {
+          Beacons.setBackgroundBetweenScanPeriod(1000 * 60 * 5);
+          Beacons.setBackgroundScanPeriod(1000 * 10);
+          Beacons.enableForegroundServiceScanning(
+            'SplashActivity',
+            'ic_noti',
+            '비콘 스캔중입니다.',
+          );
+        } else {
+          Beacons.disableForegroundServiceScanning();
+        }
+      } else {
+        Beacons.allowsBackgroundLocationUpdates(backgroundScanEnabled);
+      }
+    }
+  }, [settingsLoadable]);
 
   return <>{children}</>;
 };
