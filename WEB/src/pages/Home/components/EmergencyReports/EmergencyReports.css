@@ -82,3 +82,28 @@
 .send_button > img {
   width: 40px;
 }
+.reportContainer {
+  height: fit-content;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+.reportHeader {
+  padding: 15px 25px;
+  background-color: #f0f0f0;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.reportAdditional {
+  display: none;
+}
+.clicked {
+  display: block;
+}
+.ant-timeline-item:last-child {
+  padding-bottom: 0;
+}
+.ant-timeline-item-last > .ant-timeline-item-content {
+  min-height: fit-content;
+}
