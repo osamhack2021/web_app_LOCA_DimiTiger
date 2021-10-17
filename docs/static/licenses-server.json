@@ -1,0 +1,3626 @@
+{
+  "@babel/code-frame@7.12.11": {
+    "licenses": "MIT",
+    "repository": "https://github.com/babel/babel",
+    "publisher": "Sebastian McKenzie",
+    "email": "sebmck@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@babel/code-frame",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@babel/code-frame/LICENSE"
+  },
+  "@babel/helper-validator-identifier@7.14.9": {
+    "licenses": "MIT",
+    "repository": "https://github.com/babel/babel",
+    "publisher": "The Babel Team",
+    "url": "https://babel.dev/team",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@babel/helper-validator-identifier",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@babel/helper-validator-identifier/LICENSE"
+  },
+  "@babel/highlight@7.14.5": {
+    "licenses": "MIT",
+    "repository": "https://github.com/babel/babel",
+    "publisher": "The Babel Team",
+    "url": "https://babel.dev/team",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@babel/highlight",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@babel/highlight/LICENSE"
+  },
+  "@eslint/eslintrc@0.4.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/eslint/eslintrc",
+    "publisher": "Nicholas C. Zakas",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@eslint/eslintrc",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@eslint/eslintrc/LICENSE"
+  },
+  "@hapi/accept@5.0.2": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/accept",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/accept",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/accept/LICENSE.md"
+  },
+  "@hapi/address@4.1.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/address",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/address",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/address/LICENSE.md"
+  },
+  "@hapi/ammo@5.0.1": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/ammo",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/ammo",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/ammo/LICENSE.md"
+  },
+  "@hapi/b64@5.0.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/b64",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/b64",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/b64/LICENSE.md"
+  },
+  "@hapi/boom@9.1.4": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/boom",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/boom",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/boom/LICENSE.md"
+  },
+  "@hapi/bounce@2.0.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/bounce",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/bounce",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/bounce/LICENSE.md"
+  },
+  "@hapi/bourne@2.0.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/bourne",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/bourne",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/bourne/LICENSE.md"
+  },
+  "@hapi/call@8.0.1": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/call",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/call",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/call/LICENSE.md"
+  },
+  "@hapi/catbox-memory@5.0.1": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/catbox-memory",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/catbox-memory",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/catbox-memory/LICENSE.md"
+  },
+  "@hapi/catbox@11.1.1": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/catbox",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/catbox",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/catbox/LICENSE.md"
+  },
+  "@hapi/content@5.0.2": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/content",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/content",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/content/LICENSE.md"
+  },
+  "@hapi/cryptiles@5.1.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/cryptiles",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/cryptiles",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/cryptiles/LICENSE.md"
+  },
+  "@hapi/file@2.0.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/file",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/file",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/file/LICENSE.md"
+  },
+  "@hapi/formula@2.0.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/formula",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/formula",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/formula/LICENSE.md"
+  },
+  "@hapi/glue@8.0.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/glue",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/glue",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/glue/LICENSE.md"
+  },
+  "@hapi/hapi@20.1.5": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/hapi",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/hapi",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/hapi/LICENSE.md"
+  },
+  "@hapi/heavy@7.0.1": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/heavy",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/heavy",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/heavy/LICENSE.md"
+  },
+  "@hapi/hoek@8.5.1": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/hoek",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-socket.io/node_modules/@hapi/hoek",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-socket.io/node_modules/@hapi/hoek/LICENSE.md"
+  },
+  "@hapi/hoek@9.2.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/hoek",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/hoek",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/hoek/LICENSE.md"
+  },
+  "@hapi/inert@6.0.4": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/inert",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/inert",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/inert/LICENSE.md"
+  },
+  "@hapi/iron@6.0.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hueniverse/iron",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/iron",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/iron/LICENSE.md"
+  },
+  "@hapi/joi@17.1.1": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/joi",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/joi",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/joi/LICENSE.md"
+  },
+  "@hapi/mimos@6.0.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/mimos",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/mimos",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/mimos/LICENSE.md"
+  },
+  "@hapi/nigel@4.0.2": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/nigel",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/nigel",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/nigel/LICENSE.md"
+  },
+  "@hapi/pez@5.0.3": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/pez",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/pez",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/pez/LICENSE.md"
+  },
+  "@hapi/pinpoint@2.0.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/pinpoint",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/pinpoint",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/pinpoint/LICENSE.md"
+  },
+  "@hapi/podium@4.1.3": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/podium",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/podium",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/podium/LICENSE.md"
+  },
+  "@hapi/shot@5.0.5": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/shot",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/shot",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/shot/LICENSE.md"
+  },
+  "@hapi/somever@3.0.1": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/somever",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/somever",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/somever/LICENSE.md"
+  },
+  "@hapi/statehood@7.0.3": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/statehood",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/statehood",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/statehood/LICENSE.md"
+  },
+  "@hapi/subtext@7.0.3": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/subtext",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/subtext",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/subtext/LICENSE.md"
+  },
+  "@hapi/teamwork@5.1.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/teamwork",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/teamwork",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/teamwork/LICENSE.md"
+  },
+  "@hapi/topo@5.1.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/topo",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/topo",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/topo/LICENSE.md"
+  },
+  "@hapi/validate@1.1.3": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/validate",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/validate",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/validate/LICENSE.md"
+  },
+  "@hapi/vise@4.0.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/vise",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/vise",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/vise/LICENSE.md"
+  },
+  "@hapi/vision@6.1.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/vision",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/vision",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/vision/LICENSE.md"
+  },
+  "@hapi/wreck@17.1.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/wreck",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/wreck",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@hapi/wreck/LICENSE.md"
+  },
+  "@humanwhocodes/config-array@0.5.0": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/humanwhocodes/config-array",
+    "publisher": "Nicholas C. Zakas",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@humanwhocodes/config-array",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@humanwhocodes/config-array/LICENSE"
+  },
+  "@humanwhocodes/object-schema@1.2.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/humanwhocodes/object-schema",
+    "publisher": "Nicholas C. Zakas",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@humanwhocodes/object-schema",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@humanwhocodes/object-schema/LICENSE"
+  },
+  "@mapbox/node-pre-gyp@1.0.5": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/mapbox/node-pre-gyp",
+    "publisher": "Dane Springmeyer",
+    "email": "dane@mapbox.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@mapbox/node-pre-gyp",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@mapbox/node-pre-gyp/LICENSE"
+  },
+  "@phc/format@1.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/simonepri/phc-format",
+    "publisher": "Simone Primarosa",
+    "email": "simonepri@outlook.com",
+    "url": "https://simoneprimarosa.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@phc/format",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@phc/format/license"
+  },
+  "@sideway/address@4.1.2": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/sideway/address",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@sideway/address",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@sideway/address/LICENSE.md"
+  },
+  "@sideway/formula@3.0.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/sideway/formula",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@sideway/formula",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@sideway/formula/LICENSE.md"
+  },
+  "@sideway/pinpoint@2.0.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/sideway/pinpoint",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@sideway/pinpoint",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@sideway/pinpoint/LICENSE.md"
+  },
+  "@sindresorhus/is@0.14.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/is",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@sindresorhus/is",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@sindresorhus/is/license"
+  },
+  "@szmarczak/http-timer@1.1.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/szmarczak/http-timer",
+    "publisher": "Szymon Marczak",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@szmarczak/http-timer",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@szmarczak/http-timer/LICENSE"
+  },
+  "@types/node@16.9.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@types/node",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@types/node/LICENSE"
+  },
+  "@types/webidl-conversions@6.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@types/webidl-conversions",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@types/webidl-conversions/LICENSE"
+  },
+  "@types/whatwg-url@8.2.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@types/whatwg-url",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@types/whatwg-url/LICENSE"
+  },
+  "@ungap/promise-all-settled@1.1.2": {
+    "licenses": "ISC",
+    "repository": "https://github.com/ungap/promise-all-settled",
+    "publisher": "Andrea Giammarchi",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@ungap/promise-all-settled",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@ungap/promise-all-settled/LICENSE"
+  },
+  "abbrev@1.1.1": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/abbrev-js",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/abbrev",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/abbrev/LICENSE"
+  },
+  "abstract-logging@2.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jsumners/abstract-logging",
+    "publisher": "James Sumners",
+    "email": "james.sumners@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/abstract-logging",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/abstract-logging/Readme.md"
+  },
+  "accepts@1.3.7": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jshttp/accepts",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/accepts",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/accepts/LICENSE"
+  },
+  "acorn-jsx@5.3.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/acornjs/acorn-jsx",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/acorn-jsx",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/acorn-jsx/LICENSE"
+  },
+  "acorn@7.4.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/acornjs/acorn",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/acorn",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/acorn/LICENSE"
+  },
+  "after@0.8.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/Raynos/after",
+    "publisher": "Raynos",
+    "email": "raynos2@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/after",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/after/LICENCE"
+  },
+  "agent-base@6.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/TooTallNate/node-agent-base",
+    "publisher": "Nathan Rajlich",
+    "email": "nathan@tootallnate.net",
+    "url": "http://n8.io/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/agent-base",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/agent-base/README.md"
+  },
+  "ajv@6.12.6": {
+    "licenses": "MIT",
+    "repository": "https://github.com/ajv-validator/ajv",
+    "publisher": "Evgeny Poberezkin",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ajv",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ajv/LICENSE"
+  },
+  "ajv@8.6.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/ajv-validator/ajv",
+    "publisher": "Evgeny Poberezkin",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/table/node_modules/ajv",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/table/node_modules/ajv/LICENSE"
+  },
+  "ansi-align@3.0.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/nexdrew/ansi-align",
+    "publisher": "nexdrew",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ansi-align",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ansi-align/LICENSE"
+  },
+  "ansi-colors@4.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/doowb/ansi-colors",
+    "publisher": "Brian Woodward",
+    "url": "https://github.com/doowb",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ansi-colors",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ansi-colors/LICENSE"
+  },
+  "ansi-regex@2.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/ansi-regex",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/gauge/node_modules/ansi-regex",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/gauge/node_modules/ansi-regex/license"
+  },
+  "ansi-regex@3.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/ansi-regex",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/wide-align/node_modules/ansi-regex",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/wide-align/node_modules/ansi-regex/license"
+  },
+  "ansi-regex@4.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/ansi-regex",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ansi-align/node_modules/ansi-regex",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ansi-align/node_modules/ansi-regex/license"
+  },
+  "ansi-regex@5.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/ansi-regex",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ansi-regex",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ansi-regex/license"
+  },
+  "ansi-styles@3.2.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/ansi-styles",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/args/node_modules/ansi-styles",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/args/node_modules/ansi-styles/license"
+  },
+  "ansi-styles@4.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/ansi-styles",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ansi-styles",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ansi-styles/license"
+  },
+  "anymatch@3.1.2": {
+    "licenses": "ISC",
+    "repository": "https://github.com/micromatch/anymatch",
+    "publisher": "Elan Shanker",
+    "url": "https://github.com/es128",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/anymatch",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/anymatch/LICENSE"
+  },
+  "aproba@1.2.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/iarna/aproba",
+    "publisher": "Rebecca Turner",
+    "email": "me@re-becca.org",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/aproba",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/aproba/LICENSE"
+  },
+  "are-we-there-yet@1.1.7": {
+    "licenses": "ISC",
+    "repository": "https://github.com/iarna/are-we-there-yet",
+    "publisher": "Rebecca Turner",
+    "url": "http://re-becca.org",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/are-we-there-yet",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/are-we-there-yet/LICENSE"
+  },
+  "argon2@0.28.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/ranisalt/node-argon2",
+    "publisher": "Ranieri Althoff",
+    "email": "ranisalt+argon2@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/argon2",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/argon2/LICENSE"
+  },
+  "argparse@1.0.10": {
+    "licenses": "MIT",
+    "repository": "https://github.com/nodeca/argparse",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/argparse",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/argparse/LICENSE"
+  },
+  "argparse@2.0.1": {
+    "licenses": "Python-2.0",
+    "repository": "https://github.com/nodeca/argparse",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mocha/node_modules/argparse",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mocha/node_modules/argparse/LICENSE"
+  },
+  "args@5.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/leo/args",
+    "publisher": "leo",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/args",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/args/license.md"
+  },
+  "arraybuffer.slice@0.0.7": {
+    "licenses": "MIT",
+    "repository": "https://github.com/rase-/arraybuffer.slice",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/arraybuffer.slice",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/arraybuffer.slice/LICENCE"
+  },
+  "astral-regex@2.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/kevva/astral-regex",
+    "publisher": "Kevin Mårtensson",
+    "email": "kevinmartensson@gmail.com",
+    "url": "github.com/kevva",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/astral-regex",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/astral-regex/license"
+  },
+  "atomic-sleep@1.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/davidmarkclements/atomic-sleep",
+    "publisher": "David Mark Clements",
+    "url": "@davidmarkclem",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/atomic-sleep",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/atomic-sleep/LICENSE"
+  },
+  "backo2@1.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mokesmokes/backo",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/backo2",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/backo2/Readme.md"
+  },
+  "balanced-match@1.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/juliangruber/balanced-match",
+    "publisher": "Julian Gruber",
+    "email": "mail@juliangruber.com",
+    "url": "http://juliangruber.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/balanced-match",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/balanced-match/LICENSE.md"
+  },
+  "base64-arraybuffer@0.1.4": {
+    "licenses": "MIT",
+    "repository": "https://github.com/niklasvh/base64-arraybuffer",
+    "publisher": "Niklas von Hertzen",
+    "email": "niklasvh@gmail.com",
+    "url": "http://hertzen.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/base64-arraybuffer",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/base64-arraybuffer/LICENSE-MIT"
+  },
+  "base64-js@1.5.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/beatgammit/base64-js",
+    "publisher": "T. Jameson Little",
+    "email": "t.jameson.little@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/base64-js",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/base64-js/LICENSE"
+  },
+  "base64id@2.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/faeldt/base64id",
+    "publisher": "Kristian Faeldt",
+    "email": "faeldt_kristian@cyberagent.co.jp",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/base64id",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/base64id/LICENSE"
+  },
+  "binary-extensions@2.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/binary-extensions",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/binary-extensions",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/binary-extensions/license"
+  },
+  "blob@0.0.5": {
+    "licenses": "MIT",
+    "repository": "https://github.com/webmodules/blob",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/blob",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/blob/LICENSE"
+  },
+  "boxen@4.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/boxen",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/boxen",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/boxen/license"
+  },
+  "brace-expansion@1.1.11": {
+    "licenses": "MIT",
+    "repository": "https://github.com/juliangruber/brace-expansion",
+    "publisher": "Julian Gruber",
+    "email": "mail@juliangruber.com",
+    "url": "http://juliangruber.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/brace-expansion",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/brace-expansion/LICENSE"
+  },
+  "braces@3.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/micromatch/braces",
+    "publisher": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/braces",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/braces/LICENSE"
+  },
+  "browser-stdout@1.3.1": {
+    "licenses": "ISC",
+    "repository": "https://github.com/kumavis/browser-stdout",
+    "publisher": "kumavis",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/browser-stdout",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/browser-stdout/LICENSE"
+  },
+  "bson@4.5.2": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/mongodb/js-bson",
+    "publisher": "The MongoDB NodeJS Team",
+    "email": "dbx-node@mongodb.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/bson",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/bson/LICENSE.md"
+  },
+  "buffer-equal-constant-time@1.0.1": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/goinstant/buffer-equal-constant-time",
+    "publisher": "GoInstant Inc., a salesforce.com company",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/buffer-equal-constant-time",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/buffer-equal-constant-time/LICENSE.txt"
+  },
+  "buffer@5.7.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/feross/buffer",
+    "publisher": "Feross Aboukhadijeh",
+    "email": "feross@feross.org",
+    "url": "https://feross.org",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/buffer",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/buffer/LICENSE"
+  },
+  "cacheable-request@6.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lukechilds/cacheable-request",
+    "publisher": "Luke Childs",
+    "email": "lukechilds123@gmail.com",
+    "url": "http://lukechilds.co.uk",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/cacheable-request",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/cacheable-request/LICENSE"
+  },
+  "call-me-maybe@1.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/limulus/call-me-maybe",
+    "publisher": "Eric McCarthy",
+    "email": "eric@limulus.net",
+    "url": "http://www.limulus.net/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/call-me-maybe",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/call-me-maybe/LICENSE"
+  },
+  "callsites@3.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/callsites",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/callsites",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/callsites/license"
+  },
+  "camelcase@5.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/camelcase",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/camelcase",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/camelcase/license"
+  },
+  "camelcase@5.3.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/camelcase",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/boxen/node_modules/camelcase",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/boxen/node_modules/camelcase/license"
+  },
+  "camelcase@6.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/camelcase",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/yargs-unparser/node_modules/camelcase",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/yargs-unparser/node_modules/camelcase/license"
+  },
+  "chalk@2.4.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/chalk",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/args/node_modules/chalk",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/args/node_modules/chalk/license"
+  },
+  "chalk@3.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/chalk",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/boxen/node_modules/chalk",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/boxen/node_modules/chalk/license"
+  },
+  "chalk@4.1.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/chalk",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/chalk",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/chalk/license"
+  },
+  "chokidar@3.5.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/paulmillr/chokidar",
+    "publisher": "Paul Miller",
+    "url": "https://paulmillr.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/chokidar",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/chokidar/LICENSE"
+  },
+  "chownr@2.0.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/chownr",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/chownr",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/chownr/LICENSE"
+  },
+  "ci-info@2.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/watson/ci-info",
+    "publisher": "Thomas Watson Steen",
+    "email": "w@tson.dk",
+    "url": "https://twitter.com/wa7son",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ci-info",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ci-info/LICENSE"
+  },
+  "cli-boxes@2.2.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/cli-boxes",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/cli-boxes",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/cli-boxes/license"
+  },
+  "cliui@7.0.4": {
+    "licenses": "ISC",
+    "repository": "https://github.com/yargs/cliui",
+    "publisher": "Ben Coe",
+    "email": "ben@npmjs.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/cliui",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/cliui/LICENSE.txt"
+  },
+  "clone-response@1.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lukechilds/clone-response",
+    "publisher": "Luke Childs",
+    "email": "lukechilds123@gmail.com",
+    "url": "http://lukechilds.co.uk",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/clone-response",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/clone-response/LICENSE"
+  },
+  "code-point-at@1.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/code-point-at",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/code-point-at",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/code-point-at/license"
+  },
+  "color-convert@1.9.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/Qix-/color-convert",
+    "publisher": "Heather Arthur",
+    "email": "fayearthur@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/args/node_modules/color-convert",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/args/node_modules/color-convert/LICENSE"
+  },
+  "color-convert@2.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/Qix-/color-convert",
+    "publisher": "Heather Arthur",
+    "email": "fayearthur@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/color-convert",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/color-convert/LICENSE"
+  },
+  "color-name@1.1.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/dfcreative/color-name",
+    "publisher": "DY",
+    "email": "dfcreative@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/args/node_modules/color-name",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/args/node_modules/color-name/LICENSE"
+  },
+  "color-name@1.1.4": {
+    "licenses": "MIT",
+    "repository": "https://github.com/colorjs/color-name",
+    "publisher": "DY",
+    "email": "dfcreative@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/color-name",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/color-name/LICENSE"
+  },
+  "colorette@1.4.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jorgebucaran/colorette",
+    "publisher": "Jorge Bucaran",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/colorette",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/colorette/LICENSE.md"
+  },
+  "commander@2.20.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/tj/commander.js",
+    "publisher": "TJ Holowaychuk",
+    "email": "tj@vision-media.ca",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/commander",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/commander/LICENSE"
+  },
+  "component-bind@1.0.0": {
+    "licenses": "MIT*",
+    "repository": "https://github.com/component/bind",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/component-bind",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/component-bind/Readme.md"
+  },
+  "component-emitter@1.2.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/component/emitter",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io-parser/node_modules/component-emitter",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io-parser/node_modules/component-emitter/LICENSE"
+  },
+  "component-emitter@1.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/component/emitter",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/component-emitter",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/component-emitter/LICENSE"
+  },
+  "component-inherit@0.0.3": {
+    "licenses": "MIT*",
+    "repository": "https://github.com/component/inherit",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/component-inherit",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/component-inherit/Readme.md"
+  },
+  "concat-map@0.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/substack/node-concat-map",
+    "publisher": "James Halliday",
+    "email": "mail@substack.net",
+    "url": "http://substack.net",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/concat-map",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/concat-map/LICENSE"
+  },
+  "configstore@5.0.1": {
+    "licenses": "BSD-2-Clause",
+    "repository": "https://github.com/yeoman/configstore",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/configstore",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/configstore/license"
+  },
+  "console-control-strings@1.1.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/iarna/console-control-strings",
+    "publisher": "Rebecca Turner",
+    "email": "me@re-becca.org",
+    "url": "http://re-becca.org/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/console-control-strings",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/console-control-strings/LICENSE"
+  },
+  "cookie@0.4.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jshttp/cookie",
+    "publisher": "Roman Shtylman",
+    "email": "shtylman@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/cookie",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/cookie/LICENSE"
+  },
+  "core-js@2.6.12": {
+    "licenses": "MIT",
+    "repository": "https://github.com/zloirock/core-js",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/core-js",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/core-js/LICENSE"
+  },
+  "core-util-is@1.0.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/isaacs/core-util-is",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/core-util-is",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/core-util-is/LICENSE"
+  },
+  "cross-spawn@7.0.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/moxystudio/node-cross-spawn",
+    "publisher": "André Cruz",
+    "email": "andre@moxy.studio",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/cross-spawn",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/cross-spawn/LICENSE"
+  },
+  "crypto-random-string@2.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/crypto-random-string",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/crypto-random-string",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/crypto-random-string/license"
+  },
+  "dateformat@4.5.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/felixge/node-dateformat",
+    "publisher": "Steven Levithan",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/dateformat",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/dateformat/LICENSE"
+  },
+  "debug@2.6.9": {
+    "licenses": "MIT",
+    "repository": "https://github.com/visionmedia/debug",
+    "publisher": "TJ Holowaychuk",
+    "email": "tj@vision-media.ca",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/undefsafe/node_modules/debug",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/undefsafe/node_modules/debug/LICENSE"
+  },
+  "debug@3.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/visionmedia/debug",
+    "publisher": "TJ Holowaychuk",
+    "email": "tj@vision-media.ca",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io-client/node_modules/debug",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io-client/node_modules/debug/LICENSE"
+  },
+  "debug@3.2.7": {
+    "licenses": "MIT",
+    "repository": "https://github.com/visionmedia/debug",
+    "publisher": "TJ Holowaychuk",
+    "email": "tj@vision-media.ca",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/swagger-parser/node_modules/debug",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/swagger-parser/node_modules/debug/LICENSE"
+  },
+  "debug@4.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/visionmedia/debug",
+    "publisher": "TJ Holowaychuk",
+    "email": "tj@vision-media.ca",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io/node_modules/debug",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io/node_modules/debug/LICENSE"
+  },
+  "debug@4.3.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/visionmedia/debug",
+    "publisher": "TJ Holowaychuk",
+    "email": "tj@vision-media.ca",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mocha/node_modules/debug",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mocha/node_modules/debug/LICENSE"
+  },
+  "debug@4.3.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/visionmedia/debug",
+    "publisher": "TJ Holowaychuk",
+    "email": "tj@vision-media.ca",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/debug",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/debug/LICENSE"
+  },
+  "decamelize@4.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/decamelize",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/decamelize",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/decamelize/license"
+  },
+  "decompress-response@3.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/decompress-response",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/decompress-response",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/decompress-response/license"
+  },
+  "deep-extend@0.6.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/unclechu/node-deep-extend",
+    "publisher": "Viacheslav Lotsmanov",
+    "email": "lotsmanov89@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/deep-extend",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/deep-extend/LICENSE"
+  },
+  "deep-is@0.1.4": {
+    "licenses": "MIT",
+    "repository": "https://github.com/thlorenz/deep-is",
+    "publisher": "Thorsten Lorenz",
+    "email": "thlorenz@gmx.de",
+    "url": "http://thlorenz.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/deep-is",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/deep-is/LICENSE"
+  },
+  "defer-to-connect@1.1.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/szmarczak/defer-to-connect",
+    "publisher": "Szymon Marczak",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/defer-to-connect",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/defer-to-connect/LICENSE"
+  },
+  "delegates@1.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/visionmedia/node-delegates",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/delegates",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/delegates/License"
+  },
+  "denque@1.5.1": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/invertase/denque",
+    "publisher": "Invertase",
+    "email": "oss@invertase.io",
+    "url": "http://github.com/invertase/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/denque",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/denque/LICENSE"
+  },
+  "detect-libc@1.0.3": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/lovell/detect-libc",
+    "publisher": "Lovell Fuller",
+    "email": "npm@lovell.info",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/detect-libc",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/detect-libc/LICENSE"
+  },
+  "diff@5.0.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/kpdecker/jsdiff",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/diff",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/diff/LICENSE"
+  },
+  "doctrine@3.0.0": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/eslint/doctrine",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/doctrine",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/doctrine/LICENSE"
+  },
+  "dot-prop@5.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/dot-prop",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/dot-prop",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/dot-prop/license"
+  },
+  "dotenv@10.0.0": {
+    "licenses": "BSD-2-Clause",
+    "repository": "https://github.com/motdotla/dotenv",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/dotenv",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/dotenv/LICENSE"
+  },
+  "duplexer3@0.1.4": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/floatdrop/duplexer3",
+    "publisher": "Conrad Pankoff",
+    "email": "deoxxa@fknsrs.biz",
+    "url": "http://www.fknsrs.biz/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/duplexer3",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/duplexer3/LICENSE.md"
+  },
+  "ecdsa-sig-formatter@1.0.11": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/Brightspace/node-ecdsa-sig-formatter",
+    "publisher": "D2L Corporation",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ecdsa-sig-formatter",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ecdsa-sig-formatter/LICENSE"
+  },
+  "emoji-regex@7.0.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mathiasbynens/emoji-regex",
+    "publisher": "Mathias Bynens",
+    "url": "https://mathiasbynens.be/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ansi-align/node_modules/emoji-regex",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ansi-align/node_modules/emoji-regex/LICENSE-MIT.txt"
+  },
+  "emoji-regex@8.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mathiasbynens/emoji-regex",
+    "publisher": "Mathias Bynens",
+    "url": "https://mathiasbynens.be/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/emoji-regex",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/emoji-regex/LICENSE-MIT.txt"
+  },
+  "end-of-stream@1.4.4": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mafintosh/end-of-stream",
+    "publisher": "Mathias Buus",
+    "email": "mathiasbuus@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/end-of-stream",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/end-of-stream/LICENSE"
+  },
+  "engine.io-client@3.5.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/socketio/engine.io-client",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/engine.io-client",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/engine.io-client/LICENSE"
+  },
+  "engine.io-parser@2.2.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/socketio/engine.io-parser",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/engine.io-parser",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/engine.io-parser/LICENSE"
+  },
+  "engine.io@3.5.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/socketio/engine.io",
+    "publisher": "Guillermo Rauch",
+    "email": "guillermo@learnboost.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/engine.io",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/engine.io/LICENSE"
+  },
+  "enquirer@2.3.6": {
+    "licenses": "MIT",
+    "repository": "https://github.com/enquirer/enquirer",
+    "publisher": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/enquirer",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/enquirer/LICENSE"
+  },
+  "escalade@3.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lukeed/escalade",
+    "publisher": "Luke Edwards",
+    "email": "luke.edwards05@gmail.com",
+    "url": "https://lukeed.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/escalade",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/escalade/license"
+  },
+  "escape-goat@2.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/escape-goat",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/escape-goat",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/escape-goat/license"
+  },
+  "escape-string-regexp@1.0.5": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/escape-string-regexp",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/args/node_modules/escape-string-regexp",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/args/node_modules/escape-string-regexp/license"
+  },
+  "escape-string-regexp@4.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/escape-string-regexp",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/escape-string-regexp",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/escape-string-regexp/license"
+  },
+  "eslint-scope@5.1.1": {
+    "licenses": "BSD-2-Clause",
+    "repository": "https://github.com/eslint/eslint-scope",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/eslint-scope",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/eslint-scope/LICENSE"
+  },
+  "eslint-utils@2.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mysticatea/eslint-utils",
+    "publisher": "Toru Nagashima",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/eslint-utils",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/eslint-utils/LICENSE"
+  },
+  "eslint-visitor-keys@1.3.0": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/eslint/eslint-visitor-keys",
+    "publisher": "Toru Nagashima",
+    "url": "https://github.com/mysticatea",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/eslint-visitor-keys",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/eslint-visitor-keys/LICENSE"
+  },
+  "eslint-visitor-keys@2.1.0": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/eslint/eslint-visitor-keys",
+    "publisher": "Toru Nagashima",
+    "url": "https://github.com/mysticatea",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/eslint/node_modules/eslint-visitor-keys",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/eslint/node_modules/eslint-visitor-keys/LICENSE"
+  },
+  "eslint@7.32.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/eslint/eslint",
+    "publisher": "Nicholas C. Zakas",
+    "email": "nicholas+npm@nczconsulting.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/eslint",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/eslint/LICENSE"
+  },
+  "espree@7.3.1": {
+    "licenses": "BSD-2-Clause",
+    "repository": "https://github.com/eslint/espree",
+    "publisher": "Nicholas C. Zakas",
+    "email": "nicholas+npm@nczconsulting.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/espree",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/espree/LICENSE"
+  },
+  "esprima@4.0.1": {
+    "licenses": "BSD-2-Clause",
+    "repository": "https://github.com/jquery/esprima",
+    "publisher": "Ariya Hidayat",
+    "email": "ariya.hidayat@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/esprima",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/esprima/LICENSE.BSD"
+  },
+  "esquery@1.4.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/estools/esquery",
+    "publisher": "Joel Feenstra",
+    "email": "jrfeenst+esquery@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/esquery",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/esquery/license.txt"
+  },
+  "esrecurse@4.3.0": {
+    "licenses": "BSD-2-Clause",
+    "repository": "https://github.com/estools/esrecurse",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/esrecurse",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/esrecurse/README.md"
+  },
+  "estraverse@4.3.0": {
+    "licenses": "BSD-2-Clause",
+    "repository": "https://github.com/estools/estraverse",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/eslint-scope/node_modules/estraverse",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/eslint-scope/node_modules/estraverse/LICENSE.BSD"
+  },
+  "estraverse@5.2.0": {
+    "licenses": "BSD-2-Clause",
+    "repository": "https://github.com/estools/estraverse",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/estraverse",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/estraverse/LICENSE.BSD"
+  },
+  "esutils@2.0.3": {
+    "licenses": "BSD-2-Clause",
+    "repository": "https://github.com/estools/esutils",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/esutils",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/esutils/LICENSE.BSD"
+  },
+  "fast-deep-equal@3.1.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/epoberezkin/fast-deep-equal",
+    "publisher": "Evgeny Poberezkin",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fast-deep-equal",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fast-deep-equal/LICENSE"
+  },
+  "fast-json-stable-stringify@2.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/epoberezkin/fast-json-stable-stringify",
+    "publisher": "James Halliday",
+    "email": "mail@substack.net",
+    "url": "http://substack.net",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fast-json-stable-stringify",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fast-json-stable-stringify/LICENSE"
+  },
+  "fast-levenshtein@2.0.6": {
+    "licenses": "MIT",
+    "repository": "https://github.com/hiddentao/fast-levenshtein",
+    "publisher": "Ramesh Nair",
+    "email": "ram@hiddentao.com",
+    "url": "http://www.hiddentao.com/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fast-levenshtein",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fast-levenshtein/LICENSE.md"
+  },
+  "fast-redact@3.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/davidmarkclements/fast-redact",
+    "publisher": "David Mark Clements",
+    "email": "david.clements@nearform.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fast-redact",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fast-redact/LICENSE"
+  },
+  "fast-safe-stringify@2.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/davidmarkclements/fast-safe-stringify",
+    "publisher": "David Mark Clements",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fast-safe-stringify",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fast-safe-stringify/LICENSE"
+  },
+  "fastify-warning@0.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/fastify/fastify-warning",
+    "publisher": "Tomas Della Vedova",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fastify-warning",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fastify-warning/LICENSE"
+  },
+  "file-entry-cache@6.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/royriojas/file-entry-cache",
+    "publisher": "Roy Riojas",
+    "url": "http://royriojas.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/file-entry-cache",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/file-entry-cache/LICENSE"
+  },
+  "fill-range@7.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jonschlinkert/fill-range",
+    "publisher": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fill-range",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fill-range/LICENSE"
+  },
+  "find-up@5.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/find-up",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/find-up",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/find-up/license"
+  },
+  "flat-cache@3.0.4": {
+    "licenses": "MIT",
+    "repository": "https://github.com/royriojas/flat-cache",
+    "publisher": "Roy Riojas",
+    "url": "http://royriojas.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/flat-cache",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/flat-cache/LICENSE"
+  },
+  "flat@5.0.2": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hughsk/flat",
+    "publisher": "Hugh Kennedy",
+    "email": "hughskennedy@gmail.com",
+    "url": "http://hughskennedy.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/flat",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/flat/LICENSE"
+  },
+  "flatstr@1.0.12": {
+    "licenses": "MIT",
+    "repository": "https://github.com/davidmarkclements/flatstr",
+    "publisher": "David Mark Clements",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/flatstr",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/flatstr/LICENSE"
+  },
+  "flatted@3.2.2": {
+    "licenses": "ISC",
+    "repository": "https://github.com/WebReflection/flatted",
+    "publisher": "Andrea Giammarchi",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/flatted",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/flatted/LICENSE"
+  },
+  "format-util@1.0.5": {
+    "licenses": "MIT",
+    "repository": "https://github.com/tmpfs/format-util",
+    "publisher": "muji",
+    "email": "noop@xpm.io",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/format-util",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/format-util/LICENSE"
+  },
+  "fs-minipass@2.1.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/npm/fs-minipass",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fs-minipass",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fs-minipass/LICENSE"
+  },
+  "fs.realpath@1.0.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/fs.realpath",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fs.realpath",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fs.realpath/LICENSE"
+  },
+  "fsevents@2.3.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/fsevents/fsevents",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fsevents",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/fsevents/LICENSE"
+  },
+  "functional-red-black-tree@1.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mikolalysenko/functional-red-black-tree",
+    "publisher": "Mikola Lysenko",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/functional-red-black-tree",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/functional-red-black-tree/LICENSE"
+  },
+  "gauge@2.7.4": {
+    "licenses": "ISC",
+    "repository": "https://github.com/iarna/gauge",
+    "publisher": "Rebecca Turner",
+    "email": "me@re-becca.org",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/gauge",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/gauge/LICENSE"
+  },
+  "get-caller-file@2.0.5": {
+    "licenses": "ISC",
+    "repository": "https://github.com/stefanpenner/get-caller-file",
+    "publisher": "Stefan Penner",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/get-caller-file",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/get-caller-file/LICENSE.md"
+  },
+  "get-stream@4.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/get-stream",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/get-stream",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/get-stream/license"
+  },
+  "get-stream@5.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/get-stream",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/cacheable-request/node_modules/get-stream",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/cacheable-request/node_modules/get-stream/license"
+  },
+  "glob-parent@5.1.2": {
+    "licenses": "ISC",
+    "repository": "https://github.com/gulpjs/glob-parent",
+    "publisher": "Gulp Team",
+    "email": "team@gulpjs.com",
+    "url": "https://gulpjs.com/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/glob-parent",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/glob-parent/LICENSE"
+  },
+  "glob@7.1.7": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/node-glob",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/glob",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/glob/LICENSE"
+  },
+  "global-dirs@2.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/global-dirs",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/global-dirs",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/global-dirs/license"
+  },
+  "globals@13.11.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/globals",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/globals",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/globals/license"
+  },
+  "got@9.6.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/got",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/got",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/got/license"
+  },
+  "graceful-fs@4.2.8": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/node-graceful-fs",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/graceful-fs",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/graceful-fs/LICENSE"
+  },
+  "growl@1.10.5": {
+    "licenses": "MIT",
+    "repository": "https://github.com/tj/node-growl",
+    "publisher": "TJ Holowaychuk",
+    "email": "tj@vision-media.ca",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/growl",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/growl/Readme.md"
+  },
+  "handlebars@4.7.7": {
+    "licenses": "MIT",
+    "repository": "https://github.com/wycats/handlebars.js",
+    "publisher": "Yehuda Katz",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/handlebars",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/handlebars/LICENSE"
+  },
+  "hapi-auth-jwt2@10.2.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/dwyl/hapi-auth-jwt2",
+    "publisher": "@nelsonic https://github.com/nelsonic",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-auth-jwt2",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-auth-jwt2/LICENSE"
+  },
+  "hapi-cors@1.0.3": {
+    "licenses": "ISC",
+    "repository": "https://github.com/gabaroar/hapi-cors",
+    "publisher": "Jason Sanders",
+    "email": "gabaroar@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-cors",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-cors/README.md"
+  },
+  "hapi-pino@8.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/pinojs/hapi-pino",
+    "publisher": "David Mark Clements",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-pino",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-pino/LICENSE"
+  },
+  "hapi-socket.io@1.0.5": {
+    "licenses": "MIT",
+    "repository": "https://github.com/juandevelop85/hapi-socket.io",
+    "publisher": "Juan Vernaza Lopez",
+    "email": "juandvelop85@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-socket.io",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-socket.io/LICENSE"
+  },
+  "hapi-swagger@14.2.4": {
+    "licenses": "MIT",
+    "repository": "https://github.com/glennjones/hapi-swagger",
+    "publisher": "Glenn Jones",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-swagger",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-swagger/license.txt"
+  },
+  "has-binary2@1.0.3": {
+    "licenses": "MIT",
+    "publisher": "Kevin Roark",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/has-binary2",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/has-binary2/LICENSE"
+  },
+  "has-cors@1.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/component/has-cors",
+    "publisher": "Nathan Rajlich",
+    "email": "nathan@tootallnate.net",
+    "url": "http://n8.io/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/has-cors",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/has-cors/Readme.md"
+  },
+  "has-flag@3.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/has-flag",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/supports-color/node_modules/has-flag",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/supports-color/node_modules/has-flag/license"
+  },
+  "has-flag@4.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/has-flag",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/has-flag",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/has-flag/license"
+  },
+  "has-unicode@2.0.1": {
+    "licenses": "ISC",
+    "repository": "https://github.com/iarna/has-unicode",
+    "publisher": "Rebecca Turner",
+    "email": "me@re-becca.org",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/has-unicode",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/has-unicode/LICENSE"
+  },
+  "has-yarn@2.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/has-yarn",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/has-yarn",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/has-yarn/license"
+  },
+  "he@1.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mathiasbynens/he",
+    "publisher": "Mathias Bynens",
+    "url": "https://mathiasbynens.be/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/he",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/he/LICENSE-MIT.txt"
+  },
+  "hoek@3.0.4": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/hoek",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hoek",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hoek/LICENSE"
+  },
+  "hoek@4.2.1": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/hoek",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/topo/node_modules/hoek",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/topo/node_modules/hoek/LICENSE"
+  },
+  "http-cache-semantics@4.1.0": {
+    "licenses": "BSD-2-Clause",
+    "repository": "https://github.com/kornelski/http-cache-semantics",
+    "publisher": "Kornel Lesiński",
+    "email": "kornel@geekhood.net",
+    "url": "https://kornel.ski/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/http-cache-semantics",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/http-cache-semantics/LICENSE"
+  },
+  "http-status@1.5.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/adaltas/node-http-status",
+    "publisher": "David Worms",
+    "email": "david@adaltas.com",
+    "url": "https://www.adaltas.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/http-status",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/http-status/LICENSE"
+  },
+  "https-proxy-agent@5.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/TooTallNate/node-https-proxy-agent",
+    "publisher": "Nathan Rajlich",
+    "email": "nathan@tootallnate.net",
+    "url": "http://n8.io/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/https-proxy-agent",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/https-proxy-agent/README.md"
+  },
+  "ieee754@1.2.1": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/feross/ieee754",
+    "publisher": "Feross Aboukhadijeh",
+    "email": "feross@feross.org",
+    "url": "https://feross.org",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ieee754",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ieee754/LICENSE"
+  },
+  "ignore-by-default@1.0.1": {
+    "licenses": "ISC",
+    "repository": "https://github.com/novemberborn/ignore-by-default",
+    "publisher": "Mark Wubben",
+    "url": "https://novemberborn.net/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ignore-by-default",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ignore-by-default/LICENSE"
+  },
+  "ignore@4.0.6": {
+    "licenses": "MIT",
+    "repository": "https://github.com/kaelzhang/node-ignore",
+    "publisher": "kael",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ignore",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ignore/LICENSE-MIT"
+  },
+  "import-fresh@3.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/import-fresh",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/import-fresh",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/import-fresh/license"
+  },
+  "import-lazy@2.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/import-lazy",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/import-lazy",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/import-lazy/license"
+  },
+  "imurmurhash@0.1.4": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jensyt/imurmurhash-js",
+    "publisher": "Jens Taylor",
+    "email": "jensyt@gmail.com",
+    "url": "https://github.com/homebrewing",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/imurmurhash",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/imurmurhash/README.md"
+  },
+  "indexof@0.0.1": {
+    "licenses": "MIT*",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/indexof",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/indexof/Readme.md"
+  },
+  "inflight@1.0.6": {
+    "licenses": "ISC",
+    "repository": "https://github.com/npm/inflight",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/inflight",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/inflight/LICENSE"
+  },
+  "inherits@2.0.4": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/inherits",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/inherits",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/inherits/LICENSE"
+  },
+  "ini@1.3.7": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/ini",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ini",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ini/LICENSE"
+  },
+  "ini@1.3.8": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/ini",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/rc/node_modules/ini",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/rc/node_modules/ini/LICENSE"
+  },
+  "is-binary-path@2.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/is-binary-path",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-binary-path",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-binary-path/license"
+  },
+  "is-ci@2.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/watson/is-ci",
+    "publisher": "Thomas Watson Steen",
+    "email": "w@tson.dk",
+    "url": "https://twitter.com/wa7son",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-ci",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-ci/LICENSE"
+  },
+  "is-extglob@2.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jonschlinkert/is-extglob",
+    "publisher": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-extglob",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-extglob/LICENSE"
+  },
+  "is-fullwidth-code-point@1.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/is-fullwidth-code-point",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/gauge/node_modules/is-fullwidth-code-point",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/gauge/node_modules/is-fullwidth-code-point/license"
+  },
+  "is-fullwidth-code-point@2.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/is-fullwidth-code-point",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-fullwidth-code-point",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-fullwidth-code-point/license"
+  },
+  "is-fullwidth-code-point@3.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/is-fullwidth-code-point",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/string-width/node_modules/is-fullwidth-code-point",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/string-width/node_modules/is-fullwidth-code-point/license"
+  },
+  "is-glob@4.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/micromatch/is-glob",
+    "publisher": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-glob",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-glob/LICENSE"
+  },
+  "is-installed-globally@0.3.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/is-installed-globally",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-installed-globally",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-installed-globally/license"
+  },
+  "is-npm@4.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/is-npm",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-npm",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-npm/license"
+  },
+  "is-number@7.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jonschlinkert/is-number",
+    "publisher": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-number",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-number/LICENSE"
+  },
+  "is-obj@2.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/is-obj",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-obj",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-obj/license"
+  },
+  "is-path-inside@3.0.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/is-path-inside",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-path-inside",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-path-inside/license"
+  },
+  "is-plain-obj@2.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/is-plain-obj",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-plain-obj",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-plain-obj/license"
+  },
+  "is-typedarray@1.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/hughsk/is-typedarray",
+    "publisher": "Hugh Kennedy",
+    "email": "hughskennedy@gmail.com",
+    "url": "http://hughsk.io/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-typedarray",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-typedarray/LICENSE.md"
+  },
+  "is-unicode-supported@0.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/is-unicode-supported",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-unicode-supported",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-unicode-supported/license"
+  },
+  "is-yarn-global@0.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/LitoMore/is-yarn-global",
+    "publisher": "LitoMore",
+    "url": "litomore@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-yarn-global",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/is-yarn-global/LICENSE"
+  },
+  "isarray@1.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/juliangruber/isarray",
+    "publisher": "Julian Gruber",
+    "email": "mail@juliangruber.com",
+    "url": "http://juliangruber.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/are-we-there-yet/node_modules/isarray",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/are-we-there-yet/node_modules/isarray/README.md"
+  },
+  "isarray@2.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/juliangruber/isarray",
+    "publisher": "Julian Gruber",
+    "email": "mail@juliangruber.com",
+    "url": "http://juliangruber.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/isarray",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/isarray/README.md"
+  },
+  "isemail@2.2.1": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/isemail",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/isemail",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/isemail/LICENSE"
+  },
+  "isexe@2.0.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/isexe",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/isexe",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/isexe/LICENSE"
+  },
+  "jmespath@0.15.0": {
+    "licenses": "Apache 2.0",
+    "repository": "https://github.com/jmespath/jmespath.js",
+    "publisher": "James Saryerwinnie",
+    "email": "js@jamesls.com",
+    "url": "http://jamesls.com/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/jmespath",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/jmespath/LICENSE"
+  },
+  "joi@17.4.2": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/sideway/joi",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/joi",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/joi/LICENSE.md"
+  },
+  "joi@7.3.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/joi",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-cors/node_modules/joi",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-cors/node_modules/joi/LICENSE"
+  },
+  "joycon@2.2.5": {
+    "licenses": "MIT",
+    "repository": "https://github.com/egoist/joycon",
+    "publisher": "egoist",
+    "email": "0x142857@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-pino/node_modules/joycon",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-pino/node_modules/joycon/LICENSE"
+  },
+  "joycon@3.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/egoist/joycon",
+    "publisher": "egoist",
+    "email": "0x142857@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/joycon",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/joycon/LICENSE"
+  },
+  "js-tokens@4.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lydell/js-tokens",
+    "publisher": "Simon Lydell",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/js-tokens",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/js-tokens/LICENSE"
+  },
+  "js-yaml@3.14.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/nodeca/js-yaml",
+    "publisher": "Vladimir Zapparov",
+    "email": "dervus.grim@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/js-yaml",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/js-yaml/LICENSE"
+  },
+  "js-yaml@4.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/nodeca/js-yaml",
+    "publisher": "Vladimir Zapparov",
+    "email": "dervus.grim@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mocha/node_modules/js-yaml",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mocha/node_modules/js-yaml/LICENSE"
+  },
+  "json-buffer@3.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/dominictarr/json-buffer",
+    "publisher": "Dominic Tarr",
+    "email": "dominic.tarr@gmail.com",
+    "url": "http://dominictarr.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/json-buffer",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/json-buffer/LICENSE"
+  },
+  "json-schema-ref-parser@4.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/BigstickCarpet/json-schema-ref-parser",
+    "publisher": "James Messinger",
+    "url": "http://bigstickcarpet.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/swagger-parser/node_modules/json-schema-ref-parser",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/swagger-parser/node_modules/json-schema-ref-parser/LICENSE"
+  },
+  "json-schema-ref-parser@6.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/APIDevTools/json-schema-ref-parser",
+    "publisher": "James Messinger",
+    "url": "https://jamesmessinger.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/json-schema-ref-parser",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/json-schema-ref-parser/LICENSE"
+  },
+  "json-schema-traverse@0.4.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/epoberezkin/json-schema-traverse",
+    "publisher": "Evgeny Poberezkin",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/json-schema-traverse",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/json-schema-traverse/LICENSE"
+  },
+  "json-schema-traverse@1.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/epoberezkin/json-schema-traverse",
+    "publisher": "Evgeny Poberezkin",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/table/node_modules/json-schema-traverse",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/table/node_modules/json-schema-traverse/LICENSE"
+  },
+  "json-stable-stringify-without-jsonify@1.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/samn/json-stable-stringify",
+    "publisher": "James Halliday",
+    "email": "mail@substack.net",
+    "url": "http://substack.net",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/json-stable-stringify-without-jsonify",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/json-stable-stringify-without-jsonify/LICENSE"
+  },
+  "jsonwebtoken@8.5.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/auth0/node-jsonwebtoken",
+    "publisher": "auth0",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/jsonwebtoken",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/jsonwebtoken/LICENSE"
+  },
+  "jwa@1.4.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/brianloveswords/node-jwa",
+    "publisher": "Brian J. Brennan",
+    "email": "brianloveswords@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/jwa",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/jwa/LICENSE"
+  },
+  "jws@3.2.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/brianloveswords/node-jws",
+    "publisher": "Brian J Brennan",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/jws",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/jws/LICENSE"
+  },
+  "kareem@2.3.2": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/vkarpov15/kareem",
+    "publisher": "Valeri Karpov",
+    "email": "val@karpov.io",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/kareem",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/kareem/LICENSE"
+  },
+  "keyv@3.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lukechilds/keyv",
+    "publisher": "Luke Childs",
+    "email": "lukechilds123@gmail.com",
+    "url": "http://lukechilds.co.uk",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/keyv",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/keyv/LICENSE"
+  },
+  "latest-version@5.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/latest-version",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/latest-version",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/latest-version/license"
+  },
+  "leven@2.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/leven",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/leven",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/leven/license"
+  },
+  "levn@0.4.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/gkz/levn",
+    "publisher": "George Zahariev",
+    "email": "z@georgezahariev.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/levn",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/levn/LICENSE"
+  },
+  "loca-server@1.0.0": {
+    "licenses": "MIT",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER"
+  },
+  "locate-path@6.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/locate-path",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/locate-path",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/locate-path/license"
+  },
+  "lodash.clonedeep@4.5.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lodash/lodash",
+    "publisher": "John-David Dalton",
+    "email": "john.david.dalton@gmail.com",
+    "url": "http://allyoucanleet.com/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.clonedeep",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.clonedeep/LICENSE"
+  },
+  "lodash.get@4.4.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lodash/lodash",
+    "publisher": "John-David Dalton",
+    "email": "john.david.dalton@gmail.com",
+    "url": "http://allyoucanleet.com/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.get",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.get/LICENSE"
+  },
+  "lodash.includes@4.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lodash/lodash",
+    "publisher": "John-David Dalton",
+    "email": "john.david.dalton@gmail.com",
+    "url": "http://allyoucanleet.com/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.includes",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.includes/LICENSE"
+  },
+  "lodash.isboolean@3.0.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lodash/lodash",
+    "publisher": "John-David Dalton",
+    "email": "john.david.dalton@gmail.com",
+    "url": "http://allyoucanleet.com/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.isboolean",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.isboolean/LICENSE"
+  },
+  "lodash.isequal@4.5.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lodash/lodash",
+    "publisher": "John-David Dalton",
+    "email": "john.david.dalton@gmail.com",
+    "url": "http://allyoucanleet.com/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.isequal",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.isequal/LICENSE"
+  },
+  "lodash.isinteger@4.0.4": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lodash/lodash",
+    "publisher": "John-David Dalton",
+    "email": "john.david.dalton@gmail.com",
+    "url": "http://allyoucanleet.com/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.isinteger",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.isinteger/LICENSE"
+  },
+  "lodash.isnumber@3.0.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lodash/lodash",
+    "publisher": "John-David Dalton",
+    "email": "john.david.dalton@gmail.com",
+    "url": "http://allyoucanleet.com/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.isnumber",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.isnumber/LICENSE"
+  },
+  "lodash.isplainobject@4.0.6": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lodash/lodash",
+    "publisher": "John-David Dalton",
+    "email": "john.david.dalton@gmail.com",
+    "url": "http://allyoucanleet.com/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.isplainobject",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.isplainobject/LICENSE"
+  },
+  "lodash.isstring@4.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lodash/lodash",
+    "publisher": "John-David Dalton",
+    "email": "john.david.dalton@gmail.com",
+    "url": "http://allyoucanleet.com/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.isstring",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.isstring/LICENSE"
+  },
+  "lodash.merge@4.6.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lodash/lodash",
+    "publisher": "John-David Dalton",
+    "email": "john.david.dalton@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.merge",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.merge/LICENSE"
+  },
+  "lodash.once@4.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lodash/lodash",
+    "publisher": "John-David Dalton",
+    "email": "john.david.dalton@gmail.com",
+    "url": "http://allyoucanleet.com/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.once",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.once/LICENSE"
+  },
+  "lodash.truncate@4.4.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lodash/lodash",
+    "publisher": "John-David Dalton",
+    "email": "john.david.dalton@gmail.com",
+    "url": "http://allyoucanleet.com/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.truncate",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lodash.truncate/LICENSE"
+  },
+  "log-symbols@4.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/log-symbols",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/log-symbols",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/log-symbols/license"
+  },
+  "lowercase-keys@1.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/lowercase-keys",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lowercase-keys",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lowercase-keys/license"
+  },
+  "lowercase-keys@2.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/lowercase-keys",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/cacheable-request/node_modules/lowercase-keys",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/cacheable-request/node_modules/lowercase-keys/license"
+  },
+  "lru-cache@6.0.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/node-lru-cache",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lru-cache",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/lru-cache/LICENSE"
+  },
+  "make-dir@3.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/make-dir",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/make-dir",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/make-dir/license"
+  },
+  "memory-pager@1.5.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mafintosh/memory-pager",
+    "publisher": "Mathias Buus",
+    "url": "@mafintosh",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/memory-pager",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/memory-pager/LICENSE"
+  },
+  "mime-db@1.49.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jshttp/mime-db",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mime-db",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mime-db/LICENSE"
+  },
+  "mime-types@2.1.32": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jshttp/mime-types",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mime-types",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mime-types/LICENSE"
+  },
+  "mimic-response@1.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/mimic-response",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mimic-response",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mimic-response/license"
+  },
+  "minimatch@3.0.4": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/minimatch",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/minimatch",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/minimatch/LICENSE"
+  },
+  "minimist@1.2.5": {
+    "licenses": "MIT",
+    "repository": "https://github.com/substack/minimist",
+    "publisher": "James Halliday",
+    "email": "mail@substack.net",
+    "url": "http://substack.net",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/minimist",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/minimist/LICENSE"
+  },
+  "minipass@3.1.5": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/minipass",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/minipass",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/minipass/LICENSE"
+  },
+  "minizlib@2.1.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/isaacs/minizlib",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/minizlib",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/minizlib/LICENSE"
+  },
+  "mkdirp@1.0.4": {
+    "licenses": "MIT",
+    "repository": "https://github.com/isaacs/node-mkdirp",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mkdirp",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mkdirp/LICENSE"
+  },
+  "mocha@9.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mochajs/mocha",
+    "publisher": "TJ Holowaychuk",
+    "email": "tj@vision-media.ca",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mocha",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mocha/LICENSE"
+  },
+  "moment@2.29.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/moment/moment",
+    "publisher": "Iskren Ivov Chernev",
+    "email": "iskren.chernev@gmail.com",
+    "url": "https://github.com/ichernev",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/moment",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/moment/LICENSE"
+  },
+  "mongodb-connection-string-url@2.0.0": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/mongodb-js/mongodb-connection-string-url",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mongodb-connection-string-url",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mongodb-connection-string-url/LICENSE"
+  },
+  "mongodb@4.1.1": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/mongodb/node-mongodb-native",
+    "publisher": "The MongoDB NodeJS Team",
+    "email": "dbx-node@mongodb.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mongodb",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mongodb/LICENSE.md"
+  },
+  "mongoose@6.0.5": {
+    "licenses": "MIT",
+    "repository": "https://github.com/Automattic/mongoose",
+    "publisher": "Guillermo Rauch",
+    "email": "guillermo@learnboost.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mongoose",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mongoose/LICENSE.md"
+  },
+  "mpath@0.8.4": {
+    "licenses": "MIT",
+    "repository": "https://github.com/aheckmann/mpath",
+    "publisher": "Aaron Heckmann",
+    "email": "aaron.heckmann+github@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mpath",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mpath/LICENSE"
+  },
+  "mquery@4.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/aheckmann/mquery",
+    "publisher": "Aaron Heckmann",
+    "email": "aaron.heckmann+github@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mquery",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mquery/LICENSE"
+  },
+  "mri@1.1.4": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lukeed/mri",
+    "publisher": "Luke Edwards",
+    "email": "luke.edwards05@gmail.com",
+    "url": "lukeed.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mri",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mri/license.md"
+  },
+  "ms@2.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/zeit/ms",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io-client/node_modules/ms",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io-client/node_modules/ms/license.md"
+  },
+  "ms@2.1.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/zeit/ms",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/debug/node_modules/ms",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/debug/node_modules/ms/license.md"
+  },
+  "ms@2.1.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/vercel/ms",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/jsonwebtoken/node_modules/ms",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/jsonwebtoken/node_modules/ms/license.md"
+  },
+  "ms@3.0.0-canary.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/vercel/ms",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ms",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ms/license.md"
+  },
+  "nanoid@3.1.23": {
+    "licenses": "MIT",
+    "repository": "https://github.com/ai/nanoid",
+    "publisher": "Andrey Sitnik",
+    "email": "andrey@sitnik.ru",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/nanoid",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/nanoid/LICENSE"
+  },
+  "natural-compare@1.4.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/litejs/natural-compare-lite",
+    "publisher": "Lauri Rooden",
+    "url": "https://github.com/litejs/natural-compare-lite",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/natural-compare",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/natural-compare/README.md"
+  },
+  "negotiator@0.6.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jshttp/negotiator",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/negotiator",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/negotiator/LICENSE"
+  },
+  "neo-async@2.6.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/suguru03/neo-async",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/neo-async",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/neo-async/LICENSE"
+  },
+  "node-addon-api@3.2.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/nodejs/node-addon-api",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/node-addon-api",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/node-addon-api/LICENSE.md"
+  },
+  "node-fetch@2.6.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/bitinn/node-fetch",
+    "publisher": "David Frank",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/node-fetch",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/node-fetch/LICENSE.md"
+  },
+  "node-graceful@3.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mrbar42/node-graceful",
+    "publisher": "mrbar42",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/node-graceful",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/node-graceful/LICENSE"
+  },
+  "nodemon@2.0.12": {
+    "licenses": "MIT",
+    "repository": "https://github.com/remy/nodemon",
+    "publisher": "Remy Sharp",
+    "url": "https://github.com/remy",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/nodemon",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/nodemon/LICENSE"
+  },
+  "nopt@1.0.10": {
+    "licenses": "MIT",
+    "repository": "https://github.com/isaacs/nopt",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/touch/node_modules/nopt",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/touch/node_modules/nopt/LICENSE"
+  },
+  "nopt@5.0.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/npm/nopt",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/nopt",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/nopt/LICENSE"
+  },
+  "normalize-path@3.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jonschlinkert/normalize-path",
+    "publisher": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/normalize-path",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/normalize-path/LICENSE"
+  },
+  "normalize-url@4.5.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/normalize-url",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/normalize-url",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/normalize-url/license"
+  },
+  "npmlog@4.1.2": {
+    "licenses": "ISC",
+    "repository": "https://github.com/npm/npmlog",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/npmlog",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/npmlog/LICENSE"
+  },
+  "number-is-nan@1.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/number-is-nan",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/number-is-nan",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/number-is-nan/license"
+  },
+  "object-assign@4.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/object-assign",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/object-assign",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/object-assign/license"
+  },
+  "once@1.4.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/once",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/once",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/once/LICENSE"
+  },
+  "ono@4.0.11": {
+    "licenses": "MIT",
+    "repository": "https://github.com/JS-DevTools/ono",
+    "publisher": "James Messinger",
+    "url": "https://jamesmessinger.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ono",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ono/LICENSE"
+  },
+  "opencollective-postinstall@2.0.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/opencollective/opencollective-postinstall",
+    "publisher": "Xavier Damman",
+    "url": "@xdamman",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/opencollective-postinstall",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/opencollective-postinstall/LICENSE"
+  },
+  "optionator@0.9.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/gkz/optionator",
+    "publisher": "George Zahariev",
+    "email": "z@georgezahariev.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/optionator",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/optionator/LICENSE"
+  },
+  "p-cancelable@1.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/p-cancelable",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/p-cancelable",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/p-cancelable/license"
+  },
+  "p-limit@3.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/p-limit",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/p-limit",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/p-limit/license"
+  },
+  "p-locate@5.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/p-locate",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/p-locate",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/p-locate/license"
+  },
+  "package-json@6.5.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/package-json",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/package-json",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/package-json/license"
+  },
+  "parent-module@1.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/parent-module",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/parent-module",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/parent-module/license"
+  },
+  "parseqs@0.0.6": {
+    "licenses": "MIT",
+    "repository": "https://github.com/get/querystring",
+    "publisher": "Gal Koren",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/parseqs",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/parseqs/LICENSE"
+  },
+  "parseuri@0.0.6": {
+    "licenses": "MIT",
+    "repository": "https://github.com/get/parseuri",
+    "publisher": "Gal Koren",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/parseuri",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/parseuri/LICENSE"
+  },
+  "path-exists@4.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/path-exists",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/path-exists",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/path-exists/license"
+  },
+  "path-is-absolute@1.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/path-is-absolute",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/path-is-absolute",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/path-is-absolute/license"
+  },
+  "path-key@3.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/path-key",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/path-key",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/path-key/license"
+  },
+  "picomatch@2.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/micromatch/picomatch",
+    "publisher": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/picomatch",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/picomatch/LICENSE"
+  },
+  "pino-abstract-transport@0.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/pinojs/pino-abstract-transport",
+    "publisher": "Matteo Collina",
+    "email": "hello@matteocollina.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/pino-abstract-transport",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/pino-abstract-transport/LICENSE"
+  },
+  "pino-pretty@4.8.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/pinojs/pino-pretty",
+    "publisher": "James Sumners",
+    "email": "james.sumners@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-pino/node_modules/pino-pretty",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/hapi-pino/node_modules/pino-pretty/LICENSE"
+  },
+  "pino-pretty@7.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/pinojs/pino-pretty",
+    "publisher": "James Sumners",
+    "email": "james.sumners@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/pino-pretty",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/pino-pretty/LICENSE"
+  },
+  "pino-std-serializers@3.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/pinojs/pino-std-serializers",
+    "publisher": "James Sumners",
+    "email": "james.sumners@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/pino-std-serializers",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/pino-std-serializers/LICENSE"
+  },
+  "pino@6.13.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/pinojs/pino",
+    "publisher": "Matteo Collina",
+    "email": "hello@matteocollina.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/pino",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/pino/LICENSE"
+  },
+  "prelude-ls@1.2.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/gkz/prelude-ls",
+    "publisher": "George Zahariev",
+    "email": "z@georgezahariev.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/prelude-ls",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/prelude-ls/LICENSE"
+  },
+  "prepend-http@2.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/prepend-http",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/prepend-http",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/prepend-http/license"
+  },
+  "process-nextick-args@2.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/calvinmetcalf/process-nextick-args",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/process-nextick-args",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/process-nextick-args/license.md"
+  },
+  "progress@2.0.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/visionmedia/node-progress",
+    "publisher": "TJ Holowaychuk",
+    "email": "tj@vision-media.ca",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/progress",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/progress/LICENSE"
+  },
+  "pstree.remy@1.1.8": {
+    "licenses": "MIT",
+    "repository": "https://github.com/remy/pstree",
+    "publisher": "Remy Sharp",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/pstree.remy",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/pstree.remy/LICENSE"
+  },
+  "pump@3.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mafintosh/pump",
+    "publisher": "Mathias Buus Madsen",
+    "email": "mathiasbuus@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/pump",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/pump/LICENSE"
+  },
+  "punycode@2.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/bestiejs/punycode.js",
+    "publisher": "Mathias Bynens",
+    "url": "https://mathiasbynens.be/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/punycode",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/punycode/LICENSE-MIT.txt"
+  },
+  "pupa@2.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/pupa",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/pupa",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/pupa/license"
+  },
+  "quick-format-unescaped@4.0.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/davidmarkclements/quick-format",
+    "publisher": "David Mark Clements",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/quick-format-unescaped",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/quick-format-unescaped/LICENSE"
+  },
+  "randombytes@2.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/crypto-browserify/randombytes",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/randombytes",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/randombytes/LICENSE"
+  },
+  "rc@1.2.8": {
+    "licenses": "(BSD-2-Clause OR MIT OR Apache-2.0)",
+    "repository": "https://github.com/dominictarr/rc",
+    "publisher": "Dominic Tarr",
+    "email": "dominic.tarr@gmail.com",
+    "url": "dominictarr.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/rc",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/rc/LICENSE.APACHE2"
+  },
+  "readable-stream@2.3.7": {
+    "licenses": "MIT",
+    "repository": "https://github.com/nodejs/readable-stream",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/are-we-there-yet/node_modules/readable-stream",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/are-we-there-yet/node_modules/readable-stream/LICENSE"
+  },
+  "readable-stream@3.6.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/nodejs/readable-stream",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/readable-stream",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/readable-stream/LICENSE"
+  },
+  "readdirp@3.6.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/paulmillr/readdirp",
+    "publisher": "Thorsten Lorenz",
+    "email": "thlorenz@gmx.de",
+    "url": "thlorenz.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/readdirp",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/readdirp/LICENSE"
+  },
+  "regexp-clone@1.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/aheckmann/regexp-clone",
+    "publisher": "Aaron Heckmann",
+    "email": "aaron.heckmann+github@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/regexp-clone",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/regexp-clone/LICENSE"
+  },
+  "regexpp@3.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mysticatea/regexpp",
+    "publisher": "Toru Nagashima",
+    "url": "https://github.com/mysticatea",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/regexpp",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/regexpp/LICENSE"
+  },
+  "registry-auth-token@4.2.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/rexxars/registry-auth-token",
+    "publisher": "Espen Hovlandsdal",
+    "email": "espen@hovlandsdal.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/registry-auth-token",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/registry-auth-token/LICENSE"
+  },
+  "registry-url@5.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/registry-url",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/registry-url",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/registry-url/license"
+  },
+  "require-directory@2.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/troygoode/node-require-directory",
+    "publisher": "Troy Goode",
+    "email": "troygoode@gmail.com",
+    "url": "http://github.com/troygoode/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/require-directory",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/require-directory/LICENSE"
+  },
+  "require-from-string@2.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/floatdrop/require-from-string",
+    "publisher": "Vsevolod Strukchinsky",
+    "email": "floatdrop@gmail.com",
+    "url": "github.com/floatdrop",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/require-from-string",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/require-from-string/license"
+  },
+  "resolve-from@4.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/resolve-from",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/resolve-from",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/resolve-from/license"
+  },
+  "responselike@1.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lukechilds/responselike",
+    "publisher": "lukechilds",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/responselike",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/responselike/LICENSE"
+  },
+  "rfdc@1.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/davidmarkclements/rfdc",
+    "publisher": "David Mark Clements",
+    "email": "david.clements@nearform.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/rfdc",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/rfdc/LICENSE"
+  },
+  "rimraf@3.0.2": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/rimraf",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/rimraf",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/rimraf/LICENSE"
+  },
+  "safe-buffer@5.1.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/feross/safe-buffer",
+    "publisher": "Feross Aboukhadijeh",
+    "email": "feross@feross.org",
+    "url": "http://feross.org",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/are-we-there-yet/node_modules/safe-buffer",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/are-we-there-yet/node_modules/safe-buffer/LICENSE"
+  },
+  "safe-buffer@5.2.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/feross/safe-buffer",
+    "publisher": "Feross Aboukhadijeh",
+    "email": "feross@feross.org",
+    "url": "https://feross.org",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/safe-buffer",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/safe-buffer/LICENSE"
+  },
+  "saslprep@1.0.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/reklatsmasters/saslprep",
+    "publisher": "Dmitry Tsvettsikh",
+    "email": "me@reklatsmasters.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/saslprep",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/saslprep/LICENSE"
+  },
+  "secure-json-parse@2.4.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/fastify/secure-json-parse",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/secure-json-parse",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/secure-json-parse/LICENSE.md"
+  },
+  "semver-diff@3.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/semver-diff",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/semver-diff",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/semver-diff/license"
+  },
+  "semver@5.7.1": {
+    "licenses": "ISC",
+    "repository": "https://github.com/npm/node-semver",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/jsonwebtoken/node_modules/semver",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/jsonwebtoken/node_modules/semver/LICENSE"
+  },
+  "semver@6.3.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/npm/node-semver",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/semver",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/semver/LICENSE"
+  },
+  "semver@7.3.5": {
+    "licenses": "ISC",
+    "repository": "https://github.com/npm/node-semver",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@mapbox/node-pre-gyp/node_modules/semver",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/@mapbox/node-pre-gyp/node_modules/semver/LICENSE"
+  },
+  "serialize-javascript@6.0.0": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/yahoo/serialize-javascript",
+    "publisher": "Eric Ferraiuolo",
+    "email": "edf@ericf.me",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/serialize-javascript",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/serialize-javascript/LICENSE"
+  },
+  "set-blocking@2.0.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/yargs/set-blocking",
+    "publisher": "Ben Coe",
+    "email": "ben@npmjs.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/set-blocking",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/set-blocking/LICENSE.txt"
+  },
+  "shebang-command@2.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/kevva/shebang-command",
+    "publisher": "Kevin Mårtensson",
+    "email": "kevinmartensson@gmail.com",
+    "url": "github.com/kevva",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/shebang-command",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/shebang-command/license"
+  },
+  "shebang-regex@3.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/shebang-regex",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/shebang-regex",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/shebang-regex/license"
+  },
+  "sift@13.5.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/crcn/sift.js",
+    "publisher": "Craig Condon",
+    "email": "craig.j.condon@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/sift",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/sift/README.md"
+  },
+  "signal-exit@3.0.3": {
+    "licenses": "ISC",
+    "repository": "https://github.com/tapjs/signal-exit",
+    "publisher": "Ben Coe",
+    "email": "ben@npmjs.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/signal-exit",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/signal-exit/LICENSE.txt"
+  },
+  "signal-exit@3.0.4": {
+    "licenses": "ISC",
+    "repository": "https://github.com/tapjs/signal-exit",
+    "publisher": "Ben Coe",
+    "email": "ben@npmjs.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/write-file-atomic/node_modules/signal-exit",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/write-file-atomic/node_modules/signal-exit/LICENSE.txt"
+  },
+  "slice-ansi@4.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/slice-ansi",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/slice-ansi",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/slice-ansi/license"
+  },
+  "sliced@1.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/aheckmann/sliced",
+    "publisher": "Aaron Heckmann",
+    "email": "aaron.heckmann+github@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/sliced",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/sliced/LICENSE"
+  },
+  "socket.io-adapter@1.1.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/socketio/socket.io-adapter",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io-adapter",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io-adapter/LICENSE"
+  },
+  "socket.io-client@2.4.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/Automattic/socket.io-client",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io-client",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io-client/LICENSE"
+  },
+  "socket.io-parser@3.3.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/Automattic/socket.io-parser",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io-client/node_modules/socket.io-parser",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io-client/node_modules/socket.io-parser/LICENSE"
+  },
+  "socket.io-parser@3.4.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/socketio/socket.io-parser",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io-parser",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io-parser/LICENSE"
+  },
+  "socket.io@2.4.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/socketio/socket.io",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/socket.io/LICENSE"
+  },
+  "sonic-boom@1.4.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mcollina/sonic-boom",
+    "publisher": "Matteo Collina",
+    "email": "hello@matteocollina.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/sonic-boom",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/sonic-boom/LICENSE"
+  },
+  "sonic-boom@2.2.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/pinojs/sonic-boom",
+    "publisher": "Matteo Collina",
+    "email": "hello@matteocollina.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/pino-pretty/node_modules/sonic-boom",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/pino-pretty/node_modules/sonic-boom/LICENSE"
+  },
+  "source-map@0.6.1": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/mozilla/source-map",
+    "publisher": "Nick Fitzgerald",
+    "email": "nfitzgerald@mozilla.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/source-map",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/source-map/LICENSE"
+  },
+  "sparse-bitfield@3.0.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mafintosh/sparse-bitfield",
+    "publisher": "Mathias Buus",
+    "url": "@mafintosh",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/sparse-bitfield",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/sparse-bitfield/LICENSE"
+  },
+  "split2@3.2.2": {
+    "licenses": "ISC",
+    "repository": "https://github.com/mcollina/split2",
+    "publisher": "Matteo Collina",
+    "email": "hello@matteocollina.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/split2",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/split2/LICENSE"
+  },
+  "sprintf-js@1.0.3": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/alexei/sprintf.js",
+    "publisher": "Alexandru Marasteanu",
+    "email": "hello@alexei.ro",
+    "url": "http://alexei.ro/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/sprintf-js",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/sprintf-js/LICENSE"
+  },
+  "string-width@1.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/string-width",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/gauge/node_modules/string-width",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/gauge/node_modules/string-width/license"
+  },
+  "string-width@2.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/string-width",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/wide-align/node_modules/string-width",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/wide-align/node_modules/string-width/license"
+  },
+  "string-width@3.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/string-width",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ansi-align/node_modules/string-width",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ansi-align/node_modules/string-width/license"
+  },
+  "string-width@4.2.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/string-width",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/string-width",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/string-width/license"
+  },
+  "string_decoder@1.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/nodejs/string_decoder",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/are-we-there-yet/node_modules/string_decoder",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/are-we-there-yet/node_modules/string_decoder/LICENSE"
+  },
+  "string_decoder@1.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/nodejs/string_decoder",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/string_decoder",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/string_decoder/LICENSE"
+  },
+  "strip-ansi@3.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/strip-ansi",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/gauge/node_modules/strip-ansi",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/gauge/node_modules/strip-ansi/license"
+  },
+  "strip-ansi@4.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/strip-ansi",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/wide-align/node_modules/strip-ansi",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/wide-align/node_modules/strip-ansi/license"
+  },
+  "strip-ansi@5.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/strip-ansi",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ansi-align/node_modules/strip-ansi",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ansi-align/node_modules/strip-ansi/license"
+  },
+  "strip-ansi@6.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/strip-ansi",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/strip-ansi",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/strip-ansi/license"
+  },
+  "strip-json-comments@2.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/strip-json-comments",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/rc/node_modules/strip-json-comments",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/rc/node_modules/strip-json-comments/license"
+  },
+  "strip-json-comments@3.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/strip-json-comments",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/strip-json-comments",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/strip-json-comments/license"
+  },
+  "supports-color@5.5.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/supports-color",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/supports-color",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/supports-color/license"
+  },
+  "supports-color@7.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/supports-color",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/chalk/node_modules/supports-color",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/chalk/node_modules/supports-color/license"
+  },
+  "supports-color@8.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/supports-color",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mocha/node_modules/supports-color",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/mocha/node_modules/supports-color/license"
+  },
+  "swagger-methods@1.0.8": {
+    "licenses": "MIT",
+    "repository": "https://github.com/APIDevTools/swagger-methods",
+    "publisher": "James Messinger",
+    "url": "https://jamesmessinger.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/swagger-methods",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/swagger-methods/LICENSE"
+  },
+  "swagger-parser@4.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/BigstickCarpet/swagger-parser",
+    "publisher": "James Messinger",
+    "url": "http://bigstickcarpet.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/swagger-parser",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/swagger-parser/LICENSE"
+  },
+  "swagger-schema-official@2.0.0-bab6bed": {
+    "licenses": "ISC",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/swagger-schema-official",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/swagger-schema-official/README.md"
+  },
+  "swagger-ui-dist@3.52.2": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/swagger-api/swagger-ui",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/swagger-ui-dist",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/swagger-ui-dist/README.md"
+  },
+  "table@6.7.1": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/gajus/table",
+    "publisher": "Gajus Kuizinas",
+    "email": "gajus@gajus.com",
+    "url": "http://gajus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/table",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/table/LICENSE"
+  },
+  "tar@6.1.11": {
+    "licenses": "ISC",
+    "repository": "https://github.com/npm/node-tar",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/tar",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/tar/LICENSE"
+  },
+  "term-size@2.2.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/term-size",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/term-size",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/term-size/license"
+  },
+  "text-table@0.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/substack/text-table",
+    "publisher": "James Halliday",
+    "email": "mail@substack.net",
+    "url": "http://substack.net",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/text-table",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/text-table/LICENSE"
+  },
+  "to-array@0.1.4": {
+    "licenses": "MIT",
+    "repository": "https://github.com/Raynos/to-array",
+    "publisher": "Raynos",
+    "email": "raynos2@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/to-array",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/to-array/LICENCE"
+  },
+  "to-readable-stream@1.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/to-readable-stream",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/to-readable-stream",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/to-readable-stream/license"
+  },
+  "to-regex-range@5.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/micromatch/to-regex-range",
+    "publisher": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/to-regex-range",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/to-regex-range/LICENSE"
+  },
+  "topo@2.0.2": {
+    "licenses": "BSD-3-Clause",
+    "repository": "https://github.com/hapijs/topo",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/topo",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/topo/README.md"
+  },
+  "touch@3.1.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/node-touch",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/touch",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/touch/LICENSE"
+  },
+  "tr46@2.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jsdom/tr46",
+    "publisher": "Sebastian Mayr",
+    "email": "npm@smayr.name",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/tr46",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/tr46/LICENSE.md"
+  },
+  "type-check@0.4.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/gkz/type-check",
+    "publisher": "George Zahariev",
+    "email": "z@georgezahariev.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/type-check",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/type-check/LICENSE"
+  },
+  "type-fest@0.20.2": {
+    "licenses": "(MIT OR CC0-1.0)",
+    "repository": "https://github.com/sindresorhus/type-fest",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/type-fest",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/type-fest/license"
+  },
+  "type-fest@0.8.1": {
+    "licenses": "(MIT OR CC0-1.0)",
+    "repository": "https://github.com/sindresorhus/type-fest",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/boxen/node_modules/type-fest",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/boxen/node_modules/type-fest/license"
+  },
+  "typedarray-to-buffer@3.1.5": {
+    "licenses": "MIT",
+    "repository": "https://github.com/feross/typedarray-to-buffer",
+    "publisher": "Feross Aboukhadijeh",
+    "email": "feross@feross.org",
+    "url": "http://feross.org/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/typedarray-to-buffer",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/typedarray-to-buffer/LICENSE"
+  },
+  "uglify-js@3.14.2": {
+    "licenses": "BSD-2-Clause",
+    "repository": "https://github.com/mishoo/UglifyJS",
+    "publisher": "Mihai Bazon",
+    "email": "mihai.bazon@gmail.com",
+    "url": "http://lisperator.net/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/uglify-js",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/uglify-js/LICENSE"
+  },
+  "undefsafe@2.0.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/remy/undefsafe",
+    "publisher": "Remy Sharp",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/undefsafe",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/undefsafe/LICENSE"
+  },
+  "unique-string@2.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/unique-string",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/unique-string",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/unique-string/license"
+  },
+  "update-notifier@4.1.3": {
+    "licenses": "BSD-2-Clause",
+    "repository": "https://github.com/yeoman/update-notifier",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/update-notifier",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/update-notifier/license"
+  },
+  "uri-js@4.4.1": {
+    "licenses": "BSD-2-Clause",
+    "repository": "https://github.com/garycourt/uri-js",
+    "publisher": "Gary Court",
+    "email": "gary.court@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/uri-js",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/uri-js/LICENSE"
+  },
+  "url-parse-lax@3.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/url-parse-lax",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/url-parse-lax",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/url-parse-lax/license"
+  },
+  "util-deprecate@1.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/TooTallNate/util-deprecate",
+    "publisher": "Nathan Rajlich",
+    "email": "nathan@tootallnate.net",
+    "url": "http://n8.io/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/util-deprecate",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/util-deprecate/LICENSE"
+  },
+  "v8-compile-cache@2.3.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/zertosh/v8-compile-cache",
+    "publisher": "Andres Suarez",
+    "email": "zertosh@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/v8-compile-cache",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/v8-compile-cache/LICENSE"
+  },
+  "validator@10.11.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chriso/validator.js",
+    "publisher": "Chris O'Hara",
+    "email": "cohara87@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/validator",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/validator/LICENSE"
+  },
+  "webidl-conversions@6.1.0": {
+    "licenses": "BSD-2-Clause",
+    "repository": "https://github.com/jsdom/webidl-conversions",
+    "publisher": "Domenic Denicola",
+    "email": "d@domenic.me",
+    "url": "https://domenic.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/webidl-conversions",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/webidl-conversions/LICENSE.md"
+  },
+  "whatwg-url@9.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jsdom/whatwg-url",
+    "publisher": "Sebastian Mayr",
+    "email": "github@smayr.name",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/whatwg-url",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/whatwg-url/LICENSE.txt"
+  },
+  "which@2.0.2": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/node-which",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/which",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/which/LICENSE"
+  },
+  "wide-align@1.1.3": {
+    "licenses": "ISC",
+    "repository": "https://github.com/iarna/wide-align",
+    "publisher": "Rebecca Turner",
+    "email": "me@re-becca.org",
+    "url": "http://re-becca.org/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/wide-align",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/wide-align/LICENSE"
+  },
+  "widest-line@3.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/widest-line",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/widest-line",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/widest-line/license"
+  },
+  "word-wrap@1.2.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jonschlinkert/word-wrap",
+    "publisher": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/word-wrap",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/word-wrap/LICENSE"
+  },
+  "wordwrap@1.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/substack/node-wordwrap",
+    "publisher": "James Halliday",
+    "email": "mail@substack.net",
+    "url": "http://substack.net",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/wordwrap",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/wordwrap/LICENSE"
+  },
+  "workerpool@6.1.5": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/josdejong/workerpool",
+    "publisher": "Jos de Jong",
+    "email": "wjosdejong@gmail.com",
+    "url": "https://github.com/josdejong",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/workerpool",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/workerpool/LICENSE"
+  },
+  "wrap-ansi@7.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/wrap-ansi",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/wrap-ansi",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/wrap-ansi/license"
+  },
+  "wrappy@1.0.2": {
+    "licenses": "ISC",
+    "repository": "https://github.com/npm/wrappy",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/wrappy",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/wrappy/LICENSE"
+  },
+  "write-file-atomic@3.0.3": {
+    "licenses": "ISC",
+    "repository": "https://github.com/npm/write-file-atomic",
+    "publisher": "Rebecca Turner",
+    "email": "me@re-becca.org",
+    "url": "http://re-becca.org",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/write-file-atomic",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/write-file-atomic/LICENSE"
+  },
+  "ws@7.4.6": {
+    "licenses": "MIT",
+    "repository": "https://github.com/websockets/ws",
+    "publisher": "Einar Otto Stangvik",
+    "email": "einaros@gmail.com",
+    "url": "http://2x.io",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ws",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/ws/LICENSE"
+  },
+  "xdg-basedir@4.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/xdg-basedir",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/xdg-basedir",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/xdg-basedir/license"
+  },
+  "xmlhttprequest-ssl@1.6.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mjwwit/node-XMLHttpRequest",
+    "publisher": "Michael de Wit",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/xmlhttprequest-ssl",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/xmlhttprequest-ssl/LICENSE"
+  },
+  "y18n@5.0.8": {
+    "licenses": "ISC",
+    "repository": "https://github.com/yargs/y18n",
+    "publisher": "Ben Coe",
+    "email": "bencoe@gmail.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/y18n",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/y18n/LICENSE"
+  },
+  "yallist@4.0.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/yallist",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/yallist",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/yallist/LICENSE"
+  },
+  "yargs-parser@20.2.4": {
+    "licenses": "ISC",
+    "repository": "https://github.com/yargs/yargs-parser",
+    "publisher": "Ben Coe",
+    "email": "ben@npmjs.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/yargs-parser",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/yargs-parser/LICENSE.txt"
+  },
+  "yargs-parser@20.2.9": {
+    "licenses": "ISC",
+    "repository": "https://github.com/yargs/yargs-parser",
+    "publisher": "Ben Coe",
+    "email": "ben@npmjs.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/yargs/node_modules/yargs-parser",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/yargs/node_modules/yargs-parser/LICENSE.txt"
+  },
+  "yargs-unparser@2.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/yargs/yargs-unparser",
+    "publisher": "André Cruz",
+    "email": "andre@moxy.studio",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/yargs-unparser",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/yargs-unparser/LICENSE"
+  },
+  "yargs@16.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/yargs/yargs",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/yargs",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/yargs/LICENSE"
+  },
+  "yeast@0.1.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/unshiftio/yeast",
+    "publisher": "Arnout Kazemier",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/yeast",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/yeast/LICENSE"
+  },
+  "yocto-queue@0.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/yocto-queue",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/yocto-queue",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/yocto-queue/license"
+  },
+  "z-schema@3.25.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/zaggino/z-schema",
+    "path": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/z-schema",
+    "licenseFile": "/Users/jaykim/Documents/JS/LOCA/SERVER/node_modules/z-schema/LICENSE"
+  }
+}
