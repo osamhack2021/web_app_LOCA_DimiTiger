@@ -13,6 +13,8 @@ services:
       MONGO_URI: '${MONGO_URI}'
       VIRTUAL_HOST: api.loca.kimjisub.me
       LETSENCRYPT_HOST: api.loca.kimjisub.me
+    volumes:
+      - uploads:/usr/src/app/app/static/uploads
     depends_on:
       - mongo
     networks:
@@ -23,6 +25,9 @@ services:
     image: mongo
     networks:
       - default
+
+volumes:
+  uploads:
 
 networks:
   default:
