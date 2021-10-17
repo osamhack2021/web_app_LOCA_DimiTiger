@@ -1,0 +1,27 @@
+---
+sidebar_position: 2
+---
+
+# 시작하기
+
+## 1. 프로젝트 설치
+
+```
+$ git clone https://github.com/osamhack2021/web_app_LOCA_DimiTiger.git
+```
+
+## 2. 패키지 설치
+
+**SERVER** 서비스 디렉터리로 이동 후 .env 정의
+
+```
+MONGO_URI=mongodb://mongo:27017
+JWT_SECRET=[JWT SECRET 키 값]
+PORT=[포트]
+OPENWEATHER_API_KEY=[날씨 API 키 값]
+```
+
+## 프로젝트 실행
+```
+$ docker-compose up -d
+```
