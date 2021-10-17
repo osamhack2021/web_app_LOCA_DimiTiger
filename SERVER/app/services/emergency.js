@@ -28,8 +28,8 @@ exports.getEmergency = async (_id) => {
 	return emergency;
 };
 
-exports.createEmergency = async ({ content, emergency, creator }) => {
-	return await new Emergency({ content, emergency, creator }).save();
+exports.createEmergency = async ({ content, creator }) => {
+	return await new Emergency({ content, creator }).save();
 };
 
 exports.addEmergencyAdditionalReport = async (_id, fields) => {
