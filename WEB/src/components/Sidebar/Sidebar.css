@@ -29,7 +29,7 @@
   cursor: pointer;
 }
 #sidebar:hover {
-  width: 220px;
+  width: 240px;
   right: 0;
 }
 #sidebar:hover .sidebar_item {

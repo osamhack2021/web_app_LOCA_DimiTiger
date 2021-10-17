@@ -12,6 +12,7 @@ import {
 } from 'antd';
 import { format } from 'date-fns';
 
+import { useEmergencyReports } from '@/api/emergencies';
 import { useLocationLogs } from '@/api/location-logs';
 import { useDeleteUser, useUser } from '@/api/users';
 import Header from '@/components/Header/Header';
@@ -27,6 +28,9 @@ const UserDetail = () => {
   const [form] = Form.useForm();
   const { data: user } = useUser(id);
   const { data: locationLog } = useLocationLogs({
+    user: id,
+  });
+  const { data: emergencyReport } = useEmergencyReports({
     user: id,
   });
 
@@ -105,21 +109,22 @@ const UserDetail = () => {
             <Col span={12}>
               <LargeCard title="긴급 신고 현황" style={{ flex: 1 }}>
                 <Timeline mode="left">
-                  {locationLog?.map(({ location, createdAt }) => (
-                    <Timeline.Item
-                      dot={
-                        <ImageProvider
-                          icon={location.ui?.icon}
-                          style={{ width: 20 }}
-                        />
-                      }
-                      label={format(
-                        new Date(createdAt),
-                        'yyyy-MM-dd HH:mm:ss',
-                      )}>
-                      {location.name}
-                    </Timeline.Item>
-                  ))}
+                  {emergencyReport?.map(
+                    ({ creator, createdAt, additionalReport }) => (
+                      <Timeline.Item
+                        label={format(
+                          new Date(createdAt),
+                          'yyyy-MM-dd HH:mm:ss',
+                        )}>
+                        {creator.name +
+                          ' (' +
+                          (additionalReport.length >= 1
+                            ? additionalReport[additionalReport.length - 1]
+                                .content + ')'
+                            : '추가보고 없음)')}
+                      </Timeline.Item>
+                    ),
+                  )}
                 </Timeline>
               </LargeCard>
             </Col>

@@ -11,16 +11,13 @@ import {
   useQueryParams,
 } from 'use-query-params';
 
-import { useLocationLogs } from '@/api/location-logs';
-import { useLocations } from '@/api/locations';
+import { useEmergencyReports } from '@/api/emergencies';
 import Header from '@/components/Header/Header';
 import LargeCard from '@/components/LargeCard';
 import LayoutContent from '@/components/LayoutContent';
 import LayoutContentWrapper from '@/components/LayoutContentWrapper';
-import LocationIcon from '@/components/LocationIcon';
 import Sidebar from '@/components/Sidebar/Sidebar';
 import UserSearchSelect from '@/components/UserSearchSelect';
-import Location from '@/types/Location';
 import User from '@/types/User';
 
 const { RangePicker } = DatePicker;
@@ -33,16 +30,13 @@ const EmergencyReports = () => {
     rangeEnd: DateParam,
     page: NumberParam,
     limit: NumberParam,
-    location: StringParam,
     user: StringParam,
     active: BooleanParam,
   });
   const [form] = Form.useForm();
-  const { data: locations, isLoading: locationLoading } = useLocations();
-  const { data: locationLogs, pagination } = useLocationLogs({
+  const { data: locationLogs, pagination } = useEmergencyReports({
     rangeStart: query.rangeStart || undefined,
     rangeEnd: query.rangeEnd || undefined,
-    location: query.location || undefined,
     user: query.user || undefined,
     active: query.active || undefined,
     page: query.page || undefined,
@@ -61,7 +55,6 @@ const EmergencyReports = () => {
               <Form
                 form={form}
                 initialValues={{
-                  location: query.location,
                   user: query.user,
                   range: [query.rangeStart, query.rangeEnd],
                 }}
@@ -88,26 +81,10 @@ const EmergencyReports = () => {
                 <Form.Item name="user">
                   <UserSearchSelect />
                 </Form.Item>
-                <Form.Item name="location">
-                  <Select
-                    placeholder="위치"
-                    loading={locationLoading}
-                    style={{ width: 200 }}>
-                    <Option value="">전체위치</Option>
-                    {locations?.map(l => (
-                      <Option value={l._id} key={l.name}>
-                        {l.name}
-                      </Option>
-                    ))}
-                  </Select>
-                </Form.Item>
                 <Form.Item name="active">
-                  <Select
-                    placeholder="상태"
-                    loading={locationLoading}
-                    style={{ width: 200 }}>
+                  <Select placeholder="상태" style={{ width: 200 }}>
                     <Option value="">전체</Option>
-                    <Option value="true">현재위치</Option>
+                    <Option value="true">진행중</Option>
                   </Select>
                 </Form.Item>
                 <Button type="primary" htmlType="submit">
@@ -130,7 +107,7 @@ const EmergencyReports = () => {
               },
               {
                 title: '인원',
-                dataIndex: 'user',
+                dataIndex: 'creator',
                 key: 'user',
                 render: (user: User) => (
                   <Link
@@ -138,25 +115,10 @@ const EmergencyReports = () => {
                 ),
               },
               {
-                title: '장소',
-                dataIndex: 'location',
-                key: 'location',
-                render: (location: Location) => (
-                  <>
-                    <LocationIcon
-                      icon={location.ui?.icon}
-                      style={{ height: 20, marginRight: 10 }}
-                    />
-                    <Link
-                      to={`/locations/${location._id}`}>{`${location.name}`}</Link>
-                  </>
-                ),
-              },
-              {
                 title: '상태',
                 dataIndex: 'active',
                 key: 'active',
-                render: (active: boolean) => (active ? '현재위치' : '과거위치'),
+                render: (active: boolean) => (active ? '진행중' : '완료'),
               },
             ]}
             pagination={{

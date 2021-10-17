@@ -10,6 +10,7 @@ import PublicRoutes from './PublicRoutes';
 import { accessTokenState, settingsState, useLogout } from '@/atoms';
 import useAxios from '@/hooks/useAxios';
 import Beacons from '@/pages/Beacons';
+import EmergencyReports from '@/pages/EmergencyReports';
 import Home from '@/pages/Home';
 import Init from '@/pages/Init';
 import LocationLogs from '@/pages/LocationLogs';
@@ -82,6 +83,11 @@ const Router = () => {
             exact
           />
           <PrivateRoutes path="/beacons" component={Beacons} exact />
+          <PrivateRoutes
+            path="/emergencyReports"
+            component={EmergencyReports}
+            exact
+          />
           <PrivateRoutes path="/settings" component={Settings} exact />
         </Switch>
       </QueryParamProvider>
