@@ -15,7 +15,10 @@ import Animated, {
   FadeOutUp,
   interpolateColor,
   useAnimatedProps,
+  useAnimatedStyle,
   useSharedValue,
+  withRepeat,
+  withSequence,
   withTiming,
   ZoomIn,
   ZoomOut,
@@ -58,6 +61,7 @@ const EmergencyReportCard = () => {
     hasAdditionalReport,
   ]);
   const color = useSharedValue(0);
+  const rotation = useSharedValue(0);
   const gradientProps = useAnimatedProps(() => ({
     colors: [
       interpolateColor(color.value, [0, 1], [colorReportStart, colorReport]),
@@ -65,25 +69,36 @@ const EmergencyReportCard = () => {
     ],
   }));
   const nullAniamtedProps = useAnimatedProps(() => ({}));
+  const vibrationStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ rotateZ: `${rotation.value}deg` }],
+    };
+  });
 
   const pressInHandler = useCallback(() => {
     if (report) {
       return;
     }
     color.value = withTiming(1, { duration: 1000 });
-  }, [color, report]);
+    rotation.value = withSequence(
+      withTiming(-5, { duration: 50 }),
+      withRepeat(withTiming(10, { duration: 100 }), -1, true),
+    );
+  }, [color, report, rotation]);
 
   const pressOutHandler = useCallback(() => {
     if (report) {
       return;
     }
     color.value = withTiming(0);
-  }, [color, report]);
+    rotation.value = withTiming(0, { duration: 50 });
+  }, [color, report, rotation]);
 
   const longPressHandler = useCallback(() => {
     createReport();
     color.value = withTiming(0);
-  }, [color, createReport]);
+    rotation.value = withTiming(0, { duration: 50 });
+  }, [color, createReport, rotation]);
 
   const pressHandler = useCallback(() => {
     if (!report) {
@@ -93,7 +108,7 @@ const EmergencyReportCard = () => {
 
   const ReportIcon = useCallback(
     () => (
-      <Animated.View entering={ZoomIn} exiting={ZoomOut}>
+      <Animated.View entering={ZoomIn} exiting={ZoomOut} style={vibrationStyle}>
         <Icon
           name={report ? 'checkbox-marked-circle' : 'alert'}
           size={50}
@@ -101,7 +116,7 @@ const EmergencyReportCard = () => {
         />
       </Animated.View>
     ),
-    [report],
+    [report, vibrationStyle],
   );
 
   const StateText = useCallback(
