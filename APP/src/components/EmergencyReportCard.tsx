@@ -106,19 +106,6 @@ const EmergencyReportCard = () => {
     }
   }, [report]);
 
-  const ReportIcon = useCallback(
-    () => (
-      <Animated.View entering={ZoomIn} exiting={ZoomOut} style={vibrationStyle}>
-        <Icon
-          name={report ? 'checkbox-marked-circle' : 'alert'}
-          size={50}
-          color={colorWhite}
-        />
-      </Animated.View>
-    ),
-    [report, vibrationStyle],
-  );
-
   const StateText = useCallback(
     () => (
       <Animated.Text
@@ -160,8 +147,26 @@ const EmergencyReportCard = () => {
               }
               style={styles.reportButton}>
               {/* Intended nasty code for animation */}
-              {report && <ReportIcon />}
-              {!report && <ReportIcon />}
+              {report && (
+                <Animated.View
+                  entering={ZoomIn}
+                  exiting={ZoomOut}
+                  style={vibrationStyle}>
+                  <Icon
+                    name={'checkbox-marked-circle'}
+                    size={50}
+                    color={colorWhite}
+                  />
+                </Animated.View>
+              )}
+              {!report && (
+                <Animated.View
+                  entering={ZoomIn}
+                  exiting={ZoomOut}
+                  style={vibrationStyle}>
+                  <Icon name={'alert'} size={50} color={colorWhite} />
+                </Animated.View>
+              )}
             </AnimatedGradient>
           </Pressable>
           {/* Intended nasty code for animation */}
