@@ -31,16 +31,18 @@ const Chart = ({
     if (!locations || !locationLogs) {
       return {};
     }
-    const children = locations.map(location => {
-      const logs = locationLogs.filter(
-        locationLog => locationLog.location._id === location._id,
-      );
-      return {
-        location,
-        users: logs.map(({ user }) => user),
-        children: Array(logs.length).fill(''),
-      };
-    });
+    const children = locations
+      .map(location => {
+        const logs = locationLogs.filter(
+          locationLog => locationLog.location._id === location._id,
+        );
+        return {
+          location,
+          users: logs.map(({ user }) => user),
+          children: Array(logs.length).fill(''),
+        };
+      })
+      .filter(location => location.users.length > 0);
     return {
       children,
     };
