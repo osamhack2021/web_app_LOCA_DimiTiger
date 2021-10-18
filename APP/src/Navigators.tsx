@@ -3,11 +3,7 @@ import { Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RouteProp } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {
-  createStackNavigator,
-  StackNavigationProp,
-  StackScreenProps,
-} from '@react-navigation/stack';
+import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 import { useRecoilValue } from 'recoil';
 
 import RegisterDoneScreen from './screens/RegisterDoneScreen';
@@ -15,18 +11,15 @@ import RegisterDoneScreen from './screens/RegisterDoneScreen';
 import { accessTokenState } from '@/atoms';
 import Header from '@/components/Header';
 import LocationScreen from '@/screens/LocationScreen';
-import MainScreen from '@/screens/MainScreen';
+import MainScreen from '@/screens/Main/MainScreen';
 import NoticeScreen from '@/screens/NoticeScreen';
-import SettingsScreen from '@/screens/SettingsScreen';
+import SettingsScreen from '@/screens/Settings/SettingsScreen';
 import SignInScreen from '@/screens/SignInScreen';
 import SignUpScreen from '@/screens/SignUpScreen';
 import WelcomeScreen from '@/screens/WelcomeScreen';
 import User from '@/types/User';
 
-const Stack =
-  Platform.OS === 'android'
-    ? createStackNavigator<RootStackParamList>()
-    : createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
   const accessToken = useRecoilValue(accessTokenState);

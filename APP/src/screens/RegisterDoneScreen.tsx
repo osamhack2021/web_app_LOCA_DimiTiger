@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Animated, {
-  FadeInUp,
-  FadeOutDown,
   runOnJS,
   useAnimatedProps,
   useSharedValue,
@@ -11,6 +9,7 @@ import Animated, {
 import { useNavigation, useRoute } from '@react-navigation/core';
 import LottieView from 'lottie-react-native';
 
+import AnimatedText from '@/components/AnimatedText';
 import Button from '@/components/Button';
 import { RootNavigationProp, RootRouteProp } from '@/Navigators';
 
@@ -40,17 +39,6 @@ const RegisterDoneScreen = () => {
     );
   }, [progress]);
 
-  const AnimatedText = () => (
-    <Animated.Text
-      entering={FadeInUp}
-      exiting={FadeOutDown}
-      style={styles.doneText}>
-      {confettiAnimDone
-        ? `${name} ${rank}님, 안녕하세요.`
-        : '가입이 완료되었어요!'}
-    </Animated.Text>
-  );
-
   return (
     <View style={styles.container}>
       <AnimatedLottieView
@@ -60,9 +48,11 @@ const RegisterDoneScreen = () => {
       />
       <View style={styles.container} />
       <View style={styles.container}>
-        {/* Intended nasty code for animation */}
-        {confettiAnimDone && <AnimatedText />}
-        {!confettiAnimDone && <AnimatedText />}
+        <AnimatedText
+          texts={['가입이 완료되었어요!', `${name} ${rank}님, 안녕하세요.`]}
+          textIndex={confettiAnimDone ? 1 : 0}
+          style={styles.doneText}
+        />
       </View>
       <View style={styles.container}>
         <Button onPress={() => navigation.popToTop()}>시작하기</Button>

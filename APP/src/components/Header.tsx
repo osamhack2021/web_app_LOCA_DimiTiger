@@ -6,18 +6,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { NativeStackHeaderProps } from '@react-navigation/native-stack';
-import { StackHeaderProps } from '@react-navigation/stack';
 
 import { useSettings } from '@/api/settings';
 import { useMe } from '@/api/users';
 import Text from '@/components/Text';
 import { colorWhite } from '@/constants/colors';
 
-const Header = ({
-  navigation,
-  route,
-  options,
-}: StackHeaderProps | NativeStackHeaderProps) => {
+const Header = ({ navigation, route, options }: NativeStackHeaderProps) => {
   const { data: user, isLoading: isUserLoading } = useMe();
   const { data: settingsData, isLoading: isSettingLoading } = useSettings();
   return (

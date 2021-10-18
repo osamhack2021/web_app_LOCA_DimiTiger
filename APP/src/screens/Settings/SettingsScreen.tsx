@@ -1,8 +1,9 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 
-import PreferenceCard from '@/components/PreferenceCard';
-import UserCard from '@/components/UserCard';
+import PreferenceCard from './components/PreferenceCard';
+import UserCard from './components/UserCard';
+
 import { colorSplashBg } from '@/constants/colors';
 
 const UserScreen = () => {

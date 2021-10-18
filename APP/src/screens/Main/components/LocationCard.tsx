@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Animated, {
-  cancelAnimation,
-  FadeIn,
-  FadeInUp,
   useAnimatedProps,
+  useAnimatedStyle,
   useSharedValue,
+  withDelay,
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
@@ -17,11 +16,11 @@ import LottieView from 'lottie-react-native';
 
 import { useActiveLocationLog } from '@/api/location-logs';
 import { useLocations } from '@/api/locations';
+import AnimatedChip from '@/components/AnimatedChip';
 import Button from '@/components/Button';
 import Card from '@/components/Card';
 import LocationIcon from '@/components/LocationIcon';
 import Text from '@/components/Text';
-import { colorChipBorder } from '@/constants/colors';
 import { styleCardHeaderContainer, styleDivider } from '@/constants/styles';
 import useAnimatedHeight from '@/hooks/useAnimatedHeight';
 
@@ -32,18 +31,22 @@ const LocationCard = () => {
   const [changeMode, setChangeMode] = useState(false);
   const { data: locations } = useLocations();
   const { data: locationLog, isLoading } = useActiveLocationLog();
-  const emptyAnim = useSharedValue(0);
-  const emptyAnimProps = useAnimatedProps(() => ({
-    progress: emptyAnim.value,
-  }));
   const { style, layoutHandler } = useAnimatedHeight(190, 0, [changeMode]);
+  const sharedOpacity = useSharedValue(1);
+  const fadeInAnim = useAnimatedStyle(() => {
+    return {
+      opacity: sharedOpacity.value,
+    };
+  });
+
   useEffect(() => {
-    if (!changeMode && !locationLog && !isLoading) {
-      emptyAnim.value = withRepeat(withTiming(1, { duration: 6000 }), -1);
+    if (changeMode) {
+      sharedOpacity.value = 0;
     } else {
-      cancelAnimation(emptyAnim);
+      sharedOpacity.value = withDelay(300, withTiming(1));
     }
-  }, [locationLog, isLoading, emptyAnim, changeMode]);
+  }, [changeMode, sharedOpacity]);
+
   return (
     <Card>
       <View style={styleCardHeaderContainer}>
@@ -55,33 +58,26 @@ const LocationCard = () => {
         </Button>
       </View>
       <View style={styleDivider} />
-      <Animated.View style={[style]}>
+      <Animated.View style={style}>
         {changeMode ? (
           <View onLayout={layoutHandler}>
             <View style={styles.locationChipContainer}>
-              {locations &&
-                locations.map((location, index) => (
-                  <Animated.View
-                    entering={FadeInUp.delay(index * 50)}
-                    key={location._id}>
-                    <TouchableOpacity
-                      style={styles.locationChip}
-                      onPress={() => {
-                        linkTo(`/location-log/${location._id}`);
-                        setChangeMode(false);
-                      }}>
-                      <Text style={styles.locationChipText}>
-                        {location.name}
-                      </Text>
-                    </TouchableOpacity>
-                  </Animated.View>
-                ))}
+              {locations?.map((location, index) => (
+                <AnimatedChip
+                  key={location._id}
+                  text={location.name}
+                  index={index}
+                  onPress={() => {
+                    linkTo(`/location-log/${location._id}`);
+                    setChangeMode(false);
+                  }}
+                />
+              ))}
             </View>
           </View>
         ) : locationLog ? (
           <Animated.View
-            style={styles.locationContainer}
-            entering={FadeIn}
+            style={[styles.locationContainer, fadeInAnim]}
             onLayout={layoutHandler}>
             <LocationIcon
               width="100"
@@ -95,7 +91,7 @@ const LocationCard = () => {
             )}`}</Text>
           </Animated.View>
         ) : isLoading ? (
-          <Animated.View entering={FadeIn} onLayout={layoutHandler}>
+          <Animated.View style={fadeInAnim} onLayout={layoutHandler}>
             <SkeletonPlaceholder>
               <View style={styles.locationContainer}>
                 <SkeletonPlaceholder.Item
@@ -110,20 +106,32 @@ const LocationCard = () => {
           </Animated.View>
         ) : (
           <Animated.View
-            entering={FadeIn}
             onLayout={layoutHandler}
-            style={styles.locationContainer}>
-            <AnimatedLottieView
-              style={{ height: 100 }}
-              source={require('@assets/jsons/404.json')}
-              animatedProps={emptyAnimProps}
-            />
+            style={[styles.locationContainer, fadeInAnim]}>
+            <EmptyAnimView />
             <Text style={styles.locationText}>정보 없음</Text>
             <Text>아직 체크인한 위치가 없습니다.</Text>
           </Animated.View>
         )}
       </Animated.View>
     </Card>
+  );
+};
+
+const EmptyAnimView = () => {
+  const emptyAnim = useSharedValue(0);
+  const emptyAnimProps = useAnimatedProps(() => ({
+    progress: emptyAnim.value,
+  }));
+  useEffect(() => {
+    emptyAnim.value = withRepeat(withTiming(1, { duration: 6000 }), -1);
+  }, [emptyAnim]);
+  return (
+    <AnimatedLottieView
+      style={{ height: 100 }}
+      source={require('@assets/jsons/404.json')}
+      animatedProps={emptyAnimProps}
+    />
   );
 };
 
@@ -150,16 +158,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     padding: 15,
-  },
-  locationChip: {
-    borderColor: colorChipBorder,
-    borderRadius: 10,
-    borderWidth: 1,
-    margin: 5,
-    padding: 10,
-  },
-  locationChipText: {
-    fontWeight: 'bold',
   },
 });
 
