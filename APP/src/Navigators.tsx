@@ -6,17 +6,17 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 import { useRecoilValue } from 'recoil';
 
-import RegisterDoneScreen from './screens/RegisterDoneScreen';
+import RegisterDoneScreen from './screens/Auth/RegisterDoneScreen';
 
 import { accessTokenState } from '@/atoms';
 import Header from '@/components/Header';
+import SignInScreen from '@/screens/Auth/SignInScreen';
+import SignUpScreen from '@/screens/Auth/SignUpScreen';
+import WelcomeScreen from '@/screens/Auth/WelcomeScreen';
 import LocationScreen from '@/screens/LocationScreen';
 import MainScreen from '@/screens/Main/MainScreen';
 import NoticeScreen from '@/screens/NoticeScreen';
 import SettingsScreen from '@/screens/Settings/SettingsScreen';
-import SignInScreen from '@/screens/SignInScreen';
-import SignUpScreen from '@/screens/SignUpScreen';
-import WelcomeScreen from '@/screens/WelcomeScreen';
 import User from '@/types/User';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
