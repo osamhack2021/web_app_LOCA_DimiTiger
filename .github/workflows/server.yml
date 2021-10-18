@@ -41,7 +41,7 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd ${{ env.DIR_NAME }}
-            cd WEB(BE)
+            cd "WEB(BE)"
             docker-compose stop
             cd ..
             cd ..
@@ -49,7 +49,7 @@ jobs:
 
       - name: Make .env
         run: |
-            echo "${SERVER_ENV_BASE64}" | base64 -d >> WEB(BE)/.env
+            echo "${SERVER_ENV_BASE64}" | base64 -d >> "WEB(BE)/.env"
         shell: bash
         env:
           SERVER_ENV_BASE64 : ${{secrets.SERVER_ENV_BASE64}}
@@ -71,5 +71,5 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd ${{ env.DIR_NAME }}
-            cd WEB(BE)
+            cd "WEB(BE)"
             docker-compose up --build -d

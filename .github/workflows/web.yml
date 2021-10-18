@@ -39,7 +39,7 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd ${{ env.DIR_NAME }}
-            cd WEB(FE)
+            cd "WEB(FE)"
             docker-compose stop
             cd ..
             cd ..
@@ -62,5 +62,5 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd ${{ env.DIR_NAME }}
-            cd WEB(FE)
+            cd "WEB(FE)"
             docker-compose up --build -d
