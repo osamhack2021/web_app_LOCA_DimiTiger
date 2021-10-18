@@ -1,5 +1,6 @@
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
 import { Button, DatePicker, Form, Switch } from 'antd';
+import { format } from 'date-fns';
 import moment from 'moment';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
@@ -32,14 +33,19 @@ const Weather = () => {
           addSetting.mutate(newSetting);
         }}>
         <Label>부대위치</Label>
-        <Form.Item name="unitLocation" initialValue={settings.weather.location}>
+        <Form.Item
+          name="unitLocation"
+          initialValue={settings.weather?.location || ''}>
           <Input></Input>
         </Form.Item>
         <Label>군기강 확립 작전 시작일</Label>
         <Form.Item name="militaryDisciplineDate">
           <DatePicker
             showToday
-            defaultValue={moment(settings.militaryDiscipline, dateFormat)}
+            defaultValue={moment(
+              settings.militaryDiscipline || format(new Date(), 'yyyy-MM-dd'),
+              dateFormat,
+            )}
             style={{
               height: '44px',
               width: '250px',

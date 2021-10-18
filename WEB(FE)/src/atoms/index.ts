@@ -46,9 +46,10 @@ export const useLogout = () => {
   const resetRefreshToken = useResetRecoilState(refreshTokenState);
 
   return () => {
-    if (!history) return;
     resetAccessToken();
     resetRefreshToken();
+
+    if (!history) return;
     history.push('/login');
   };
 };

@@ -9,8 +9,10 @@ import Header from '@/components/Header/Header';
 import Sidebar from '@/components/Sidebar/Sidebar';
 
 const Home = () => {
-  const { information } = useRecoilValue(settingsState);
-  return !information || information.name === '' ? (
+  const settings = useRecoilValue(settingsState);
+  return !settings ||
+    !settings.information ||
+    settings.information.name === '' ? (
     <Redirect to="/init" />
   ) : (
     <div
