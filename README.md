@@ -4,11 +4,20 @@
 
 ![https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/docs_hero_image.png?raw=true](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/docs_hero_image.png?raw=true)
 
-![languages](https://img.shields.io/github/languages/count/osamhack2021/web_app_LOCA_DimiTiger)
-![GitHub contributors](https://img.shields.io/github/contributors/osamhack2021/web_app_LOCA_DimiTiger.svg)
-![GitHub commit](https://img.shields.io/github/last-commit/osamhack2021/web_app_LOCA_DimiTiger.svg)
-![GitHub commit interval](https://img.shields.io/github/commit-activity/w/osamhack2021/web_app_LOCA_DimiTiger.svg)
-![license](https://img.shields.io/github/license/osamhack2021/web_app_LOCA_DimiTiger.svg)
+<p align="center">
+	<a href="https://osamhack2021.github.io/web_app_LOCA_DimiTiger/">
+		<img src="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/button_start_demo.png?raw=true" />
+	</a>
+	<a href="https://loca.kimjisub.me/login">
+		<img src="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/button_view_docs.png?raw=true" />
+	</a>
+	</br>
+	</br>
+	<a href="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/search?l=TSX&type=code"><img alt="GitHub language count" src="https://img.shields.io/github/languages/count/osamhack2021/web_app_LOCA_DimiTiger"></a>
+	<a href="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/osamhack2021/web_app_LOCA_DimiTiger?color=success"></a>
+	<a href="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/commits"><img alt="GitHub commits" src="https://img.shields.io/github/last-commit/osamhack2021/web_app_LOCA_DimiTiger.svg"></a>
+	<a href="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/osamhack2021/web_app_LOCA_DimiTiger"></a>
+</p>
 
 </div>
 </br>
