@@ -107,7 +107,7 @@ const Users = () => {
                 width: '7%',
               },
               {
-                title: '',
+                title: '동작',
                 dataIndex: '_id',
                 key: '_id',
                 width: '5%',

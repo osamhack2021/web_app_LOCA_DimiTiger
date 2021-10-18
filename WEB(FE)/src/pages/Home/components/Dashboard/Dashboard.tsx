@@ -3,8 +3,8 @@ import { useRecoilState } from 'recoil';
 
 import './Dashboard.css';
 
-import LocationChart from '../LocationChart/LocationChart';
-import TreeChart from '../LocationChart/TreeChart';
+import CirclePackingChart from '../LocationChart/CirclePackingChart';
+import TreeMapChart from '../LocationChart/TreeMapChart';
 import MilitaryDiscipline from '../MilitaryDiscipline/MilitaryDiscipline';
 import Notification from '../Notification/Notification';
 import Temperature from '../Temperature/Temperature';
@@ -21,7 +21,11 @@ const Dashboard = () => {
       <Notification></Notification>
       <div id="container1">
         <div id="container2">
-          {settings.chartDesign ? <LocationChart /> : <TreeChart />}
+          {settings.chartDesign === 'circlepacking' ? (
+            <CirclePackingChart />
+          ) : (
+            <TreeMapChart />
+          )}
         </div>
         <div id="container3">
           <Weather></Weather>
