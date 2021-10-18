@@ -97,7 +97,7 @@ const CreateLocationModal = ({ visible, closeHandler }: ModalProps) => {
   return (
     <Modal
       destroyOnClose={true}
-      title="위치 추가"
+      title="장소 추가"
       centered
       bodyStyle={{
         height: '400px',

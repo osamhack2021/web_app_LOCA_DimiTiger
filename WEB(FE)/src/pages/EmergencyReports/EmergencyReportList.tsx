@@ -49,7 +49,7 @@ const EmergencyReports = () => {
       <Header />
       <LayoutContent>
         <LargeCard
-          title="긴급 신고 현황"
+          title="긴급 신고 관리"
           history={history}
           headerComponent={
             <ToolkitWrap>

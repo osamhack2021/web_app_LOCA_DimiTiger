@@ -32,28 +32,28 @@ const Sidebar = () => {
     },
     {
       imgSrc: '/icons/sidebar_ico_search.svg',
-      eleName: '유동병력 검색',
+      eleName: '유동병력 관리',
       link: '/location-logs',
     },
     {
+      imgSrc: '/icons/sidebar_ico_emergency.svg',
+      eleName: '긴급 신고 관리',
+      link: '/emergencyReports',
+    },
+    {
       imgSrc: '/icons/sidebar_ico_add_user.svg',
-      eleName: '인원 현황',
+      eleName: '인원 관리',
       link: '/users',
     },
     {
       imgSrc: '/icons/sidebar_ico_users.svg',
-      eleName: '장소 현황',
+      eleName: '장소 관리',
       link: '/locations',
     },
     {
       imgSrc: '/icons/sidebar_ico_beacon.svg',
-      eleName: '비콘 현황',
+      eleName: '비콘 관리',
       link: '/beacons',
-    },
-    {
-      imgSrc: '/icons/sidebar_ico_emergency.svg',
-      eleName: '긴급 신고 현황',
-      link: '/emergencyReports',
     },
     {
       imgSrc: '/icons/sidebar_ico_setting.svg',

@@ -43,7 +43,7 @@ const UserDetail = () => {
       <LayoutContent>
         <Space direction="vertical" size={20}>
           <LargeCard
-            title="위치 정보"
+            title="장소 정보"
             history={history}
             headerComponent={
               <Space>

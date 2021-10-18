@@ -47,7 +47,7 @@ const UserDetail = () => {
       <LayoutContent>
         <Space direction="vertical" size={20}>
           <LargeCard
-            title="인원 조회"
+            title="인원 정보"
             history={history}
             headerComponent={
               <Space>
