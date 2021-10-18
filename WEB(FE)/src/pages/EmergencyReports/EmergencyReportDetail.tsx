@@ -93,13 +93,15 @@ const EmergencyReportsDetail = () => {
               history={history}
               headerComponent={
                 <Space>
-                  <Popconfirm
-                    title="종료로 전환하시겠습니까?"
-                    onConfirm={closeReport}
-                    okText="확인"
-                    cancelText="취소">
-                    <Button danger>상황 종료</Button>
-                  </Popconfirm>
+                  {emergencyReport.active && (
+                    <Popconfirm
+                      title="종료로 전환하시겠습니까?"
+                      onConfirm={closeReport}
+                      okText="확인"
+                      cancelText="취소">
+                      <Button danger>상황 종료</Button>
+                    </Popconfirm>
+                  )}
                 </Space>
               }>
               <Descriptions
