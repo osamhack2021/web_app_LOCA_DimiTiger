@@ -4,7 +4,7 @@ interface EmergencyReport {
   _id: string;
   creator: User;
   active: boolean;
-  additionalReport: { content: string; createdAt: Date }[];
+  additionalReport: { _id: string; content: string; createdAt: Date }[];
   createdAt: Date;
   updatedAt: Date;
 }

@@ -1,10 +1,9 @@
-import React from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import React, { useMemo } from 'react';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import {
   Button,
   Col,
   Descriptions,
-  Form,
   Popconfirm,
   Row,
   Space,
@@ -12,31 +11,75 @@ import {
 } from 'antd';
 import { format } from 'date-fns';
 
-import { useEmergencyReport } from '@/api/emergencies';
+import { useCloseEmergencyReport, useEmergencyReport } from '@/api/emergencies';
 import { useLocationLogs } from '@/api/location-logs';
-import { useDeleteUser, useUser } from '@/api/users';
 import Header from '@/components/Header/Header';
 import LargeCard from '@/components/LargeCard';
 import LayoutContent from '@/components/LayoutContent';
 import LayoutContentWrapper from '@/components/LayoutContentWrapper';
 import ImageProvider from '@/components/LocationIcon';
 import Sidebar from '@/components/Sidebar/Sidebar';
+import LocationLog from '@/types/LocationLog';
+
+function isLocationLog(arg: any): arg is LocationLog {
+  return arg.user !== undefined;
+}
 
 const EmergencyReportsDetail = () => {
   const history = useHistory();
   const { id } = useParams<{ id: string }>();
-  const [form] = Form.useForm();
-  const { data: user } = useUser(id);
-  const { data: locationLog } = useLocationLogs({
-    user: id,
-  });
   const { data: emergencyReport } = useEmergencyReport(id);
+  const { data: lastLocationLogs } = useLocationLogs(
+    {
+      user: emergencyReport?.creator._id,
+      rangeEnd: emergencyReport?.createdAt,
+      limit: 1,
+    },
+    { refetchInterval: false },
+  );
+  const { data: locationLogs } = useLocationLogs({
+    user: emergencyReport?.creator._id,
+    rangeStart: emergencyReport?.createdAt,
+    limit: 0,
+  });
+  const additionalReports = useMemo(() => {
+    const initialReport = emergencyReport && [
+      {
+        _id: emergencyReport._id,
+        content: `최초 보고`,
+        createdAt: emergencyReport.createdAt,
+      },
+    ];
+    const [second, ...rest] = emergencyReport?.additionalReport || [];
+    const secondReport = second && [
+      {
+        _id: second._id,
+        content: `보고 카테고리: ${second.content}`,
+        createdAt: second.createdAt,
+      },
+    ];
+    const reports = [
+      ...(initialReport || []),
+      ...(secondReport || []),
+      ...(rest || []),
+    ];
+    return reports;
+  }, [emergencyReport]);
+  const combinedLogs = useMemo(() => {
+    const logs = [
+      ...(lastLocationLogs || []),
+      ...additionalReports,
+      ...(locationLogs || []),
+    ];
+    return logs.sort((a, b) => {
+      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+    });
+  }, [additionalReports, lastLocationLogs, locationLogs]);
 
-  const deleteUserMutation = useDeleteUser();
+  const closeReportMutation = useCloseEmergencyReport();
 
-  const deleteUser = () => {
-    deleteUserMutation.mutate({ _id: id });
-    history.push('/users');
+  const closeReport = () => {
+    closeReportMutation.mutate(id);
   };
 
   return (
@@ -44,91 +87,93 @@ const EmergencyReportsDetail = () => {
       <Header />
       <LayoutContent>
         <Space direction="vertical" size={20}>
-          <LargeCard
-            title="긴급신고 정보"
-            history={history}
-            headerComponent={
-              <Space>
-                <Button onClick={() => {}}>수정</Button>
-                <Popconfirm
-                  title="정말로 삭제하시겠습니까?"
-                  onConfirm={deleteUser}
-                  okText="확인"
-                  cancelText="취소">
-                  <Button danger>삭제</Button>
-                </Popconfirm>
-              </Space>
-            }>
-            <Descriptions
-              bordered
-              column={2}
-              labelStyle={{ fontWeight: 'bold' }}>
-              <Descriptions.Item label="이름">
-                {emergencyReport?.name}
-              </Descriptions.Item>
-              <Descriptions.Item label="계급">
-                {emergencyReport?.rank}
-              </Descriptions.Item>
-              <Descriptions.Item label="군번">
-                {emergencyReport?.serial}
-              </Descriptions.Item>
-              <Descriptions.Item label="전화번호">
-                {user?.phone}
-              </Descriptions.Item>
-              <Descriptions.Item label="이메일">
-                {user?.email}
-              </Descriptions.Item>
-            </Descriptions>
-          </LargeCard>
+          {emergencyReport && (
+            <LargeCard
+              title="긴급신고 정보"
+              history={history}
+              headerComponent={
+                <Space>
+                  <Popconfirm
+                    title="종료로 전환하시겠습니까?"
+                    onConfirm={closeReport}
+                    okText="확인"
+                    cancelText="취소">
+                    <Button danger>상황 종료</Button>
+                  </Popconfirm>
+                </Space>
+              }>
+              <Descriptions
+                bordered
+                column={2}
+                labelStyle={{ fontWeight: 'bold' }}>
+                <Descriptions.Item label="보고자">
+                  <Link
+                    to={`/users/${emergencyReport.creator._id}`}>{`${emergencyReport.creator.rank} ${emergencyReport.creator.name}`}</Link>
+                </Descriptions.Item>
+                <Descriptions.Item label="상태">
+                  {emergencyReport.active ? '진행중' : '종료'}
+                </Descriptions.Item>
+                <Descriptions.Item label="최초보고일시">
+                  {format(
+                    new Date(emergencyReport.createdAt),
+                    'yyyy-MM-dd HH:mm:ss',
+                  )}
+                </Descriptions.Item>
+                <Descriptions.Item label="최종보고일시">
+                  {format(
+                    new Date(emergencyReport.updatedAt),
+                    'yyyy-MM-dd HH:mm:ss',
+                  )}
+                </Descriptions.Item>
+              </Descriptions>
+            </LargeCard>
+          )}
           <Row gutter={20}>
             <Col span={12}>
-              <LargeCard
-                title="위치 현황"
-                headerComponent={
-                  <Button
-                    onClick={() => history.push(`/location-logs?user=${id}`)}>
-                    더보기
-                  </Button>
-                }>
-                <Timeline mode="left">
-                  {locationLog?.map(({ _id, location, createdAt }) => (
+              <LargeCard title="긴급 신고 현황" style={{ flex: 1 }}>
+                <Timeline
+                  mode="left"
+                  pending={
+                    emergencyReport?.active && '추가 보고 수신 대기중...'
+                  }>
+                  {additionalReports.map(({ _id, content, createdAt }) => (
                     <Timeline.Item
                       key={_id}
-                      dot={
-                        <ImageProvider
-                          icon={location.ui?.icon}
-                          style={{ width: 20 }}
-                        />
-                      }
                       label={format(
                         new Date(createdAt),
                         'yyyy-MM-dd HH:mm:ss',
                       )}>
-                      {location.name}
+                      {content}
                     </Timeline.Item>
                   ))}
                 </Timeline>
               </LargeCard>
             </Col>
             <Col span={12}>
-              <LargeCard title="긴급 신고 현황" style={{ flex: 1 }}>
-                <Timeline mode="left">
-                  {emergencyReport?.map(
-                    ({ creator, createdAt, additionalReport }) => (
-                      <Timeline.Item
-                        label={format(
-                          new Date(createdAt),
-                          'yyyy-MM-dd HH:mm:ss',
-                        )}>
-                        {creator.name +
-                          ' (' +
-                          (additionalReport.length >= 1
-                            ? additionalReport[additionalReport.length - 1]
-                                .content + ')'
-                            : '추가보고 없음)')}
-                      </Timeline.Item>
-                    ),
-                  )}
+              <LargeCard title="종합 현황">
+                <Timeline
+                  mode="left"
+                  pending={
+                    emergencyReport?.active && '추가 보고 수신 대기중...'
+                  }>
+                  {combinedLogs?.map(log => (
+                    <Timeline.Item
+                      key={log._id}
+                      dot={
+                        isLocationLog(log) ? (
+                          <ImageProvider
+                            icon={log.location.ui?.icon}
+                            style={{ width: 20 }}
+                          />
+                        ) : undefined
+                      }
+                      label={format(
+                        new Date(log.createdAt),
+                        'yyyy-MM-dd HH:mm:ss',
+                      )}>
+                      {isLocationLog(log) ? log.location.name : log.content}
+                    </Timeline.Item>
+                  ))}
                 </Timeline>
               </LargeCard>
             </Col>
