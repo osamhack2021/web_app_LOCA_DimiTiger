@@ -18,6 +18,7 @@ import LayoutContent from '@/components/LayoutContent';
 import LayoutContentWrapper from '@/components/LayoutContentWrapper';
 import Sidebar from '@/components/Sidebar/Sidebar';
 import UserSearchSelect from '@/components/UserSearchSelect';
+import EmergencyReport from '@/types/EmergencyReport';
 import User from '@/types/User';
 
 const { RangePicker } = DatePicker;
@@ -30,14 +31,14 @@ const EmergencyReports = () => {
     rangeEnd: DateParam,
     page: NumberParam,
     limit: NumberParam,
-    user: StringParam,
+    creator: StringParam,
     active: BooleanParam,
   });
   const [form] = Form.useForm();
-  const { data: locationLogs, pagination } = useEmergencyReports({
+  const { data: emergencyReports, pagination } = useEmergencyReports({
     rangeStart: query.rangeStart || undefined,
     rangeEnd: query.rangeEnd || undefined,
-    user: query.user || undefined,
+    creator: query.creator || undefined,
     active: query.active || undefined,
     page: query.page || undefined,
     limit: query.limit || undefined,
@@ -55,16 +56,16 @@ const EmergencyReports = () => {
               <Form
                 form={form}
                 initialValues={{
-                  user: query.user,
+                  creator: query.creator,
                   range: [query.rangeStart, query.rangeEnd],
                 }}
-                onFinish={({ range, user, active }) => {
+                onFinish={({ range, creator, active }) => {
                   const [rangeStart, rangeEnd] = range || [];
                   setQuery(
                     {
                       rangeStart: rangeStart?.toDate?.(),
                       rangeEnd: rangeEnd?.toDate?.(),
-                      user: user || undefined,
+                      creator: creator || undefined,
                       active,
                     },
                     'replaceIn',
@@ -78,7 +79,7 @@ const EmergencyReports = () => {
                     format="yyyy-MM-DD HH:mm"
                   />
                 </Form.Item>
-                <Form.Item name="user">
+                <Form.Item name="creator">
                   <UserSearchSelect />
                 </Form.Item>
                 <Form.Item name="active">
@@ -94,7 +95,7 @@ const EmergencyReports = () => {
             </ToolkitWrap>
           }>
           <Table
-            dataSource={locationLogs}
+            dataSource={emergencyReports}
             rowKey={record => record._id}
             columns={[
               {
@@ -108,10 +109,31 @@ const EmergencyReports = () => {
               {
                 title: '인원',
                 dataIndex: 'creator',
-                key: 'user',
-                render: (user: User) => (
+                key: 'creator',
+                render: (creator: User) => (
                   <Link
-                    to={`/users/${user._id}`}>{`${user.rank} ${user.name}`}</Link>
+                    to={`/users/${creator._id}`}>{`${creator.rank} ${creator.name}`}</Link>
+                ),
+              },
+              {
+                title: '최종보고 내용',
+                dataIndex: '_id',
+                key: '_id',
+                render: (_id, { additionalReport }: EmergencyReport) => (
+                  <Link to={`/emergencyReports/${_id}`}>{`${
+                    additionalReport.length >= 1
+                      ? format(
+                          new Date(
+                            additionalReport[
+                              additionalReport.length - 1
+                            ].createdAt,
+                          ),
+                          'yyyy-MM-dd HH:mm',
+                        ) +
+                        ' ' +
+                        additionalReport[additionalReport.length - 1].content
+                      : '추가보고 없음'
+                  }`}</Link>
                 ),
               },
               {

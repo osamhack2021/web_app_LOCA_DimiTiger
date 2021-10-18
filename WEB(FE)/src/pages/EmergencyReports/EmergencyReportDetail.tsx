@@ -12,7 +12,7 @@ import {
 } from 'antd';
 import { format } from 'date-fns';
 
-import { useEmergencyReports } from '@/api/emergencies';
+import { useEmergencyReport } from '@/api/emergencies';
 import { useLocationLogs } from '@/api/location-logs';
 import { useDeleteUser, useUser } from '@/api/users';
 import Header from '@/components/Header/Header';
@@ -22,7 +22,7 @@ import LayoutContentWrapper from '@/components/LayoutContentWrapper';
 import ImageProvider from '@/components/LocationIcon';
 import Sidebar from '@/components/Sidebar/Sidebar';
 
-const UserDetail = () => {
+const EmergencyReportsDetail = () => {
   const history = useHistory();
   const { id } = useParams<{ id: string }>();
   const [form] = Form.useForm();
@@ -30,9 +30,7 @@ const UserDetail = () => {
   const { data: locationLog } = useLocationLogs({
     user: id,
   });
-  const { data: emergencyReport } = useEmergencyReports({
-    creator: id,
-  });
+  const { data: emergencyReport } = useEmergencyReport(id);
 
   const deleteUserMutation = useDeleteUser();
 
@@ -47,7 +45,7 @@ const UserDetail = () => {
       <LayoutContent>
         <Space direction="vertical" size={20}>
           <LargeCard
-            title="인원 조회"
+            title="긴급신고 정보"
             history={history}
             headerComponent={
               <Space>
@@ -65,9 +63,15 @@ const UserDetail = () => {
               bordered
               column={2}
               labelStyle={{ fontWeight: 'bold' }}>
-              <Descriptions.Item label="이름">{user?.name}</Descriptions.Item>
-              <Descriptions.Item label="계급">{user?.rank}</Descriptions.Item>
-              <Descriptions.Item label="군번">{user?.serial}</Descriptions.Item>
+              <Descriptions.Item label="이름">
+                {emergencyReport?.name}
+              </Descriptions.Item>
+              <Descriptions.Item label="계급">
+                {emergencyReport?.rank}
+              </Descriptions.Item>
+              <Descriptions.Item label="군번">
+                {emergencyReport?.serial}
+              </Descriptions.Item>
               <Descriptions.Item label="전화번호">
                 {user?.phone}
               </Descriptions.Item>
@@ -136,4 +140,4 @@ const UserDetail = () => {
   );
 };
 
-export default UserDetail;
+export default EmergencyReportsDetail;
