@@ -5,6 +5,7 @@
 ![https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/docs_hero_image.png?raw=true](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/docs_hero_image.png?raw=true)
 
 <p align="center">
+<<<<<<< HEAD
 	<a href="https://osamhack2021.github.io/web_app_LOCA_DimiTiger/">
 		<img src="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/button_start_demo.png?raw=true" />
 	</a>
@@ -13,6 +14,8 @@
 	</a>
 	</br>
 	</br>
+=======
+>>>>>>> 15538a1bf002f3b341c5e9071b918a5d9052e23e
 	<a href="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/search?l=TSX&type=code"><img alt="GitHub language count" src="https://img.shields.io/github/languages/count/osamhack2021/web_app_LOCA_DimiTiger"></a>
 	<a href="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/osamhack2021/web_app_LOCA_DimiTiger?color=success"></a>
 	<a href="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/commits"><img alt="GitHub commits" src="https://img.shields.io/github/last-commit/osamhack2021/web_app_LOCA_DimiTiger.svg"></a>
@@ -25,6 +28,8 @@
 ## 프로젝트 소개
 LOCA는 기존의 유동 병력 관리 방식을 완전히 개선하기 위해 탄생한 프로젝트입니다.
 
+<br/>
+
 ### 프로젝트 배경
 군대에서 유동 병력을 정확하게 파악하는 것은 중요합니다. 그러나 저희는 기존의 유동 병력 관리 방식에서 다음과 같은 문제점을 발견할 수 있었습니다.
 
@@ -35,7 +40,6 @@ LOCA는 기존의 유동 병력 관리 방식을 완전히 개선하기 위해 �
 위와 같은 문제점을 해결하고자 쉽고 간편하게 자신의 위치를 보고하면서도, 관리자 입장에서는 언제 어디서나 한 눈에 유동 병력 현황을 확인할 수 있는 프로젝트를 계획하게 되었습니다.
 
 <br/>
-<br/>
 
 ### 프로젝트 목표
 
@@ -44,7 +48,6 @@ LOCA는 기존의 유동 병력 관리 방식을 완전히 개선하기 위해 �
 3. 특정 장소에 대한 출입 기록과 병력의 이동 동선을 파악할 수 있어야 한다.
 4. 긴급 상황 전파와 전달 사항 전파가 정확하고 신속하게 이루어져야 한다.
 
-<br/>
 <br/>
 
 ## 기능 설명
@@ -78,6 +81,7 @@ LOCA는 기존의 유동 병력 관리 방식을 완전히 개선하기 위해 �
    </tbody>
 </table>
 </br>
+					<br/>
 <table>
         <tbody>
         <tr>
@@ -106,6 +110,7 @@ LOCA는 기존의 유동 병력 관리 방식을 완전히 개선하기 위해 �
 		</tr>
    </tbody>
 </table>
+<br/>
 
 ## 팀 정보 (Team Information)
 DimiTiger팀은 고등학교 동창 네 명이 만나 이루어진 팀입니다. 기존의 경험을 통해 최고의 팀워크를 이룰 수 있었습니다.
@@ -116,6 +121,7 @@ DimiTiger팀은 고등학교 동창 네 명이 만나 이루어진 팀입니다.
 - 팀원 김지섭([kimjisub](https://github.com/kimjisub)) - 서버, DB 개발  
 - 팀원 박재성([jspark6815](https://github.com/jspark6815)) - 웹 프론트 개발   
 - 팀원 김평주([pjookim](https://github.com/pjookim)) - 웹/모바일 앱 디자인
+<br/>
 
 ## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 * ECMAScript 6 지원 브라우저 사용

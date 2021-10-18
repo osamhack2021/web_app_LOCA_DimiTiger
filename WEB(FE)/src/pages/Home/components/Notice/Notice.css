@@ -1,0 +1,138 @@
+.messenger {
+  height: calc(100% - 40px);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hideSender {
+  height: calc(100% - 20px);
+}
+.message_box {
+  width: 100%;
+  max-height: calc(100% - 60px);
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  padding: 0px 8px;
+}
+.message_box::-webkit-scrollbar {
+  display: none;
+}
+.message {
+  height: fit-content;
+  margin-bottom: 20px;
+  padding: 15px 25px;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  display: block;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.1);
+}
+
+.urgency {
+  background: linear-gradient(to right, #ff9767, #f45b5e);
+  color: white;
+}
+.urgency span {
+  font-weight: 700;
+}
+.send_box {
+  width: 100%;
+  height: 40px;
+  margin-top: auto;
+  margin-bottom: 10px;
+  display: flex;
+}
+.input_box {
+  width: 100%;
+  border-radius: 25px;
+  border: 3px solid #f2f2f2;
+  padding: 5px 15px;
+  flex-grow: 1;
+}
+.send_mode {
+  height: 25px;
+  line-height: 20px;
+  font-size: 0.85rem;
+  width: fit-content;
+  margin: 0;
+  padding: 2px 8px;
+  background-color: #f2f2f2;
+  color: #888888;
+  display: inline-block;
+  border: none;
+  appearance: none;
+}
+.send_mode:focus {
+  outline: none !important;
+}
+.input_box > input {
+  margin-left: 3px;
+  padding: 0;
+  border: none;
+  background: none;
+  height: 20px;
+  width: calc(100% - 50px);
+  font-size: 13px;
+}
+.send_button {
+  min-width: 40px;
+  min-height: 40px;
+  margin-left: 10px;
+  border: none;
+  background: none;
+  padding: 0;
+}
+.send_button > img {
+  width: 40px;
+}
+
+.reportContainer {
+  height: fit-content;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid #f5f6fa;
+  background-color: #f5f6fa;
+}
+.reportHeader {
+  padding: 20px 15px 20px 25px;
+  display: block;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.ant-timeline-item:last-child {
+  padding-bottom: 10px;
+}
+.ant-timeline-item-last > .ant-timeline-item-content {
+  min-height: fit-content;
+}
+.headline > .noticeHeadline {
+  height: 70px;
+  line-height: 70px;
+  letter-spacing: -2px;
+  color: #d1d1d1;
+  cursor: pointer;
+}
+.reportHeaderDate {
+  font-size: 1.05rem;
+  color: #7d7d7d;
+  font-weight: 500;
+  margin-right: 15px;
+  float: right;
+}
+.reportHeaderArrow {
+  float: right;
+}
+.clickedContainer {
+  background-color: #ffffff;
+  border: 1px solid #e9ebf1;
+}
+.headlineSelected {
+  border-bottom: solid 4px #0085ff;
+  color: #000 !important;
+}
+.reportThumbnail {
+  border-top: 1px solid #e9ebf1;
+  padding: 10px 10px 10px 25px;
+}

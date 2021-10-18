@@ -1,0 +1,36 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      target: release
+    restart: always
+    environment:
+      PORT: "${PORT}"
+      LOG_DISABLED: 'false'
+      JWT_SECRET: '${JWT_SECRET}'
+      MONGO_URI: '${MONGO_URI}'
+      VIRTUAL_HOST: api.loca.kimjisub.me
+      LETSENCRYPT_HOST: api.loca.kimjisub.me
+    volumes:
+      - uploads:/usr/src/app/app/static/uploads
+    depends_on:
+      - mongo
+    networks:
+      - default
+      - proxy
+
+  mongo:
+    image: mongo
+    networks:
+      - default
+
+volumes:
+  uploads:
+
+networks:
+  default:
+  proxy:
+    external: true
+    name: proxy
