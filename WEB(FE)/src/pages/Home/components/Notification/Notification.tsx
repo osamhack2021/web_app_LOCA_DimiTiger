@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import './Notice.css';
+import './Notification.css';
 
 import EmergencyReportElement from './components/EmergencyReportsElement';
 import NoticeElement from './components/NoticeElement';

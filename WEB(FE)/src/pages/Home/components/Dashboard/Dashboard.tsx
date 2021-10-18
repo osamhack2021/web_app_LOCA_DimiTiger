@@ -6,7 +6,7 @@ import './Dashboard.css';
 import LocationChart from '../LocationChart/LocationChart';
 import TreeChart from '../LocationChart/TreeChart';
 import MilitaryDiscipline from '../MilitaryDiscipline/MilitaryDiscipline';
-import NoticeCard from '../Notice/Notice';
+import Notification from '../Notification/Notification';
 import Temperature from '../Temperature/Temperature';
 import Weather from '../Weather/Weather';
 import Worker from '../Worker/Worker';
@@ -18,7 +18,7 @@ const Dashboard = () => {
 
   return (
     <div id="dashboard">
-      <NoticeCard></NoticeCard>
+      <Notification></Notification>
       <div id="container1">
         <div id="container2">
           {settings.chartDesign ? <LocationChart /> : <TreeChart />}
