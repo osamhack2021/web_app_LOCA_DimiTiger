@@ -8,6 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   tagline: '유동병력관리체계',
   url: 'https://osamhack2021.github.io/',
   baseUrl: '/web_app_LOCA_DimiTiger/',
+  trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
