@@ -7,11 +7,6 @@ const additionalReportSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		creator: {
-			type: mongoose.Types.ObjectId,
-			required: true,
-			ref: 'User',
-		},
 	},
 	{
 		timestamps: true,
