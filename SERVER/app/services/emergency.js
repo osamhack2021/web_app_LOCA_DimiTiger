@@ -5,9 +5,20 @@ const Errors = (exports.Errors = {
 	EmergencyNotFoundError: () => Boom.notFound('EmergencyNotFoundError'),
 });
 
-exports.getEmergencies = async ({ page, limit }) => {
+exports.getEmergencies = async ({
+	rangeStart,
+	rangeEnd,
+	page,
+	limit,
+	...rest
+}) => {
 	return await Emergency.paginate(
 		{
+			...rest,
+			createdAt: {
+				$gte: rangeStart || new Date(0),
+				$lte: rangeEnd || new Date(),
+			},
 			deleted: false,
 		},
 		{
@@ -28,8 +39,8 @@ exports.getEmergency = async (_id) => {
 	return emergency;
 };
 
-exports.createEmergency = async ({ content, emergency, creator }) => {
-	return await new Emergency({ content, emergency, creator }).save();
+exports.createEmergency = async ({ content, creator }) => {
+	return await new Emergency({ content, creator }).save();
 };
 
 exports.addEmergencyAdditionalReport = async (_id, fields) => {

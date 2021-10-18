@@ -16,7 +16,7 @@ exports.upload = {
 		},
 	},
 	payload: {
-		maxBytes: 209715200,
+		maxBytes: 1.25e7,
 		output: 'stream',
 		parse: true,
 		multipart: true, // <-- this fixed the media type error

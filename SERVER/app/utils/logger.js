@@ -5,7 +5,7 @@ module.exports = pino({
 	enabled: process.env.LOG_DISABLED !== 'true',
 	prettyPrint: isDev && {
 		translateTime: 'SYS:standard',
-		ignore: 'pid,hostname',
+		ignore: 'pid,hostname,payload.file',
 	},
 	level: isDev ? 'trace' : 'info',
 	redact: [
