@@ -21,7 +21,7 @@ module.exports = {
 			{
 				plugin: 'hapi-cors',
 				options: {
-					methods: ['POST, GET, OPTIONS, PUT, DELETE'],
+					methods: ['POST, GET, OPTIONS, PUT, DELETE, PATCH'],
 				},
 			},
 			{
