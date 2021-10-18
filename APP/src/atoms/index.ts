@@ -43,3 +43,12 @@ export const settingsState = atom<AppSettings>({
   },
   effects_UNSTABLE: [asyncStorageEffect('settingsState')],
 });
+
+export const registerState = atom({
+  key: 'registerState',
+  default: {
+    isRegistering: false,
+    name: '',
+    rank: '',
+  },
+});

@@ -8,7 +8,7 @@ import { useRecoilValue } from 'recoil';
 
 import RegisterDoneScreen from './screens/Auth/RegisterDoneScreen';
 
-import { accessTokenState } from '@/atoms';
+import { accessTokenState, registerState } from '@/atoms';
 import Header from '@/components/Header';
 import SignInScreen from '@/screens/Auth/SignInScreen';
 import SignUpScreen from '@/screens/Auth/SignUpScreen';
@@ -17,17 +17,19 @@ import LocationScreen from '@/screens/LocationScreen';
 import MainScreen from '@/screens/Main/MainScreen';
 import NoticeScreen from '@/screens/NoticeScreen';
 import SettingsScreen from '@/screens/Settings/SettingsScreen';
-import User from '@/types/User';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
   const accessToken = useRecoilValue(accessTokenState);
+  const { isRegistering } = useRecoilValue(registerState);
   const { top } = useSafeAreaInsets();
 
   return (
     <Stack.Navigator
-      initialRouteName={accessToken ? 'Main' : 'Welcome'}
+      initialRouteName={
+        accessToken ? (isRegistering ? 'RegisterDone' : 'Main') : 'Welcome'
+      }
       screenOptions={{
         animation: 'fade',
         headerShown: false,
@@ -72,9 +74,7 @@ export type RootStackParamList = {
   Welcome: undefined;
   SignIn: undefined;
   SignUp: undefined;
-  RegisterDone: {
-    user: User;
-  };
+  RegisterDone: undefined;
   Main: undefined;
   Notice: undefined;
   Location: {

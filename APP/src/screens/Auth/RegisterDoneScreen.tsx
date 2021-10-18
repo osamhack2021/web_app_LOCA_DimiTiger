@@ -6,12 +6,14 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { useNavigation, useRoute } from '@react-navigation/core';
+import { useNavigation } from '@react-navigation/core';
 import LottieView from 'lottie-react-native';
+import { useRecoilValue } from 'recoil';
 
+import { registerState } from '@/atoms';
 import AnimatedText from '@/components/AnimatedText';
 import Button from '@/components/Button';
-import { RootNavigationProp, RootRouteProp } from '@/Navigators';
+import { RootNavigationProp } from '@/Navigators';
 
 const AnimatedLottieView = Animated.createAnimatedComponent(LottieView);
 
@@ -22,11 +24,8 @@ const RegisterDoneScreen = () => {
     progress: progress.value,
   }));
   const [confettiAnimDone, setConfettiAnimDone] = useState(false);
-  const {
-    params: {
-      user: { rank, name },
-    },
-  } = useRoute<RootRouteProp<'RegisterDone'>>();
+  const { name, rank } = useRecoilValue(registerState);
+
   useEffect(() => {
     progress.value = withTiming(
       1,
@@ -55,7 +54,7 @@ const RegisterDoneScreen = () => {
         />
       </View>
       <View style={styles.container}>
-        <Button onPress={() => navigation.popToTop()}>시작하기</Button>
+        <Button onPress={() => navigation.replace('Main')}>시작하기</Button>
       </View>
     </View>
   );

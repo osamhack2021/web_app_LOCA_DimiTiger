@@ -12,7 +12,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
 import { AxiosResponse } from 'axios';
+import { useSetRecoilState } from 'recoil';
 
+import { registerState } from '@/atoms';
 import Button from '@/components/Button';
 import ControlledTextInput from '@/components/ControlledTextInput';
 import Text from '@/components/Text';
@@ -37,29 +39,33 @@ const SignUpScreen = () => {
   const { control, handleSubmit, getValues } = useForm<
     RegisterData & { pwCheck: string }
   >();
+  const setRegisterState = useSetRecoilState(registerState);
 
   const onSubmit = useCallback(
-    async (data: RegisterData & { pwCheck?: string }) => {
+    async (registerData: RegisterData & { pwCheck?: string }) => {
       setLoading(true);
-      delete data.pwCheck;
+      delete registerData.pwCheck;
       try {
-        const user = (
-          await axios.post<RegisterData, AxiosResponse<User>>(
-            '/users/register',
-            data,
-          )
-        ).data;
-        await signIn(data.identity.serial, data.register.password);
+        const { data } = await axios.post<RegisterData, AxiosResponse<User>>(
+          '/users/register',
+          registerData,
+        );
 
-        navigation.navigate('RegisterDone', {
-          user,
+        setRegisterState({
+          isRegistering: true,
+          name: data.name,
+          rank: data.rank,
         });
+
+        await signIn(
+          registerData.identity.serial,
+          registerData.register.password,
+        );
       } catch (err) {
-        console.log(err);
         setLoading(false);
       }
     },
-    [axios, navigation, signIn],
+    [axios, setRegisterState, signIn],
   );
 
   return (
