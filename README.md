@@ -131,6 +131,10 @@ yarn start or npm run start
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
 
-- [MIT](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/master/license.md)
+This project is licensed under the terms of the [MIT](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/master/license.md) license.
 
-This project is licensed under the terms of the MIT license.
+### 기술 분야별 Open Source License Notice
+
+- [LOCA Web Open Source License Notice](https://osamhack2021.github.io/web_app_LOCA_DimiTiger/licenses?tech=web)
+- [LOCA Server Open Source License Notice](https://osamhack2021.github.io/web_app_LOCA_DimiTiger/licenses?tech=server)
+- [LOCA App Open Source License Notice](https://osamhack2021.github.io/web_app_LOCA_DimiTiger/licenses?tech=app)
