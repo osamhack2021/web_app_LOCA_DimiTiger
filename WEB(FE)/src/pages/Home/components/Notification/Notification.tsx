@@ -14,7 +14,7 @@ const NoticeCard = () => {
   const { data: notices } = useNotices();
   const { data: emergencies } = useEmergencyReports();
   const { register, handleSubmit } = useForm();
-  const [selectNotice, setSelectNotice] = useState(true);
+  const [selectNotice, setSelectNotice] = useState(false);
 
   const noticeMutaion = useAddNotice();
 
@@ -27,17 +27,17 @@ const NoticeCard = () => {
       <div className="headline">
         <h1
           className={
-            'noticeHeadline ' + (selectNotice ? 'headlineSelected' : '')
-          }
-          onClick={() => setSelectNotice(true)}>
-          공지사항
-        </h1>
-        <h1
-          className={
             'noticeHeadline ' + (selectNotice ? '' : 'headlineSelected')
           }
           onClick={() => setSelectNotice(false)}>
           긴급보고
+        </h1>
+        <h1
+          className={
+            'noticeHeadline ' + (selectNotice ? 'headlineSelected' : '')
+          }
+          onClick={() => setSelectNotice(true)}>
+          공지사항
         </h1>
       </div>
       <div className={'messenger ' + (selectNotice ? '' : 'hideSender')}>
