@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import Animated, { FadeInLeft, FadeOutLeft } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
 
@@ -20,10 +20,7 @@ const NoticeCard = () => {
       <Text style={styles.titleText}>공지사항</Text>
       <View style={styleDivider} />
       {notices?.slice(0, 2).map((notice, index) => (
-        <Animated.View
-          entering={FadeInLeft}
-          exiting={FadeOutLeft}
-          key={`notice-thumb-${notice._id}`}>
+        <Animated.View key={`notice-thumb-${notice._id}`}>
           <NoticeItem
             notice={notice}
             style={{ marginTop: index > 0 ? 0 : 20 }}

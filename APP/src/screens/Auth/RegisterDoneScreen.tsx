@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Animated, {
-  FadeInUp,
-  FadeOutDown,
   runOnJS,
   useAnimatedProps,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { useNavigation, useRoute } from '@react-navigation/core';
+import { useNavigation } from '@react-navigation/core';
 import LottieView from 'lottie-react-native';
+import { useRecoilValue } from 'recoil';
 
+import { registerState } from '@/atoms';
+import AnimatedText from '@/components/AnimatedText';
 import Button from '@/components/Button';
-import { RootNavigationProp, RootRouteProp } from '@/Navigators';
+import { RootNavigationProp } from '@/Navigators';
 
 const AnimatedLottieView = Animated.createAnimatedComponent(LottieView);
 
@@ -23,11 +24,8 @@ const RegisterDoneScreen = () => {
     progress: progress.value,
   }));
   const [confettiAnimDone, setConfettiAnimDone] = useState(false);
-  const {
-    params: {
-      user: { rank, name },
-    },
-  } = useRoute<RootRouteProp<'RegisterDone'>>();
+  const { name, rank } = useRecoilValue(registerState);
+
   useEffect(() => {
     progress.value = withTiming(
       1,
@@ -40,17 +38,6 @@ const RegisterDoneScreen = () => {
     );
   }, [progress]);
 
-  const AnimatedText = () => (
-    <Animated.Text
-      entering={FadeInUp}
-      exiting={FadeOutDown}
-      style={styles.doneText}>
-      {confettiAnimDone
-        ? `${name} ${rank}님, 안녕하세요.`
-        : '가입이 완료되었어요!'}
-    </Animated.Text>
-  );
-
   return (
     <View style={styles.container}>
       <AnimatedLottieView
@@ -60,12 +47,14 @@ const RegisterDoneScreen = () => {
       />
       <View style={styles.container} />
       <View style={styles.container}>
-        {/* Intended nasty code for animation */}
-        {confettiAnimDone && <AnimatedText />}
-        {!confettiAnimDone && <AnimatedText />}
+        <AnimatedText
+          texts={['가입이 완료되었어요!', `${name} ${rank}님, 안녕하세요.`]}
+          textIndex={confettiAnimDone ? 1 : 0}
+          style={styles.doneText}
+        />
       </View>
       <View style={styles.container}>
-        <Button onPress={() => navigation.popToTop()}>시작하기</Button>
+        <Button onPress={() => navigation.replace('Main')}>시작하기</Button>
       </View>
     </View>
   );

@@ -1,10 +1,10 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 
-import EmergencyReportCard from '@/components/EmergencyReportCard';
-import LocationCard from '@/components/LocationCard';
-import NearLocationCard from '@/components/NearLocationCard';
-import NoticeCard from '@/components/NoticeCard';
+import EmergencyReportCard from './components/EmergencyReportCard';
+import LocationCard from './components/LocationCard';
+import NearLocationCard from './components/NearLocationCard';
+import NoticeCard from './components/NoticeCard';
 
 const MainScreen = () => {
   return (

@@ -135,7 +135,7 @@ android {
         applicationId "io.dimitiger.loca"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
+        versionCode 20
         versionName "1.0"
     }
     splits {
@@ -159,6 +159,11 @@ android {
                 storePassword APP_RELEASE_STORE_PASSWORD
                 keyAlias APP_RELEASE_KEY_ALIAS
                 keyPassword APP_RELEASE_KEY_PASSWORD
+            } else {
+                storeFile file('debug.keystore')
+                storePassword 'android'
+                keyAlias 'androiddebugkey'
+                keyPassword 'android'
             }
         }
     }

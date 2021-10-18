@@ -31,3 +31,4 @@ export const colorReport = '#7f2515';
 export const colorReportStart = '#FF4B2B';
 export const colorReportEnd = '#FF416C';
 export const colorReportState = '#595959';
+export const colorSignOut = '#ff4d4f';

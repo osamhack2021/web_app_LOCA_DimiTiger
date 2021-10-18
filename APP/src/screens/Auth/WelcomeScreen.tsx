@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import { Platform, StyleSheet, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, {
-  FadeIn,
   interpolateColor,
   useAnimatedProps,
   useSharedValue,
@@ -17,36 +16,16 @@ import Text from '@/components/Text';
 import { colorLocaEnd, colorLocaStart, colorWhite } from '@/constants/colors';
 import { RootNavigationProp } from '@/Navigators';
 
-const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient);
+const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
-const WelcomeScreen = () => {
+const WelcomeScreenContent = () => {
   const navigation = useNavigation<RootNavigationProp<'Welcome'>>();
-  const color = useSharedValue(0);
-  const gradientProps = useAnimatedProps(() => ({
-    colors: [
-      interpolateColor(color.value, [0, 1], [colorLocaStart, colorLocaEnd]),
-      interpolateColor(color.value, [0, 1], [colorLocaEnd, colorLocaStart]),
-    ],
-  }));
-  const nullAniamtedProps = useAnimatedProps(() => ({}));
-
-  useEffect(() => {
-    if (Platform.OS !== 'android') {
-      color.value = withRepeat(withTiming(1, { duration: 5000 }), -1, true);
-    }
-  }, [color]);
-
   return (
-    <AnimatedGradient
-      colors={Platform.OS === 'android' ? [colorLocaStart, colorLocaEnd] : []}
-      animatedProps={
-        Platform.OS === 'android' ? nullAniamtedProps : gradientProps
-      }
-      style={styles.container}>
-      <Animated.View style={styles.centerContainer} entering={FadeIn}>
+    <>
+      <View style={styles.centerContainer}>
         <Logo style={styles.logo} />
-      </Animated.View>
-      <Animated.View style={styles.buttonContainer} entering={FadeIn}>
+      </View>
+      <View style={styles.buttonContainer}>
         <TouchableOpacity
           onPress={() => navigation.navigate('SignUp')}
           style={styles.registerButton}>
@@ -57,10 +36,50 @@ const WelcomeScreen = () => {
           style={styles.signInButton}>
           <Text style={styles.signInButtonText}>로그인</Text>
         </TouchableOpacity>
-      </Animated.View>
-    </AnimatedGradient>
+      </View>
+    </>
   );
 };
+
+const AnimatedGradient = () => {
+  const color = useSharedValue(0);
+  const gradientProps = useAnimatedProps(() => ({
+    colors: [
+      interpolateColor(color.value, [0, 1], [colorLocaStart, colorLocaEnd]),
+      interpolateColor(color.value, [0, 1], [colorLocaEnd, colorLocaStart]),
+    ],
+  }));
+
+  useEffect(() => {
+    if (Platform.OS !== 'android') {
+      color.value = withRepeat(withTiming(1, { duration: 5000 }), -1, true);
+    }
+  }, [color]);
+
+  return (
+    <AnimatedLinearGradient
+      colors={Platform.OS === 'android' ? [colorLocaStart, colorLocaEnd] : []}
+      animatedProps={gradientProps}
+      style={styles.container}>
+      <WelcomeScreenContent />
+    </AnimatedLinearGradient>
+  );
+};
+
+const StaticGradient = () => {
+  return (
+    <LinearGradient
+      colors={[colorLocaStart, colorLocaEnd]}
+      style={styles.container}>
+      <WelcomeScreenContent />
+    </LinearGradient>
+  );
+};
+
+const WelcomeScreen = Platform.select({
+  android: StaticGradient,
+  default: AnimatedGradient,
+});
 
 const styles = StyleSheet.create({
   container: {
