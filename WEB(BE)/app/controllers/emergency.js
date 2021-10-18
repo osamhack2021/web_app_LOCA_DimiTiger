@@ -8,7 +8,7 @@ exports.getEmergencies = {
 	description: '긴급 신고 목록을 가져옵니다.',
 	validate: {
 		query: Joi.object({
-			user: Joi.string().description('해당 사용자의 데이터를 가져옵니다.'),
+			creator: Joi.string().description('해당 사용자의 데이터를 가져옵니다.'),
 			rangeStart: Joi.date().description('기록 시간 범위 시작'),
 			rangeEnd: Joi.date().description('기록 시간 범위 종료'),
 			page: Joi.number().description('페이지'),

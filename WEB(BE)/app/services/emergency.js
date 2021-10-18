@@ -6,7 +6,6 @@ const Errors = (exports.Errors = {
 });
 
 exports.getEmergencies = async ({
-	user,
 	rangeStart,
 	rangeEnd,
 	page,
@@ -16,7 +15,6 @@ exports.getEmergencies = async ({
 	return await Emergency.paginate(
 		{
 			...rest,
-			creator: user,
 			createdAt: {
 				$gte: rangeStart || new Date(0),
 				$lte: rangeEnd || new Date(),
