@@ -32,7 +32,7 @@ const LocationCard = () => {
   const { data: locations } = useLocations();
   const { data: locationLog, isLoading } = useActiveLocationLog();
   const { style, layoutHandler } = useAnimatedHeight(190, 0, [changeMode]);
-  const sharedOpacity = useSharedValue(1);
+  const sharedOpacity = useSharedValue(0);
   const fadeInAnim = useAnimatedStyle(() => {
     return {
       opacity: sharedOpacity.value,
