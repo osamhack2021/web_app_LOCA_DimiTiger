@@ -5,7 +5,6 @@
 ![https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/docs_hero_image.png?raw=true](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/docs_hero_image.png?raw=true)
 
 <p align="center">
-<<<<<<< HEAD
 	<a href="https://osamhack2021.github.io/web_app_LOCA_DimiTiger/">
 		<img src="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/button_start_demo.png?raw=true" />
 	</a>
@@ -14,8 +13,6 @@
 	</a>
 	</br>
 	</br>
-=======
->>>>>>> 15538a1bf002f3b341c5e9071b918a5d9052e23e
 	<a href="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/search?l=TSX&type=code"><img alt="GitHub language count" src="https://img.shields.io/github/languages/count/osamhack2021/web_app_LOCA_DimiTiger"></a>
 	<a href="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/osamhack2021/web_app_LOCA_DimiTiger?color=success"></a>
 	<a href="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/commits"><img alt="GitHub commits" src="https://img.shields.io/github/last-commit/osamhack2021/web_app_LOCA_DimiTiger.svg"></a>
