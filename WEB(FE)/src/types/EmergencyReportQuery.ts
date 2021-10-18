@@ -1,6 +1,10 @@
+import EmergencyReport from './EmergencyReport';
+
 interface EmergencyReportQuery {
   location?: string;
-  user?: string;
+  creator?: string;
+  _id?: string;
+  additionalReport?: EmergencyReport['additionalReport'];
   rangeStart?: Date;
   rangeEnd?: Date;
   page?: number;
