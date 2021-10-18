@@ -9,18 +9,18 @@ import PublicRoutes from './PublicRoutes';
 
 import { accessTokenState, settingsState, useLogout } from '@/atoms';
 import useAxios from '@/hooks/useAxios';
-import Beacons from '@/pages/Beacons';
-import EmergencyReports from '@/pages/EmergencyReports';
+import BeaconList from '@/pages/Beacons/BeaconList';
 import EmergencyReportDetail from '@/pages/EmergencyReports/EmergencyReportDetail';
+import EmergencyReportList from '@/pages/EmergencyReports/EmergencyReportList';
 import Home from '@/pages/Home';
 import Init from '@/pages/Init';
 import LocationLogs from '@/pages/LocationLogs';
-import Locations from '@/pages/Locations';
 import LocationDetail from '@/pages/Locations/LocationDetail';
+import LocationList from '@/pages/Locations/LocationList';
 import Login from '@/pages/Login';
 import Settings from '@/pages/Settings';
-import CurrentUsers from '@/pages/Users';
 import UserDetail from '@/pages/Users/UserDetail';
+import UserList from '@/pages/Users/UserList';
 import User from '@/types/User';
 
 const Router = () => {
@@ -75,18 +75,18 @@ const Router = () => {
           <PrivateRoutes path="/" component={Home} exact />
           <PrivateRoutes path="/init" component={Init} exact />
           <PrivateRoutes path="/location-logs" component={LocationLogs} exact />
-          <PrivateRoutes path="/users" component={CurrentUsers} exact />
+          <PrivateRoutes path="/users" component={UserList} exact />
           <PrivateRoutes path="/users/:id" component={UserDetail} exact />
-          <PrivateRoutes path="/locations" component={Locations} exact />
+          <PrivateRoutes path="/locations" component={LocationList} exact />
           <PrivateRoutes
             path="/locations/:id"
             component={LocationDetail}
             exact
           />
-          <PrivateRoutes path="/beacons" component={Beacons} exact />
+          <PrivateRoutes path="/beacons" component={BeaconList} exact />
           <PrivateRoutes
             path="/emergencyReports"
-            component={EmergencyReports}
+            component={EmergencyReportList}
             exact
           />
           <PrivateRoutes
