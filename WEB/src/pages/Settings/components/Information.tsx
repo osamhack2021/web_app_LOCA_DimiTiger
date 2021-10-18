@@ -52,7 +52,7 @@ const Information = () => {
           if (data.file != null) {
             formData.append('file', data.file);
             fileUploader(formData).then((filename: string) => {
-              const tempSetting: Settings = {
+              const newSetting: Settings = {
                 information: {
                   name: unitName,
                   icon: filename,
@@ -62,8 +62,8 @@ const Information = () => {
                 militaryDiscipline: settings.militaryDiscipline,
                 chartDesign: settings.chartDesign,
               };
-              setSettings(tempSetting);
-              addSetting.mutate(settings);
+              setSettings(newSetting);
+              addSetting.mutate(newSetting);
             });
           }
         }}>

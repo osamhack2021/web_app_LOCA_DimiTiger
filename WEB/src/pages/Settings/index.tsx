@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
+import DashboardSetting from './components/DashboardSetting';
 import Information from './components/Information';
-import MilitaryDiscipline from './components/MilitaryDiscipline';
 import Opensource from './components/OpenSource';
 import Team from './components/Team';
-import Weather from './components/Weather';
 
 import Header from '@/components/Header/Header';
 import LargeCard from '@/components/LargeCard';
@@ -38,21 +37,16 @@ const Settings = () => {
             <SiderbarItem
               className={tab === 2 ? 'selected' : ''}
               onClick={() => setTab(2)}>
-              날씨 설정
+              대쉬보드 UI 설정
             </SiderbarItem>
             <SiderbarItem
               className={tab === 3 ? 'selected' : ''}
               onClick={() => setTab(3)}>
-              군기강 확립 작전
+              오픈소스 정보
             </SiderbarItem>
             <SiderbarItem
               className={tab === 4 ? 'selected' : ''}
               onClick={() => setTab(4)}>
-              오픈소스 정보
-            </SiderbarItem>
-            <SiderbarItem
-              className={tab === 5 ? 'selected' : ''}
-              onClick={() => setTab(5)}>
               팀 DimiTiger
             </SiderbarItem>
           </LayoutSidebar>
@@ -60,12 +54,10 @@ const Settings = () => {
             {tab === 1 ? (
               <Information></Information>
             ) : tab === 2 ? (
-              <Weather></Weather>
+              <DashboardSetting></DashboardSetting>
             ) : tab === 3 ? (
-              <MilitaryDiscipline></MilitaryDiscipline>
-            ) : tab === 4 ? (
               <Opensource></Opensource>
-            ) : tab === 5 ? (
+            ) : tab === 4 ? (
               <Team></Team>
             ) : (
               ''

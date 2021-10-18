@@ -5,6 +5,9 @@
   flex-direction: column;
   align-items: center;
 }
+.hideSender {
+  height: calc(100% - 20px);
+}
 .message_box {
   width: 100%;
   max-height: calc(100% - 60px);
@@ -81,4 +84,55 @@
 }
 .send_button > img {
   width: 40px;
+}
+
+.reportContainer {
+  height: fit-content;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid #f5f6fa;
+  background-color: #f5f6fa;
+}
+.reportHeader {
+  padding: 20px 15px 20px 25px;
+  display: block;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.ant-timeline-item:last-child {
+  padding-bottom: 10px;
+}
+.ant-timeline-item-last > .ant-timeline-item-content {
+  min-height: fit-content;
+}
+.headline > .noticeHeadline {
+  height: 70px;
+  line-height: 70px;
+  letter-spacing: -2px;
+  color: #d1d1d1;
+  cursor: pointer;
+}
+.reportHeaderDate {
+  font-size: 1.05rem;
+  color: #7d7d7d;
+  font-weight: 500;
+  margin-right: 15px;
+  float: right;
+}
+.reportHeaderArrow {
+  float: right;
+}
+.clickedContainer {
+  background-color: #ffffff;
+  border: 1px solid #e9ebf1;
+}
+.headlineSelected {
+  border-bottom: solid 4px #0085ff;
+  color: #000 !important;
+}
+.reportThumbnail {
+  border-top: 1px solid #e9ebf1;
+  padding: 10px 10px 10px 25px;
 }

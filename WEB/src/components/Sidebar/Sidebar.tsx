@@ -51,6 +51,11 @@ const Sidebar = () => {
       link: '/beacons',
     },
     {
+      imgSrc: '/icons/sidebar_ico_emergency.svg',
+      eleName: '긴급 신고 현황',
+      link: '/emergencyReports',
+    },
+    {
       imgSrc: '/icons/sidebar_ico_setting.svg',
       eleName: '설정',
       link: '/settings',
