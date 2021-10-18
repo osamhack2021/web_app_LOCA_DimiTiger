@@ -6,10 +6,10 @@
 
 <p align="center">
 	<a href="https://osamhack2021.github.io/web_app_LOCA_DimiTiger/">
-		<img src="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/button_start_demo.png?raw=true" />
+		<img src="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/button_view_docs.png?raw=true" />
 	</a>
 	<a href="https://loca.kimjisub.me/login">
-		<img src="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/button_view_docs.png?raw=true" />
+		<img src="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/button_start_demo.png?raw=true" />
 	</a>
 	</br>
 	</br>
