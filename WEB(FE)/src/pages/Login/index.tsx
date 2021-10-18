@@ -22,11 +22,18 @@ const Login = () => {
     const { access_token, refresh_token } = (
       await axios.post('/auth/token', { serial, password })
     ).data;
+
+    const settings = (
+      await axios.get('/settings/current', {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      })
+    ).data;
+    setSettings(settings.data);
+
     setAccessToken(access_token);
     setRefreshToken(refresh_token);
-
-    const settings = (await axios.get('/settings/current')).data;
-    setSettings(settings);
   };
 
   return (

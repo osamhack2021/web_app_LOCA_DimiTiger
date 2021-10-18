@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
@@ -67,6 +67,12 @@ const Init = () => {
     };
     reader.readAsDataURL(file);
   };
+
+  useEffect(() => {
+    if (settings && settings.information && settings.information.name !== '') {
+      history.replace('/');
+    }
+  }, [history, settings]);
 
   return (
     <div id="init">
