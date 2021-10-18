@@ -34,7 +34,7 @@ exports.getEmergencies = async ({
 };
 
 exports.getEmergency = async (_id) => {
-	const emergency = await Emergency.findById(_id).exec();
+	const emergency = await Emergency.findById(_id).populate('creator').exec();
 	if (!emergency) throw Errors.EmergencyNotFoundError();
 	return emergency;
 };
