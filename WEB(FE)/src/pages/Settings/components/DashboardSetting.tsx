@@ -59,10 +59,10 @@ const Weather = () => {
         <Label>유동병력 현황판 보기 설정</Label>
         <Form.Item name="chartDesign" initialValue={settings.chartDesign}>
           <Radio.Group buttonStyle="solid">
-            <Radio.Button value="treemap">Tree Map(사각형)</Radio.Button>
             <Radio.Button value="circlepacking">
               Circle Packing(원)
             </Radio.Button>
+            <Radio.Button value="treemap">Tree Map(사각형)</Radio.Button>
           </Radio.Group>
         </Form.Item>
         <Button type="primary" htmlType="submit">

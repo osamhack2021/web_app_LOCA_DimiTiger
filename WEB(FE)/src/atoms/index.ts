@@ -29,7 +29,7 @@ export const settingsState = atom<Settings>({
       location: '',
     },
     militaryDiscipline: new Date().toDateString(),
-    chartDesign: 'treemap',
+    chartDesign: 'circlepacking',
   },
 });
 
