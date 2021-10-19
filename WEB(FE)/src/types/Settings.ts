@@ -8,6 +8,6 @@ interface Settings {
     location: string;
   };
   militaryDiscipline: string;
-  chartDesign: boolean;
+  chartDesign: 'treemap' | 'circlepacking';
 }
 export default Settings;

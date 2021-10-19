@@ -4,7 +4,6 @@ import {
   Button,
   Col,
   Descriptions,
-  Form,
   Popconfirm,
   Row,
   Space,
@@ -24,7 +23,6 @@ import Sidebar from '@/components/Sidebar/Sidebar';
 const UserDetail = () => {
   const history = useHistory();
   const { id } = useParams<{ id: string }>();
-  const [form] = Form.useForm();
   const { data: location } = useLocation(id);
   const { data: locationLog } = useLocationLogs({
     location: id,
@@ -43,11 +41,11 @@ const UserDetail = () => {
       <LayoutContent>
         <Space direction="vertical" size={20}>
           <LargeCard
-            title="위치 정보"
+            title="장소 정보"
             history={history}
             headerComponent={
               <Space>
-                <Button onClick={() => {}}>수정</Button>
+                {/* <Button onClick={() => {}}>수정</Button> */}
                 <Popconfirm
                   title="정말로 삭제하시겠습니까?"
                   onConfirm={deleteLocation}

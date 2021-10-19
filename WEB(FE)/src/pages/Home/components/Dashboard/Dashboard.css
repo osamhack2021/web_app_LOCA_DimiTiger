@@ -1,14 +1,12 @@
 #dashboard {
-  padding: 3vw;
-  height: calc(100vh - 100px);
-  width: 95vw;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  width: 100%;
+  padding: 30px;
+  min-height: calc(100vh - 100px);
+  padding-right: 120px;
 }
 .headline {
   width: 100%;
-  height: 70px;
+  height: 80px;
   display: flex;
   align-items: center;
   border-bottom: solid 1px #e6e6e6;
@@ -24,55 +22,28 @@
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
 }
-
-#notice {
-  width: 25%;
-  height: 100%;
-  margin-right: 30px;
-}
-#container1 {
-  width: calc(75% - 3vw);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-#container2 {
+#bottomComponents {
   width: 100%;
-  height: 70%;
-  margin-bottom: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  height: calc((100vh - 190px) * 0.3);
+  margin-top: 30px;
 }
-#location {
-  flex: 1 1 auto;
-  height: 100%;
-}
-#personnelStatus {
-  flex: 0 0 25%;
-  height: 100%;
-}
-#container3 {
-  width: 100%;
-  height: 30%;
-  display: flex;
+@media screen and (min-width: 992px) {
+  #bottomComponents > div {
+    display: flex;
+  }
 }
 #weather {
-  width: 18%;
-  height: 100%;
+  flex: 1;
   margin-right: 30px;
 }
 #temperature {
-  width: 18%;
-  height: 100%;
+  flex: 1;
   margin-right: 30px;
 }
 #militaryDiscipline {
-  width: 18%;
-  height: 100%;
+  flex: 1;
   margin-right: 30px;
 }
-#worker {
-  width: calc(46% - 90px);
-  height: 100%;
+#serverStatus {
+  flex: 1;
 }

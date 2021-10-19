@@ -1,5 +1,4 @@
-import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
-import { Button, DatePicker, Form, Switch } from 'antd';
+import { Button, DatePicker, Form, Radio } from 'antd';
 import { format } from 'date-fns';
 import moment from 'moment';
 import { useRecoilState } from 'recoil';
@@ -19,14 +18,14 @@ const Weather = () => {
     <WrapperContent>
       <Form
         form={form}
-        onFinish={({ unitLocation, militaryDisciplineDate, chartSetting }) => {
+        onFinish={({ unitLocation, militaryDisciplineDate, chartDesign }) => {
           const newSetting: Settings = {
             information: settings.information,
             weather: {
               location: unitLocation,
             },
             militaryDiscipline: militaryDisciplineDate,
-            chartDesign: chartSetting,
+            chartDesign,
           };
           setSettings(newSetting);
 
@@ -39,13 +38,14 @@ const Weather = () => {
           <Input></Input>
         </Form.Item>
         <Label>군기강 확립 작전 시작일</Label>
-        <Form.Item name="militaryDisciplineDate">
+        <Form.Item
+          name="militaryDisciplineDate"
+          initialValue={moment(
+            settings.militaryDiscipline || format(new Date(), 'yyyy-MM-dd'),
+            dateFormat,
+          )}>
           <DatePicker
             showToday
-            defaultValue={moment(
-              settings.militaryDiscipline || format(new Date(), 'yyyy-MM-dd'),
-              dateFormat,
-            )}
             style={{
               height: '44px',
               width: '250px',
@@ -56,11 +56,14 @@ const Weather = () => {
             }}
           />
         </Form.Item>
-        <Label>유동병력 현황판 차트 설정</Label>
-        <Form.Item name="chartSetting">
-          <Switch
-            checkedChildren={<CheckOutlined />}
-            unCheckedChildren={<CloseOutlined />}></Switch>
+        <Label>유동병력 현황판 보기 설정</Label>
+        <Form.Item name="chartDesign" initialValue={settings.chartDesign}>
+          <Radio.Group buttonStyle="solid">
+            <Radio.Button value="circlepacking">
+              Circle Packing(원)
+            </Radio.Button>
+            <Radio.Button value="treemap">Tree Map(사각형)</Radio.Button>
+          </Radio.Group>
         </Form.Item>
         <Button type="primary" htmlType="submit">
           설정

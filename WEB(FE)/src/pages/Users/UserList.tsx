@@ -105,9 +105,10 @@ const Users = () => {
                 dataIndex: 'registered',
                 key: 'registered',
                 width: '7%',
+                render: registered => (registered ? '가입완료' : '미가입'),
               },
               {
-                title: '',
+                title: '동작',
                 dataIndex: '_id',
                 key: '_id',
                 width: '5%',

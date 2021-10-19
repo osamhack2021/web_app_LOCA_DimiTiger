@@ -54,7 +54,7 @@ const LocationLogs = () => {
       <Header />
       <LayoutContent>
         <LargeCard
-          title="유동병력 검색"
+          title="유동병력 관리"
           history={history}
           headerComponent={
             <ToolkitWrap>

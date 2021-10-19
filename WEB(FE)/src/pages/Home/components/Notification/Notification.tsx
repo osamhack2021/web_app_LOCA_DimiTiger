@@ -1,20 +1,21 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import './Notice.css';
+import './Notification.css';
 
 import EmergencyReportElement from './components/EmergencyReportsElement';
 import NoticeElement from './components/NoticeElement';
 
 import { useEmergencyReports } from '@/api/emergencies';
 import { useAddNotice, useNotices } from '@/api/notices';
+import CardContainer from '@/components/CardContainer';
 import Notice from '@/types/Notice';
 
-const NoticeCard = () => {
+const Notification = () => {
   const { data: notices } = useNotices();
   const { data: emergencies } = useEmergencyReports();
   const { register, handleSubmit } = useForm();
-  const [selectNotice, setSelectNotice] = useState(true);
+  const [selectNotice, setSelectNotice] = useState(false);
 
   const noticeMutaion = useAddNotice();
 
@@ -23,21 +24,21 @@ const NoticeCard = () => {
   };
 
   return (
-    <div id="notice" className="dash_component">
+    <CardContainer id="notification">
       <div className="headline">
-        <h1
-          className={
-            'noticeHeadline ' + (selectNotice ? 'headlineSelected' : '')
-          }
-          onClick={() => setSelectNotice(true)}>
-          공지사항
-        </h1>
         <h1
           className={
             'noticeHeadline ' + (selectNotice ? '' : 'headlineSelected')
           }
           onClick={() => setSelectNotice(false)}>
           긴급보고
+        </h1>
+        <h1
+          className={
+            'noticeHeadline ' + (selectNotice ? 'headlineSelected' : '')
+          }
+          onClick={() => setSelectNotice(true)}>
+          공지사항
         </h1>
       </div>
       <div className={'messenger ' + (selectNotice ? '' : 'hideSender')}>
@@ -71,7 +72,7 @@ const NoticeCard = () => {
           <></>
         )}
       </div>
-    </div>
+    </CardContainer>
   );
 };
-export default NoticeCard;
+export default Notification;

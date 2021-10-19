@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 
 import { settingsState } from '@/atoms';
 import Header from '@/components/Header/Header';
+import LayoutContentWrapper from '@/components/LayoutContentWrapper';
 import Sidebar from '@/components/Sidebar/Sidebar';
 
 const Home = () => {
@@ -15,14 +16,11 @@ const Home = () => {
     settings.information.name === '' ? (
     <Redirect to="/init" />
   ) : (
-    <div
-      style={{
-        backgroundColor: '#f2f3f5',
-      }}>
-      <Header></Header>
+    <LayoutContentWrapper>
+      <Header />
       <Dashboard></Dashboard>
-      <Sidebar></Sidebar>
-    </div>
+      <Sidebar />
+    </LayoutContentWrapper>
   );
 };
 

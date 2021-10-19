@@ -11,6 +11,7 @@ interface ILargeCard {
   children: React.ReactNode;
   style?: React.CSSProperties;
   bodyStyle?: React.CSSProperties;
+  headerStyle?: React.CSSProperties;
 }
 
 const LargeCard = ({
@@ -19,10 +20,11 @@ const LargeCard = ({
   headerComponent,
   children,
   style,
+  headerStyle,
   bodyStyle,
 }: ILargeCard) => (
   <CardContainer style={style || { width: '100%' }}>
-    <CardHeader>
+    <CardHeader style={headerStyle}>
       {history && (
         <img
           src="/icons/backspace_arrow.svg"
