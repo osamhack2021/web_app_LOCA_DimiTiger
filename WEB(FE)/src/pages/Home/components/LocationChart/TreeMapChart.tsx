@@ -24,7 +24,7 @@ const Chart = ({
   parentWidth: width,
   parentHeight: height,
 }: WithParentSizeProvidedProps) => {
-  const { data: locations } = useLocations();
+  const { data: locations } = useLocations({ limit: 0 });
   const { data: locationLogs } = useLocationLogs({ active: true, limit: 0 });
   const history = useHistory();
 
