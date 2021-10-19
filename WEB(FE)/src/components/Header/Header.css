@@ -55,3 +55,12 @@ header {
   display: inline-block;
   margin-left: 3px;
 }
+
+@media screen and (max-width: 992px) {
+  .belong_name {
+    font-size: 1.5rem;
+  }
+  #watch_widget {
+    display: none;
+  }
+}
