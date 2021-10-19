@@ -6,7 +6,7 @@ import './Dashboard.css';
 import LocationChart from '../LocationChart/LocationChart';
 import MilitaryDiscipline from '../MilitaryDiscipline/MilitaryDiscipline';
 import Notification from '../Notification/Notification';
-import ServerStatus from '../ServerStatus/ServerStatus';
+import Schedule from '../Schedule/Schedule';
 import Temperature from '../Temperature/Temperature';
 import Weather from '../Weather/Weather';
 
@@ -28,7 +28,7 @@ const Dashboard = () => {
             <MilitaryDiscipline />
           </Col>
           <Col xs={0} lg={8}>
-            <ServerStatus />
+            <Schedule />
           </Col>
         </Row>
       </Col>
