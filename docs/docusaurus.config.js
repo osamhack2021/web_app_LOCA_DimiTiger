@@ -51,7 +51,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             label: '문서',
           },
           {
-            href: 'https://loca.kimjisub.me',
+            href: '/web_app_LOCA_DimiTiger/docs/demo',
             label: 'Demo',
             position: 'left'
           },
@@ -72,22 +72,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 label: '문서',
                 to: '/docs/intro',
               },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: '데모 시작',
+                to: '/docs/demo',
               },
             ],
           },
@@ -95,7 +82,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             title: 'More',
             items: [
               {
-                label: 'Demo',
+                label: 'Web Admin Demo',
                 href: 'https://loca.kimjisub.me',
               },
               {

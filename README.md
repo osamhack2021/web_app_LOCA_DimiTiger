@@ -5,7 +5,7 @@
 ![https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/docs_hero_image.png?raw=true](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/docs_hero_image.png?raw=true)
 
 <p align="center">
- <a href="https://osamhack2021.github.io/web_app_LOCA_DimiTiger/">
+ <a href="https://osamhack2021.github.io/web_app_LOCA_DimiTiger">
   <img src="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/button_view_docs.png?raw=true" />
  </a>
  <a href="https://loca.kimjisub.me/login">
@@ -29,7 +29,7 @@
 
 LOCA는 기존의 유동 병력 관리 방식을 완전히 개선하기 위해 탄생한 프로젝트입니다.
 
-<br/>
+프로젝트에 대한 더 자세한 설명은 [프로젝트 문서 페이지](https://osamhack2021.github.io/web_app_LOCA_DimiTiger)에서 확인하실 수 있습니다.
 
 ### 프로젝트 배경
 
@@ -83,8 +83,8 @@ DimiTiger팀은 고등학교 동창 네 명이 만나 이루어진 팀입니다.
 ## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 
 - ECMAScript 6 지원 브라우저 사용
-
 - 권장: Google Chrome 버젼 77 이상
+- iOS 앱 빌드: MacOS Big Sur, Xcode 13
 
 ## 기술 스택 (Technique Used)
 
@@ -119,15 +119,11 @@ DimiTiger팀은 고등학교 동창 네 명이 만나 이루어진 팀입니다.
 | [<img src="https://reactnavigation.org/img/spiro.svg" alt="react-navigation" width="40" />](https://reactnavigation.org/)                                                                          | React Navigation        | React Native 애플리케이션 네비게이션 라이브러리             |
 | [<img src="https://docs.swmansion.com/react-native-reanimated/img/swm-react-native-reanimated-illu-kon-06.svg" alt="mongodb" width="40" />](https://docs.swmansion.com/react-native-reanimated/)   | React Native Reanimated | React Native 애니메이션 라이브러리                          |
 
-## 설치 안내 (Installation Process)
+## 설치 안내 및 프로젝트 사용법 (Getting Started)
 
-```bash
-git clone git주소
-yarn or npm install
-yarn start or npm run start
-```
-
-## 프로젝트 사용법 (Getting Started)
+- [Web-Frontend](https://osamhack2021.github.io/web_app_LOCA_DimiTiger/docs/tech-stack/web-frontend/getting-started)
+- [Backend](https://osamhack2021.github.io/web_app_LOCA_DimiTiger/docs/tech-stack/backend/getting-started)
+- [Application](https://osamhack2021.github.io/web_app_LOCA_DimiTiger/docs/tech-stack/application/getting-started)
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
 
