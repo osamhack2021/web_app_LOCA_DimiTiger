@@ -7,9 +7,9 @@ import CirclePackingChart from '../LocationChart/CirclePackingChart';
 import TreeMapChart from '../LocationChart/TreeMapChart';
 import MilitaryDiscipline from '../MilitaryDiscipline/MilitaryDiscipline';
 import Notification from '../Notification/Notification';
+import ServerStatus from '../ServerStatus/ServerStatus';
 import Temperature from '../Temperature/Temperature';
 import Weather from '../Weather/Weather';
-import Worker from '../Worker/Worker';
 
 import { settingsState } from '@/atoms';
 
@@ -31,7 +31,7 @@ const Dashboard = () => {
           <Weather></Weather>
           <Temperature></Temperature>
           <MilitaryDiscipline></MilitaryDiscipline>
-          <Worker></Worker>
+          <ServerStatus></ServerStatus>
         </div>
       </div>
     </div>
