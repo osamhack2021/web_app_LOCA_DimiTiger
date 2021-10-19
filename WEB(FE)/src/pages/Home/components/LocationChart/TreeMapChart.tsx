@@ -171,9 +171,9 @@ const TreeMapChart = () => {
   return (
     <LargeCard
       title="유동병력 현황판"
-      style={{ height: 'calc(70% - 30px)' }}
+      style={{ height: 'calc((100vh - 190px) * 0.7)' }}
       headerStyle={{ height: '80px' }}
-      bodyStyle={{ height: 'calc(100% - 80px)' }}>
+      bodyStyle={{ height: 'calc((100vh - 190px) * 0.7 - 80px)' }}>
       <ChartWrapper />
     </LargeCard>
   );

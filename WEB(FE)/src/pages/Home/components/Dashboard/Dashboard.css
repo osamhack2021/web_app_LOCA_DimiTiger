@@ -21,38 +21,9 @@
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
 }
-
-#notice {
-  width: 25%;
-  height: 100%;
-  margin-right: 30px;
-}
-#container1 {
-  width: calc(75% - 3vw);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-#container2 {
-  width: 100%;
-  height: 70%;
-  margin-bottom: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-#location {
-  flex: 1 1 auto;
-  width: 100%;
-  height: 100%;
-}
-#personnelStatus {
-  flex: 0 0 25%;
-  height: 100%;
-}
 #container3 {
   width: 100%;
-  height: 30%;
+  height: calc((100vh - 190px) * 0.3);
   margin-top: 30px;
   display: flex;
 }

@@ -19,10 +19,10 @@ const Dashboard = () => {
 
   return (
     <Row gutter={[32, 32]} id="dashboard">
-      <Col xs={24} xl={6}>
+      <Col xs={24} xxl={6}>
         <Notification />
       </Col>
-      <Col xs={24} xl={18}>
+      <Col xs={24} xxl={18}>
         {settings.chartDesign === 'circlepacking' ? (
           <CirclePackingChart />
         ) : (
