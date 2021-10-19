@@ -35,7 +35,7 @@ const EmergencyReportsDetail = () => {
       rangeEnd: emergencyReport?.createdAt,
       limit: 1,
     },
-    { refetchInterval: false },
+    { refetchInterval: false, enabled: !!emergencyReport },
   );
   const { data: locationLogs } = useLocationLogs({
     user: emergencyReport?.creator._id,
