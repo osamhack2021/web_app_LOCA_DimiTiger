@@ -74,6 +74,7 @@ const ChartWrapper = withParentSize(Chart);
 
 const LocationChart = () => {
   const [chartExpanded, setChartExpanded] = useRecoilState(chartExpandedState);
+  const { chartDesign } = useRecoilValue(settingsState);
   return (
     <LargeCard
       title="유동병력 현황판"
@@ -87,7 +88,7 @@ const LocationChart = () => {
         height: chartExpanded
           ? 'calc(100vh - 240px)'
           : 'calc((100vh - 190px) * 0.7 - 80px)',
-        padding: 0,
+        padding: chartDesign === 'treemap' ? 0 : 20,
       }}
       headerComponent={
         <Button

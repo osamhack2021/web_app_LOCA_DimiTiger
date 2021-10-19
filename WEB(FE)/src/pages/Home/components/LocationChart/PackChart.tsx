@@ -33,7 +33,7 @@ const PackChart = ({
         {packData => (
           <Group>
             {packData.descendants().map((circle, i) => {
-              const { location, users } = circle.data;
+              const { location } = circle.data;
               const lineWidth = circle.r * 0.2;
               const distance = circle.r * 0.3;
               const fontSize = circle.r * 0.25 + 'px';
