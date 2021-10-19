@@ -19,21 +19,28 @@ const Dashboard = () => {
 
   return (
     <Row gutter={[32, 32]} id="dashboard">
-      <Col xs={0} xxl={6}>
+      <Col xs={{ span: 24, order: 2 }} xxl={{ span: 6, order: 1 }}>
         <Notification />
       </Col>
-      <Col xs={24} xxl={18}>
+      <Col xs={{ span: 24, order: 1 }} xxl={{ span: 18, order: 2 }}>
         {settings.chartDesign === 'circlepacking' ? (
           <CirclePackingChart />
         ) : (
           <TreeMapChart />
         )}
-        <div id="container3">
-          <Weather></Weather>
-          <Temperature></Temperature>
-          <MilitaryDiscipline></MilitaryDiscipline>
-          <ServerStatus></ServerStatus>
-        </div>
+        <Row gutter={[0, 32]} id="bottomComponents">
+          <Col
+            xs={24}
+            lg={16}
+            style={{ display: 'flex', flexDirection: 'row' }}>
+            <Weather />
+            <Temperature />
+            <MilitaryDiscipline />
+          </Col>
+          <Col xs={0} lg={8}>
+            <ServerStatus />
+          </Col>
+        </Row>
       </Col>
     </Row>
   );

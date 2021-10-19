@@ -6,7 +6,7 @@
 }
 .headline {
   width: 100%;
-  height: 70px;
+  height: 80px;
   display: flex;
   align-items: center;
   border-bottom: solid 1px #e6e6e6;
@@ -22,28 +22,28 @@
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
 }
-#container3 {
+#bottomComponents {
   width: 100%;
   height: calc((100vh - 190px) * 0.3);
   margin-top: 30px;
-  display: flex;
+}
+@media screen and (min-width: 992px) {
+  #bottomComponents > div {
+    display: flex;
+  }
 }
 #weather {
-  width: 18%;
-  height: 100%;
+  flex: 1;
   margin-right: 30px;
 }
 #temperature {
-  width: 18%;
-  height: 100%;
+  flex: 1;
   margin-right: 30px;
 }
 #militaryDiscipline {
-  width: 18%;
-  height: 100%;
+  flex: 1;
   margin-right: 30px;
 }
-#worker {
-  width: calc(46% - 90px);
-  height: 100%;
+#serverStatus {
+  flex: 1;
 }
