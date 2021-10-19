@@ -12,13 +12,13 @@ import Weather from '../Weather/Weather';
 
 const Dashboard = () => {
   return (
-    <Row gutter={[32, 32]} id="dashboard">
+    <Row gutter={[30, 30]} id="dashboard">
       <Col xs={{ span: 24, order: 2 }} xxl={{ span: 6, order: 1 }}>
         <Notification />
       </Col>
       <Col xs={{ span: 24, order: 1 }} xxl={{ span: 18, order: 2 }}>
         <LocationChart />
-        <Row gutter={[0, 32]} id="bottomComponents">
+        <Row gutter={[0, 30]} id="bottomComponents">
           <Col
             xs={24}
             lg={16}

@@ -14,13 +14,14 @@ import Notice from '@/types/Notice';
 const Notification = () => {
   const { data: notices } = useNotices();
   const { data: emergencies } = useEmergencyReports();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [selectNotice, setSelectNotice] = useState(false);
 
   const noticeMutaion = useAddNotice();
 
   const onSubmit = async ({ content, emergency }: Notice) => {
     noticeMutaion.mutate({ content, emergency });
+    reset();
   };
 
   return (
@@ -55,7 +56,7 @@ const Notification = () => {
                 );
               })}
         </div>
-        {selectNotice ? (
+        {selectNotice && (
           <form className="send_box" onSubmit={handleSubmit(onSubmit)}>
             <div className="input_box">
               <select className="send_mode" {...register('emergency')}>
@@ -68,8 +69,6 @@ const Notification = () => {
               <img src="./icons/send.svg" alt="" />
             </button>
           </form>
-        ) : (
-          <></>
         )}
       </div>
     </CardContainer>
