@@ -5,6 +5,7 @@ import './LocationChart.css';
 
 import { useLocationLogs } from '@/api/location-logs';
 import { useLocations } from '@/api/locations';
+import LargeCard from '@/components/LargeCard';
 import Location from '@/types/Location';
 
 interface LocationDatum extends Location {
@@ -13,6 +14,14 @@ interface LocationDatum extends Location {
   name: string;
   children?: LocationDatum[];
 }
+
+const gradProps = {
+  gradientUnits: 'userSpaceOnUse',
+  x1: '0',
+  y1: '0',
+  x2: '0',
+  y2: '480',
+};
 
 const CustomCirclePackingComponent = (props: CircleProps<LocationDatum>) => {
   const { node } = props;
@@ -104,6 +113,28 @@ const CustomCirclePackingComponent = (props: CircleProps<LocationDatum>) => {
           </text>
         </>
       )}
+      <defs>
+        <linearGradient id="gradientId1" {...gradProps}>
+          <stop offset="25%" stopColor="#EEF2F3" />
+          <stop offset="75%" stopColor="#94A5B2" />
+        </linearGradient>
+        <linearGradient id="gradientId2" {...gradProps}>
+          <stop offset="25%" stopColor="#FFCCD5" />
+          <stop offset="75%" stopColor="#FF30C5" />
+        </linearGradient>
+        <linearGradient id="gradientId3" {...gradProps}>
+          <stop offset="10%" stopColor="#87F8FF" />
+          <stop offset="90%" stopColor="#4071FF" />
+        </linearGradient>
+        <linearGradient id="gradientId4" {...gradProps}>
+          <stop offset="0%" stopColor="#D7F0A0" />
+          <stop offset="75%" stopColor="#78CC0E" />
+        </linearGradient>
+        <linearGradient id="gradientId5" {...gradProps}>
+          <stop offset="0%" stopColor="#D7F0A0" />
+          <stop offset="75%" stopColor="#78CC0E" />
+        </linearGradient>
+      </defs>
     </>
   );
 };
@@ -128,78 +159,42 @@ const CirclePackingChart = () => {
     });
   }, [locations, locationLogs]);
 
-  const gradProps = {
-    gradientUnits: 'userSpaceOnUse',
-    x1: '0',
-    y1: '0',
-    x2: '0',
-    y2: '480',
-  };
-
   return (
-    <div id="location" className="dash_component">
-      <div className="headline">
-        <h1>유동병력 현황판</h1>
-      </div>
-      <div id="locationChart">
-        <div style={{ width: 0 }}>
-          <svg>
-            <defs>
-              <linearGradient id="gradientId1" {...gradProps}>
-                <stop offset="25%" stopColor="#EEF2F3" />
-                <stop offset="75%" stopColor="#94A5B2" />
-              </linearGradient>
-              <linearGradient id="gradientId2" {...gradProps}>
-                <stop offset="25%" stopColor="#FFCCD5" />
-                <stop offset="75%" stopColor="#FF30C5" />
-              </linearGradient>
-              <linearGradient id="gradientId3" {...gradProps}>
-                <stop offset="10%" stopColor="#87F8FF" />
-                <stop offset="90%" stopColor="#4071FF" />
-              </linearGradient>
-              <linearGradient id="gradientId4" {...gradProps}>
-                <stop offset="0%" stopColor="#D7F0A0" />
-                <stop offset="75%" stopColor="#78CC0E" />
-              </linearGradient>
-              <linearGradient id="gradientId5" {...gradProps}>
-                <stop offset="0%" stopColor="#D7F0A0" />
-                <stop offset="75%" stopColor="#78CC0E" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        {isLoading ? (
-          'loading...'
-        ) : (
-          <ResponsiveCirclePacking
-            //@ts-ignore
-            data={{
-              name: 'root',
-              children: data,
-            }}
-            margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-            id="name"
-            colors={[
-              'url(#gradientId1)',
-              'url(#gradientId2)',
-              'url(#gradientId3)',
-              'url(#gradientId4)',
-            ]}
-            colorBy="id"
-            childColor={{ from: 'color', modifiers: [['brighter', 0.4]] }}
-            padding={1}
-            leavesOnly={true}
-            enableLabels={false}
-            borderColor={{ from: 'color', modifiers: [['darker', 0.3]] }}
-            animate={false}
-            circleComponent={CustomCirclePackingComponent}
-            theme={{
-              fontSize: 52,
-            }}
-          />
-        )}
-      </div>
-    </div>
+    <LargeCard
+      title="유동병력 현황판"
+      style={{ height: 'calc(70% - 30px)' }}
+      bodyStyle={{ height: 'calc(100% - 80px)' }}>
+      {isLoading ? (
+        'loading...'
+      ) : (
+        <ResponsiveCirclePacking
+          //@ts-ignore
+          data={{
+            name: 'root',
+            children: data,
+          }}
+          margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+          id="name"
+          colors={[
+            'url(#gradientId1)',
+            'url(#gradientId2)',
+            'url(#gradientId3)',
+            'url(#gradientId4)',
+          ]}
+          colorBy="id"
+          childColor={{ from: 'color', modifiers: [['brighter', 0.4]] }}
+          padding={1}
+          leavesOnly={true}
+          enableLabels={false}
+          borderColor={{ from: 'color', modifiers: [['darker', 0.3]] }}
+          animate={false}
+          circleComponent={CustomCirclePackingComponent}
+          theme={{
+            fontSize: 52,
+          }}
+        />
+      )}
+    </LargeCard>
   );
 };
 export default CirclePackingChart;

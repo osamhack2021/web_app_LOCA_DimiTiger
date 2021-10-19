@@ -2,10 +2,12 @@ import styled from 'styled-components';
 
 const CardHeader = styled.div`
   width: 100%;
+  height: 80px;
 
   padding: 20px 0 20px 0;
 
   display: flex;
+  flex: 0 1 auto;
   align-items: center;
 
   border-bottom: solid 1px #e6e6e6;

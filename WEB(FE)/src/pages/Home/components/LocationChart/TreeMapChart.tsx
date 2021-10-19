@@ -10,6 +10,7 @@ import './LocationChart.css';
 
 import { useLocationLogs } from '@/api/location-logs';
 import { useLocations } from '@/api/locations';
+import LargeCard from '@/components/LargeCard';
 import Location from '@/types/Location';
 import User from '@/types/User';
 
@@ -168,14 +169,12 @@ const ChartWrapper = withParentSize(Chart);
 
 const TreeMapChart = () => {
   return (
-    <div id="location" className="dash_component">
-      <div className="headline">
-        <h1>유동병력 현황판</h1>
-      </div>
-      <div id="locationChart">
-        <ChartWrapper />
-      </div>
-    </div>
+    <LargeCard
+      title="유동병력 현황판"
+      style={{ height: 'calc(70% - 30px)' }}
+      bodyStyle={{ height: 'calc(100% - 80px)' }}>
+      <ChartWrapper />
+    </LargeCard>
   );
 };
 export default TreeMapChart;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col, Row } from 'antd';
 import { useRecoilState } from 'recoil';
 
 import './Dashboard.css';
@@ -17,24 +18,24 @@ const Dashboard = () => {
   const [settings] = useRecoilState(settingsState);
 
   return (
-    <div id="dashboard">
-      <Notification></Notification>
-      <div id="container1">
-        <div id="container2">
-          {settings.chartDesign === 'circlepacking' ? (
-            <CirclePackingChart />
-          ) : (
-            <TreeMapChart />
-          )}
-        </div>
+    <Row gutter={[32, 32]} id="dashboard">
+      <Col xs={24} xl={6}>
+        <Notification />
+      </Col>
+      <Col xs={24} xl={18}>
+        {settings.chartDesign === 'circlepacking' ? (
+          <CirclePackingChart />
+        ) : (
+          <TreeMapChart />
+        )}
         <div id="container3">
           <Weather></Weather>
           <Temperature></Temperature>
           <MilitaryDiscipline></MilitaryDiscipline>
           <ServerStatus></ServerStatus>
         </div>
-      </div>
-    </div>
+      </Col>
+    </Row>
   );
 };
 export default Dashboard;

@@ -8,6 +8,7 @@ import NoticeElement from './components/NoticeElement';
 
 import { useEmergencyReports } from '@/api/emergencies';
 import { useAddNotice, useNotices } from '@/api/notices';
+import CardContainer from '@/components/CardContainer';
 import Notice from '@/types/Notice';
 
 const Notification = () => {
@@ -23,7 +24,7 @@ const Notification = () => {
   };
 
   return (
-    <div id="notice" className="dash_component">
+    <CardContainer id="notification">
       <div className="headline">
         <h1
           className={
@@ -71,7 +72,7 @@ const Notification = () => {
           <></>
         )}
       </div>
-    </div>
+    </CardContainer>
   );
 };
 export default Notification;
