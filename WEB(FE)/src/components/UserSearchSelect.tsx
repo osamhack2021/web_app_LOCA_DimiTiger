@@ -7,6 +7,7 @@ const UserSearchSelect = (props: SelectProps<string>) => {
   const [text, setText] = useState('');
   const { data: users, isFetching } = useUsers({
     name: text || undefined,
+    limit: 0,
   });
 
   return (
