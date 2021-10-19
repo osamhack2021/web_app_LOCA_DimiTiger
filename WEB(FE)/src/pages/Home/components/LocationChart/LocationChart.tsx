@@ -87,6 +87,7 @@ const LocationChart = () => {
         height: chartExpanded
           ? 'calc(100vh - 240px)'
           : 'calc((100vh - 190px) * 0.7 - 80px)',
+        padding: 0,
       }}
       headerComponent={
         <Button

@@ -1,8 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Group } from '@visx/group';
-import { Treemap, treemapBinary } from '@visx/hierarchy';
-import { HierarchyNode } from '@visx/hierarchy/lib/types';
+import { Treemap, treemapSquarify } from '@visx/hierarchy';
+import {
+  HierarchyNode,
+  HierarchyRectangularNode,
+} from '@visx/hierarchy/lib/types';
 
 import './LocationChart.css';
 
@@ -14,6 +17,8 @@ interface Datum {
   users?: User[];
   children?: Datum[];
 }
+
+const ratio = (1 + Math.sqrt(5)) / 2;
 
 const TreeMapChart = ({
   width,
@@ -32,7 +37,23 @@ const TreeMapChart = ({
       <Treemap<Datum>
         root={root}
         size={[width || 100, height || 100]}
-        tile={treemapBinary}
+        tile={(
+          tile =>
+          (
+            node: HierarchyRectangularNode<Datum>,
+            x0: number,
+            y0: number,
+            x1: number,
+            y1: number,
+          ) => {
+            tile(node, x0 / ratio, y0, x1 / ratio, y1);
+            if (node.children)
+              for (const child of node.children) {
+                child.x0 *= ratio;
+                child.x1 *= ratio;
+              }
+          }
+        )(treemapSquarify.ratio(1))}
         padding={20}
         round>
         {treemap => (
