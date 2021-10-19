@@ -1,33 +1,23 @@
 import React from 'react';
 import { Col, Row } from 'antd';
-import { useRecoilState } from 'recoil';
 
 import './Dashboard.css';
 
-import CirclePackingChart from '../LocationChart/CirclePackingChart';
-import TreeMapChart from '../LocationChart/TreeMapChart';
+import LocationChart from '../LocationChart/LocationChart';
 import MilitaryDiscipline from '../MilitaryDiscipline/MilitaryDiscipline';
 import Notification from '../Notification/Notification';
-import ServerStatus from '../ServerStatus/ServerStatus';
+import Schedule from '../Schedule/Schedule';
 import Temperature from '../Temperature/Temperature';
 import Weather from '../Weather/Weather';
 
-import { settingsState } from '@/atoms';
-
 const Dashboard = () => {
-  const [settings] = useRecoilState(settingsState);
-
   return (
     <Row gutter={[32, 32]} id="dashboard">
       <Col xs={{ span: 24, order: 2 }} xxl={{ span: 6, order: 1 }}>
         <Notification />
       </Col>
       <Col xs={{ span: 24, order: 1 }} xxl={{ span: 18, order: 2 }}>
-        {settings.chartDesign === 'circlepacking' ? (
-          <CirclePackingChart />
-        ) : (
-          <TreeMapChart />
-        )}
+        <LocationChart />
         <Row gutter={[0, 32]} id="bottomComponents">
           <Col
             xs={24}
@@ -38,7 +28,7 @@ const Dashboard = () => {
             <MilitaryDiscipline />
           </Col>
           <Col xs={0} lg={8}>
-            <ServerStatus />
+            <Schedule />
           </Col>
         </Row>
       </Col>

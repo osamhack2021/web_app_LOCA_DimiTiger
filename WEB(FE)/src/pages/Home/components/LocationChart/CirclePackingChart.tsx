@@ -140,7 +140,7 @@ const CustomCirclePackingComponent = (props: CircleProps<LocationDatum>) => {
 };
 
 const CirclePackingChart = () => {
-  const { data: locations, isLoading } = useLocations();
+  const { data: locations, isLoading } = useLocations({ limit: 0 });
   const { data: locationLogs } = useLocationLogs({ active: true, limit: 0 });
 
   const data = useMemo(() => {

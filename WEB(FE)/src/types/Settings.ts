@@ -9,5 +9,9 @@ interface Settings {
   };
   militaryDiscipline: string;
   chartDesign: 'treemap' | 'circlepacking';
+  schedule?: {
+    date: string;
+    content: string;
+  };
 }
 export default Settings;

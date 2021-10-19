@@ -18,7 +18,13 @@ const Weather = () => {
     <WrapperContent>
       <Form
         form={form}
-        onFinish={({ unitLocation, militaryDisciplineDate, chartDesign }) => {
+        onFinish={({
+          unitLocation,
+          militaryDisciplineDate,
+          chartDesign,
+          scheduleDate,
+          scheduleContent,
+        }) => {
           const newSetting: Settings = {
             information: settings.information,
             weather: {
@@ -26,18 +32,22 @@ const Weather = () => {
             },
             militaryDiscipline: militaryDisciplineDate,
             chartDesign,
+            schedule: {
+              date: scheduleDate,
+              content: scheduleContent,
+            },
           };
           setSettings(newSetting);
 
           addSetting.mutate(newSetting);
         }}>
-        <Label>부대위치</Label>
+        <Label>부대 위치 설정</Label>
         <Form.Item
           name="unitLocation"
           initialValue={settings.weather?.location || ''}>
           <Input></Input>
         </Form.Item>
-        <Label>군기강 확립 작전 시작일</Label>
+        <Label>군기강 확립 작전 시작일 설정</Label>
         <Form.Item
           name="militaryDisciplineDate"
           initialValue={moment(
@@ -55,6 +65,30 @@ const Weather = () => {
               padding: '0 20px',
             }}
           />
+        </Form.Item>
+        <Label>다가오는 일정 설정</Label>
+        <Form.Item
+          name="scheduleDate"
+          initialValue={moment(
+            settings.schedule?.date || format(new Date(), 'yyyy-MM-dd'),
+            dateFormat,
+          )}>
+          <DatePicker
+            showToday
+            style={{
+              height: '44px',
+              width: '250px',
+              border: 'solid 2px #0085ff',
+              borderRadius: '13px',
+              backgroundColor: '#f5f6fa',
+              padding: '0 20px',
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          name="scheduleContent"
+          initialValue={settings.schedule?.content}>
+          <Input placeholder="내용" />
         </Form.Item>
         <Label>유동병력 현황판 보기 설정</Label>
         <Form.Item name="chartDesign" initialValue={settings.chartDesign}>

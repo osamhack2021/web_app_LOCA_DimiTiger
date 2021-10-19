@@ -33,6 +33,11 @@ export const settingsState = atom<Settings>({
   },
 });
 
+export const chartExpandedState = atom({
+  key: 'chartExpandedState',
+  default: false,
+});
+
 export const useLogout = () => {
   const history = useHistory();
   const resetAccessToken = useResetRecoilState(accessTokenState);

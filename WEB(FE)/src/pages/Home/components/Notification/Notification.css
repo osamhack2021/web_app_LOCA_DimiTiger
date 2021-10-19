@@ -119,11 +119,11 @@
   cursor: pointer;
 }
 .reportHeaderDate {
-  font-size: 1.05rem;
+  font-size: 0.8rem;
   color: #7d7d7d;
   font-weight: 500;
-  margin-right: 15px;
-  float: right;
+  margin-right: 5px;
+  float: inline-end;
 }
 .reportHeaderArrow {
   float: right;

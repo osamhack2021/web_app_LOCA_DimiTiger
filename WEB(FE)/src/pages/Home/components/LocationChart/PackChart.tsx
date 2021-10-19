@@ -1,8 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Group } from '@visx/group';
-import { Treemap, treemapBinary } from '@visx/hierarchy';
-import { HierarchyNode } from '@visx/hierarchy/lib/types';
+import { Pack } from '@visx/hierarchy';
+import { HierarchyNode } from 'd3-hierarchy';
 
 import './LocationChart.css';
 
@@ -15,7 +15,7 @@ interface Datum {
   children?: Datum[];
 }
 
-const TreeMapChart = ({
+const PackChart = ({
   width,
   height,
   root,
@@ -29,34 +29,23 @@ const TreeMapChart = ({
   return (
     <svg width={width} height={height}>
       <rect width={width} height={height} rx={20} fill="white" />
-      <Treemap<Datum>
-        root={root}
-        size={[width || 100, height || 100]}
-        tile={treemapBinary}
-        padding={20}
-        round>
-        {treemap => (
+      <Pack<Datum> root={root} size={[width || 100, height || 100]} padding={0}>
+        {packData => (
           <Group>
-            {treemap.descendants().map((node, i) => {
-              const nodeWidth = node.x1 - node.x0;
-              const nodeHeight = node.y1 - node.y0;
-              const { location, users } = node.data;
-
-              const textWidth = 80;
-              const textPerLine =
-                nodeWidth - 40 > textWidth
-                  ? Math.floor((nodeWidth - 40) / textWidth)
-                  : 1;
+            {packData.descendants().map((circle, i) => {
+              const { location, users } = circle.data;
+              const lineWidth = circle.r * 0.2;
+              const distance = circle.r * 0.3;
+              const fontSize = circle.r * 0.25 + 'px';
               return (
-                <Group key={`node-${i}`} top={node.y0} left={node.x0}>
-                  {node.depth === 1 && (
+                <Group key={`node-${i}`}>
+                  {circle.depth === 1 && (
                     <>
-                      <rect
-                        width={nodeWidth}
-                        height={nodeHeight}
-                        strokeWidth={4}
-                        rx={20}
-                        ry={20}
+                      <circle
+                        key={`circle-${i}`}
+                        r={circle.r}
+                        cx={circle.x}
+                        cy={circle.y}
                         fill={`url(#gradient${location!.ui!.color})`}
                         onClick={() =>
                           history.push(
@@ -66,21 +55,40 @@ const TreeMapChart = ({
                         cursor="pointer"
                       />
                       <text
-                        dx={20}
-                        dy={40}
-                        fill="white"
-                        fontSize={21}
-                        fontWeight="800">{`${location!.name} (${
-                        users?.length
-                      }명)`}</text>
-                      {users!.map((user, index) => (
-                        <text
-                          dx={20 + 80 * (index % textPerLine)}
-                          dy={60 + Math.floor(index / textPerLine) * 20}
-                          fill="white"
-                          fontWeight="500"
-                          key={user._id}>{`${user.rank} ${user.name}`}</text>
-                      ))}
+                        x={circle.x}
+                        y={circle.y - distance * 1.2}
+                        textAnchor="middle"
+                        dominantBaseline="central"
+                        style={{
+                          fontFamily: 'sans-serif',
+                          fontSize: circle.r * 0.7 + 'px',
+                          fill: 'rgb(255, 255, 255)',
+                          pointerEvents: 'none',
+                        }}>
+                        {circle.value}
+                      </text>
+                      <line
+                        x1={circle.x - lineWidth}
+                        y1={circle.y + distance * 0.2}
+                        x2={circle.x + lineWidth}
+                        y2={circle.y + distance * 0.2}
+                        strokeWidth="3"
+                        stroke="#ffffff"
+                      />
+                      <text
+                        x={circle.x}
+                        y={circle.y + distance * 1.1}
+                        textAnchor="middle"
+                        dominantBaseline="central"
+                        style={{
+                          fontFamily: 'sans-serif',
+                          fontSize: fontSize,
+                          fontWeight: 800,
+                          fill: 'rgb(255, 255, 255)',
+                          pointerEvents: 'none',
+                        }}>
+                        {location!.name}
+                      </text>
                       <linearGradient
                         id="gradientRed"
                         x1="0"
@@ -124,9 +132,9 @@ const TreeMapChart = ({
             })}
           </Group>
         )}
-      </Treemap>
+      </Pack>
     </svg>
   );
 };
 
-export default TreeMapChart;
+export default PackChart;
