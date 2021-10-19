@@ -19,7 +19,7 @@ const Dashboard = () => {
 
   return (
     <Row gutter={[32, 32]} id="dashboard">
-      <Col xs={24} xxl={6}>
+      <Col xs={0} xxl={6}>
         <Notification />
       </Col>
       <Col xs={24} xxl={18}>
