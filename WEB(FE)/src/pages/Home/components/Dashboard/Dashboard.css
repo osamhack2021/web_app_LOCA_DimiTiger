@@ -1,4 +1,5 @@
 #dashboard {
+  width: 100%;
   padding: 30px;
   min-height: calc(100vh - 100px);
   padding-right: 120px;
