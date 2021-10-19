@@ -1,4 +1,4 @@
-import { Button, DatePicker, Form, Radio } from 'antd';
+import { Button, DatePicker, Form, Radio, Space } from 'antd';
 import { format } from 'date-fns';
 import moment from 'moment';
 import { useRecoilState } from 'recoil';
@@ -67,29 +67,31 @@ const Weather = () => {
           />
         </Form.Item>
         <Label>다가오는 일정 설정</Label>
-        <Form.Item
-          name="scheduleDate"
-          initialValue={moment(
-            settings.schedule?.date || format(new Date(), 'yyyy-MM-dd'),
-            dateFormat,
-          )}>
-          <DatePicker
-            showToday
-            style={{
-              height: '44px',
-              width: '250px',
-              border: 'solid 2px #0085ff',
-              borderRadius: '13px',
-              backgroundColor: '#f5f6fa',
-              padding: '0 20px',
-            }}
-          />
-        </Form.Item>
-        <Form.Item
-          name="scheduleContent"
-          initialValue={settings.schedule?.content}>
-          <Input placeholder="내용" />
-        </Form.Item>
+        <Space>
+          <Form.Item
+            name="scheduleDate"
+            initialValue={moment(
+              settings.schedule?.date || format(new Date(), 'yyyy-MM-dd'),
+              dateFormat,
+            )}>
+            <DatePicker
+              showToday
+              style={{
+                height: '44px',
+                width: '250px',
+                border: 'solid 2px #0085ff',
+                borderRadius: '13px',
+                backgroundColor: '#f5f6fa',
+                padding: '0 20px',
+              }}
+            />
+          </Form.Item>
+          <Form.Item
+            name="scheduleContent"
+            initialValue={settings.schedule?.content}>
+            <Input placeholder="내용" />
+          </Form.Item>
+        </Space>
         <Label>유동병력 현황판 보기 설정</Label>
         <Form.Item name="chartDesign" initialValue={settings.chartDesign}>
           <Radio.Group buttonStyle="solid">
