@@ -166,7 +166,7 @@ const Chart = ({
 
 const ChartWrapper = withParentSize(Chart);
 
-const TreeChart = () => {
+const TreeMapChart = () => {
   return (
     <div id="location" className="dash_component">
       <div className="headline">
@@ -178,4 +178,4 @@ const TreeChart = () => {
     </div>
   );
 };
-export default TreeChart;
+export default TreeMapChart;

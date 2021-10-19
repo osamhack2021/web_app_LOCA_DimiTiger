@@ -108,7 +108,7 @@ const CustomCirclePackingComponent = (props: CircleProps<LocationDatum>) => {
   );
 };
 
-const LocationChart = () => {
+const CirclePackingChart = () => {
   const { data: locations, isLoading } = useLocations();
   const { data: locationLogs } = useLocationLogs({ active: true, limit: 0 });
 
@@ -202,4 +202,4 @@ const LocationChart = () => {
     </div>
   );
 };
-export default LocationChart;
+export default CirclePackingChart;

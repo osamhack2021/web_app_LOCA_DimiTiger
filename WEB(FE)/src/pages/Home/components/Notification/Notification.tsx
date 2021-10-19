@@ -10,7 +10,7 @@ import { useEmergencyReports } from '@/api/emergencies';
 import { useAddNotice, useNotices } from '@/api/notices';
 import Notice from '@/types/Notice';
 
-const NoticeCard = () => {
+const Notification = () => {
   const { data: notices } = useNotices();
   const { data: emergencies } = useEmergencyReports();
   const { register, handleSubmit } = useForm();
@@ -74,4 +74,4 @@ const NoticeCard = () => {
     </div>
   );
 };
-export default NoticeCard;
+export default Notification;
