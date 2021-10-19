@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const CardHeader = styled.div`
   width: 100%;
-  height: 80px;
 
   padding: 20px 0 20px 0;
 
