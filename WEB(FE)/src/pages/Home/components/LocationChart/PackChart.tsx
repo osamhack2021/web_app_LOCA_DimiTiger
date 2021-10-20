@@ -5,14 +5,7 @@ import { Group } from '@visx/group';
 import { Pack } from '@visx/hierarchy';
 import { HierarchyCircularNode, HierarchyNode } from 'd3-hierarchy';
 
-import Location from '@/types/Location';
-import User from '@/types/User';
-
-interface Datum {
-  location?: Location;
-  users?: User[];
-  children?: Datum[];
-}
+import { Datum } from './LocationChart';
 
 const transitionPhases = {
   enter: (node: HierarchyCircularNode<Datum>) => ({
@@ -51,8 +44,7 @@ const Circles = ({ nodes }: { nodes: HierarchyCircularNode<Datum>[] }) => {
       opacity: number;
     }
   >(nodes, {
-    keys: (node: HierarchyCircularNode<Datum>) =>
-      node.depth === 1 ? node.data.location!._id : '',
+    keys: node => node.data.id,
     initial: transitionPhases.update,
     from: transitionPhases.enter,
     enter: transitionPhases.update,
