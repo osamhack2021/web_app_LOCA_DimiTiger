@@ -5,8 +5,6 @@ import { Group } from '@visx/group';
 import { Pack } from '@visx/hierarchy';
 import { HierarchyCircularNode, HierarchyNode } from 'd3-hierarchy';
 
-import './LocationChart.css';
-
 import Location from '@/types/Location';
 import User from '@/types/User';
 

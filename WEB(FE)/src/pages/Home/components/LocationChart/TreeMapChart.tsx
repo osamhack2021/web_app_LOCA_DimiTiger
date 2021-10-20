@@ -8,8 +8,6 @@ import {
   HierarchyRectangularNode,
 } from '@visx/hierarchy/lib/types';
 
-import './LocationChart.css';
-
 import Location from '@/types/Location';
 import User from '@/types/User';
 
