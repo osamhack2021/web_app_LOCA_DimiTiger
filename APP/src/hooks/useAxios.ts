@@ -37,7 +37,7 @@ const useAxios = () => {
     const interceptor = customAxios.interceptors.response.use(
       res => res,
       async err => {
-        if (err?.response?.status !== 401) {
+        if (!accessToken || err?.response?.status !== 401) {
           return Promise.reject(err);
         }
 
@@ -68,7 +68,7 @@ const useAxios = () => {
     return () => {
       customAxios.interceptors.response.eject(interceptor);
     };
-  }, [refreshToken, signOut, setAccessToken]);
+  }, [refreshToken, signOut, setAccessToken, accessToken]);
 
   return customAxios;
 };

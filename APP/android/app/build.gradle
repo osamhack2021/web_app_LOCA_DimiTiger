@@ -135,8 +135,8 @@ android {
         applicationId "io.dimitiger.loca"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 20
-        versionName "1.0"
+        versionCode 100
+        versionName "1.0.0"
     }
     splits {
         abi {

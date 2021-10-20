@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -18,6 +18,7 @@ const LocationScreen = () => {
   const navigation = useNavigation<RootNavigationProp<'Location'>>();
   const { data: location } = useLocation(params.location);
   const logMutation = useLogLocation();
+  const [loading, setLoading] = useState(false);
   return (
     <View style={styles.container}>
       {location && (
@@ -56,7 +57,9 @@ const LocationScreen = () => {
           </View>
           <View style={styles.buttonContainer}>
             <Button
+              loading={loading}
               onPress={async () => {
+                setLoading(true);
                 await logMutation.mutateAsync(location._id);
                 navigation.goBack();
               }}>
