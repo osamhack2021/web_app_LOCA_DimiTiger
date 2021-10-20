@@ -15,10 +15,12 @@ const Schedule = () => {
       title="다가오는 일정"
       style={{ flex: 1 }}
       bodyStyle={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-      <h1>{schedule?.content || '일정이 없습니다.'}</h1>
+      <h1 style={{ fontWeight: 900 }}>
+        {schedule?.content || '일정이 없습니다.'}
+      </h1>
       <Bottom>
         {date && (
-          <h2>
+          <h2 style={{ fontWeight: 200 }}>
             {format(date, 'yyyy-MM-dd')}
             {', '}
             {formatDistanceToNow(date, {
