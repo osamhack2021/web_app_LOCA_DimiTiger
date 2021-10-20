@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import {
   KeyboardAvoidingView,
+  Platform,
   ScrollView,
   StyleSheet,
   TextInput,
@@ -82,7 +83,9 @@ const SignUpScreen = () => {
   );
 
   return (
-    <KeyboardAvoidingView behavior="padding" style={styles.container}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}>
       <ScrollView style={styles.container}>
         <SafeAreaView style={styles.container}>
           <View style={styles.headerContainer}>
