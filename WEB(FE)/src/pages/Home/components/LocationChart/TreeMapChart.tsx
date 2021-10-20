@@ -8,14 +8,7 @@ import {
   HierarchyRectangularNode,
 } from '@visx/hierarchy/lib/types';
 
-import Location from '@/types/Location';
-import User from '@/types/User';
-
-interface Datum {
-  location?: Location;
-  users?: User[];
-  children?: Datum[];
-}
+import { Datum } from './LocationChart';
 
 const transitionPhases = {
   enter: ({ x0, y0, x1, y1 }: HierarchyRectangularNode<Datum>) => ({
@@ -54,7 +47,7 @@ const Rects = ({ nodes }: { nodes: HierarchyRectangularNode<Datum>[] }) => {
       opacity: number;
     }
   >(nodes, {
-    keys: node => (node.depth === 1 ? node.data.location!._id : ''),
+    keys: node => node.data.id,
     initial: transitionPhases.update,
     from: transitionPhases.enter,
     enter: transitionPhases.update,
