@@ -90,10 +90,10 @@ const UserCard = () => {
           )}
         </View>
         <View style={styleDivider} />
-        <View style={styles.userItem}>
+        {/* <View style={styles.userItem}>
           <Text>비밀번호</Text>
           <Button onPress={() => {}}>변경</Button>
-        </View>
+        </View> */}
         <View style={styles.signOutContainer}>
           <Button onPress={() => signOut()} style={styles.signOutButton}>
             로그아웃

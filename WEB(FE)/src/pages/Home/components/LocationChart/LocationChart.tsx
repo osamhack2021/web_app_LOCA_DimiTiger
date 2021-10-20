@@ -15,7 +15,8 @@ import LargeCard from '@/components/LargeCard';
 import Location from '@/types/Location';
 import User from '@/types/User';
 
-interface Datum {
+export interface Datum {
+  id: string;
   location?: Location;
   users?: User[];
   children?: Datum[];
@@ -31,7 +32,7 @@ const Chart = ({
 
   const data = useMemo<Datum>(() => {
     if (!locations || !locationLogs) {
-      return {};
+      return { id: 'root' };
     }
     const children = locations
       .map(location => {
@@ -39,13 +40,17 @@ const Chart = ({
           locationLog => locationLog.location._id === location._id,
         );
         return {
+          id: location._id,
           location,
           users: logs.map(({ user }) => user),
-          children: Array(logs.length).fill(''),
+          children: logs.map(v => ({
+            id: `${location._id}-${v.user._id}`,
+          })),
         };
       })
       .filter(location => location.users.length > 0);
     return {
+      id: 'root',
       children,
     };
   }, [locations, locationLogs]);

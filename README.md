@@ -8,7 +8,7 @@
  <a href="https://osamhack2021.github.io/web_app_LOCA_DimiTiger">
   <img src="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/button_view_docs.png?raw=true" />
  </a>
- <a href="https://loca.kimjisub.me/login">
+ <a href="https://osamhack2021.github.io/web_app_LOCA_DimiTiger/docs/demo">
   <img src="https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/button_start_demo.png?raw=true" />
  </a>
  </br>
@@ -29,7 +29,7 @@
 
 LOCA는 기존의 유동 병력 관리 방식을 완전히 개선하기 위해 탄생한 프로젝트입니다.
 
-프로젝트에 대한 더 자세한 설명은 [프로젝트 문서 페이지](https://osamhack2021.github.io/web_app_LOCA_DimiTiger)에서 확인하실 수 있습니다.
+프로젝트에 대한 더 보기 쉽고 자세한 설명은 [프로젝트 문서 페이지](https://osamhack2021.github.io/web_app_LOCA_DimiTiger)에서 확인하실 수 있습니다.
 
 ### 프로젝트 배경
 
@@ -54,16 +54,18 @@ LOCA는 기존의 유동 병력 관리 방식을 완전히 개선하기 위해 �
 
 ## 기능 설명
 
+_각 기능의 이미지를 클릭하면 자세한 내용을 확인할 수 있습니다._
+
 | **ㆍ 🧭 쉽고 간편한 위치 보고**                                                                                       | **ㆍ 👀 한 눈에 보는 유동병력 현황**                                                                                  |
 |----------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| ![feature1!](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/feature1.png?raw=true) | ![feature2!](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/feature2.png?raw=true) |
+| [![feature1](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/feature1.png?raw=true)](https://osamhack2021.github.io/web_app_LOCA_DimiTiger/docs/features/feature1) | [![feature2](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/feature2.png?raw=true)](https://osamhack2021.github.io/web_app_LOCA_DimiTiger/docs/features/feature2) |
 | NFC 태그에 스마트폰을 태그하거나 비콘을 활용하여 간편하게 위치를 보고합니다.                                         | 실시간 데이터베이스에 전송된 정보를 바탕으로 병력들의 위치를 웹 대시보드에 표시합니다.                               |
 
 <br/>
 
 | **ㆍ ⚠ 위치 기반 긴급보고 체계**                                                                                     | **ㆍ 🚪 병사 이동 동선 및 위치 출입 기록**                                                                            |
 |----------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| ![feature3!](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/feature3.png?raw=true) | ![feature4!](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/feature4.png?raw=true) |
+| [![feature3](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/feature3.png?raw=true)](https://osamhack2021.github.io/web_app_LOCA_DimiTiger/docs/features/feature3) | [![feature4](https://github.com/osamhack2021/web_app_LOCA_DimiTiger/blob/docs/docs/static/img/feature4.png?raw=true)](https://osamhack2021.github.io/web_app_LOCA_DimiTiger/docs/features/feature4) |
 | 사고가 발생하여 긴급 보고 시 사용자의 위치를 바탕으로 신속한 조치가 가능합니다.                                      | 사용자가 보고한 위치를 바탕으로 개인의 이동 동선과 위치의 출입 기록을 확인할 수 있습니다.                            |
 
 <br/>
