@@ -12,6 +12,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
 import { AxiosResponse } from 'axios';
+import axioss from 'axios';
 import { useSetRecoilState } from 'recoil';
 
 import { registerState } from '@/atoms';
@@ -35,6 +36,7 @@ const SignUpScreen = () => {
   const emailRef = useRef<TextInput>(null);
   const passwordRef = useRef<TextInput>(null);
   const reEnterRef = useRef<TextInput>(null);
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { control, handleSubmit, getValues } = useForm<
     RegisterData & { pwCheck: string }
@@ -63,6 +65,17 @@ const SignUpScreen = () => {
         );
       } catch (err) {
         setLoading(false);
+        let message = '';
+        if (axioss.isAxiosError(err)) {
+          switch (err.response?.status) {
+            case 409:
+              message = '군번 또는 가입코드를 확인하세요.';
+              break;
+            default:
+              message = '오류가 발생했습니다.';
+          }
+        }
+        setError(message);
       }
     },
     [axios, setRegisterState, signIn],
@@ -194,6 +207,7 @@ const SignUpScreen = () => {
               },
             }}
           />
+          <Text>{error}</Text>
           <Button
             onPress={handleSubmit(onSubmit)}
             loading={loading}
