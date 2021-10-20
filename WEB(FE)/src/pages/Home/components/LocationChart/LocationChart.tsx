@@ -15,7 +15,8 @@ import LargeCard from '@/components/LargeCard';
 import Location from '@/types/Location';
 import User from '@/types/User';
 
-interface Datum {
+export interface Datum {
+  id: string;
   location?: Location;
   users?: User[];
   children?: Datum[];
@@ -31,7 +32,7 @@ const Chart = ({
 
   const data = useMemo<Datum>(() => {
     if (!locations || !locationLogs) {
-      return {};
+      return { id: 'root' };
     }
     const children = locations
       .map(location => {
@@ -39,13 +40,17 @@ const Chart = ({
           locationLog => locationLog.location._id === location._id,
         );
         return {
+          id: location._id,
           location,
           users: logs.map(({ user }) => user),
-          children: Array(logs.length).fill(''),
+          children: logs.map(v => ({
+            id: `${location._id}-${v.user._id}`,
+          })),
         };
       })
       .filter(location => location.users.length > 0);
     return {
+      id: 'root',
       children,
     };
   }, [locations, locationLogs]);
@@ -98,6 +103,24 @@ const LocationChart = () => {
         </Button>
       }>
       <ChartWrapper />
+      <svg>
+        <linearGradient id="gradientRed" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stopColor="#fd3a84" />
+          <stop offset="1" stopColor="#ffa68d" />
+        </linearGradient>
+        <linearGradient id="gradientGreen" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stopColor="#00b59c" />
+          <stop offset="1" stopColor="#9cffac" />
+        </linearGradient>
+        <linearGradient id="gradientBlue" x1="0%" x2="0%" y1="0%" y2="100%">
+          <stop offset="0" stopColor="#5558ff" />
+          <stop offset="1" stopColor="#00c0ff" />
+        </linearGradient>
+        <linearGradient id="gradientYellow" x1="0%" x2="0%" y1="0%" y2="100%">
+          <stop offset="0%" stopColor="#fd5900" />
+          <stop offset="100%" stopColor="#feba00" />
+        </linearGradient>
+      </svg>
     </LargeCard>
   );
 };

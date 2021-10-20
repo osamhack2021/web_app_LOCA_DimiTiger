@@ -8,7 +8,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/core';
 import LottieView from 'lottie-react-native';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 import { registerState } from '@/atoms';
 import AnimatedText from '@/components/AnimatedText';
@@ -24,7 +24,7 @@ const RegisterDoneScreen = () => {
     progress: progress.value,
   }));
   const [confettiAnimDone, setConfettiAnimDone] = useState(false);
-  const { name, rank } = useRecoilValue(registerState);
+  const [{ name, rank }, setRegisterState] = useRecoilState(registerState);
 
   useEffect(() => {
     progress.value = withTiming(
@@ -54,7 +54,13 @@ const RegisterDoneScreen = () => {
         />
       </View>
       <View style={styles.container}>
-        <Button onPress={() => navigation.replace('Main')}>시작하기</Button>
+        <Button
+          onPress={() => {
+            setRegisterState({ isRegistering: false, name: '', rank: '' });
+            navigation.replace('Main');
+          }}>
+          시작하기
+        </Button>
       </View>
     </View>
   );
